@@ -1,9 +1,9 @@
-package cz2002.assignment;
+package ntu.scse.cz2002.restaurant.model;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class reservation {
+public class Reservation {
 	
 	private Calendar startDateTime;           // Date and time of reservation              
 	
@@ -20,7 +20,7 @@ public class reservation {
 	
 	private static final SimpleDateFormat dateFormatter = new SimpleDateFormat("E, dd/MM/yyyy, HH:mm");  // A Simple Date Format used to format date/time related information
 	
-	public reservation (Calendar startDateTime, int noOfPax, String customerName,      // Creation of a reservation object
+	public Reservation (Calendar startDateTime, int noOfPax, String customerName,      // Creation of a reservation object
 			int customerContactNo, int tableNo, int duration)
 	{
 		this.startDateTime = startDateTime;

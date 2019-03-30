@@ -1,10 +1,12 @@
-public class MenuItem{
+package ntu.scse.cz2002.restaurant.model;
+
+public class Set {
     private String name;
     private String description;
     private double price;
     private String type;
 
-    public MenuItem(String name, String description, double price, String type){
+    public Set(String name, String description, double price, String type){
         this.name = name;
         this.description = description;
         this.price = price;

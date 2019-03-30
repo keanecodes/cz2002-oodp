@@ -1,4 +1,4 @@
-package cz2002.assignment;
+package ntu.scse.cz2002.restaurant.model;
 import java.util.*;
 
 public class Promotion {

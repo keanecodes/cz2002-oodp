@@ -1,7 +1,9 @@
+package ntu.scse.cz2002.restaurant.model;
+
 import java.util.ArrayList;
 
 public class Order {
-  private ArrayList<MenuItems> items = new ArrayList<MenuItems>();
+  private ArrayList<MenuItem> items = new ArrayList<MenuItem>();
   private String staffId;
   private int orderId;
   private String tableId;
@@ -19,7 +21,7 @@ public class Order {
     this.tableId = tableId;
   }
 
-  public MenuItems[] getItems() { return this.items; }
+  public ArrayList<MenuItem> getItems() { return this.items; }
   public String getStaffId() { return this.staffId; }
   public int getOrderId() { return this.orderId; }
   public String getTableId() { return this.tableId; }

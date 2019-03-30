@@ -1,3 +1,5 @@
+package ntu.scse.cz2002.restaurant.model;
+
 public class Table {
   private String tableId;
   private int noOfMaxPax;
