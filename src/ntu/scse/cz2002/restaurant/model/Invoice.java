@@ -1,7 +1,6 @@
 package ntu.scse.cz2002.restaurant.model;
+package DateUtil.java;
 import java.util.Calendar;
-import java.text.DateFormat;
-
 
 public class Invoice {
 
@@ -21,16 +20,17 @@ public class Invoice {
 	
 	public Invoice(Order o){
 		Date date = new Date();
-		timestamp = date.getTime();
+		Calendar timestamp = Calendar.getInstance()();
 		order1 = o;
 		amount = calAmt(o);
 		table1 = null;
 	}
 	
 	private double calAmt(Order o) {
-		totalAmt = 0;
-		for (int i =0; i<o.length; i++) {
-			totalAmt += o[i].getPrice(); //menuitem.getprice
+		Menuitem[] items = o.getItems();
+		double totalAmt = 0;
+		for (int i =0; i<items.length; i++) {
+			totalAmt += items[i].getPrice(); //menuitem.getprice
 		}
 		
 	return totalAmt;
