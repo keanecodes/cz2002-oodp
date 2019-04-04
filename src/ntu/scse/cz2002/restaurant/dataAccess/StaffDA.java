@@ -14,7 +14,6 @@ import ntu.scse.cz2002.restaurant.util.DateUtil;
 
 public class StaffDA {
 	
-	
 	public static final String SEPARATOR = "|";
 
 	public static ArrayList<Staff> readAllStaff(String filename) throws IOException, ParseException {
@@ -36,7 +35,7 @@ public class StaffDA {
 				
 				alr.add(staff) ;
 			}
-			return alr;
+		return alr;
 	}
 	
 	public static Staff getLastUsedStaff(String filename) throws IOException, ParseException {
@@ -65,6 +64,6 @@ public class StaffDA {
 				st.append(staff.getJobTitle().trim());
 				alw.add(st.toString()) ;
 			}
-			DataAccessHelper.write(filename,alw);
+		DataAccessHelper.write(filename,alw);
 	}
 }
