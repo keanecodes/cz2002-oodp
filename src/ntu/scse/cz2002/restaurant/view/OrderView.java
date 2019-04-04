@@ -1,13 +1,18 @@
 package ntu.scse.cz2002.restaurant.view;
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.Scanner;
 
-public class OrderApp {
+import ntu.scse.cz2002.restaurant.controller.OrderController;
+import ntu.scse.cz2002.restaurant.model.Order;
 
-	public void OrderUI() {
+public class OrderView {
+
+	public void OrderUI() throws IOException, ParseException {
 		Scanner sc = new Scanner(System.in);
 		int choice, orderID;
 		Order currentOrder;
-		OrderManager orderManager = new OrderManager();
+		OrderController orderController = new OrderController();
 		do {
 			System.out.println("Select an option to proceed: ");
 			System.out.println("1. Add an order");
@@ -24,20 +29,20 @@ public class OrderApp {
 					int tableID = sc.nextInt();
 					System.out.println("Creating Order ...");
 
-					Order order = orderManager.createOrder(staffID, tableID);
-					editOrderUI(order, orderManager);
+					Order order = orderController.createOrder(staffID, tableID);
+					editOrderUI(order, orderController);
 					break;
 				case 2:
 					System.out.println("Enter orderID: ");
 					orderID = sc.nextInt();
-					currentOrder = orderManager.findOrder(orderID);
-					editOrderUI(currentOrder, orderManager);
+					currentOrder = orderController.findOrder(orderID);
+					editOrderUI(currentOrder, orderController);
 					break;
 				case 3:
 					System.out.println("Enter orderID: ");
 					orderID = sc.nextInt();
-					currentOrder = orderManager.findOrder(orderID);
-					orderManager.displayOrder(currentOrder);
+					currentOrder = orderController.findOrder(orderID);
+					orderController.displayOrder(currentOrder);
 					break;
 				case 4:
 					break;
@@ -49,7 +54,7 @@ public class OrderApp {
 		} while(choice != 4);
 	}
 	
-	public void editOrderUI(Order order, OrderManager orderManager) {
+	public void editOrderUI(Order order, OrderController orderController) {
 		int itemChoice;
 		Scanner sc = new Scanner(System.in);
 		String itemName;
@@ -64,13 +69,13 @@ public class OrderApp {
 				case 1:
 					System.out.println("Enter name of item: ");
 					itemName = sc.next();
-					orderManager.addOrderItem(order, itemName);
+					//orderController.addOrderItem(order, itemName);
 					System.out.println(itemName + " has been added to order");
 					break;
 				case 2:
 					System.out.println("Enter name of item: ");
 					itemName = sc.next();
-					orderManager.removeOrderItem(order, itemName);
+					//orderController.removeOrderItem(order, itemName);
 					System.out.println(itemName + " has been removed from order");
 					break;
 				case 3:

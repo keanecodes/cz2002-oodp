@@ -1,5 +1,6 @@
 package ntu.scse.cz2002.restaurant.model;
-package DateUtil.java;
+
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Invoice {
@@ -14,23 +15,23 @@ public class Invoice {
 	public Invoice(Table t){
 		timestamp = Calendar.getInstance();
 		table1 = t;
-		order1 = t.getorders();
+		order1 = t.getOrder();
 		amount = calAmt(order1);
 	}
 	
 	public Invoice(Order o){
-		Date date = new Date();
-		Calendar timestamp = Calendar.getInstance()();
+		//Date date = new Date();
+		Calendar timestamp = Calendar.getInstance();
 		order1 = o;
 		amount = calAmt(o);
 		table1 = null;
 	}
 	
 	private double calAmt(Order o) {
-		Menuitem[] items = o.getItems();
+		ArrayList<MenuItem> items = o.getItems();
 		double totalAmt = 0;
-		for (int i =0; i<items.length; i++) {
-			totalAmt += items[i].getPrice(); //menuitem.getprice
+		for (int i =0; i<items.size(); i++) {
+			totalAmt += items.get(i).getPrice(); //menuitem.getprice
 		}
 		
 	return totalAmt;
@@ -52,8 +53,8 @@ public class Invoice {
 	}
 	
 	public String toString(){
-		return "Timestamp: " + DateFormat.getD 
-				"Table " + table1.toString() + " " 
+		//return "Timestamp: " + DateFormat.getD 
+		return "Table " + table1.toString() + " " 
 				+ "Amount: " + amount;
 	}
 	

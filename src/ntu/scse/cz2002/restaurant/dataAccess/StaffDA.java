@@ -15,6 +15,10 @@ import ntu.scse.cz2002.restaurant.util.DateUtil;
 public class StaffDA {
 	
 	public static final String SEPARATOR = "|";
+	
+	public StaffDA() throws ParseException {
+
+    }
 
 	public static ArrayList<Staff> readAllStaff(String filename) throws IOException, ParseException {
 		

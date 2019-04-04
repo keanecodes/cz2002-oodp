@@ -2,8 +2,8 @@ package ntu.scse.cz2002.restaurant.model;
 
 import java.util.ArrayList;
 
-import cz2002.assignment.MenuItem;
-import cz2002.assignment.Staff;
+import ntu.scse.cz2002.restaurant.model.MenuItem;
+import ntu.scse.cz2002.restaurant.model.Staff;
 
 public class Order {
 	private ArrayList<MenuItem> items = new ArrayList<MenuItem>();
@@ -18,13 +18,13 @@ public class Order {
 	}
 
 	public ArrayList<MenuItem> getItems() { return this.items; }
-	public String getStaffId() { return this.staffId; }
+	public Staff getStaff() { return this.staff; }
 	public int getOrderId() { return this.orderId; }
-	public String getTableId() { return this.tableId; }
+	public int getTableId() { return this.tableId; }
 
 	public void addItem(MenuItem i) { this.items.add(i); }
 	public void removeItem(MenuItem i) {this.items.remove(i);}
-	public void setStaffId(String s) { this.staffId = s; }
+	public void setStaff(Staff s) { this.staff = s; }
 	public void setOrderId(int i) { this.orderId = i; }
-	public void setTableId(String i) {this.tableId = i; };
+	public void setTableId(int i) {this.tableId = i; };
 }

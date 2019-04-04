@@ -1,8 +1,6 @@
 package ntu.scse.cz2002.restaurant.model;
 import java.util.Date;
 
-import restaurantApp.Invoice;
-
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
@@ -11,7 +9,7 @@ import java.util.Calendar;
 public class RestaurantRevenue {
 	Invoice[] invoice_list;
 	int period;
-	Menuitem[] thingssold;
+	MenuItem[] thingssold;
 	double amount;
 //	public static DateTimeFormatter timeformat = DateTimeFormatter.ofPattern("dd-MM-yyy HH:mm:ss");
 
@@ -23,8 +21,8 @@ public class RestaurantRevenue {
 		return totalAmt;
 	}
 	
-	private Menuitem[] getitems (Invoice[] ils) {
-		Menuitem[] item;
+	/*private MenuItem[] getitems (Invoice[] ils) {
+		MenuItem[] item;
 		for (int i =0; i<ils.length; i++) {
 			orders = ils[i].getOrder();
 			for (int i = 0; i<orders.length; i++) {
@@ -32,14 +30,14 @@ public class RestaurantRevenue {
 			}
 		}
 		return item;
-	}
+	}*/
 	
-	RestaurantRevenue(Invoice[] invoicelist, int month){
+	/*RestaurantRevenue(Invoice[] invoicelist, int month){
 		period = month;
 		invoice_list = invoicelist;
 		amount = sumAmount(invoice_list);
 		thingssold = getitems(invoice_list);
-	}
+	}*/
 	
 	public long getPeriod() {
 		return period;
@@ -47,14 +45,7 @@ public class RestaurantRevenue {
 	public void setPeriod(int month) {
 		period = month;
 	}
+}
 	
-/*	private Invoice [] findInvoiceList(int month) {
-		invoice[] = 
-				
-		for ()
-		
-		return 
-	}
-*/
 	
 
