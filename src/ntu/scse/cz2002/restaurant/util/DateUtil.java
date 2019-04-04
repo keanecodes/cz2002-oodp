@@ -3,6 +3,7 @@ package ntu.scse.cz2002.restaurant.util;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Calendar;
 
 public class DateUtil {
 
