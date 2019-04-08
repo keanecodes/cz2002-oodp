@@ -1,6 +1,9 @@
-import ntu.scse.cz2002.restaurant.util.SortingUtil;
+package ntu.scse.cz2002.restaurant.control;
 
-public Class MenuManager{
+import ntu.scse.cz2002.restaurant.util.SortingUtil;
+import ntu.scse.cz2002.restaurant.model.*;
+
+public class MenuManager{
     private Menu menu;
     private ArrayList<String> types;
 
@@ -8,12 +11,12 @@ public Class MenuManager{
         /* TODO: decide on file name */
         String fname = "";
 
-        this.loadMenuContents(fname);
+        this.loadItems(fname);
         return MenuManager;
 
     }
 
-    public void loadItems(String fname){
+    private void loadItems(String fname){
         // Implements file IO and loads menu contents into menu
         // this.menu = ...
         // update 'types'
@@ -61,6 +64,9 @@ public Class MenuManager{
             promotion.setPromotionDescription(description);
             promotion.setPrice(price);
             System.out.println("Item susccessfully updated!");
+        }
+        else{
+            System.out.println(name + " does not exist in menu!");
         }
     }
 
