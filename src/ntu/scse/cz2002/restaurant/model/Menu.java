@@ -1,101 +1,72 @@
-package ntu.scse.cz2002.restaurant.model;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Menu{
     private ArrayList<MenuItem> menuItems = new ArrayList<MenuItem>();
-    private ArrayList<Set> sets = new ArrayList<Set>();
+    private ArrayList<Promotion> promotions = new ArrayList<Promotion>();
+    private int contentCount;
 
-    public Menu(MenuItem[] menuItems, Set[] sets){
+    public Menu(MenuItem[] menuItems, Promotion[] promotions){
         this.menuItems = new ArrayList<MenuItem>(Arrays.asList(menuItems));
-        this.sets = new ArrayList<Set>(Arrays.asList(sets));
-        
-    }
-
-    public void printMenu(){
-        System.out.println("Menu item:");
-
-        for(int i=0;i<this.menuItems.size();i++){
-            System.out.println(i + ". " + this.menuItems.get(i).getName());
-            
-        }
-
-        System.out.println("Set item:");
-
-        for(int j=0;j<this.sets.size();j++){
-            System.out.println(j +". " + this.sets.get(j).getName());
-            
-        }
+        this.promotions = new ArrayList<Promotion>(Arrays.asList(promotions));
+        this.contentCount = 0;
     }
 
     public void addMenuItem(MenuItem item){
         this.menuItems.add(item);
-        System.out.println("The following menu item has been added to the menu:");
-        System.out.println("  Name: " + item.getName());
-        System.out.println("  Description: " + item.getDescription());
-        System.out.println("  Price: $" + item.getPrice());
-        System.out.println("  Type: " + item.getType());
-        
+        this.contentCount += 1;
     }
 
-    public void addSet(Set set){
-        this.sets.add(set);
-        System.out.println("The following set has been addded to the menu:");
-        System.out.println("  Name: " + set.getName());
-        System.out.println("  Description: " + set.getDescription());
-        System.out.println("  Price: $" + set.getPrice());
-        System.out.println("  Type: " + set.getType());
-        
+    public void addPromotion(Promotion promotion){
+        this.promotions.add(promotion);
+        this.contentCount += 1;
     }
 
-    public ArrayList<MenuItem> getMenuItem(String name) {
-        /*for(int i=0;i<this.menuItems.size();i++){
+    public MenuItem getMenuItem(String name){
+        for(int i=0;i<this.menuItems.size();i++){
             if(this.menuItems.get(i).getName().equals(name)){
                 return this.menuItems.get(i);
-                
             }
-        }*/
-    	return this.menuItems;
+        }
+
+        return null;
     }
 
-    public ArrayList<Set> getSet(String name){
-        /*for(int i=0;i<this.sets.size();i++){
-            if(this.sets.get(i).getName().equals(name)){
-                return this.sets.get(i);
-                
+    public Promotion getPromotion(String name){
+        for(int i=0;i<this.promotions.size();i++){
+            if(this.promotions.get(i).getName().equals(name)){
+                return this.promotions.get(i);
             }
-        }*/
-    	return this.sets;
+        }
     }
 
-    public void removeMenuItem(String name){
+    public int getContentSize(){
+        return this.contentCount;
+    }
+
+    public int removeMenuItem(String name){
         for(int i=0;i<this.menuItems.size();i++){
             if(this.menuItems.get(i).getName().equals(name)){
                 this.menuItems.remove(i);
-                System.out.println(name + " has been successfully deleted from menu!");
-                
-                return;
-                
+                this.contentCount -= 1;
+                return 0;
             }
         }
 
         System.out.println("Item not found!");
-        
+        return 1;
     }
 
-    public void removeSet(String name){
-        for(int i=0;i<this.sets.size();i++){
-            if(this.sets.get(i).getName().equals(name)){
-                this.sets.remove(i);
-                System.out.println(name + " has been successfully deleted from menu!");
+    public void removePromotion(String name){
+        for(int i=0;i<this.promotions.size();i++){
+            if(this.promotions.get(i).getName().equals(name)){
+                this.promotions.remove(i);
+                this.contentCount =- 1;
                 return;
-                
             }
         }
 
-        System.out.println("Set not found!");
-        
+        System.out.println("Promotion not found!");
     }
 
 
