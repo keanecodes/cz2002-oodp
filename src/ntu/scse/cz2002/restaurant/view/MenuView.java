@@ -10,6 +10,7 @@ public class MenuView{
     public static void main(String args[]){
         int quit = 0;
         char c;
+
         menuMan = new MenuManager();
 
         printInputList();

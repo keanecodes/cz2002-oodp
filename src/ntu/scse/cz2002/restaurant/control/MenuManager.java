@@ -3,6 +3,8 @@ package ntu.scse.cz2002.restaurant.control;
 import ntu.scse.cz2002.restaurant.util.SortingUtil;
 import ntu.scse.cz2002.restaurant.model.*;
 
+import java.util.ArrayList;
+
 public class MenuManager{
     private Menu menu;
     private ArrayList<String> types;
