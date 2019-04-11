@@ -6,9 +6,9 @@ import ntu.scse.cz2002.restaurant.model.*;
 
 public class MenuView{
     public static MenuManager menuMan;
+    public static int quit = 0;
 
     public static void main(String args[]){
-        int quit = 0;
         char c;
 
         menuMan = new MenuManager();
@@ -30,7 +30,7 @@ public class MenuView{
         System.out.println("5. Update an item in menu.");
         System.out.println("6. Remove an item from menu.");
         System.out.println("7. Exit menu.");
-        println("");
+        System.out.println("");
     }
 
     public static char getUserInput(){
@@ -43,6 +43,12 @@ public class MenuView{
     }
 
     public static void processUserInput(char c){
+        String name;
+        String description;
+        int price;
+        String type;
+        Scanner sc = new Scanner(System.in);
+
         switch(c){
         case '1':
             menuMan.printItemsByCategory();
@@ -54,10 +60,6 @@ public class MenuView{
             break;
         case '3':
             MenuItem item;
-            String name;
-            String description;
-            int price;
-            String type;
 
             System.out.printf("Enter item name: ");
             name = sc.nextLine();
@@ -77,10 +79,6 @@ public class MenuView{
             break;
         case '4':
             Promotion promotion;
-            String name;
-            String description;
-            int price;
-            String type;
 
             System.out.printf("Enter promotion name: ");
             name = sc.nextLine();
@@ -99,10 +97,6 @@ public class MenuView{
             menuMan.addPromotion(promotion);
             break;
         case'5':
-            String name;
-            String description;
-            int price;
-
             System.out.printf("Enter item/promotion name: ");
             name = sc.nextLine();
 
@@ -115,8 +109,6 @@ public class MenuView{
             menuMan.updateItem(name, description, price);
             break;
         case '6':
-            String name;
-
             System.out.printf("Enter item/promotion name: ");
             name = sc.nextLine();
 
