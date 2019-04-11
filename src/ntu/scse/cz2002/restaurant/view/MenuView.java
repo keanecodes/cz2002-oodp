@@ -1,7 +1,7 @@
 package ntu.scse.cz2002.restaurant.view;
 
 import java.util.Scanner;
-import ntu.scse.cz2002.restaurant.control.MenuManager;
+import ntu.scse.cz2002.restaurant.control.MenuController;
 import ntu.scse.cz2002.restaurant.model.*;
 
 public class MenuView{
@@ -75,7 +75,7 @@ public class MenuView{
 
             item = new MenuItem(name, description, price, type);
 
-            menuMan.addMenuItem(item);
+            menuMan.addItem(item);
             break;
         case '4':
             Promotion promotion;
@@ -89,12 +89,9 @@ public class MenuView{
             System.out.printf("Enter promotion price: ");
             price = sc.nextInt();
 
-            System.out.println("Enter promotion type: ");
-            type = sc.nextLine();
+            promotion = new Promotion(name, description, price);
 
-            promotion = new Promotion(name, description, price, type);
-
-            menuMan.addPromotion(promotion);
+            menuMan.addItem(promotion);
             break;
         case'5':
             System.out.printf("Enter item/promotion name: ");
