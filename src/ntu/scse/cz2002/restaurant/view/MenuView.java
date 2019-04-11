@@ -15,7 +15,7 @@ public class MenuView{
 
         printInputList();
 
-        while(!quit){
+        while(quit==0){
             c = getUserInput();
             processUserInput(c);
         }
