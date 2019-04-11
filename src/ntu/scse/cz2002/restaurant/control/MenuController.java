@@ -20,8 +20,8 @@ public class MenuController{
     }
 
     private void loadItems(String itemFilename, String promoFilename){
-        ArrayList<MenuItem> items = MenuDA.read(itemFilename);
-        ArrayList<Promotion> promotions = MenuDA.read(promoFilename);
+        ArrayList<MenuItem> items = (ArrayList<MenuItem>)MenuDA.read(itemFilename);
+        ArrayList<Promotion> promotions = (ArrayList<Promotion>)MenuDA.read(promoFilename);
 
         this.menu = new Menu(items, promotions);
 
