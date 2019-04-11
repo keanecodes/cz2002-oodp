@@ -5,13 +5,13 @@ import ntu.scse.cz2002.restaurant.control.MenuController;
 import ntu.scse.cz2002.restaurant.model.*;
 
 public class MenuView{
-    public static MenuManager menuMan;
+    public static MenuController menuMan;
     public static int quit = 0;
 
     public static void main(String args[]){
         char c;
 
-        menuMan = new MenuManager();
+        menuMan = new MenuController();
 
         printInputList();
 
