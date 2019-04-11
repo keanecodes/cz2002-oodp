@@ -51,6 +51,14 @@ public class Menu{
         return this.promotionCount;
     }
 
+    public ArrayList<MenuItem> getItemList(){
+        return this.menuItems;
+    }
+
+    public ArrayList<Promotion> getPromotionList(){
+        return this.promotions;
+    }
+
     public int removeMenuItem(String name){
         for(int i=0;i<this.menuItems.size();i++){
             if(this.menuItems.get(i).getName().equals(name)){
