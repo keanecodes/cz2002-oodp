@@ -6,22 +6,23 @@ import java.util.Arrays;
 public class Menu{
     private ArrayList<MenuItem> menuItems = new ArrayList<MenuItem>();
     private ArrayList<Promotion> promotions = new ArrayList<Promotion>();
-    private int contentCount;
+    private int itemCount, promotionCount;
 
     public Menu(ArrayList<MenuItem> menuItems, ArrayList<Promotion> promotions){
         this.menuItems = menuItems;
         this.promotions = menuItems;
-        this.contentCount = 0;
+        this.itemCount = 0;
+        this.promotionCount = 0;
     }
 
     public void addMenuItem(MenuItem item){
         this.menuItems.add(item);
-        this.contentCount += 1;
+        this.itemCount += 1;
     }
 
     public void addPromotion(Promotion promotion){
         this.promotions.add(promotion);
-        this.contentCount += 1;
+        this.promotionCount += 1;
     }
 
     public MenuItem getMenuItem(String name){
@@ -42,15 +43,19 @@ public class Menu{
         }
     }
 
-    public int getContentSize(){
-        return this.contentCount;
+    public int getItemCount(){
+        return this.itemCount;
+    }
+
+    public int getPromotionCount(){
+        return this.promotionCount;
     }
 
     public int removeMenuItem(String name){
         for(int i=0;i<this.menuItems.size();i++){
             if(this.menuItems.get(i).getName().equals(name)){
                 this.menuItems.remove(i);
-                this.contentCount -= 1;
+                this.itemCount -= 1;
                 return 0;
             }
         }
@@ -59,16 +64,17 @@ public class Menu{
         return 1;
     }
 
-    public void removePromotion(String name){
+    public int removePromotion(String name){
         for(int i=0;i<this.promotions.size();i++){
             if(this.promotions.get(i).getName().equals(name)){
                 this.promotions.remove(i);
-                this.contentCount =- 1;
-                return;
+                this.promotionCount =- 1;
+                return 0;
             }
         }
 
         System.out.println("Promotion not found!");
+        return 1;
     }
 
 

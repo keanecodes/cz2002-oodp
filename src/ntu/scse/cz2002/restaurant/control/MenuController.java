@@ -39,7 +39,7 @@ public class MenuController{
             }
         }
 
-        System.out.println("Types list successfully updated!")
+        System.out.println("Types list successfully updated!");
     }
 
     public void addItem(MenuItem item){
@@ -47,27 +47,27 @@ public class MenuController{
         System.out.println("The following menu item has been added to the menu:");
         System.out.println("  Name: " + item.getName());
         System.out.println("  Description: " + item.getDescription());
-        System.out.println("  Price: $" +  String(item.getPrice()));
+        System.out.println("  Price: $" +  String.valueOf(item.getPrice()));
         System.out.println("  Type: " + item.getType());
     }
 
     public void addItem(Promotion promotion){
         this.menu.addPromotion(promotion);
         System.out.println("The following set has been addded to the menu:");
-        System.out.println("  Name: " + promotion.getName());
-        System.out.println("  Description: " + promotion.getDescription());
-        System.out.println("  Price: $" + String(promotion.getPrice()));
+        System.out.println("  Name: " + promotion.getPromotionName());
+        System.out.println("  Description: " + promotion.getPromotionDescription());
+        System.out.println("  Price: $" + String.valueOf(promotion.getPrice()));
     }
 
     public void removeItem(String name){
-        if(this.menu.removeMenuItem(name)){
-            if(this.menu.removePromotion(name)){
+        if(this.menu.removeMenuItem(name) == 0){
+            if(this.menu.removePromotion(name) == 0){
                 System.out.println(name + " does not exist in menu!");
                 return;
             }
         }
 
-        System.out.println(item.getName() + " has been successfully deleted from menu!");
+        System.out.println(name + " has been successfully deleted from menu!");
     }
 
     public void updateItem(String name, String description, int price){
@@ -92,7 +92,7 @@ public class MenuController{
     public void printItemsByCategory(){
         for(int i=0;i<this.types.size();i++){
             System.out.println(this.types.get(i));
-            for(int j=0;j<this.menu.menuItems.size();j++){
+            for(int j=0;j<this.menu.getItemCount();j++){
                 MenuItem item = this.menu.menuItems.get(j);
 
                 if(item.getType().equals(this.types.get(i))){
@@ -104,7 +104,7 @@ public class MenuController{
 
         System.out.printf("\nPromotion\n");
 
-        for(int k=0;k<this.promotions.size();k++){
+        for(int k=0;k<this.getPromotionCount();k++){
             Promotion promotion = this.menu.promotions.get(k);
             System.out.println(promotion.getPromotionName() + " $" + String.valueOf(promotion.getPrice()));
             System.out.println("  " + promotion.getPromotionDescription());
@@ -116,11 +116,11 @@ public class MenuController{
         MenuItem item;
         Promotion promotion;
 
-        for(int i=0;i<this.menuItems.size();i++){
+        for(int i=0;i<this.getItemCount();i++){
             names.add(this.menuItems.get(i).getName());
         }
 
-        for(int j=0;j<this.promotions.size();j++){
+        for(int j=0;j<this.getPromotionCount();j++){
             names.add(this.promotions.get(j).getPromotionName());
         }
 
