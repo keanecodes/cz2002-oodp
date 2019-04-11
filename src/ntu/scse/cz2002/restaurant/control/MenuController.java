@@ -112,7 +112,7 @@ public class MenuController{
     }
 
     public void printItemsByName(){
-        ArrayList<String> names;
+        ArrayList<String> names = new ArrayList<String>();
         MenuItem item;
         Promotion promotion;
 
