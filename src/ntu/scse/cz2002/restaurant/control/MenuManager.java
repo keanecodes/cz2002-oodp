@@ -3,8 +3,8 @@ package ntu.scse.cz2002.restaurant.control;
 import ntu.scse.cz2002.restaurant.util.SortingUtil;
 import ntu.scse.cz2002.restaurant.dataAccess.MenuDA;
 import ntu.scse.cz2002.restaurant.model.Menu;
-import ntu.scse.cz2002.restaurant.model.MenuItem;
 import ntu.scse.cz2002.restaurant.model.Promotion;
+import ntu.scse.cz2002.restaurant.model.MenuItem;
 
 import java.util.ArrayList;
 
@@ -39,7 +39,11 @@ public class MenuManager{
             }
         }
 
-        System.out.println("Types list successfully updated!")
+        System.out.println("Types list successfully updated!");
+    }
+
+    public Menu getMenu(){
+        return this.menu;
     }
 
     public void addItem(MenuItem item){
