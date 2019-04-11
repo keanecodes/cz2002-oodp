@@ -10,7 +10,7 @@ public class Menu{
 
     public Menu(ArrayList<MenuItem> menuItems, ArrayList<Promotion> promotions){
         this.menuItems = menuItems;
-        this.promotions = menuItems;
+        this.promotions = promotions;
         this.itemCount = 0;
         this.promotionCount = 0;
     }
@@ -37,10 +37,12 @@ public class Menu{
 
     public Promotion getPromotion(String name){
         for(int i=0;i<this.promotions.size();i++){
-            if(this.promotions.get(i).getName().equals(name)){
+            if(this.promotions.get(i).getPromotionName().equals(name)){
                 return this.promotions.get(i);
             }
         }
+
+        return null;
     }
 
     public int getItemCount(){
@@ -74,7 +76,7 @@ public class Menu{
 
     public int removePromotion(String name){
         for(int i=0;i<this.promotions.size();i++){
-            if(this.promotions.get(i).getName().equals(name)){
+            if(this.promotions.get(i).getPromotionName().equals(name)){
                 this.promotions.remove(i);
                 this.promotionCount =- 1;
                 return 0;
