@@ -8,7 +8,7 @@ public class Menu{
     private ArrayList<Promotion> promotions = new ArrayList<Promotion>();
     private int contentCount;
 
-    public Menu(ArrayList<MenuItems> menuItems, ArrayList<Promotion> promotions){
+    public Menu(ArrayList<MenuItem> menuItems, ArrayList<Promotion> promotions){
         this.menuItems = menuItems;
         this.promotions = menuItems;
         this.contentCount = 0;
