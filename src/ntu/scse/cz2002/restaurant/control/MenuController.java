@@ -45,19 +45,18 @@ public class MenuController{
     public void addItem(MenuItem item){
         this.menu.addMenuItem(item);
         System.out.println("The following menu item has been added to the menu:");
-        System.out.println("  Name: ", item.getName());
-        System.out.println("  Description: ", item.getDescription());
-        System.out.println("  Price: $", item.getPrice());
-        System.out.println("  Type: ", item.getType());
+        System.out.println("  Name: " + item.getName());
+        System.out.println("  Description: " + item.getDescription());
+        System.out.println("  Price: $" +  String(item.getPrice()));
+        System.out.println("  Type: " + item.getType());
     }
 
     public void addItem(Promotion promotion){
         this.menu.addPromotion(promotion);
         System.out.println("The following set has been addded to the menu:");
-        System.out.println("  Name: ", promotion.getName());
-        System.out.println("  Description: ", promotion.getDescription());
-        System.out.println("  Price: $", promotion.getPrice());
-        System.out.println("  Type: ", promotion.getType());
+        System.out.println("  Name: " + promotion.getName());
+        System.out.println("  Description: " + promotion.getDescription());
+        System.out.println("  Price: $" + String(promotion.getPrice()));
     }
 
     public void removeItem(String name){
