@@ -1,12 +1,12 @@
 package ntu.scse.cz2002.restaurant.control;
 
-import ntu.scse.cz2002.restaurant.util.SortingUtil;
 import ntu.scse.cz2002.restaurant.dataAccess.MenuDA;
 import ntu.scse.cz2002.restaurant.model.Menu;
 import ntu.scse.cz2002.restaurant.model.MenuItem;
 import ntu.scse.cz2002.restaurant.model.Promotion;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class MenuController{
     private Menu menu;
@@ -93,7 +93,7 @@ public class MenuController{
         for(int i=0;i<this.types.size();i++){
             System.out.println(this.types.get(i));
             for(int j=0;j<this.menu.getItemCount();j++){
-                MenuItem item = this.menu.menuItems.get(j);
+                MenuItem item = this.menu.getItemList().get(j);
 
                 if(item.getType().equals(this.types.get(i))){
                     System.out.println(item.getName() + "  $" + item.getPrice());
@@ -104,8 +104,8 @@ public class MenuController{
 
         System.out.printf("\nPromotion\n");
 
-        for(int k=0;k<this.getPromotionCount();k++){
-            Promotion promotion = this.menu.promotions.get(k);
+        for(int k=0;k<this.menu.getPromotionCount();k++){
+            Promotion promotion = this.menu.getPromotionList().get(k);
             System.out.println(promotion.getPromotionName() + " $" + String.valueOf(promotion.getPrice()));
             System.out.println("  " + promotion.getPromotionDescription());
         }
@@ -116,15 +116,15 @@ public class MenuController{
         MenuItem item;
         Promotion promotion;
 
-        for(int i=0;i<this.getItemCount();i++){
-            names.add(this.menuItems.get(i).getName());
+        for(int i=0;i<this.menu.getItemCount();i++){
+            names.add(this.menu.getItemList().get(i).getName());
         }
 
-        for(int j=0;j<this.getPromotionCount();j++){
-            names.add(this.promotions.get(j).getPromotionName());
+        for(int j=0;j<this.menu.getPromotionCount();j++){
+            names.add(this.menu.getPromotionList().get(j).getPromotionName());
         }
 
-        SortingUtil.selectionSort(names);
+        Collections.sort(names);
 
         for(int k=0;k<names.size();k++){
             if(this.menu.getMenuItem(names.get(k)) == null){
@@ -139,7 +139,7 @@ public class MenuController{
             }
             else{
                 item = this.menu.getMenuItem(names.get(k));
-                System.out.println(names.get(k) + " $" + Strig.valueOf(item.getPrice()));
+                System.out.println(names.get(k) + " $" + String.valueOf(item.getPrice()));
                 System.out.println("  " + item.getDescription());
             }
         }
