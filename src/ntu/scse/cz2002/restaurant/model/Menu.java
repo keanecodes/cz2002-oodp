@@ -1,3 +1,5 @@
+package ntu.scse.cz2002.restaurant.model;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -6,9 +8,9 @@ public class Menu{
     private ArrayList<Promotion> promotions = new ArrayList<Promotion>();
     private int contentCount;
 
-    public Menu(MenuItem[] menuItems, Promotion[] promotions){
-        this.menuItems = new ArrayList<MenuItem>(Arrays.asList(menuItems));
-        this.promotions = new ArrayList<Promotion>(Arrays.asList(promotions));
+    public Menu(ArrayList<MenuItems> menuItems, ArrayList<Promotion> promotions){
+        this.menuItems = menuItems;
+        this.promotions = menuItems;
         this.contentCount = 0;
     }
 

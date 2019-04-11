@@ -1,7 +1,10 @@
 package ntu.scse.cz2002.restaurant.control;
 
 import ntu.scse.cz2002.restaurant.util.SortingUtil;
-import ntu.scse.cz2002.restaurant.model.*;
+import ntu.scse.cz2002.restaurant.dataAccess.MenuDA;
+import ntu.scse.cz2002.restaurant.model.Menu;
+import ntu.scse.cz2002.restaurant.model.MenuItem;
+import ntu.scse.cz2002.restaurant.model.Promotion;
 
 import java.util.ArrayList;
 
@@ -10,18 +13,33 @@ public class MenuManager{
     private ArrayList<String> types;
 
     public MenuManager(){
-        /* TODO: decide on file name */
-        String fname = "";
+        String itemFilename = "items.dat";
+        String promoFilename = "promos.dat";
 
-        this.loadItems(fname);
-        return MenuManager;
-
+        this.loadItems(itemFilename, promoFilename);
     }
 
-    private void loadItems(String fname){
-        // Implements file IO and loads menu contents into menu
-        // this.menu = ...
-        // update 'types'
+    private void loadItems(String itemFilename, String promoFilename){
+        ArrayList<MenuItem> items = MenuDA.read(itemFilename);
+        ArrayList<Promotion> promotions = MenuDA.read(promoFilename);
+
+        this.menu = new Menu(items, promotions);
+
+        System.out.println("Menu contents successfully loaded!");
+        updateTypesList(items);
+    }
+
+    private void updateTypesList(ArrayList<MenuItem> items){
+        for(int i=0;i<items.size();i++){
+            if(this.types.contains(items.get(i).getType())){
+                continue;
+            }
+            else{
+                this.types.add(items.get(i).getType());
+            }
+        }
+
+        System.out.println("Types list successfully updated!")
     }
 
     public void addItem(MenuItem item){
