@@ -8,7 +8,7 @@ public class MenuView{
     public static MenuController menuMan;
     public static int quit = 0;
 
-    public static void main(String args[]){
+    public void MenuUI(){
         char c;
 
         menuMan = new MenuController();
