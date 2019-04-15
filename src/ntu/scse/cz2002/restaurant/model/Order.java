@@ -7,6 +7,7 @@ import ntu.scse.cz2002.restaurant.model.Staff;
 
 public class Order {
 	private ArrayList<MenuItem> items = new ArrayList<MenuItem>();
+	private ArrayList<Promotion> promotions = new ArrayList<Promotion>();
 	private Staff staff;
 	private int orderId;
 	private int tableId;
@@ -18,13 +19,18 @@ public class Order {
 	}
 	
 	public ArrayList<MenuItem> getItems() { return this.items; }
+	public ArrayList<Promotion> getPromotions() { return this.promotions; }
+	
 	public Staff getStaff() { return staff; }
 	public int getOrderId() { return this.orderId; }
 	public int getTableId() { return this.tableId; }
 
-	public void addItem(MenuItem i) { this.items.add(i); }
-	public void removeItem(MenuItem i) {this.items.remove(i);}
 	public void setStaff(Staff s) { this.staff = s; }
 	public void setOrderId(int i) { this.orderId = i; }
 	public void setTableId(int i) {this.tableId = i; }
+
+	public void addItem(MenuItem i) { this.items.add(i); }
+	public void removeItem(MenuItem i) {this.items.remove(i);}
+	public void addPromotion(Promotion i) { this.promotions.add(i); }
+	public void removePromotion(Promotion i) {this.promotions.remove(i);}
 }

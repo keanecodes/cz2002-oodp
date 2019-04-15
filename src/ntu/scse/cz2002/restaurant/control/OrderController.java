@@ -3,6 +3,7 @@ import ntu.scse.cz2002.restaurant.model.Order;
 import ntu.scse.cz2002.restaurant.model.Staff;
 import ntu.scse.cz2002.restaurant.model.MenuItem;
 import ntu.scse.cz2002.restaurant.model.Menu;
+import ntu.scse.cz2002.restaurant.model.Promotion;
 import java.util.ArrayList;
 
 
@@ -40,6 +41,22 @@ public class OrderController {
 			System.out.println("Item does not exist!");
 	}
 	
+	public void addPromotion(Order order, String itemName) {
+		Promotion promotion = menu.getPromotion(itemName);
+		if (promotion != null)
+			order.addPromotion(promotion);
+		else
+			System.out.println("Promotion does not exist!");
+	}
+	
+	public void removePromotion(Order order, String itemName) {
+		Promotion promotion = menu.getPromotion(itemName);
+		if (promotion != null)
+			order.removePromotion(promotion);
+		else
+			System.out.println("Promotion does not exist!");
+	}
+	
 	public void displayOrder(Order o) {
 		System.out.println("Staff Information: ");
 		System.out.println("Staff name: " + o.getStaff().getName());
@@ -49,6 +66,7 @@ public class OrderController {
 		System.out.println("Order ID: " + o.getOrderId());
 		System.out.println("Table ID: " + o.getTableId());
 		System.out.println("Items ordered: " + o.getItems());
+		System.out.println("Promotions ordered: " + o.getPromotions());
 	}
 	
 	public Order findOrder(int orderID) {
