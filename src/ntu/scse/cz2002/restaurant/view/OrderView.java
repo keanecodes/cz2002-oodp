@@ -59,7 +59,9 @@ public class OrderView {
 			System.out.println("Select an option to proceed: ");
 			System.out.println("1. Add an item");
 			System.out.println("2. Remove an item");
-			System.out.println("3. Done");
+			System.out.println("3. Add a promotion");
+			System.out.println("4. Remove a promotion");
+			System.out.println("5. Done");
 			itemChoice = sc.nextInt();
 			
 			switch(itemChoice) {
@@ -76,6 +78,18 @@ public class OrderView {
 					System.out.println(itemName + " has been removed from order");
 					break;
 				case 3:
+					System.out.println("Enter name of promotion: ");
+					itemName = sc.next();
+					orderManager.addPromotion(order, itemName);
+					System.out.println(itemName + " has been added to order");
+					break;
+				case 4:
+					System.out.println("Enter name of promotion: ");
+					itemName = sc.next();
+					orderManager.removePromotion(order, itemName);
+					System.out.println(itemName + " has been removed from order");
+					break;
+				case 5:
 					break;
 				default: 
 					System.out.println("Invalid choice!");
