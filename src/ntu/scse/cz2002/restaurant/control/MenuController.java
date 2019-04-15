@@ -42,6 +42,10 @@ public class MenuController{
         System.out.println("Types list successfully updated!");
     }
 
+    public Menu getMenu() {
+    	return menu;
+    }
+    
     public void addItem(MenuItem item){
         this.menu.addMenuItem(item);
         System.out.println("The following menu item has been added to the menu:");

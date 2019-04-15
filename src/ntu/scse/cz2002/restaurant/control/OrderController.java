@@ -10,6 +10,8 @@ public class OrderController {
 	private Order order;
 	private static int orderID = 0;
 	StaffController staffManager = new StaffController();
+	MenuController menuManager = new MenuController();
+	Menu menu = menuManager.getMenu();
 	public static ArrayList <Order> orderArr = new ArrayList <Order>();
 	
 	public OrderController() {}
@@ -23,7 +25,7 @@ public class OrderController {
 	}
 	
 	public void addOrderItem(Order order, String itemName) {
-		MenuItem item = Menu.getMenuItem(itemName);
+		MenuItem item = menu.getMenuItem(itemName);
 		if (item != null)
 			order.addItem(item);
 		else
@@ -31,7 +33,7 @@ public class OrderController {
 	}
 	
 	public void removeOrderItem(Order order, String itemName) {
-		MenuItem item = Menu.getMenuItem(itemName);
+		MenuItem item = menu.getMenuItem(itemName);
 		if (item != null)
 			order.removeItem(item);
 		else
