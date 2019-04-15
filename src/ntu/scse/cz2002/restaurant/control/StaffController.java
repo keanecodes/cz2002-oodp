@@ -4,8 +4,15 @@ import ntu.scse.cz2002.restaurant.model.Staff;
 import ntu.scse.cz2002.restaurant.dataAccess.StaffDA;
 
 public class StaffController {
+	private static ArrayList<Staff> staffArr;
 	
-	private ArrayList <Staff> staffArr = staffDA.readAllStaff("staff.txt");
+	public static void main(String[] args) {
+		try {
+			staffArr = StaffDA.readAllStaff("staff.txt");
+		} catch (Exception e) {
+			System.out.println("Error!");
+		}
+	}
 	
 	public ArrayList <Staff> getStaffArr() {
 		return staffArr;
