@@ -2,12 +2,11 @@ package ntu.scse.cz2002.restaurant;
 
 import java.io.*;
 import java.text.*;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import ntu.scse.cz2002.restaurant.dataAccess.RestaurantDA;
 import ntu.scse.cz2002.restaurant.model.Restaurant;
-import ntu.scse.cz2002.restaurant.model.Staff;
+//import ntu.scse.cz2002.restaurant.model.Staff;
 import ntu.scse.cz2002.restaurant.view.*;
 
 public class RestaurantMainApp {
@@ -47,9 +46,7 @@ public class RestaurantMainApp {
 			}
 		} while (choice != 6);
 		
-		
-	
-		//TODO Save state before closing
+	//TODO Save state before closing
 		//RestaurantData.saveToFile();
 	}
 	

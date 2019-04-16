@@ -3,6 +3,7 @@ package ntu.scse.cz2002.restaurant.dataAccess;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import ntu.scse.cz2002.restaurant.model.Restaurant;
 import ntu.scse.cz2002.restaurant.model.Staff;

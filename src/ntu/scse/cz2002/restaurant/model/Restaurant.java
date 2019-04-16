@@ -15,8 +15,11 @@ public class Restaurant {
 
 	public Staff getCurrentStaff() { return currentStaff; }
 
-	public void setCurrentStaff(Staff currentStaff) { this.currentStaff = currentStaff; }
-
+	public void setCurrentStaff(Staff currentStaff) { this.currentStaff = currentStaff; };
+	
+	public void initialize(String filename_Staff, String filename_, String filename) {
+		
+	}
 
 
 
