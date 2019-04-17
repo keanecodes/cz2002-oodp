@@ -3,13 +3,14 @@ package ntu.scse.cz2002.restaurant.view;
 import java.util.Scanner;
 import ntu.scse.cz2002.restaurant.control.MenuController;
 import ntu.scse.cz2002.restaurant.model.*;
+import java.util.InputMismatchException;
 
 public class MenuView {
 	public static MenuController menuMan;
 	public static int quit = 0;
 
 	public void MenuUI() {
-		char c;
+		int c;
 
 		menuMan = new MenuController();
 
@@ -33,16 +34,24 @@ public class MenuView {
 		System.out.println("");
 	}
 
-	public static char getUserInput() {
+	public static int getUserInput() {
 		System.out.printf("Please select what to do (enter \"h\" to view options): ");
 
 		Scanner sc = new Scanner(System.in);
-		char c = sc.next().charAt(0);
+
+    int c;
+
+    try{
+        c = sc.nextInt();
+    } catch (InputMismatchException ex){
+        System.out.println("Invalid option!");
+        return -1;
+    }
 
 		return c;
 	}
 
-	public static void processUserInput(char c) {
+	public static void processUserInput(int c) {
 		String name;
 		String description;
 		int price;
@@ -50,15 +59,15 @@ public class MenuView {
 		Scanner sc = new Scanner(System.in);
 
 		switch (c) {
-		case '1':
+		case 1:
 			menuMan.printItemsByCategory();
 			System.out.println();
 			break;
-		case '2':
+		case 2:
 			menuMan.printItemsByName();
 			System.out.println();
 			break;
-		case '3':
+		case 3:
 			MenuItem item;
 
 			System.out.printf("Enter item name: ");
@@ -77,7 +86,7 @@ public class MenuView {
 
 			menuMan.addItem(item);
 			break;
-		case '4':
+		case 4:
 			Promotion promotion;
 
 			System.out.printf("Enter promotion name: ");
@@ -93,7 +102,7 @@ public class MenuView {
 
 			menuMan.addItem(promotion);
 			break;
-		case '5':
+		case 5:
 			System.out.printf("Enter item/promotion name: ");
 			name = sc.nextLine();
 
@@ -105,13 +114,13 @@ public class MenuView {
 
 			menuMan.updateItem(name, description, price);
 			break;
-		case '6':
+		case 6:
 			System.out.printf("Enter item/promotion name: ");
 			name = sc.nextLine();
 
 			menuMan.removeItem(name);
 			break;
-		case '7':
+		case 7:
 			quit = 1;
 			break;
 		default:
