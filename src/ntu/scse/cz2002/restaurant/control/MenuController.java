@@ -25,10 +25,17 @@ public class MenuController{
         ArrayList<MenuItem> items = (ArrayList<MenuItem>)MenuDA.read(itemFilename);
         ArrayList<Promotion> promotions = (ArrayList<Promotion>)MenuDA.read(promoFilename);
 
-        this.menu = new Menu(items, promotions);
+        if(items != null || promotions != null){
+            this.menu = new Menu(items, promotions);
 
-        System.out.println("Menu contents successfully loaded!");
-        updateTypesList(items);
+            System.out.println("Menu contents successfully loaded!");
+            updateTypesList(items);
+        }
+        else{
+            this.menu = new Menu();
+
+            System.out.println("Menu is empty");
+        }
     }
 
     private void updateTypesList(ArrayList<MenuItem> items){
