@@ -32,7 +32,7 @@ public class MenuController{
      * @param items      The list of ala carte items
      * @param promotions The list of promotion items
      */
-    public MenuController(ArrayList<MenuItem> items, ArrayList<Promotion> promotions){
+    public MenuController(){
         String itemFilename = "items.dat";
         String promoFilename = "promos.dat";
 
