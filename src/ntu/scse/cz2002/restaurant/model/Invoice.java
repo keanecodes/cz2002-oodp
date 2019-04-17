@@ -8,6 +8,7 @@ import java.util.StringTokenizer;
 
 import ntu.scse.cz2002.restaurant.control.OrderController;
 import ntu.scse.cz2002.restaurant.dataAccess.DataAccessible;
+import ntu.scse.cz2002.restaurant.util.CalendarFormatter;
 //import ntu.scse.cz2002.restaurant.util.DateUtil;
 
 public class Invoice implements DataAccessible {
@@ -56,33 +57,8 @@ public class Invoice implements DataAccessible {
 		return timestamp;
 	}
 	
-	private String CalendartoString(Calendar c, int formattype) { //this should be in somesort of CalenderHelperclass
-		int dd = c.get(Calendar.DAY_OF_MONTH);
-		int MM = c.get(Calendar.MONTH) +1 ;
-		int YYYY = c.get(Calendar.YEAR);
-		int HH = c.get(Calendar.HOUR_OF_DAY);
-		int mm = c.get(Calendar.MINUTE);
-		int sec = c.get(Calendar.SECOND);
-		
-		switch(formattype) {
-		case 1:
-			return ""+YYYY+"."+MM+"."+dd+" "+HH+":"+mm+":"+sec;
-		case 2: 
-			return ""+YYYY+"."+MM+"."+dd;
-		case 3: 
-			return " "+HH+":"+mm+":"+sec;
-		default:
-			return ""+YYYY+"."+MM+"."+dd+" "+HH+":"+mm+":"+sec;
-		}
-		
-	}
-	
-	private String CalendartoString(Calendar c) { //this should be in somesort of CalenderHelperclass	
-		return CalendartoString(c, 1);
-	}
-	
 	public String toString(){
-		return "Timestamp: " + CalendartoString(timestamp)+
+		return "Timestamp: " + CalendarFormatter.toString(timestamp)+
 				"Table: " + tableid + " " 
 				+ "Amount: " + amount;
 	}
@@ -161,8 +137,8 @@ public class Invoice implements DataAccessible {
 		//System.out.print(CalendartoString(timestamp));
 		
 		final Object[][] tableheader = new String[2][];
-		tableheader[0] = new String[] { "Server: Deb" , "Date: " + CalendartoString(timestamp,2)}; //im considering just keeping table id information, not entire table.
-		tableheader[1] = new String[] { "Table: " + tableid, "Time: " + CalendartoString(timestamp,3)};
+		tableheader[0] = new String[] { "Server: Deb" , "Date: " + CalendarFormatter.toString(timestamp,2)}; //im considering just keeping table id information, not entire table.
+		tableheader[1] = new String[] { "Table: " + tableid, "Time: " + CalendarFormatter.toString(timestamp,3)};
 		
 		for (final Object[] row : tableheader) {
 		    System.out.format("%-15s%-15s\n", row);
