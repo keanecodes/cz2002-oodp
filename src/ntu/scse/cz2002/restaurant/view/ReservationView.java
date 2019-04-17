@@ -9,70 +9,53 @@ public class ReservationView {
 
 	private static Scanner sc;
 
-	private enum ManagerFunctions {
-		ViewTableAvailability, ViewReservations, AddReservation, RemoveReservation
-	}
-
 	ReservationManager reserveMangager = new ReservationManager();
 
 	private void displayReservationOptions() {
 		System.out.print("Restaurant Reservation Submenu");
-		System.out.println("________________________________:");
+		System.out.println("________________________________");
 
-		System.out.println("1. View Table Availability");
+		System.out.println("1. View table availability");
 		System.out.println("2. View reservations");
 		System.out.println("3. Add a new reservation");
 		System.out.println("4. Remove a existing reservation");
+		System.out.println("5. Quit");
 	}
 
-	public int getReservationChoice() {
+	public void ReservationUI() {
 		displayReservationOptions();
 
-		int maxRestaurantChoices = ManagerFunctions.values().length;
 		int restaurantChoice = -1;
 		do {
 			try {
-				System.out.printf("Please enter your choice (1 - 4): ");
+				System.out.println("Please enter your choice (1 - 4): ");
 				restaurantChoice = sc.nextInt();
-				sc.nextLine();
 			} catch (InputMismatchException ex) {
 				System.out.println("Invalid input! Please try again..");
 				sc.nextLine(); // Clear the garbage input
 				continue;
-			} catch (Exception ex) {
-				System.out.println("Invalid input! Please try again..");
-				sc.nextLine(); // Clear the garbage input
-				continue;
 			}
-
-			if (restaurantChoice < 1 || restaurantChoice > maxRestaurantChoices)
-				System.out.println("Invalid choice! Please try again..");
-
-		} while (restaurantChoice < 0 || restaurantChoice > maxRestaurantChoices);
-
-		if (restaurantChoice == 0)
-			return restaurantChoice; // Go back to main menu
-		else {
-			switch (ManagerFunctions.values()[restaurantChoice - 1]) {
-			case ViewTableAvailability:
+			
+			switch (restaurantChoice) {
+			case 1:
 				reserveMangager.viewTableAvailability();
 				break;
-
-			case ViewReservations:
+			case 2:
 				reserveMangager.viewReservations();
 				break;
-
-			case AddReservation:
+			case 3:
 				reserveMangager.addReservation();
 				break;
-
-			case RemoveReservation:
+			case 4:
 				reserveMangager.removeReservation();
 				break;
+			case 5:
+				break;
+			default:
+				System.out.println("Invalid choice!");
+				break;
 			}
-		}
-
-		return restaurantChoice;
+		} while (restaurantChoice != 5);
 	}
 
 }

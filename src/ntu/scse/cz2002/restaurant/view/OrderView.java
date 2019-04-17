@@ -1,6 +1,7 @@
 package ntu.scse.cz2002.restaurant.view;
 
 import java.util.Scanner;
+import java.util.InputMismatchException;
 import ntu.scse.cz2002.restaurant.model.Order;
 import ntu.scse.cz2002.restaurant.control.OrderController;
 
@@ -8,17 +9,27 @@ public class OrderView {
 
 	public void OrderUI() {
 		Scanner sc = new Scanner(System.in);
-		int choice, orderID;
+		int choice = 0, orderID;
 		Order currentOrder;
 		OrderController orderManager = new OrderController();
 		do {
+			System.out.println("Order Submenu");
+			System.out.println("_____________");
 			System.out.println("Select an option to proceed: ");
 			System.out.println("1. Add an order");
 			System.out.println("2. Edit an order");
 			System.out.println("3. View an order");
 			System.out.println("4. Back");
+			System.out.println("Please enter your choice (1 - 4): ");
 
-			choice = sc.nextInt();
+			try {
+				choice = sc.nextInt();
+			} catch (InputMismatchException ex) {
+				System.out.println("Invalid input! Please try again..");
+				sc.nextLine(); // Clear the garbage input
+				continue;
+			}
+			
 			switch (choice) {
 			case 1:
 				System.out.println("Enter staffID: ");

@@ -2,9 +2,10 @@ package ntu.scse.cz2002.restaurant;
 
 import java.io.*;
 import java.text.*;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import ntu.scse.cz2002.restaurant.dataAccess.RestaurantDA;
+import ntu.scse.cz2002.restaurant.dataAccess.DataAccessor;
 import ntu.scse.cz2002.restaurant.model.Restaurant;
 //import ntu.scse.cz2002.restaurant.model.Staff;
 import ntu.scse.cz2002.restaurant.view.*;
@@ -29,7 +30,13 @@ public class RestaurantMainApp {
 			System.out.println("6. Quit");
 			System.out.println("Your choice: ");
 
-			choice = sc.nextInt();
+			try {
+				choice = sc.nextInt();
+			} catch (InputMismatchException ex) {
+				System.out.println("Invalid input! Please try again..");
+				sc.nextLine(); // Clear the garbage input
+				continue;
+			}
 
 			switch (choice) {
 			case 1:
