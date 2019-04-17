@@ -8,10 +8,30 @@ import ntu.scse.cz2002.restaurant.model.Promotion;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ Handles information flow for Menu class
+ @author  Johan Tjuatja
+ @version 1.0
+ @since   2019-04-17
+ */
 public class MenuController{
+
+    /**
+     * Contents of menu (items & promotions)
+     */
     private Menu menu;
+
+    /**
+     * Types of items in the menu (main, drinks, dessert, etc.)
+     */
     private ArrayList<String> types;
 
+    /**
+     * Create a controller for menu contents.
+     * Add/update/remove/display contents of menu.
+     * @param items      The list of ala carte items
+     * @param promotions The list of promotion items
+     */
     public MenuController(ArrayList<MenuItem> items, ArrayList<Promotion> promotions){
         // String itemFilename = "items.dat";
         // String promoFilename = "promos.dat";
@@ -51,6 +71,10 @@ public class MenuController{
         }
     }
 
+    /**
+     * Compile the existing types of items in the menu.
+     * @return types of items in menu
+     */
     private void updateTypesList(ArrayList<MenuItem> items){
         for(int i=0;i<items.size();i++){
             if(this.types.contains(items.get(i).getType())){
@@ -64,10 +88,17 @@ public class MenuController{
         System.out.println("Types list successfully updated!");
     }
 
+    /**
+     * Gets menu contents.
+     * @return contents of the menu.
+     */
     public Menu getMenu() {
     	return menu;
     }
-    
+
+    /**
+     * Add an ala carte item into the menu.
+     */
     public void addItem(MenuItem item){
         this.menu.addMenuItem(item);
         System.out.println("The following menu item has been added to the menu:");
@@ -77,6 +108,9 @@ public class MenuController{
         System.out.println("  Type: " + item.getType());
     }
 
+    /**
+     * Add a promotion item into the menu.
+     */
     public void addItem(Promotion promotion){
         this.menu.addPromotion(promotion);
         System.out.println("The following set has been addded to the menu:");
@@ -85,6 +119,9 @@ public class MenuController{
         System.out.println("  Price: $" + String.valueOf(promotion.getPrice()));
     }
 
+    /**
+     * Remove an item (ala carte/promotion) from the menu.
+     */
     public void removeItem(String name){
         if(this.menu.removeMenuItem(name) == 0){
             if(this.menu.removePromotion(name) == 0){
@@ -96,6 +133,9 @@ public class MenuController{
         System.out.println(name + " has been successfully deleted from menu!");
     }
 
+    /**
+     * Update the information for an item.
+     */
     public void updateItem(String name, String description, int price){
         MenuItem item;
         Promotion promotion;
@@ -115,6 +155,9 @@ public class MenuController{
         }
     }
 
+    /**
+     * Print contents of menu, sorted by item type.
+     */
     public void printItemsByCategory(){
         for(int i=0;i<this.types.size();i++){
             System.out.println(this.types.get(i));
@@ -137,6 +180,9 @@ public class MenuController{
         }
     }
 
+    /**
+     * Print contents of menu, sorted by name.
+     */
     public void printItemsByName(){
         ArrayList<String> names = new ArrayList<String>();
         MenuItem item;
