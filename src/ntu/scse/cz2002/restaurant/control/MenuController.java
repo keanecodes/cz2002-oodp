@@ -39,6 +39,8 @@ public class MenuController{
         try{
             this.loadItems(itemFilename, promoFilename);
         } catch (Exception e){System.out.println("No menu data found.");}
+
+        types = new ArrayList<String>();
     }
 
     // deprecated

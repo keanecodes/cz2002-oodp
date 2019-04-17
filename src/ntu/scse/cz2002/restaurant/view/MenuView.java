@@ -10,7 +10,7 @@ public class MenuView {
 	public static MenuController menuMan;
 	public static int quit = 0;
 
-	public void MenuUI() {
+	public static void MenuUI() {
 		int c;
 
 		menuMan = new MenuController();
