@@ -16,7 +16,9 @@ public class MenuController{
         String itemFilename = "items.dat";
         String promoFilename = "promos.dat";
 
-        this.loadItems(itemFilename, promoFilename);
+        try{
+            this.loadItems(itemFilename, promoFilename);
+        } catch (Exception e){System.out.println("No menu data found.");}
     }
 
     private void loadItems(String itemFilename, String promoFilename){
