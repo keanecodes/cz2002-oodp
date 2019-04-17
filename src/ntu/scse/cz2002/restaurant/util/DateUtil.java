@@ -7,28 +7,28 @@ import java.util.Calendar;
 
 public class DateUtil {
 
-	private static SimpleDateFormat dateFormatter; 
-	
+	private static SimpleDateFormat dateFormatter;
+
 	public static String format(Date formattingDate, String format) {
-		switch(format) {
-			case "datetime" :
-				dateFormatter = new SimpleDateFormat("E, dd/MM/yyyy, HH:mm");
-				return dateFormatter.format(formattingDate);
-			//Add on if there need be another date/time format
-			default:
-				return "Date error";
+		switch (format) {
+		case "datetime":
+			dateFormatter = new SimpleDateFormat("E, dd/MM/yyyy, HH:mm");
+			return dateFormatter.format(formattingDate);
+		// Add on if there need be another date/time format
+		default:
+			return "Date error";
 		}
-		
+
 	}
-	
+
 	public static Date format(String DateString, String format) throws ParseException {
-		switch(format) {
-			case "datetime" :
-				dateFormatter = new SimpleDateFormat("E, MMM dd yyyy HH:mm:ss");
-				return dateFormatter.parse(DateString);
-			default:
-				return null;
+		switch (format) {
+		case "datetime":
+			dateFormatter = new SimpleDateFormat("E, MMM dd yyyy HH:mm:ss");
+			return dateFormatter.parse(DateString);
+		default:
+			return null;
 		}
-		
+
 	}
 }

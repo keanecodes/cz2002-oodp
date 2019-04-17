@@ -1,27 +1,77 @@
 package ntu.scse.cz2002.restaurant.model;
 
 public class Table {
-  private String tableId;
-  private int noOfMaxPax;
-  private boolean availability;
-  private Order order;
 
-  public Table() { super(); }
+	private int tableId;
+	private int numOfSeats;
+	private boolean isReserved;
+	private boolean isOccupied;
+	private int customerNo;
 
-  public Table(String tableId, int noOfMaxPax, boolean a, Order o) {
-    this.tableId = tableId;
-    this.noOfMaxPax = noOfMaxPax;
-    this.availability = a;
-    this.order = o;
-  }
+	public Table(int tableId, int numOfSeats, boolean isReserved, boolean isOccupied, int customerNo) {
+		this.tableId = tableId;
+		this.numOfSeats = numOfSeats;
+		this.isReserved = isReserved;
+		this.isOccupied = isOccupied;
+		this.customerNo = customerNo;
+	}
 
-  public String getTableId() { return this.tableId; }
-  public int getNoOfMaxPax() { return this.noOfMaxPax; }
-  public boolean isAvailable() { return this.availability; }
-  public Order getOrder() { return this.order; }
+	public int getTableId() {
+		return tableId;
+	}
 
-  //No Setting of tableId and maxPax? //
-  public void setNoOfMaxPax(int p) { this.noOfMaxPax = p; }
-  public void setAvailability(boolean a) { this.availability = a; }
-  public void makeOrder(Order o) { this.order = o; }
+	public void setTableID(int newTableId) {
+		tableId = newTableId;
+	}
+
+	public int getNumOfSeats() {
+		return numOfSeats;
+	}
+
+	public void setNumOfSeats(int newNumOfSeats) {
+		numOfSeats = newNumOfSeats;
+	}
+
+	public boolean getIsReserved() {
+		return isReserved;
+	}
+
+	public boolean getIsOccupied() {
+		return isOccupied;
+	}
+
+	public int getCustomerNo() {
+		return customerNo;
+	}
+
+	public void reserveTable(int custNo) {
+		isReserved = true;
+		customerNo = custNo;
+	}
+
+	public void releaseTable() {
+		isReserved = false;
+		customerNo = 0;
+	}
+
+	public void assignTable(int custNo) {
+		isReserved = false;
+		isOccupied = true;
+		customerNo = custNo;
+	}
+
+	public void freeTable() {
+		isReserved = false;
+		isOccupied = false;
+		customerNo = 0;
+	}
+
+	public void displayStatus() {
+		System.out.printf("%-20s", getTableId());
+		System.out.printf("%-20s", getNumOfSeats());
+
+		System.out.printf("%-20s", getIsOccupied() ? "Occupied" : (getIsReserved() ? "Reserved" : "Available"));
+
+		System.out.printf("%-20s%n", (getCustomerNo() != 0) ? getCustomerNo() : "N/A");
+	}
 }

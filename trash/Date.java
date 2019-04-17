@@ -1,18 +1,16 @@
 package model;
 package util.DateUtil;
+
 //import java.util.Date;
 import java.util.Calendar;
 
 public class Date {
-	
+
 	private static Object timestamp;
 	private static int formattype;
-	
-	private String[] formattypestring;
-	formattypestring[0] = "";
-	formattypestring[1] = "Calendar";
-	formattypestring[2] = "Date";
-	
+
+	private String[] formattypestring;formattypestring[0]="";formattypestring[1]="Calendar";formattypestring[2]="Date";
+
 	Date(String formatcase) {
 		switch (formatcase) {
 			case 'Calendar':
@@ -25,8 +23,8 @@ public class Date {
 		}
 
 		}
-			}
-	
+
+	}
 
 	private Object set(int ft) {
 		switch (ft) {
@@ -39,22 +37,20 @@ public class Date {
 	
 		
 	}
-	
 
 	public void reset() {
 		for formattype
 	
 	}
-	
+
 	public void changeFormatType (int ft) {
 		formattype = ft;
 		for 
 	
 	
 	}
-	
-	
+
 	public String toString() {
-		
+
 	}
 }

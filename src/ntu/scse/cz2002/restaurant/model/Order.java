@@ -17,20 +17,52 @@ public class Order {
 		this.orderId = orderId;
 		this.tableId = tableId;
 	}
-	
-	public ArrayList<MenuItem> getItems() { return this.items; }
-	public ArrayList<Promotion> getPromotions() { return this.promotions; }
-	
-	public Staff getStaff() { return staff; }
-	public int getOrderId() { return this.orderId; }
-	public int getTableId() { return this.tableId; }
 
-	public void setStaff(Staff s) { this.staff = s; }
-	public void setOrderId(int i) { this.orderId = i; }
-	public void setTableId(int i) {this.tableId = i; }
+	public ArrayList<MenuItem> getItems() {
+		return this.items;
+	}
 
-	public void addItem(MenuItem i) { this.items.add(i); }
-	public void removeItem(MenuItem i) {this.items.remove(i);}
-	public void addPromotion(Promotion i) { this.promotions.add(i); }
-	public void removePromotion(Promotion i) {this.promotions.remove(i);}
+	public ArrayList<Promotion> getPromotions() {
+		return this.promotions;
+	}
+
+	public Staff getStaff() {
+		return staff;
+	}
+
+	public int getOrderId() {
+		return this.orderId;
+	}
+
+	public int getTableId() {
+		return this.tableId;
+	}
+
+	public void setStaff(Staff s) {
+		this.staff = s;
+	}
+
+	public void setOrderId(int i) {
+		this.orderId = i;
+	}
+
+	public void setTableId(int i) {
+		this.tableId = i;
+	}
+
+	public void addItem(MenuItem i) {
+		this.items.add(i);
+	}
+
+	public void removeItem(MenuItem i) {
+		this.items.remove(i);
+	}
+
+	public void addPromotion(Promotion i) {
+		this.promotions.add(i);
+	}
+
+	public void removePromotion(Promotion i) {
+		this.promotions.remove(i);
+	}
 }
