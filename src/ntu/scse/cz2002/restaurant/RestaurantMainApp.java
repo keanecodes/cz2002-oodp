@@ -6,6 +6,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import ntu.scse.cz2002.restaurant.dataAccess.DataAccessor;
+import ntu.scse.cz2002.restaurant.dataAccess.*;
 import ntu.scse.cz2002.restaurant.model.Restaurant;
 //import ntu.scse.cz2002.restaurant.model.Staff;
 import ntu.scse.cz2002.restaurant.view.*;
