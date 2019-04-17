@@ -165,24 +165,34 @@ public class MenuController{
      * Print contents of menu, sorted by item type.
      */
     public void printItemsByCategory(){
-        for(int i=0;i<this.types.size();i++){
-            System.out.println(this.types.get(i));
-            for(int j=0;j<this.menu.getItemCount();j++){
-                MenuItem item = this.menu.getItemList().get(j);
+        if(this.menu.getItemCount() != 0){
+            for(int i=0;i<this.types.size();i++){
+                System.out.println(this.types.get(i));
+                for(int j=0;j<this.menu.getItemCount();j++){
+                    MenuItem item = this.menu.getItemList().get(j);
 
-                if(item.getType().equals(this.types.get(i))){
-                    System.out.println(item.getName() + "  $" + item.getPrice());
-                    System.out.println(item.getDescription());
+                    if(item.getType().equals(this.types.get(i))){
+                        System.out.println(item.getName() + "  $" + item.getPrice());
+                        System.out.println(item.getDescription());
+                    }
                 }
             }
         }
+        else{
+            System.out.println("No item to print.");
+        }
 
-        System.out.printf("\nPromotion\n");
+        if(this.menu.getPromotionCount() != 0){
+            System.out.printf("\nPromotion\n");
 
-        for(int k=0;k<this.menu.getPromotionCount();k++){
-            Promotion promotion = this.menu.getPromotionList().get(k);
-            System.out.println(promotion.getName() + " $" + String.valueOf(promotion.getPrice()));
-            System.out.println("  " + promotion.getDescription());
+            for(int k=0;k<this.menu.getPromotionCount();k++){
+                Promotion promotion = this.menu.getPromotionList().get(k);
+                System.out.println(promotion.getName() + " $" + String.valueOf(promotion.getPrice()));
+                System.out.println("  " + promotion.getDescription());
+            }
+        }
+        else{
+            System.out.println("No promotion to print.");
         }
     }
 
@@ -201,6 +211,16 @@ public class MenuController{
         for(int j=0;j<this.menu.getPromotionCount();j++){
             names.add(this.menu.getPromotionList().get(j).getName());
         }
+
+        if(this.menu.getItemCount() == 0){
+            System.out.println("No item to print.");
+        }
+
+        if(this.menu.getPromotionCount() == 0){
+            System.out.println("No promotion to print.");
+        }
+
+        if(names.size() == 0){return;}
 
         Collections.sort(names);
 
