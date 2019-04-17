@@ -1,18 +1,16 @@
 package ntu.scse.cz2002.restaurant.control;
 
 import java.util.ArrayList;
+
+import ntu.scse.cz2002.restaurant.model.MenuItem;
 import ntu.scse.cz2002.restaurant.model.Staff;
-import ntu.scse.cz2002.restaurant.dataAccess.StaffDA;
+import ntu.scse.cz2002.restaurant.dataAccess.DataAccessor;
 
 public class StaffController {
 	private static ArrayList<Staff> staffArr;
 
-	public static void main(String[] args) {
-		try {
-			staffArr = StaffDA.readAllStaff("staff.txt");
-		} catch (Exception e) {
-			System.out.println("Error!");
-		}
+	public void loadStaff(String staffFilename) {
+		staffArr = (ArrayList<Staff>) DataAccessor.read(staffFilename);
 	}
 
 	public ArrayList<Staff> getStaffArr() {
