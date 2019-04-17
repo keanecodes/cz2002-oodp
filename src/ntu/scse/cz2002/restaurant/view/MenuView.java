@@ -4,6 +4,7 @@ import java.util.Scanner;
 import ntu.scse.cz2002.restaurant.control.MenuController;
 import ntu.scse.cz2002.restaurant.model.*;
 import java.util.InputMismatchException;
+import java.util.ArrayList;
 
 public class MenuView {
 	public static MenuController menuMan;
@@ -77,7 +78,13 @@ public class MenuView {
 			description = sc.nextLine();
 
 			System.out.printf("Enter item price: ");
-			price = sc.nextInt();
+
+      try{
+          price = sc.nextInt();
+      } catch(InputMismatchException ex){
+          System.out.println("Invalid price input!");
+          break;
+      }
 
 			System.out.println("Enter item type: ");
 			type = sc.nextLine();
@@ -87,18 +94,56 @@ public class MenuView {
 			menuMan.addItem(item);
 			break;
 		case 4:
+        int breakOut = 0;
+        int itemNum;
+        String itemName;
+        MenuItem promoItem;
+        ArrayList<MenuItem> items = new ArrayList<MenuItem>();
 			Promotion promotion;
 
 			System.out.printf("Enter promotion name: ");
 			name = sc.nextLine();
 
+      System.out.printf("Enter the number of items in the promotion: ");
+
+      try{
+          itemNum = sc.nextInt();
+      } catch(InputMismatchException ex) {
+          System.out.println("Invalid number of items input!");
+          break;
+      }
+
+      for(int i=0;i<itemNum;i++){
+          System.out.printf("Enter the name of item %d\n", i+1);
+          itemName = sc.nextLine();
+
+          promoItem = menuMan.getMenu().getMenuItem(itemName);
+
+          if(promoItem != null){
+              items.add(promoItem);
+          }
+          else{
+              System.out.println("Item not found!");
+              breakOut = 1;
+              break;
+          }
+      }
+
+      if(breakOut == 1) break;
+
 			System.out.printf("Enter promotion description: ");
 			description = sc.nextLine();
 
 			System.out.printf("Enter promotion price: ");
-			price = sc.nextInt();
 
-			promotion = new Promotion(name, description, price);
+      try{
+          price = sc.nextInt();
+      } catch(InputMismatchException ex){
+          System.out.println("Invalid price input!");
+          break;
+      }
+
+			promotion = new Promotion(name, description, price, items);
 
 			menuMan.addItem(promotion);
 			break;
