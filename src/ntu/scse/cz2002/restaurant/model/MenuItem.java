@@ -1,9 +1,9 @@
 package ntu.scse.cz2002.restaurant.model;
 
 public class MenuItem {
-	private String name;
-	private String description;
-	private double price;
+	protected String name;
+	protected String description;
+	protected double price;
 	private String type;
 
 	public MenuItem(String name, String description, double price, String type) {
