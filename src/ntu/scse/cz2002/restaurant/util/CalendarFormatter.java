@@ -25,7 +25,7 @@ public class CalendarFormatter { //might not be needed, can use the built in fun
 		
 	}
 	
-	public String toString(Calendar c) { //this should be in somesort of CalenderHelperclass	
+	public static String toString(Calendar c) { //this should be in somesort of CalenderHelperclass	
 		return toString(c, 1);
 	}
 }
