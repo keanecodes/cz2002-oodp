@@ -33,24 +33,12 @@ public class MenuController{
      * @param promotions The list of promotion items
      */
     public MenuController(ArrayList<MenuItem> items, ArrayList<Promotion> promotions){
-        // String itemFilename = "items.dat";
-        // String promoFilename = "promos.dat";
+        String itemFilename = "items.dat";
+        String promoFilename = "promos.dat";
 
-        // try{
-        //     this.loadItems(itemFilename, promoFilename);
-        // } catch (Exception e){System.out.println("No menu data found.");}
-
-        if(items != null || promotions != null){
-            this.menu = new Menu(items, promotions);
-
-            System.out.println("Menu contents successfully loaded!");
-            updateTypesList(items);
-        }
-        else{
-            this.menu = new Menu();
-
-            System.out.println("Menu is empty");
-        }
+        try{
+            this.loadItems(itemFilename, promoFilename);
+        } catch (Exception e){System.out.println("No menu data found.");}
     }
 
     // deprecated
@@ -58,8 +46,24 @@ public class MenuController{
         ArrayList<MenuItem> items = (ArrayList<MenuItem>)DataAccessor.read(itemFilename);
         ArrayList<Promotion> promotions = (ArrayList<Promotion>)DataAccessor.read(promoFilename);
 
-        if(items != null || promotions != null){
+        if(items != null && promotions != null){
             this.menu = new Menu(items, promotions);
+
+            System.out.println("Menu contents successfully loaded!");
+            updateTypesList(items);
+        }
+        else if(items != null && promotions == null){
+            ArrayList<Promotion> dummy = new ArrayList<Promotion>();
+
+            this.menu = new Menu(items, dummy);
+
+            System.out.println("Menu contents successfully loaded!");
+            updateTypesList(items);
+        }
+        else if(items == null && promotions != null){
+            ArrayList<MenuItem> dummy = new ArrayList<MenuItem>();
+
+            this.menu = new Menu(dummy, promotions);
 
             System.out.println("Menu contents successfully loaded!");
             updateTypesList(items);
