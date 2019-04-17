@@ -44,7 +44,7 @@ public class Menu {
 
 	public Promotion getPromotion(String name) {
 		for (int i = 0; i < this.promotions.size(); i++) {
-			if (this.promotions.get(i).getPromotionName().equals(name)) {
+			if (this.promotions.get(i).getName().equals(name)) {
 				return this.promotions.get(i);
 			}
 		}
@@ -83,7 +83,7 @@ public class Menu {
 
 	public int removePromotion(String name) {
 		for (int i = 0; i < this.promotions.size(); i++) {
-			if (this.promotions.get(i).getPromotionName().equals(name)) {
+			if (this.promotions.get(i).getName().equals(name)) {
 				this.promotions.remove(i);
 				this.promotionCount = -1;
 				return 0;
