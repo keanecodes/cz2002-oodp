@@ -118,8 +118,8 @@ public class MenuController{
     public void addItem(Promotion promotion){
         this.menu.addPromotion(promotion);
         System.out.println("The following set has been addded to the menu:");
-        System.out.println("  Name: " + promotion.getPromotionName());
-        System.out.println("  Description: " + promotion.getPromotionDescription());
+        System.out.println("  Name: " + promotion.getName());
+        System.out.println("  Description: " + promotion.getDescription());
         System.out.println("  Price: $" + String.valueOf(promotion.getPrice()));
     }
 
@@ -150,7 +150,7 @@ public class MenuController{
             System.out.println("Item susccessfully updated!");
         }
         else if((promotion = this.menu.getPromotion(name)) != null){
-            promotion.setPromotionDescription(description);
+            promotion.setDescription(description);
             promotion.setPrice(price);
             System.out.println("Item susccessfully updated!");
         }
@@ -179,8 +179,8 @@ public class MenuController{
 
         for(int k=0;k<this.menu.getPromotionCount();k++){
             Promotion promotion = this.menu.getPromotionList().get(k);
-            System.out.println(promotion.getPromotionName() + " $" + String.valueOf(promotion.getPrice()));
-            System.out.println("  " + promotion.getPromotionDescription());
+            System.out.println(promotion.getName() + " $" + String.valueOf(promotion.getPrice()));
+            System.out.println("  " + promotion.getDescription());
         }
     }
 
@@ -197,7 +197,7 @@ public class MenuController{
         }
 
         for(int j=0;j<this.menu.getPromotionCount();j++){
-            names.add(this.menu.getPromotionList().get(j).getPromotionName());
+            names.add(this.menu.getPromotionList().get(j).getName());
         }
 
         Collections.sort(names);
@@ -210,7 +210,7 @@ public class MenuController{
                 else{
                     promotion = this.menu.getPromotion(names.get(k));
                     System.out.println(names.get(k) + " $" + String.valueOf(promotion.getPrice()));
-                    System.out.println("  " + promotion.getPromotionDescription());
+                    System.out.println("  " + promotion.getDescription());
                 }
             }
             else{
