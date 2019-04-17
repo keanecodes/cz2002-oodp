@@ -10,7 +10,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class DataAccessor {
-	public static void write(String filename, ArrayList data) {
+	public static int write(String filename, ArrayList data) {
 		try {
 			FileOutputStream f = new FileOutputStream(new File(filename));
 			ObjectOutputStream o = new ObjectOutputStream(f);
@@ -19,9 +19,11 @@ public class DataAccessor {
 
 			o.close();
 			f.close();
+      return 0;
 		} catch (IOException e) {
 			System.out.println("Failed to save data: IOException");
-		}
+      return 1;
+    }
 	}
 
 	public static ArrayList read(String filename) {

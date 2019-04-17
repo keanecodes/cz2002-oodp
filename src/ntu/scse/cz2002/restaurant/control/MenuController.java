@@ -26,6 +26,9 @@ public class MenuController{
      */
     private ArrayList<String> types;
 
+    private String itemFilename = "items.dat";
+    private String promoFilename = "promos.dat";
+
     /**
      * Create a controller for menu contents.
      * Add/update/remove/display contents of menu.
@@ -33,9 +36,6 @@ public class MenuController{
      * @param promotions The list of promotion items
      */
     public MenuController(){
-        String itemFilename = "items.dat";
-        String promoFilename = "promos.dat";
-
         try{
             this.loadItems(itemFilename, promoFilename);
         } catch (Exception e){System.out.println("No menu data found.");}
@@ -74,6 +74,24 @@ public class MenuController{
             this.menu = new Menu();
 
             System.out.println("Menu is empty");
+        }
+    }
+
+    public void saveItems(){
+        int itemSave = DataAccessor.write(itemFilename, this.menu.getItemList());
+        int promoSave = DataAccessor.write(promoFilename, this.menu.getPromotionList());
+
+        if(itemSave != 1 && promoSave != 1){
+            System.out.println("Menu contents successfully saved!");
+        }
+        else{
+            if(itemSave == 1){
+                System.out.println("Failed to save items!");
+            }
+
+            if(promoSave == 1){
+                System.out.println("Failed to save promotions!");
+            }
         }
     }
 
