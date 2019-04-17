@@ -1,6 +1,6 @@
 package ntu.scse.cz2002.restaurant.control;
 
-import ntu.scse.cz2002.restaurant.dataAccess.MenuDA;
+import ntu.scse.cz2002.restaurant.dataAccess.DataAccessor;
 import ntu.scse.cz2002.restaurant.model.Menu;
 import ntu.scse.cz2002.restaurant.model.MenuItem;
 import ntu.scse.cz2002.restaurant.model.Promotion;
@@ -55,8 +55,8 @@ public class MenuController{
 
     // deprecated
     private void loadItems(String itemFilename, String promoFilename){
-        ArrayList<MenuItem> items = (ArrayList<MenuItem>)MenuDA.read(itemFilename);
-        ArrayList<Promotion> promotions = (ArrayList<Promotion>)MenuDA.read(promoFilename);
+        ArrayList<MenuItem> items = (ArrayList<MenuItem>)DataAccessor.read(itemFilename);
+        ArrayList<Promotion> promotions = (ArrayList<Promotion>)DataAccessor.read(promoFilename);
 
         if(items != null || promotions != null){
             this.menu = new Menu(items, promotions);
