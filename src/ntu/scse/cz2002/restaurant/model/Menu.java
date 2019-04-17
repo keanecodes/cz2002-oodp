@@ -9,8 +9,8 @@ public class Menu{
     private int itemCount, promotionCount;
 
     public Menu(){
-        this.menuItems = new ArrayList<MenuItem>;
-        this.promotions = new ArrayList<Promotion>;
+        this.menuItems = new ArrayList<MenuItem>();
+        this.promotions = new ArrayList<Promotion>();
         this.itemCount = 0;
         this.promotionCount = 0;
     }
