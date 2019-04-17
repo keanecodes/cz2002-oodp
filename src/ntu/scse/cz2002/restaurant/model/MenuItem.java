@@ -1,6 +1,8 @@
 package ntu.scse.cz2002.restaurant.model;
 
-public class MenuItem {
+import java.io.Serializable;
+
+public class MenuItem implements Serializable{
 	protected String name;
 	protected String description;
 	protected double price;

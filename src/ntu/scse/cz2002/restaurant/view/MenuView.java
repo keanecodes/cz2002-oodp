@@ -84,6 +84,7 @@ public class MenuView {
 
       try{
           price = sc.nextInt();
+          sc.nextLine();
       } catch(InputMismatchException ex){
           System.out.println("Invalid price input!");
           break;
@@ -111,6 +112,7 @@ public class MenuView {
 
       try{
           itemNum = sc.nextInt();
+          sc.nextLine();
       } catch(InputMismatchException ex) {
           System.out.println("Invalid number of items input!");
           break;
@@ -169,6 +171,7 @@ public class MenuView {
 			menuMan.removeItem(name);
 			break;
 		case 7:
+        menuMan.saveItems();
 			quit = 1;
 			break;
 		default:

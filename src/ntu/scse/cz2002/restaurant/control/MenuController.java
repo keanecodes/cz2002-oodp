@@ -45,8 +45,8 @@ public class MenuController{
 
     // deprecated
     private void loadItems(String itemFilename, String promoFilename){
-        ArrayList<MenuItem> items = (ArrayList<MenuItem>)DataAccessor.read(itemFilename);
-        ArrayList<Promotion> promotions = (ArrayList<Promotion>)DataAccessor.read(promoFilename);
+        ArrayList<MenuItem> items = (ArrayList) DataAccessor.read(itemFilename);
+        ArrayList<Promotion> promotions = (ArrayList) DataAccessor.read(promoFilename);
 
         if(items != null && promotions != null){
             this.menu = new Menu(items, promotions);

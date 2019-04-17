@@ -10,9 +10,10 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class DataAccessor {
-	public static int write(String filename, ArrayList data) {
+	public static int write(String filename, Object data) {
+
 		try {
-			FileOutputStream f = new FileOutputStream(new File(filename));
+        FileOutputStream f = new FileOutputStream(filename);
 			ObjectOutputStream o = new ObjectOutputStream(f);
 
 			o.writeObject(data);
@@ -26,14 +27,14 @@ public class DataAccessor {
     }
 	}
 
-	public static ArrayList read(String filename) {
-		ArrayList data = null;
+	public static Object read(String filename) {
+		Object data = null;
 
 		try {
-			FileInputStream f = new FileInputStream(new File(filename));
+        FileInputStream f = new FileInputStream(filename);
 			ObjectInputStream o = new ObjectInputStream(f);
 
-			data = (ArrayList) o.readObject();
+			data = o.readObject();
 
 			o.close();
 			f.close();
