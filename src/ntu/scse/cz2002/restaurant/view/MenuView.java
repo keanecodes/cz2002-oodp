@@ -36,7 +36,7 @@ public class MenuView {
 	}
 
 	public static int getUserInput() {
-		System.out.printf("Please select what to do (enter \"h\" to view options): ");
+		System.out.printf("Please select what to do (enter \"0\" to view options): ");
 
 		Scanner sc = new Scanner(System.in);
 
@@ -60,6 +60,9 @@ public class MenuView {
 		Scanner sc = new Scanner(System.in);
 
 		switch (c) {
+    case 0:
+        printInputList();
+        break;
 		case 1:
 			menuMan.printItemsByCategory();
 			System.out.println();
