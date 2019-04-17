@@ -8,11 +8,18 @@ public class Menu{
     private ArrayList<Promotion> promotions = new ArrayList<Promotion>();
     private int itemCount, promotionCount;
 
+    public Menu(){
+        this.menuItems = new ArrayList<MenuItem>;
+        this.promotions = new ArrayList<Promotion>;
+        this.itemCount = 0;
+        this.promotionCount = 0;
+    }
+
     public Menu(ArrayList<MenuItem> menuItems, ArrayList<Promotion> promotions){
         this.menuItems = menuItems;
         this.promotions = promotions;
-        this.itemCount = 0;
-        this.promotionCount = 0;
+        this.itemCount = menuItems.size();
+        this.promotionCount = promotions.size();
     }
 
     public void addMenuItem(MenuItem item){
