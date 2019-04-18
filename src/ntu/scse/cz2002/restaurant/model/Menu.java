@@ -85,7 +85,7 @@ public class Menu {
 		for (int i = 0; i < this.promotions.size(); i++) {
 			if (this.promotions.get(i).getName().equals(name)) {
 				this.promotions.remove(i);
-				this.promotionCount = -1;
+				this.promotionCount -= 1;
 				return 0;
 			}
 		}

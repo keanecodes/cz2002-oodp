@@ -147,8 +147,8 @@ public class MenuController{
      * Remove an item (ala carte/promotion) from the menu.
      */
     public void removeItem(String name){
-        if(this.menu.removeMenuItem(name) == 0){
-            if(this.menu.removePromotion(name) == 0){
+        if(this.menu.removeMenuItem(name) == 1){
+            if(this.menu.removePromotion(name) == 1){
                 System.out.println(name + " does not exist in menu!");
                 return;
             }
