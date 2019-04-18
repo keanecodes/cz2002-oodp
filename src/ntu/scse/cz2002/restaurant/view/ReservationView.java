@@ -13,51 +13,52 @@ public class ReservationView {
 	ReservationController reserveMangager = new ReservationController();
 
 	private void displayReservationOptions() {
-		System.out.print("Restaurant Reservation Submenu");
-		System.out.println("________________________________");
+		System.out.println("// Reservation Management // ---------------------\n" +
+			     		   "--------------------------------------------------\n" +
+			     		   " Option\t| Option Description\n" +
+			     		   "--------------------------------------------------\n" +
+			     		   "  (T)\t| Table availability\n" + 
+			     		   "  (V)\t| View reservations\n" +
+			     		   "  (A)\t| Add a new reservation\n" +
+			     		   "  (R)\t| Remove a existing reservation\n");
 
-		System.out.println("1. View table availability");
-		System.out.println("2. View reservations");
-		System.out.println("3. Add a new reservation");
-		System.out.println("4. Remove a existing reservation");
-		System.out.println("5. Back");
+		System.out.println("---------------------------------------------------\n" +
+			     		   "(<) Back\t\n" +
+			     		   "---------------------------------------------------");
+		System.out.print("> ");
 	}
 
 	public void ReservationUI() {
+		
 		displayReservationOptions();
-
-		int restaurantChoice = -1;
+		
+		String choice = "";
 		do {
-			try {
-				System.out.println("Please enter your choice (1 - 4): ");
-				restaurantChoice = sc.nextInt();
-			} catch (InputMismatchException ex) {
-				System.out.println("Invalid input! Please try again..");
-				sc.nextLine(); // Clear the garbage input
-				continue;
-			}
+			choice = sc.next();
+
 			
-			switch (restaurantChoice) {
-			case 1:
-				reserveMangager.viewTableAvailability();
-				break;
-			case 2:
-				reserveMangager.viewReservations();
-				break;
-			case 3:
-				reserveMangager.addReservation();
-				break;
-			case 4:
-				reserveMangager.removeReservation();
-				break;
-			case 5:
-				Utilities.clearScreen(); MainRestaurantView.show();
-				break;
-			default:
-				System.out.println("Invalid choice!");
-				break;
+			switch (choice.toUpperCase()) {
+				case "T":
+					reserveMangager.viewTableAvailability();
+					break;
+				case "V":
+					reserveMangager.viewReservations();
+					break;
+				case "A":
+					reserveMangager.addReservation();
+					break;
+				case "R":
+					reserveMangager.removeReservation();
+					break;
+				case "<":
+					Utilities.clearScreen(); MainRestaurantView.show();
+					break;
+				default:
+					System.out.println("Invalid input. Refer to the option table.");
+					System.out.print("> ");
+					break;
 			}
-		} while (restaurantChoice != 5);
+		} while (!choice.equalsIgnoreCase("<"));
 	}
 
 }

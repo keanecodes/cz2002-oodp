@@ -2,6 +2,8 @@ package ntu.scse.cz2002.restaurant.control;
 
 import ntu.scse.cz2002.restaurant.model.Reservation;
 import ntu.scse.cz2002.restaurant.model.Table;
+import ntu.scse.cz2002.restaurant.util.Utilities;
+import ntu.scse.cz2002.restaurant.view.ReservationView;
 
 import java.util.List;
 import java.util.Scanner;
@@ -95,7 +97,9 @@ public class ReservationController {
 		checkReservations();
 
 		if (reservations.isEmpty()) {
-			System.out.print("There are no reservations made at the moment!");
+			System.out.println("There are no reservations made at the moment!");
+			Utilities.newScreenHeader();
+			(new ReservationView()).ReservationUI();
 			return;
 		}
 

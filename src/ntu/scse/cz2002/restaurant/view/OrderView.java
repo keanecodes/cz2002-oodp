@@ -206,7 +206,9 @@ public class OrderView {
 							System.out.println("Invalid input. Expected 2 options: Y or n ");
 							System.out.print("> "); break;
 						}
-					}					
+					} else {
+						Utilities.newScreenHeader(); OrderUI(); break;
+					}
 					
 				default:
 					System.out.println("Invalid input. Refer to the option table.");
