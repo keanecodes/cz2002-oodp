@@ -8,10 +8,11 @@ import java.util.ArrayList;
 
 public class MenuView {
 	public static MenuController menuMan;
-	public static int quit = 0;
+	public static int quit;
 
 	public static void MenuUI() {
 		int c;
+    quit = 0;
 
 		menuMan = new MenuController();
 
