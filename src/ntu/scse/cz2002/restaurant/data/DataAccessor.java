@@ -1,4 +1,4 @@
-package ntu.scse.cz2002.restaurant.dataAccess;
+package ntu.scse.cz2002.restaurant.data;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -11,7 +11,7 @@ import java.nio.file.Paths;
 public class DataAccessor {
 	
 	public static final Path DATAPATH = Paths.get(System.getProperty("user.dir"), 
-                                        "src/ntu/scse/cz2002/restaurant/dataAccess");
+                                        "src/ntu/scse/cz2002/restaurant/data");
 
 	
 	public static int write(String filename, Object data) {

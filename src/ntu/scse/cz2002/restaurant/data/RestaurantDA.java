@@ -1,4 +1,4 @@
-package ntu.scse.cz2002.restaurant.dataAccess;
+package ntu.scse.cz2002.restaurant.data;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -10,7 +10,7 @@ import ntu.scse.cz2002.restaurant.model.Staff;
 
 public class RestaurantDA {
 
-	private static final String FILE_PATH = "src/ntu/scse/cz2002/restaurant/dataAccess/";
+	private static final String FILE_PATH = "src/ntu/scse/cz2002/restaurant/data/";
 
 	public static Restaurant loadData() throws ParseException {
 		Restaurant r = new Restaurant();

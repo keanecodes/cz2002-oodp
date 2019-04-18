@@ -1,7 +1,8 @@
 package ntu.scse.cz2002.restaurant.model;
 
-import ntu.scse.cz2002.restaurant.dataAccess.DataAccessor;
 import java.util.ArrayList;
+
+import ntu.scse.cz2002.restaurant.data.DataAccessor;
 
 public class Restaurant {
 	private int noOfTable = 30;

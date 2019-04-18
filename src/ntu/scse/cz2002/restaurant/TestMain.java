@@ -3,13 +3,12 @@ package ntu.scse.cz2002.restaurant;
 import ntu.scse.cz2002.restaurant.model.Invoice;
 import ntu.scse.cz2002.restaurant.model.Order;
 import ntu.scse.cz2002.restaurant.model.Staff;
+import ntu.scse.cz2002.restaurant.data.*;
 import ntu.scse.cz2002.restaurant.model.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
-
-import ntu.scse.cz2002.restaurant.dataAccess.*;
 
 public class TestMain {
 

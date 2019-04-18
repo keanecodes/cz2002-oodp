@@ -1,6 +1,6 @@
 package ntu.scse.cz2002.restaurant.control;
 
-import ntu.scse.cz2002.restaurant.dataAccess.DataAccessor;
+import ntu.scse.cz2002.restaurant.data.DataAccessor;
 import ntu.scse.cz2002.restaurant.model.Menu;
 import ntu.scse.cz2002.restaurant.model.MenuItem;
 import ntu.scse.cz2002.restaurant.model.Promotion;

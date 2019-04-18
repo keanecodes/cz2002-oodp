@@ -1,4 +1,4 @@
-package ntu.scse.cz2002.restaurant.dataAccess;
+package ntu.scse.cz2002.restaurant.data;
 
 import java.io.FileInputStream;
 import java.io.FileWriter;

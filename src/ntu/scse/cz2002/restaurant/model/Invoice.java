@@ -7,7 +7,7 @@ import java.util.Calendar;
 import java.util.StringTokenizer;
 
 import ntu.scse.cz2002.restaurant.control.OrderController;
-import ntu.scse.cz2002.restaurant.dataAccess.DataAccessible;
+import ntu.scse.cz2002.restaurant.data.DataAccessible;
 import ntu.scse.cz2002.restaurant.util.CalendarFormatter;
 //import ntu.scse.cz2002.restaurant.util.DateUtil;
 
