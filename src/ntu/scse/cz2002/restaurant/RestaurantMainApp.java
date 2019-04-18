@@ -41,17 +41,11 @@ public class RestaurantMainApp {
 
 			switch (choice) {
 			case 1:
-				MenuView mv = new MenuView();
-				mv.MenuUI();
-        break;
+				(new MenuView()).MenuUI(); break;
 			case 2:
-				OrderView ov = new OrderView();
-				ov.OrderUI();
-        break;
+				(new OrderView()).OrderUI(); break;
 			case 3:
-				ReservationView rv = new ReservationView();
-				rv.ReservationUI();
-        break;
+				(new ReservationView()).ReservationUI(); break;
 			case 6:
 				break;
 			default:
