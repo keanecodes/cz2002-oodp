@@ -46,6 +46,9 @@ public class RestaurantMainApp {
 			case 2:
 				OrderView ov = new OrderView();
 				ov.OrderUI();
+			case 3:
+				ReservationView rv = new ReservationView();
+				rv.ReservationUI();
 			case 6:
 				break;
 			default:

@@ -30,7 +30,6 @@ public class RestaurantRevenue { // needs to be reformatter & reworked.. is it a
 			for (String str : strInvoice)
 				total_Invoices.add(new Invoice(str));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

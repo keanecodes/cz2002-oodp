@@ -14,7 +14,6 @@ import ntu.scse.cz2002.restaurant.dataAccess.*;
 public class TestMain {
 
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
 		Staff s = new Staff("Name", 'F', 3, "JobTitle");
 		Order o = new Order(s, 2, 5); // order id, table id
 		Invoice i = new Invoice(o);

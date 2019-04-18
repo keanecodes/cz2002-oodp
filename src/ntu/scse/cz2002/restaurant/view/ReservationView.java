@@ -3,13 +3,13 @@ package ntu.scse.cz2002.restaurant.view;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import ntu.scse.cz2002.restaurant.control.ReservationManager;
+import ntu.scse.cz2002.restaurant.control.ReservationController;
 
 public class ReservationView {
 
-	private static Scanner sc;
+	private static Scanner sc = new Scanner(System.in);
 
-	ReservationManager reserveMangager = new ReservationManager();
+	ReservationController reserveMangager = new ReservationController();
 
 	private void displayReservationOptions() {
 		System.out.print("Restaurant Reservation Submenu");

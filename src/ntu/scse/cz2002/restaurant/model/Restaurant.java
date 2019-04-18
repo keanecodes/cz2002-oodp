@@ -6,10 +6,9 @@ import java.util.ArrayList;
 public class Restaurant {
 	private int noOfTable = 30;
 	private Staff currentStaff;
-  private Menu menu;
+	private Menu menu;
 
-	public Restaurant() {
-	}
+	public Restaurant() { }
 
 	public Restaurant(int noOfTable, Staff currentStaff) {
 		this.noOfTable = noOfTable;

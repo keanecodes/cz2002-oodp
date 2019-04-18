@@ -14,7 +14,7 @@ import java.util.GregorianCalendar;
 import java.util.InputMismatchException;
 import java.util.Iterator;
 
-public class ReservationManager {
+public class ReservationController {
 
 	/* A list of all tables in the Restaurant */
 	private static final int[] TABLE_SIZE = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 8, 8, 8, 8, 8,
@@ -29,7 +29,7 @@ public class ReservationManager {
 	private static final int RESTAURANT_PM_CLOSING_HOUR = 22;
 
 	/* A static instance of restaurant manager */
-	private static ReservationManager reserveMgr = null;
+	private static ReservationController reserveMgr = null;
 
 	/* A list of all physical tables in the restaurants */
 	private static List<Table> tables;
@@ -47,7 +47,7 @@ public class ReservationManager {
 	 * A constructor to set up all the array lists of the tables and reservations
 	 * and create the tables
 	 */
-	public ReservationManager() {
+	public ReservationController() {
 		sc = new Scanner(System.in);
 		tables = new ArrayList<Table>();
 		reservations = new ArrayList<Reservation>();
@@ -56,9 +56,9 @@ public class ReservationManager {
 	}
 
 	/* Static instance of the Reservation Manager */
-	public static ReservationManager getReservationManager() {
+	public static ReservationController getReservationManager() {
 		if (reserveMgr == null) {
-			reserveMgr = new ReservationManager();
+			reserveMgr = new ReservationController();
 		}
 
 		return reserveMgr;
@@ -70,8 +70,8 @@ public class ReservationManager {
 		for (int tableSize : TABLE_SIZE) {
 			Table newTable;
 
-			// Constructor: tableNunber, numOfSeats, isReserved, isOccupied, customerID
-			newTable = new Table(tableNumber++, tableSize, false, false, 0);
+			// Constructor: tableNunber, numOfSeats, isReserved, isOccupied, customerID, order
+			newTable = new Table(tableNumber++, tableSize, false, false, 0, null);
 
 			tables.add(newTable);
 		}

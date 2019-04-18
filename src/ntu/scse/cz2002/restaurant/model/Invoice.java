@@ -14,7 +14,7 @@ import ntu.scse.cz2002.restaurant.util.CalendarFormatter;
 public class Invoice implements DataAccessible {
 
 	Calendar timestamp = Calendar.getInstance();
-	String tableid;
+	int tableid;
 	Order order1;
 	double amount;
 	int invoice_id = 3941; // test
@@ -37,7 +37,7 @@ public class Invoice implements DataAccessible {
 		timestamp = Calendar.getInstance();
 		order1 = o;
 		amount = calAmt(o);
-		tableid = "none";
+		tableid = -1;
 	}
 
 	public Order getOrder() {

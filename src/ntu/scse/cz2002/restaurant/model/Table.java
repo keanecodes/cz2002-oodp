@@ -7,42 +7,34 @@ public class Table {
 	private boolean isReserved;
 	private boolean isOccupied;
 	private int customerNo;
+	private Order order;
 
-	public Table(int tableId, int numOfSeats, boolean isReserved, boolean isOccupied, int customerNo) {
+	public Table(int tableId, int numOfSeats, boolean isReserved, boolean isOccupied, int customerNo, Order o) {
 		this.tableId = tableId;
 		this.numOfSeats = numOfSeats;
 		this.isReserved = isReserved;
 		this.isOccupied = isOccupied;
 		this.customerNo = customerNo;
+		this.order = o;
 	}
 
-	public int getTableId() {
-		return tableId;
-	}
+	//TableId Getter & Setters
+	public int getTableId() { return tableId; }
+	public void setTableID(int newTableId) { tableId = newTableId; }
 
-	public void setTableID(int newTableId) {
-		tableId = newTableId;
-	}
+	//NumofSeats Getter & Setters
+	public int getNumOfSeats() { return numOfSeats; }
+	public void setNumOfSeats(int newNumOfSeats) { numOfSeats = newNumOfSeats; }
+	
+	//Order Getter & Setters
+	public Order getOrder() { return this.order; }
+	public void makeOrder(Order o) { this.order = o; }
 
-	public int getNumOfSeats() {
-		return numOfSeats;
-	}
+	public boolean getIsReserved() { return isReserved; }
+	
+	public boolean getIsOccupied() { return isOccupied; }
 
-	public void setNumOfSeats(int newNumOfSeats) {
-		numOfSeats = newNumOfSeats;
-	}
-
-	public boolean getIsReserved() {
-		return isReserved;
-	}
-
-	public boolean getIsOccupied() {
-		return isOccupied;
-	}
-
-	public int getCustomerNo() {
-		return customerNo;
-	}
+	public int getCustomerNo() { return customerNo; }
 
 	public void reserveTable(int custNo) {
 		isReserved = true;
