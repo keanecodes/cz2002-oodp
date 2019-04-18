@@ -171,7 +171,6 @@ public class MenuView {
 			description = sc.nextLine();
 
 			System.out.printf("Enter new price (enter '-1' to leave this unchanged): ");
-			price = sc.nextDouble();
 
       try{
           price = sc.nextDouble();
