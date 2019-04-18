@@ -27,7 +27,7 @@ public class OrderController {
 	}
 
 	public void addOrderItem(Order order, String itemName) {
-		MenuItem item = menu.getMenuItem(itemName);
+		MenuItem item = menu.getItem(itemName);
 		if (item != null)
 			order.addItem(item);
 		else
@@ -35,7 +35,7 @@ public class OrderController {
 	}
 
 	public void removeOrderItem(Order order, String itemName) {
-		MenuItem item = menu.getMenuItem(itemName);
+		MenuItem item = menu.getItem(itemName);
 		if (item != null)
 			order.removeItem(item);
 		else
@@ -43,7 +43,7 @@ public class OrderController {
 	}
 
 	public void addPromotion(Order order, String itemName) {
-		Promotion promotion = menu.getPromotion(itemName);
+		Promotion promotion = menu.getItem(itemName);
 		if (promotion != null)
 			order.addPromotion(promotion);
 		else
@@ -51,7 +51,7 @@ public class OrderController {
 	}
 
 	public void removePromotion(Order order, String itemName) {
-		Promotion promotion = menu.getPromotion(itemName);
+		Promotion promotion = menu.getItem(itemName);
 		if (promotion != null)
 			order.removePromotion(promotion);
 		else
