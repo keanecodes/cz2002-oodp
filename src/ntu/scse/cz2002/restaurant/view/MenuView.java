@@ -34,17 +34,8 @@ public class MenuView {
 		System.out.println("4. Add a promotion item to menu.");
 		System.out.println("5. Update an item in menu.");
 		System.out.println("6. Remove an item from menu.");
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-		System.out.println("7. Back.");
-=======
 		System.out.println("7. Clear all items in menu.");
 		System.out.println("8. Exit menu.");
->>>>>>> Stashed changes
-=======
-		System.out.println("7. Clear all items in menu.");
-		System.out.println("8. Exit menu.");
->>>>>>> Stashed changes
 		System.out.println("");
 	}
 
