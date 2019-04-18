@@ -165,13 +165,13 @@ public class MenuController{
         Promotion promotion;
 
         if((item = this.menu.getMenuItem(name)) != null){
-            item.setDescription(description);
-            item.setPrice(price);
+            if(description.equals("-1")==false)item.setDescription(description);
+            if(price>=0)item.setPrice(price);
             System.out.println("Item susccessfully updated!");
         }
         else if((promotion = this.menu.getPromotion(name)) != null){
-            promotion.setDescription(description);
-            promotion.setPrice(price);
+            if(description.equals("-1")==false)promotion.setDescription(description);
+            if(price>=0)promotion.setPrice(price);
             System.out.println("Item susccessfully updated!");
         }
         else{
