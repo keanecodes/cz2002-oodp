@@ -72,7 +72,7 @@ public class OrderView {
 		
 		Staff currentStaff = sCtrl.getStaff();
 		Utilities.newScreenHeader();
-		System.out.println("// Make Order  // ---------------------------------\n" +   
+		System.out.println("// Make Order  // --------------------------------\n" +   
 				           "--------------------------------------------------\n" +
                            "(1/2) Please Provide Basic Order Details\n" + 
                            "--------------------------------------------------"); 
@@ -108,50 +108,69 @@ public class OrderView {
 	}
 
 	public void editOrderUI(Order order, OrderController orderManager) {
-		int itemChoice;
+		String choice;
 		Scanner sc = new Scanner(System.in);
 		String itemName;
+		
+		System.out.println("--------------------------------------------------\n" +
+                           "(2/2) Order Items Management \n" + 
+                           "--------------------------------------------------\n" +
+                           "Order Details\n" +
+                           "--------------------------------------------------\n" +
+                           "\n\nOrder is currently empty.\n\n\n" +
+                           "--------------------------------------------------\n" +
+                           "\tItems\t| (AI) Add\t(RI) Remove\n" +  
+                           "   Promotions\t| (AP) Add\t(RP) Remove\n" +
+                           "--------------------------------------------------\n" +
+                           "\t(DONE)\t| Save Changes. \n\t\t| Add to Table's Invoice\n" +
+                           "--------------------------------------------------\n" +
+                           "      (CANCEL)  | Discard Changes.\n\t\t| Cancel Order\n" + 
+                           "--------------------------------------------------");
+		System.out.print("> ");
 		do {
-			System.out.println("Select an option to proceed: ");
-			System.out.println("1. Add an item");
-			System.out.println("2. Remove an item");
-			System.out.println("3. Add a promotion");
-			System.out.println("4. Remove a promotion");
-			System.out.println("5. Done");
-			itemChoice = sc.nextInt();
+			choice = sc.next();
 
-			switch (itemChoice) {
-			case 1:
-				System.out.println("Enter name of item: ");
-				itemName = sc.next();
-				orderManager.addOrderItem(order, itemName);
-				System.out.println(itemName + " has been added to order");
-				break;
-			case 2:
-				System.out.println("Enter name of item: ");
-				itemName = sc.next();
-				orderManager.removeOrderItem(order, itemName);
-				System.out.println(itemName + " has been removed from order");
-				break;
-			case 3:
-				System.out.println("Enter name of promotion: ");
-				itemName = sc.next();
-				orderManager.addPromotion(order, itemName);
-				System.out.println(itemName + " has been added to order");
-				break;
-			case 4:
-				System.out.println("Enter name of promotion: ");
-				itemName = sc.next();
-				orderManager.removePromotion(order, itemName);
-				System.out.println(itemName + " has been removed from order");
-				break;
-			case 5:
-				break;
-			default:
-				System.out.println("Invalid choice!");
-				break;
+			switch (choice.toUpperCase()) {
+				case "AI":
+					Utilities.newScreenHeader();
+					System.out.println("// Make Order  // --------------------------------\n" +   
+                                       "--------------------------------------------------\n" +
+                                       "Add Item to Order\n" +
+                                       "--------------------------------------------------");
+					System.out.print("Item name: ");
+					itemName = sc.next();
+					orderManager.addOrderItem(order, itemName);
+					System.out.println(itemName + " has been added to order");
+					break;
+				case "RI":
+					System.out.println("Enter name of item: ");
+					itemName = sc.next();
+					orderManager.removeOrderItem(order, itemName);
+					System.out.println(itemName + " has been removed from order");
+					break;
+				case "AP":
+					System.out.println("Enter name of promotion: ");
+					itemName = sc.next();
+					orderManager.addPromotion(order, itemName);
+					System.out.println(itemName + " has been added to order");
+					break;
+				case "RP":
+					System.out.println("Enter name of promotion: ");
+					itemName = sc.next();
+					orderManager.removePromotion(order, itemName);
+					System.out.println(itemName + " has been removed from order");
+					break;
+				case "DONE":
+					break;
+				case "CANCEL":
+					System.out.println("Cancel Order. Confirm? (Y/n)");
+					break;
+				default:
+					System.out.println("Invalid input. Refer to the option table.");
+					System.out.print("> ");
+					break;
 			}
-		} while (itemChoice != 3);
+		} while (!choice.equalsIgnoreCase("CANCEL"));
 	}
 
 }
