@@ -1,69 +1,110 @@
 package ntu.scse.cz2002.restaurant.view;
 
 import java.util.Scanner;
-import java.util.InputMismatchException;
 import ntu.scse.cz2002.restaurant.model.Order;
+import ntu.scse.cz2002.restaurant.model.Staff;
 import ntu.scse.cz2002.restaurant.util.Utilities;
 import ntu.scse.cz2002.restaurant.control.OrderController;
+import ntu.scse.cz2002.restaurant.control.StaffController;
 
 public class OrderView {
+	
+	private OrderController orderManager = new OrderController();
+	private StaffController sCtrl = new StaffController();
 
 	public void OrderUI() {
 		Scanner sc = new Scanner(System.in);
-		int choice = 0, orderID;
+		String choice = "";
+		int orderID;
 		Order currentOrder;
-		OrderController orderManager = new OrderController();
+		
+		
+		System.out.println("// Order Management // ---------------------------\n" +
+                           "--------------------------------------------------\n" +
+                           " Option\t| Option Description\n" +
+                           "--------------------------------------------------\n" +
+                           "  (A)\t| Add an order\n" + 
+                           "  (E)\t| Edit an order\n" + 
+                           "  (V)\t| View an order\n");
+
+		System.out.println("---------------------------------------------------\n" +
+                           "(<) Back\t\n" +
+                           "---------------------------------------------------");
+		System.out.print("> ");
 		do {
-			System.out.println("Order Submenu");
-			System.out.println("_____________");
-			System.out.println("Select an option to proceed: ");
-			System.out.println("1. Add an order");
-			System.out.println("2. Edit an order");
-			System.out.println("3. View an order");
-			System.out.println("4. Back");
-			System.out.println("Please enter your choice (1 - 4): ");
-
-			try {
-				choice = sc.nextInt();
-			} catch (InputMismatchException ex) {
-				System.out.println("Invalid input! Please try again..");
-				sc.nextLine(); // Clear the garbage input
-				continue;
-			}
 			
-			switch (choice) {
-			case 1:
-				System.out.println("Enter staffID: ");
-				int staffID = sc.nextInt();
-				System.out.println("Enter tableID: ");
-				int tableID = sc.nextInt();
-				System.out.println("Creating Order ...");
-
-				Order order = orderManager.createOrder(staffID, tableID);
-				editOrderUI(order, orderManager);
-				break;
-			case 2:
-				System.out.println("Enter orderID: ");
-				orderID = sc.nextInt();
-				currentOrder = orderManager.findOrder(orderID);
-				editOrderUI(currentOrder, orderManager);
-				break;
-			case 3:
-				System.out.println("Enter orderID: ");
-				orderID = sc.nextInt();
-				currentOrder = orderManager.findOrder(orderID);
-				orderManager.displayOrder(currentOrder);
-				break;
-			case 4:
-				Utilities.clearScreen(); MainRestaurantView.show();
-				break;
-				
-			default:
-				System.out.println("Invalid choice!");
-				break;
+			choice = sc.next();
+			
+			switch (choice.toUpperCase()) {
+				case "A":
+					Order order = inputNewOrderConfig();
+					editOrderUI(order, orderManager);
+					break;
+				case "E":
+					System.out.println("Enter orderID: ");
+					orderID = sc.nextInt();
+					currentOrder = orderManager.findOrder(orderID);
+					editOrderUI(currentOrder, orderManager);
+					break;
+				case "V":
+					System.out.println("Enter orderID: ");
+					orderID = sc.nextInt();
+					currentOrder = orderManager.findOrder(orderID);
+					orderManager.displayOrder(currentOrder);
+					break;
+				case "<":
+					Utilities.clearScreen(); MainRestaurantView.show();
+					break;
+				default:
+					System.out.println("Invalid input. Refer to the option table.");
+					System.out.print("> ");
+					break;
 			}
 
-		} while (choice != 4);
+		} while (!choice.equalsIgnoreCase("<"));
+	}
+	
+	public Order inputNewOrderConfig() {
+		
+		char ans;
+		
+		Scanner sc = new Scanner(System.in);
+		
+		Staff currentStaff = sCtrl.getStaff();
+		Utilities.newScreenHeader();
+		System.out.println("// Make Order  // ---------------------------------\n" +   
+				           "--------------------------------------------------\n" +
+                           "(1/2) Please Provide Basic Order Details\n" + 
+                           "--------------------------------------------------"); 
+		
+		
+		System.out.print("Make order under operator " + sCtrl.getStaff().getName() + "? (y/N)\n");
+		System.out.print("> ");
+		
+		do {
+			ans = sc.next().charAt(0);
+			
+			if (ans == 'y' || ans == 'N')
+				break;
+			else {
+				System.out.println("Invalid input. Expected 2 options: y or N ");
+				System.out.print("> ");
+			}
+				
+		} while (ans != 'y' || ans != 'N');
+		
+		if (ans == 'N') {
+			System.out.println("\n");
+			StaffView.showChangeStaffForm();
+			inputNewOrderConfig();
+		}
+		
+		System.out.print("Table ID\t: ");
+		int tableID = sc.nextInt();
+		
+		Order order = orderManager.createOrder(currentStaff, tableID);
+		
+		return order;
 	}
 
 	public void editOrderUI(Order order, OrderController orderManager) {

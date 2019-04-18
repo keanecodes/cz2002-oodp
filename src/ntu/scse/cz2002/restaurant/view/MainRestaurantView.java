@@ -13,49 +13,29 @@ public class MainRestaurantView {
 
 		String choice = "";
 		
-		printBanner();
-		
-		StaffView.showCurrentStaffInfo();
-		
-		System.out.println("// Restaurant Management Systems // --------------\n" +
-                           "--------------------------------------------------\n" +
-                           " Option\t| Option Description\n" +
-                           "--------------------------------------------------\n" +
-                           "  (O)\t| Orders\n" + 
-                           "  (R)\t| Reservation\n" + 
-                           "  (M)\t| Menu\n\n");
-		
-		System.out.println("// Restaurant Review Systems // -------------------\n" +
-                           "---------------------------------------------------\n" +
-                           " Option\t| Option Description\n" +
-                           "---------------------------------------------------\n" +
-                           "  (I)\t| Invoices\n" + 
-                           "  (P)\t| Print Revenue Report\n\n");
-		
-	
-		System.out.println("---------------------------------------------------\n" +
-		                   "(End) End Session\t (Change) Change Operator\n" +
-		                   "---------------------------------------------------");
-		System.out.print("> ");
+		printMainRestaurantView();
 			
 		do {
 			choice = sc.next();
 		      
 			switch(choice.toUpperCase()) {
 				case "O": 
-					Utilities.clearScreen(); printBanner();
+					Utilities.newScreenHeader();
 					(new OrderView()).OrderUI(); break;
 				case "R":
-					Utilities.clearScreen(); printBanner();
+					Utilities.newScreenHeader();
 					(new ReservationView()).ReservationUI(); break;
 				case "M":
-					Utilities.clearScreen(); printBanner();
+					Utilities.newScreenHeader();
 					(new MenuView()).MenuUI(); break;
 				case "CHANGE":
-					Utilities.clearScreen(); printBanner();
-					StaffView.showChangeStaffForm(); break;
+					Utilities.newScreenHeader();
+					StaffView.showChangeStaffForm();
+					Utilities.clearScreen();
+					printMainRestaurantView();
+					break;
 				case "END": 
-					Utilities.clearScreen(); printBanner();
+					Utilities.newScreenHeader();
 					System.out.println("RRPPS session ends ... Goodbye!");
 					break;
 				default:
@@ -68,9 +48,33 @@ public class MainRestaurantView {
 	
 	}
 	
-	public static void printBanner() {
+	public static void printMainRestaurantView() {
 		System.out.println("**************************************************\n" + 
                            "************** Happy Kopitiam RRPPS **************\n" +
                            "**************************************************\n\n");
+
+		StaffView.showCurrentStaffInfo();
+		
+		System.out.println("// Restaurant Management Systems // --------------\n" +
+		                "--------------------------------------------------\n" +
+		                " Option\t| Option Description\n" +
+		                "--------------------------------------------------\n" +
+		                "  (O)\t| Orders\n" + 
+		                "  (R)\t| Reservation\n" + 
+		                "  (M)\t| Menu\n\n");
+		
+		System.out.println("// Restaurant Review Systems // -------------------\n" +
+		                "---------------------------------------------------\n" +
+		                " Option\t| Option Description\n" +
+		                "---------------------------------------------------\n" +
+		                "  (I)\t| Invoices\n" + 
+		                "  (P)\t| Print Revenue Report\n\n");
+		
+		
+		System.out.println("---------------------------------------------------\n" +
+		                "(End) End Session\t (Change) Change Operator\n" +
+		                "---------------------------------------------------");
+		System.out.print("> ");
 	}
+	
 }

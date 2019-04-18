@@ -35,6 +35,5 @@ public class StaffView {
 		ctrl.changeCurrentStaffTo(new Staff(name, id));
 		
 		System.out.println("Successfully changed operator.");
-		MainRestaurantView.show();
 	}
 }

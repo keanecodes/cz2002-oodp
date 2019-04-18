@@ -84,7 +84,7 @@ public class MenuController{
             }
         }
 
-        System.out.println("Types list successfully updated!");
+        System.out.println("Types list successfully updated!\n");
     }
 
     /**

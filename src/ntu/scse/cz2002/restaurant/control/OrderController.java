@@ -18,10 +18,10 @@ public class OrderController {
 	public OrderController() {
 	}
 
-	public Order createOrder(int staffID, int tableID) {
-		Staff corrStaff = staffManager.findStaff(staffID);
+	public Order createOrder(Staff staff, int tableID) {
+		
 		orderID += 1;
-		order = new Order(corrStaff, orderID, tableID);
+		order = new Order(staff, orderID, tableID);
 		orderArr.add(order);
 		return order;
 	}
