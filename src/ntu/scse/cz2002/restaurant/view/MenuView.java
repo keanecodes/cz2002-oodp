@@ -55,7 +55,7 @@ public class MenuView {
 	public static void processUserInput(int c) {
 		String name;
 		String description;
-		int price;
+		double price;
 		String type;
 		Scanner sc = new Scanner(System.in);
 
@@ -80,18 +80,17 @@ public class MenuView {
 			System.out.printf("Enter item description: ");
 			description = sc.nextLine();
 
+			System.out.println("Enter item type: ");
+			type = sc.nextLine();
+
 			System.out.printf("Enter item price: ");
 
       try{
-          price = sc.nextInt();
-          sc.nextLine();
+          price = sc.nextDouble();
       } catch(InputMismatchException ex){
           System.out.println("Invalid price input!");
           break;
       }
-
-			System.out.println("Enter item type: ");
-			type = sc.nextLine();
 
 			item = new MenuItem(name, description, price, type);
 
@@ -142,7 +141,7 @@ public class MenuView {
 			System.out.printf("Enter promotion price: ");
 
       try{
-          price = sc.nextInt();
+          price = sc.nextDouble();
       } catch(InputMismatchException ex){
           System.out.println("Invalid price input!");
           break;
@@ -160,7 +159,7 @@ public class MenuView {
 			description = sc.nextLine();
 
 			System.out.printf("Enter new price (enter '-1' to leave this unchanged): ");
-			price = sc.nextInt();
+			price = sc.nextDouble();
 
 			menuMan.updateItem(name, description, price);
 			break;

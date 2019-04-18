@@ -160,7 +160,7 @@ public class MenuController{
     /**
      * Update the information for an item.
      */
-    public void updateItem(String name, String description, int price){
+    public void updateItem(String name, String description, double price){
         MenuItem item;
         Promotion promotion;
 
