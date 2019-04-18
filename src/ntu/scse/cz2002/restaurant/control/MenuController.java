@@ -36,11 +36,11 @@ public class MenuController{
      * @param promotions The list of promotion items
      */
     public MenuController(){
+        types = new ArrayList<String>();
+
         try{
             this.loadItems(itemFilename, promoFilename);
         } catch (Exception e){System.out.println("No menu data found.");}
-
-        types = new ArrayList<String>();
     }
 
     // deprecated
