@@ -65,15 +65,19 @@ public class MenuView {
         printInputList();
         break;
 		case 1:
+        System.out.println(">> Menu Contents by Category:");
 			menuMan.printItemsByCategory();
 			System.out.println();
 			break;
 		case 2:
+        System.out.println(">> Menu Contents by Name:");
 			menuMan.printItemsByName();
 			System.out.println();
 			break;
 		case 3:
 			MenuItem item;
+
+      System.out.println(">> New individual item");
 
 			System.out.printf("Enter item name: ");
 			name = sc.nextLine();
@@ -104,6 +108,8 @@ public class MenuView {
         MenuItem promoItem;
         ArrayList<MenuItem> items = new ArrayList<MenuItem>();
 			Promotion promotion;
+
+      System.out.println(">> New promotion item");
 
 			System.out.printf("Enter promotion name: ");
 			name = sc.nextLine();
@@ -153,7 +159,9 @@ public class MenuView {
 			menuMan.addItem(promotion);
 			break;
 		case 5:
-			System.out.printf("Enter item/promotion name: ");
+        System.out.println(">> Update item/promotion");
+
+        System.out.printf("Enter item/promotion name: ");
 			name = sc.nextLine();
 
 			System.out.printf("Enter new description (enter '-1' to leave this unchanged): ");
@@ -162,10 +170,20 @@ public class MenuView {
 			System.out.printf("Enter new price (enter '-1' to leave this unchanged): ");
 			price = sc.nextDouble();
 
+      try{
+          price = sc.nextDouble();
+      } catch(InputMismatchException ex){
+          System.out.println("Invalid price input!");
+          break;
+      }
+
 			menuMan.updateItem(name, description, price);
 			break;
 		case 6:
-			System.out.printf("Enter item/promotion name: ");
+
+        System.out.println(">> Remove item/promotion");
+
+        System.out.printf("Enter item/promotion name: ");
 			name = sc.nextLine();
 
 			menuMan.removeItem(name);
