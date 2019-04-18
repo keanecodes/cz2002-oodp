@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import ntu.scse.cz2002.restaurant.control.ReservationController;
+import ntu.scse.cz2002.restaurant.util.Utilities;
 
 public class ReservationView {
 
@@ -19,7 +20,7 @@ public class ReservationView {
 		System.out.println("2. View reservations");
 		System.out.println("3. Add a new reservation");
 		System.out.println("4. Remove a existing reservation");
-		System.out.println("5. Quit");
+		System.out.println("5. Back");
 	}
 
 	public void ReservationUI() {
@@ -50,6 +51,7 @@ public class ReservationView {
 				reserveMangager.removeReservation();
 				break;
 			case 5:
+				Utilities.clearScreen(); MainRestaurantView.show();
 				break;
 			default:
 				System.out.println("Invalid choice!");

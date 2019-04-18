@@ -1,3 +1,0 @@
-(Year)|(Month)|(Day)|(Time)|(OrderID)|(Amount)
-2019|1|12|(Time)|001|29.21
-testing to see if this line exist!

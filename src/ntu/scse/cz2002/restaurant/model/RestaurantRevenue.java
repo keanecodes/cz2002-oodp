@@ -2,7 +2,7 @@ package ntu.scse.cz2002.restaurant.model;
 
 import java.util.Date;
 
-import ntu.scse.cz2002.restaurant.dataAccess.DataArray;
+import ntu.scse.cz2002.restaurant.data.DataArray;
 import ntu.scse.cz2002.restaurant.util.CalendarFormatter;
 
 import java.io.IOException;

@@ -25,6 +25,11 @@ public class Staff implements Comparable<Staff>, Serializable {
 		this.jobTitle = jobTitle;
 		this.lastUsed = new Date();
 	}
+	
+	public Staff(String name, int staffID) {
+		this.name = name;
+		this.staffID = staffID;
+	}
 
 	public String getName() {
 		return name;

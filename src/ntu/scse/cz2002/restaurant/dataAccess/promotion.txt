@@ -1,5 +1,0 @@
-Lunch Set A|Fish and chips and any soda of your choice! Available from 12 pm to 2 pm|9.90 
-Lunch Set B|Grilled chicken chop and any fruit smoothie of your choice! Available from 12 pm to 2 pm|9.90
-Lunch Set C|Seafood fried rice and any tea of your choice! Available from 12 pm to 2 pm|8.90
-Dinner Set A|Fish and chips, mushroom soup and any soda of your choice! Available from 6 pm to 8 pm|10.90 
-Dinner Set B|Grilled chicken chop, fries and any fruit smoothie of your choice! Available from 6 pm to 8 pm|10.90
