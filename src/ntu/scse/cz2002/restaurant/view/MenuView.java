@@ -128,7 +128,7 @@ public class MenuView {
           System.out.printf("Enter the name of item %d\n", i+1);
           itemName = sc.nextLine();
 
-          promoItem = menuMan.getMenu().getMenuItem(itemName);
+          promoItem = menuMan.getMenu().getItem(itemName);
 
           if(promoItem != null){
               items.add(promoItem);

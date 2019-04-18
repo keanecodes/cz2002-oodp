@@ -27,7 +27,6 @@ public class MenuController{
     private ArrayList<String> types;
 
     private String itemFilename = "items.dat";
-    private String promoFilename = "promos.dat";
 
     /**
      * Create a controller for menu contents.
@@ -39,33 +38,16 @@ public class MenuController{
         types = new ArrayList<String>();
 
         try{
-            this.loadItems(itemFilename, promoFilename);
+            this.loadItems(itemFilename);
         } catch (Exception e){System.out.println("No menu data found.");}
     }
 
     // deprecated
-    private void loadItems(String itemFilename, String promoFilename){
+    private void loadItems(String itemFilename){
         ArrayList<MenuItem> items = (ArrayList) DataAccessor.read(itemFilename);
-        ArrayList<Promotion> promotions = (ArrayList) DataAccessor.read(promoFilename);
 
-        if(items != null && promotions != null){
-            this.menu = new Menu(items, promotions);
-
-            System.out.println("Menu contents successfully loaded!");
-            updateTypesList(items);
-        }
-        else if(items != null && promotions == null){
-            ArrayList<Promotion> dummy = new ArrayList<Promotion>();
-
-            this.menu = new Menu(items, dummy);
-
-            System.out.println("Menu contents successfully loaded!");
-            updateTypesList(items);
-        }
-        else if(items == null && promotions != null){
-            ArrayList<MenuItem> dummy = new ArrayList<MenuItem>();
-
-            this.menu = new Menu(dummy, promotions);
+        if(items != null){
+            this.menu = new Menu(items);
 
             System.out.println("Menu contents successfully loaded!");
             updateTypesList(items);
@@ -79,19 +61,12 @@ public class MenuController{
 
     public void saveItems(){
         int itemSave = DataAccessor.write(itemFilename, this.menu.getItemList());
-        int promoSave = DataAccessor.write(promoFilename, this.menu.getPromotionList());
 
-        if(itemSave != 1 && promoSave != 1){
+        if(itemSave != 1){
             System.out.println("Menu contents successfully saved!");
         }
         else{
-            if(itemSave == 1){
-                System.out.println("Failed to save items!");
-            }
-
-            if(promoSave == 1){
-                System.out.println("Failed to save promotions!");
-            }
+            System.out.println("Failed to save items!");
         }
     }
 
@@ -121,42 +96,43 @@ public class MenuController{
     }
 
     /**
-     * Add an ala carte item into the menu.
+     * Add an individual item into the menu.
      */
     public void addItem(MenuItem item){
-        this.menu.addMenuItem(item);
-        System.out.println("The following menu item has been added to the menu:");
+        this.menu.addItem(item);
+        System.out.println("The following item has been added to the menu:");
         System.out.println("  Name: " + item.getName());
         System.out.println("  Description: " + item.getDescription());
         System.out.println("  Price: $" +  String.valueOf(item.getPrice()));
         System.out.println("  Type: " + item.getType());
+
+        updateTypesList(this.menu.getItemList());
     }
 
     /**
-     * Add a promotion item into the menu.
-     */
-    public void addItem(Promotion promotion){
-        this.menu.addPromotion(promotion);
-        System.out.println("The following set has been addded to the menu:");
-        System.out.println("  Name: " + promotion.getName());
-        System.out.println("  Description: " + promotion.getDescription());
-        System.out.println("  Price: $" + String.valueOf(promotion.getPrice()));
-    }
-
-    /**
-     * Remove an item (ala carte/promotion) from the menu.
+     * Remove an item (individual/promotion) from the menu.
      */
     public void removeItem(String name){
-        if(this.menu.removeMenuItem(name) == 1){
-            if(this.menu.removePromotion(name) == 1){
-                System.out.println(name + " does not exist in menu!");
-                return;
-            }
+        if(this.menu.removeItem(name) == 1){
+            System.out.println(name + " does not exist in menu!");
+            return;
         }
 
         System.out.println(name + " has been successfully deleted from menu!");
     }
 
+    public void clearMenu(){
+        if(this.menu.getItemCount() != 0){
+                for(int j=0;j<this.menu.getItemCount();j++){
+                    this.menu.getItemList().remove(j);
+                }
+
+                System.out.println("Menu is cleared.");
+        }
+        else{
+            System.out.println("Menu is empty!");
+        }
+    }
     /**
      * Update the information for an item.
      */
@@ -164,14 +140,9 @@ public class MenuController{
         MenuItem item;
         Promotion promotion;
 
-        if((item = this.menu.getMenuItem(name)) != null){
+        if((item = this.menu.getItem(name)) != null){
             if(description.equals("-1")==false)item.setDescription(description);
             if(price>=0)item.setPrice(price);
-            System.out.println("Item susccessfully updated!");
-        }
-        else if((promotion = this.menu.getPromotion(name)) != null){
-            if(description.equals("-1")==false)promotion.setDescription(description);
-            if(price>=0)promotion.setPrice(price);
             System.out.println("Item susccessfully updated!");
         }
         else{
@@ -190,7 +161,7 @@ public class MenuController{
                     MenuItem item = this.menu.getItemList().get(j);
 
                     if(item.getType().equals(this.types.get(i))){
-                        System.out.println(item.getName() + "  $" + item.getPrice());
+                        System.out.println(item.getName() + "  $" + String.valueOf(item.getPrice()));
                         System.out.println(item.getDescription());
                     }
                 }
@@ -198,19 +169,6 @@ public class MenuController{
         }
         else{
             System.out.println("No item to print.");
-        }
-
-        if(this.menu.getPromotionCount() != 0){
-            System.out.printf("\nPromotion\n");
-
-            for(int k=0;k<this.menu.getPromotionCount();k++){
-                Promotion promotion = this.menu.getPromotionList().get(k);
-                System.out.println(promotion.getName() + " $" + String.valueOf(promotion.getPrice()));
-                System.out.println("  " + promotion.getDescription());
-            }
-        }
-        else{
-            System.out.println("No promotion to print.");
         }
     }
 
@@ -220,22 +178,13 @@ public class MenuController{
     public void printItemsByName(){
         ArrayList<String> names = new ArrayList<String>();
         MenuItem item;
-        Promotion promotion;
 
         for(int i=0;i<this.menu.getItemCount();i++){
             names.add(this.menu.getItemList().get(i).getName());
         }
 
-        for(int j=0;j<this.menu.getPromotionCount();j++){
-            names.add(this.menu.getPromotionList().get(j).getName());
-        }
-
         if(this.menu.getItemCount() == 0){
             System.out.println("No item to print.");
-        }
-
-        if(this.menu.getPromotionCount() == 0){
-            System.out.println("No promotion to print.");
         }
 
         if(names.size() == 0){return;}
@@ -243,18 +192,11 @@ public class MenuController{
         Collections.sort(names);
 
         for(int k=0;k<names.size();k++){
-            if(this.menu.getMenuItem(names.get(k)) == null){
-                if(this.menu.getPromotion(names.get(k)) == null){
-                    System.out.println(names.get(k) + " does not exist in menu!");
-                }
-                else{
-                    promotion = this.menu.getPromotion(names.get(k));
-                    System.out.println(names.get(k) + " $" + String.valueOf(promotion.getPrice()));
-                    System.out.println("  " + promotion.getDescription());
-                }
+            if(this.menu.getItem(names.get(k)) == null){
+                System.out.println(names.get(k) + " does not exist in menu!");
             }
             else{
-                item = this.menu.getMenuItem(names.get(k));
+                item = this.menu.getItem(names.get(k));
                 System.out.println(names.get(k) + " $" + String.valueOf(item.getPrice()));
                 System.out.println("  " + item.getDescription());
             }
