@@ -57,3 +57,8 @@ local.properties
 
 # Johan's addition
 **/.meghanada
+
+# K
+*.class
+*.classpath
+*.DS_Store
