@@ -3,6 +3,8 @@ package ntu.scse.cz2002.restaurant.view;
 import java.util.Scanner;
 import ntu.scse.cz2002.restaurant.control.MenuController;
 import ntu.scse.cz2002.restaurant.model.*;
+import ntu.scse.cz2002.restaurant.util.Utilities;
+
 import java.util.InputMismatchException;
 import java.util.ArrayList;
 
@@ -32,7 +34,7 @@ public class MenuView {
 		System.out.println("4. Add a promotion item to menu.");
 		System.out.println("5. Update an item in menu.");
 		System.out.println("6. Remove an item from menu.");
-		System.out.println("7. Exit menu.");
+		System.out.println("7. Back.");
 		System.out.println("");
 	}
 
@@ -191,6 +193,7 @@ public class MenuView {
 		case 7:
         menuMan.saveItems();
 			quit = 1;
+			Utilities.clearScreen(); MainRestaurantView.show();
 			break;
 		default:
 			System.out.println("Invalid option!");

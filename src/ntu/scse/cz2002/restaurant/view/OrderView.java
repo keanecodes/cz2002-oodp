@@ -3,6 +3,7 @@ package ntu.scse.cz2002.restaurant.view;
 import java.util.Scanner;
 import java.util.InputMismatchException;
 import ntu.scse.cz2002.restaurant.model.Order;
+import ntu.scse.cz2002.restaurant.util.Utilities;
 import ntu.scse.cz2002.restaurant.control.OrderController;
 
 public class OrderView {
@@ -54,7 +55,9 @@ public class OrderView {
 				orderManager.displayOrder(currentOrder);
 				break;
 			case 4:
+				Utilities.clearScreen(); MainRestaurantView.show();
 				break;
+				
 			default:
 				System.out.println("Invalid choice!");
 				break;
