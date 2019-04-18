@@ -7,22 +7,34 @@ import ntu.scse.cz2002.restaurant.model.MenuItem;
 import ntu.scse.cz2002.restaurant.model.Staff;
 
 public class StaffController {
+	
+	private final static String DATA_FILE = "staff.dat";
+	
 	private static ArrayList<Staff> staffArr;
+	
+	private Staff currentStaff;
+	
+	public StaffController() {
+		try {
+			//Write dummy data
+			/*staffArr = new ArrayList<Staff>();
+			Staff s = new Staff("Alex", 1820377);
 
-	public void loadStaff(String staffFilename) {
-		staffArr = (ArrayList<Staff>) DataAccessor.read(staffFilename);
+			staffArr.add(s);
+			DataAccessor.write(DATA_FILE, s);*/
+			
+			getStaff();
+			
+		} catch (Exception e){System.out.println("No menu data found.");}
 	}
+	
 
-	public ArrayList<Staff> getStaffArr() {
-		return staffArr;
+	public Staff getStaff() { 
+		return currentStaff = (Staff) DataAccessor.read(DATA_FILE);
 	}
-
-	public void addStaff(Staff s) {
-		staffArr.add(s);
-	}
-
-	public void removeStaff(Staff s) {
-		staffArr.remove(s);
+	
+	public void changeCurrentStaffTo(Staff s) {
+		DataAccessor.write(DATA_FILE, s);
 	}
 
 	public Staff findStaff(int staffID) {

@@ -1,5 +1,6 @@
 package ntu.scse.cz2002.restaurant.view;
 
+import java.text.ParseException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -14,34 +15,31 @@ public class MainRestaurantView {
 		
 		printBanner();
 		
-		// TODO StaffView
+		StaffView.showCurrentStaffInfo();
 		
-		System.out.println("// Restaurant Management Systems // --------\n" +
-                           "--------------------------------------------\n" +
+		System.out.println("// Restaurant Management Systems // --------------\n" +
+                           "--------------------------------------------------\n" +
                            " Option\t| Option Description\n" +
-                           "--------------------------------------------\n" +
+                           "--------------------------------------------------\n" +
                            "  (O)\t| Orders\n" + 
                            "  (R)\t| Reservation\n" + 
                            "  (M)\t| Menu\n\n");
 		
-		System.out.println("// Restaurant Review Systems // ------------\n" +
-                           "--------------------------------------------\n" +
+		System.out.println("// Restaurant Review Systems // -------------------\n" +
+                           "---------------------------------------------------\n" +
                            " Option\t| Option Description\n" +
-                           "--------------------------------------------\n" +
+                           "---------------------------------------------------\n" +
                            "  (I)\t| Invoices\n" + 
                            "  (P)\t| Print Revenue Report\n\n");
 		
-		System.out.println("(End) End Session");
+	
+		System.out.println("---------------------------------------------------\n" +
+		                   "(End) End Session\t (Change) Change Operator\n" +
+		                   "---------------------------------------------------");
 		System.out.print("> ");
 			
 		do {
-			
-		      try{
-		    	  choice = sc.next();
-		      } catch(InputMismatchException ex) {
-		          System.out.println("Invalid input!");
-		          break;
-		      }
+			choice = sc.next();
 		      
 			switch(choice.toUpperCase()) {
 				case "O": 
@@ -53,6 +51,9 @@ public class MainRestaurantView {
 				case "M":
 					Utilities.clearScreen(); printBanner();
 					(new MenuView()).MenuUI(); break;
+				case "CHANGE":
+					Utilities.clearScreen(); printBanner();
+					StaffView.showChangeStaffForm(); break;
 				case "END": 
 					Utilities.clearScreen(); printBanner();
 					System.out.println("RRPPS session ends ... Goodbye!");
@@ -68,8 +69,8 @@ public class MainRestaurantView {
 	}
 	
 	public static void printBanner() {
-		System.out.println("********************************************\n" + 
-                           "*********** Happy Kopitiam RRPPS ***********\n" +
-                           "********************************************\n\n");
+		System.out.println("**************************************************\n" + 
+                           "************** Happy Kopitiam RRPPS **************\n" +
+                           "**************************************************\n\n");
 	}
 }

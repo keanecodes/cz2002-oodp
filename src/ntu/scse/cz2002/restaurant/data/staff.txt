@@ -1,4 +1,0 @@
-Alice Bob|F|67901111|Waitress|Thu, Dec 31 2002 23:37:50
-Bob Charles|M|67902222|Waiter|Thu, Dec 31 1999 23:37:50
-Charles David|M|6790333|Waiter|Thu, Dec 31 2000 23:37:50
-Joseph|M|67909999|Waiter|Thu, Dec 31 2001 23:37:50

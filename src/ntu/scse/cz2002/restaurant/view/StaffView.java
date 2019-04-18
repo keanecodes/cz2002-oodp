@@ -1,19 +1,40 @@
 package ntu.scse.cz2002.restaurant.view;
 
-import java.text.ParseException;
+import java.util.Scanner;
 
+import ntu.scse.cz2002.restaurant.control.StaffController;
 import ntu.scse.cz2002.restaurant.model.Staff;
+import ntu.scse.cz2002.restaurant.util.DateUtil;
 
 public class StaffView {
-
-	public static void showWelcomeHeadingFor(Staff s) throws ParseException {
-		System.out.println("Hello, " + s.getName() + " (" + s.getStaffID() + ")\n");
+	
+	static StaffController ctrl = new StaffController();
+	
+	
+	public static void showCurrentStaffInfo() {
+		Staff s = ctrl.getStaff();
+		System.out.println(DateUtil.now() + "\t\tOperator: " + s.getName() + "\n\n");
 	}
-
-	public void printInfoOf(Staff s) {
-		System.out.println("Name: " + s.getName());
-		System.out.println("Gender: " + s.getGender());
-		System.out.println("Staff ID: " + s.getStaffID());
-		System.out.println("Job Title: " + s.getJobTitle());
+	
+	public static void showChangeStaffForm() {
+		String name;
+		int id;
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("// Change Current Session Operator // ------------\n" +
+                           "--------------------------------------------------\n" + 		
+                           "Please Enter New Operator Information\n" + 
+                           "--------------------------------------------------"); 
+		System.out.print("Name\t: ");
+		name = sc.nextLine();
+		System.out.print("ID\t: ");
+		id = sc.nextInt();
+		
+		//TODO try catch staff info retrieve
+		//TODO limit character
+		ctrl.changeCurrentStaffTo(new Staff(name, id));
+		
+		System.out.println("Successfully changed operator.");
+		MainRestaurantView.show();
 	}
 }
