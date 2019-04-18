@@ -122,12 +122,16 @@ public class MenuController{
     }
 
     public void clearMenu(){
-        if(this.menu.getItemCount() != 0){
-                for(int j=0;j<this.menu.getItemCount();j++){
-                    this.menu.getItemList().remove(j);
-                }
+        String target;
 
-                System.out.println("Menu is cleared.");
+        if(this.menu.getItemCount() != 0){
+            while(this.menu.getItemCount() != 0){
+                    target = this.menu.getItemList().get(0).getName();
+                    this.menu.removeItem(target);
+                    this.types.remove(0);
+            }
+
+            System.out.println("Menu is cleared.");
         }
         else{
             System.out.println("Menu is empty!");

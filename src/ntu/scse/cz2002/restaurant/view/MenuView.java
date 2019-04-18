@@ -34,7 +34,12 @@ public class MenuView {
 		System.out.println("4. Add a promotion item to menu.");
 		System.out.println("5. Update an item in menu.");
 		System.out.println("6. Remove an item from menu.");
+<<<<<<< Updated upstream
 		System.out.println("7. Back.");
+=======
+		System.out.println("7. Clear all items in menu.");
+		System.out.println("8. Exit menu.");
+>>>>>>> Stashed changes
 		System.out.println("");
 	}
 
@@ -190,7 +195,24 @@ public class MenuView {
 
 			menuMan.removeItem(name);
 			break;
-		case 7:
+    case 7:
+        char ans='0';
+
+        System.out.println(">> Remove ALL items/promotions");
+        System.out.println("Are you sure you want to remove all current items in the menu? (y/n)");
+
+        c = sc.next().charAt(0);
+
+        while(c != 'y' && c != 'Y' && c != 'n' && c != 'N'){
+            System.out.println("Please answer with 'y' or 'n' only!");
+
+            System.out.println("Are you sure you want to remove all current items in the menu? (y/n)");
+            c = sc.next().charAt(0);
+        }
+
+        if(c == 'y' || c == 'Y')menuMan.clearMenu();
+        break;
+		case 8:
         menuMan.saveItems();
 			quit = 1;
 			Utilities.clearScreen(); MainRestaurantView.show();
