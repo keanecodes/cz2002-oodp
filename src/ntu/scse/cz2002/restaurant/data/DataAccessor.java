@@ -7,6 +7,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DataAccessor {
 	
@@ -55,5 +57,28 @@ public class DataAccessor {
 
 		return data;
 	}
+	
+	public static List readList(String filename) {
+		Path fileDataPath = Paths.get(DATAPATH.toString(), filename);
+		
+		List data = null;
+
+		try {
+			FileInputStream f = new FileInputStream(fileDataPath.toString());
+			ObjectInputStream o = new ObjectInputStream(f);
+
+			data = (ArrayList) o.readObject();
+
+			o.close();
+			f.close();
+		} catch (IOException e) {
+			System.out.println("Failed to load data: IOException");
+		} catch (ClassNotFoundException e) {
+			System.out.println("Failed to load data: ClassNotFoundException");
+		}
+
+		return data;
+	}
+	
 	
 }

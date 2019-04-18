@@ -1,11 +1,12 @@
 package ntu.scse.cz2002.restaurant.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import ntu.scse.cz2002.restaurant.model.MenuItem;
 import ntu.scse.cz2002.restaurant.model.Staff;
 
-public class Order {
+public class Order implements Serializable {
 	private ArrayList<MenuItem> items = new ArrayList<MenuItem>();
 	private ArrayList<Promotion> promotions = new ArrayList<Promotion>();
 	private Staff staff;

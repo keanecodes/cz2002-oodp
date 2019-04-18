@@ -3,26 +3,30 @@ package ntu.scse.cz2002.restaurant.control;
 import ntu.scse.cz2002.restaurant.model.Order;
 import ntu.scse.cz2002.restaurant.model.Staff;
 import ntu.scse.cz2002.restaurant.model.MenuItem;
+import ntu.scse.cz2002.restaurant.data.DataAccessor;
 import ntu.scse.cz2002.restaurant.model.Menu;
 import ntu.scse.cz2002.restaurant.model.Promotion;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class OrderController {
+	private final static String DATA_FILE = "order.dat";
 	private Order order;
-	private static int orderID = 0;
 	StaffController staffManager = new StaffController();
 	MenuController menuManager = new MenuController();
 	Menu menu = menuManager.getMenu();
-	public static ArrayList<Order> orderArr = new ArrayList<Order>();
+	private ArrayList<Order> orderArr = (ArrayList<Order>) DataAccessor.readList(DATA_FILE);
 
 	public OrderController() {
-	}
 
+	}
 	public Order createOrder(Staff staff, int tableID) {
 		
-		orderID += 1;
+		int orderID = orderArr.size();
 		order = new Order(staff, orderID, tableID);
 		orderArr.add(order);
+		
 		return order;
 	}
 
@@ -43,7 +47,7 @@ public class OrderController {
 	}
 
 	public void addPromotion(Order order, String itemName) {
-		Promotion promotion = menu.getItem(itemName);
+		Promotion promotion = (Promotion) menu.getItem(itemName);
 		if (promotion != null)
 			order.addPromotion(promotion);
 		else
@@ -51,7 +55,7 @@ public class OrderController {
 	}
 
 	public void removePromotion(Order order, String itemName) {
-		Promotion promotion = menu.getItem(itemName);
+		Promotion promotion = (Promotion) menu.getItem(itemName);
 		if (promotion != null)
 			order.removePromotion(promotion);
 		else
@@ -68,6 +72,43 @@ public class OrderController {
 		System.out.println("Table ID: " + o.getTableId());
 		System.out.println("Items ordered: " + o.getItems());
 		System.out.println("Promotions ordered: " + o.getPromotions());
+	}
+	
+	public void printItemsOf(Order order) {
+		ArrayList<MenuItem> items = order.getItems(); 
+		
+		 
+		boolean visited[] = new boolean[items.size()]; 
+	      
+	    Arrays.fill(visited, false); 
+	  
+	    // Traverse through array elements and 
+	    // count frequencies 
+	    for (int i = 0; i < items.size(); i++) { 
+	  
+	        // Skip this element if already processed 
+	        if (visited[i] == true) 
+	            continue; 
+	  
+	        // Count frequency 
+	        int count = 1; 
+	        for (int j = i + 1; j < items.size(); j++) { 
+	            if (items.get(i) == items.get(j)) { 
+	                visited[j] = true; 
+	                count++; 
+	            } 
+	        } 
+	        System.out.println(count + "\t" + items.get(i).getName()); 
+	    } 
+		System.out.println("");
+	} 
+	
+	public void saveOrderArray() {
+		for (int i = 0; i < orderArr.size(); i++) {
+			System.out.println(orderArr.get(i).getOrderId());
+		}
+		DataAccessor.write(DATA_FILE, orderArr);
+		
 	}
 
 	public Order findOrder(int orderID) {

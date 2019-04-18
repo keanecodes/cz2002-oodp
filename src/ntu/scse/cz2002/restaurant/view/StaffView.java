@@ -34,6 +34,6 @@ public class StaffView {
 		//TODO limit character
 		ctrl.changeCurrentStaffTo(new Staff(name, id));
 		
-		System.out.println("Successfully changed operator.");
+		System.out.println("\nSuccessfully changed operator.\n");
 	}
 }
