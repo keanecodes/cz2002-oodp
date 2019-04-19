@@ -6,19 +6,44 @@ import ntu.scse.cz2002.restaurant.control.ReservationController;
 import ntu.scse.cz2002.restaurant.control.TableController;
 import ntu.scse.cz2002.restaurant.util.Utilities;
 
+/**
+Handles the UI catered for Reservation as a sub-menu
+@author  Gee Cheng Mun
+@version 1.0
+@since   2019-04-17
+*/
 public class ReservationView {
 
+	/**
+	 * A standard Java Scanner used for processing user input
+	 */
 	private static Scanner sc = new Scanner(System.in);
 
+	/**
+	 * Creation of a reservation controller object
+	 */
 	ReservationController reserveManager = new ReservationController();
+	
+	/**
+	 * A table controller attribute
+	 */
 	TableController tCtrl;
 	
+	/**
+	 * A constructor of the Reservation view
+	 */
 	public ReservationView() { }
 	
+	/**
+	 * @param tCtrl: Passes in the table controller object
+	 */
 	public ReservationView(TableController tCtrl) { 
 		this.tCtrl = tCtrl;
 	}
 
+	/**
+	 * Displays the options available for 'Reservations'
+	 */
 	private void displayReservationOptions() {
 		System.out.println("// Reservation Management // ---------------------\n" +
 			     		   "--------------------------------------------------\n" +
@@ -35,6 +60,9 @@ public class ReservationView {
 		System.out.print("> ");
 	}
 
+	/**
+	 * Takes in the user input and perform the functionality according to the option selected
+	 */
 	public void ReservationUI() {
 
 		displayReservationOptions();

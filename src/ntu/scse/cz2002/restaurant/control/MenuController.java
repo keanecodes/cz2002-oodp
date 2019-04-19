@@ -164,8 +164,6 @@ public class MenuController{
      */
     public void updateItem(String name, String description, double price){
         MenuItem item;
-        Promotion promotion;
-
         if((item = this.menu.getItem(name)) != null){
             if(description.equals("-1")==false)item.setDescription(description);
             if(price>=0)item.setPrice(price);

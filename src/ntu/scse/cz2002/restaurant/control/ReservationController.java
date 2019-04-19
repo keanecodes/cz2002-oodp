@@ -21,62 +21,100 @@ import java.util.GregorianCalendar;
 import java.util.InputMismatchException;
 import java.util.Iterator;
 
+/**
+Handles the responsibilities of the reservation manager
+@author  Gee Cheng Mun
+@version 1.0
+@since   2019-04-17
+*/
 public class ReservationController {
 
-	/* A list of all tables in the Restaurant */
+
+	/**
+	 * A list of all tables in the Restaurant 
+	 */
 	private static final int[] TABLE_SIZE = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 8, 8, 8, 8, 8,
 			10, 10, 10, 10, 10 };
 
-	/* Opening and closing timing of the AM session */
+	/**
+	 * Opening timing of the AM session: 11am
+	 */
 	private static final int RESTAURANT_AM_OPENING_HOUR = 11;
+	
+	/**
+	 * Closing timing of the AM session: 3pm
+	 */
 	private static final int RESTAURANT_AM_CLOSING_HOUR = 15;
-
-	/* Opening and closing timing of the PM session */
+	
+	/**
+	 * Opening timing of the PM session: 6pm 
+	 */
 	private static final int RESTAURANT_PM_OPENING_HOUR = 18;
+	
+	/**
+	 * Opening timing of the PM session: 10pm
+	 */
 	private static final int RESTAURANT_PM_CLOSING_HOUR = 22;
 	
+    /**
+     * The name of the file containing reservation's data.
+     * To be passed into the addReservation(), removeReservation() and ReservationController() methods.
+     */
 	private final static String DATA_FILE = "reservation.dat";
 
-	/* A static instance of restaurant manager */
+	/**
+	 * A static instance of the restaurant manager 
+	 */
 	private static ReservationController reserveMgr = null;
+	
+	/**
+	 * An instance of table manager
+	 */
 	TableController tCtrl;
 
-	/* A list of all physical tables in the restaurants */
+	/**
+	 * A list of all physical tables in the restaurants 
+	 */
 	private static List<Table> tables;
 
-	/* A list of all reservations in the restaurant */
+	/**
+	 * A list of all reservations in the restaurant
+	 */
 	private static List<Reservation> reservations;
 
-	/* Standard Java Scanner process user input */
+	/**
+	 * A standard Java Scanner used for processing user input
+	 */
 	private static Scanner sc;
 
-	/* A simple date format for formatting all date/time related information */
+	/**
+	 * A simple date format for formatting all date/time related information
+	 */
 	private static SimpleDateFormat dateFormatter = null;
 
-	/*
-	 * A constructor to set up all the array lists of the tables and reservations
-	 * and create the tables
+	/**
+	 * A constructor to set up all the array list reservations
 	 */
 	public ReservationController() {
 		sc = new Scanner(System.in);
-		//tables = new ArrayList<Table>();
 		reservations = (ArrayList<Reservation>) DataAccessor.readList(DATA_FILE);
-		//reservations = new ArrayList<Reservation>();
 		dateFormatter = new SimpleDateFormat("E, dd/MM/yyyy, HH:mm");
-		//setUpTables();
 	}
 	
+	/**
+	 * @param tCtrl Parsing the table controller as an argument
+	 */
 	public ReservationController (TableController tCtrl) {
 		super();
 		this.tCtrl = tCtrl;
 
 		tables = tCtrl.getTables();
-		//this.reservations = new ArrayList<Reservation>();
-		//dateFormatter = new SimpleDateFormat("E, dd/MM/yyyy, HH:mm");
 	}
 	
-
-	/* Static instance of the Reservation Manager */
+	/**
+	 * Static instance of the Reservation Manager
+	 * @return returns an instance of the reservation controller
+	 */
 	public static ReservationController getReservationManager() {
 		if (reserveMgr == null) {
 			reserveMgr = new ReservationController();
@@ -85,21 +123,23 @@ public class ReservationController {
 		return reserveMgr;
 	}
 
-	/* Create the list of tables with the indicated sizes */
+	/**
+	 * Create the list of tables with the indicated sizes
+	 */
 	private void setUpTables() {
 		int tableNumber = 1;
 		for (int tableSize : TABLE_SIZE) {
 			Table newTable;
 
-			// Constructor: tableNunber, numOfSeats, isReserved, isOccupied, customerID, order
 			newTable = new Table(tableNumber++, tableSize, false, false, 0, null);
 			System.out.println(newTable);
 			tables.add(newTable);
 		}
 	}
 
-
-	/* Displays a list of all valid reservations */
+	/**
+	 * Displays a list of all valid reservations for the staff's perusal
+	 */
 	public void viewReservations() {
 		checkReservations();
 
@@ -119,7 +159,9 @@ public class ReservationController {
 
 	}
 	
-	/* Obtain reservation's details based on Customer's contact number  */
+	/**
+	 * Retrieves reservation's details based on Customer's contact number 
+	 */
 	public void obtainCustReservation() {
 		checkReservations();
 
@@ -161,6 +203,9 @@ public class ReservationController {
 		}
 	}
 
+	/**
+	 * Adds a reservation to the list
+	 */
 	public void addReservation() 
 	{
 		checkReservations();
@@ -211,7 +256,11 @@ public class ReservationController {
 			Calendar pmRestClosingTime = (Calendar) pmRestOpeningTime.clone();
 			pmRestClosingTime.set(Calendar.HOUR_OF_DAY, RESTAURANT_PM_CLOSING_HOUR);
 			pmRestClosingTime.set(Calendar.MINUTE, 1);
-
+			
+			/* 
+			 * The start timings for both AM and PM sessions must be before the opening times and 
+			 * the end timings must not be after the closing times for both sessions
+			 */
 			if (((startDateTime.before((amRestOpeningTime)) || (endDateTime.after(amRestClosingTime)))
 					&& (startDateTime.before(pmRestOpeningTime)) || (endDateTime.after(pmRestClosingTime))))
 			{
@@ -256,7 +305,7 @@ public class ReservationController {
 				return;
 			}
 
-			/* Attempt to allocate an available table */
+			/* Allocate an available table if available*/
 			int availableTableNumber = 0;
 			int tableNumber = 1;
 
@@ -274,7 +323,7 @@ public class ReservationController {
 						Calendar resEndDateTime = (Calendar) resStartDateTime.clone();
 						resEndDateTime.add(Calendar.HOUR_OF_DAY, reservation.getDuration());
 
-						/* Check for existing reservation for this table number */
+						/* Check for any existing reservation for this table number */
 						if (reservation.getTableNo() == tableNumber) {
 
 							if (startDateTime.before(resEndDateTime) && endDateTime.after(resStartDateTime)) {
@@ -293,7 +342,8 @@ public class ReservationController {
 
 				tableNumber++;
 			}
-
+			
+			/* Provides message to user if there are no tables available */
 			if (availableTableNumber == 0) 
 			{
 				System.out.printf("Sorry, there are no tables available"
@@ -305,7 +355,7 @@ public class ReservationController {
 				newReservation = new Reservation(startDateTime, numOfPeople, custName, custNo, availableTableNumber,
 						duration);
 			
-				/* Add new reservation and write it into the reservation's data file */
+				/* Add new reservation and write it into the reservation's data file for keeping track*/
 				reservations.add(newReservation);
 				
 				/* Update the table's status with the reservation details */
@@ -319,6 +369,7 @@ public class ReservationController {
 					}
 				}
 			
+				/* Updates the reservation data file when a reservation is being added */
 				DataAccessor.write(DATA_FILE, reservations);
 				
 				
@@ -327,6 +378,7 @@ public class ReservationController {
 				System.out.printf("\nReservation Date/Time: %s," + " Reservation Duration: %d Hours%n",
 						dateFormatter.format(startDateTime.getTime()), duration);
 			}
+			
 		} catch (ParseException ex) {
 			System.out.print("\nInvalid reservation date/time! ");
 			System.out.println("\nFailed to add new reservation," + " please try again..");
@@ -346,7 +398,9 @@ public class ReservationController {
 		}
 	}
 	
-	/* This method will remove any existing reservation made by the user */
+	/**
+	 * Remove any existing reservation made by the user when a valid index is being provided
+	 */
 	public void removeReservation() {
 		checkReservations();
 
@@ -372,13 +426,13 @@ public class ReservationController {
 			int reservationIndex = sc.nextInt();
 			sc.nextLine();
 
-			/* User chooses not to remove any reservation */
+			/* User chooses not to remove any reservation by inputting 0 */
 			if (reservationIndex == 0) {
 				System.out.println("No reservation is being removed :D");
 				return;
 			}
 
-			/* Valid reservationIndex will start from 1 and must not exceed the total number of reservations */
+			/* A valid reservationIndex will start from 1 and must not exceed the total number of reservations */
 			if (reservationIndex < 1 || reservationIndex > numOfReservations) {
 				System.out.print("\nInvalid input! ");
 				System.out.println("Unable to remove reservation :(");
@@ -397,7 +451,10 @@ public class ReservationController {
 				System.out.printf("%nSuccessfully removed reservation made for" + " \"%s\"!%n",
 						removedReservation.getCustomerName());
 			}
+			
+			/* Removes a reservation when the conditions above are being fulfilled */
 			reservations.remove(removedReservation);
+			/* Updates the data file when a reservation is being removed */
 			DataAccessor.write(DATA_FILE, reservations);
 		} 
 		
@@ -419,6 +476,10 @@ public class ReservationController {
 		}
 	}
 
+	/**
+	 * Check through the list of existing reservations and this method must be called
+	 * first the usage of the following functions above 
+	 */
 	private void checkReservations() 
 	{
 		if (reservations.isEmpty())
@@ -438,7 +499,7 @@ public class ReservationController {
 
 			Calendar restStartDateTime = reservation.getStartDateTime();
 			Calendar restClone = (Calendar) restStartDateTime.clone();
-			restClone.add(Calendar.MINUTE, 1);
+			restClone.add(Calendar.MINUTE, 15);
 
 			/* If currentInstant is after restStartDateTime by 15 minutes */
 			if (restClone.before(currentInstant)) 
@@ -469,6 +530,10 @@ public class ReservationController {
 		}
 	}
 	
+	/**
+	 * @param tableId The table ID/Number object
+	 * @return True when table is being reserved and False when table is not being reserved
+	 */
 	public boolean isTableCurrentlyReserved(int tableId) {
 		checkReservations();
 		Table t = getTableByNumber(tableId);
@@ -479,6 +544,10 @@ public class ReservationController {
 		return false;
 	}
 
+	/**
+	 * @param tableNumber The table ID/Number object
+	 * @return table when table ID and tableNumber match, otherwise null
+	 */
 	public Table getTableByNumber(int tableNumber) {
 		for (Table table : tables) {
 			if (table.getTableId() == tableNumber)
