@@ -30,9 +30,10 @@ public class TableController {
 		int tableNumber = 1;
 		for (int tableSize : TABLE_SIZE) {
 			Table newTable;
-
+			
+			tableNumber++;
 			// Constructor: tableNunber, numOfSeats, isOccupied, order
-			newTable = new Table(tableNumber++, tableSize, false, new Order());
+			newTable = new Table(tableNumber, tableSize, false, new Order(tableNumber));
 
 			tList.add(newTable);
 		}
@@ -51,7 +52,7 @@ public class TableController {
 	
 	public ArrayList<Table> getTables () { return this.tList; }
 	
-	public boolean isTableReserved(int tableId) {
+	public boolean isTableNotReservedAndOccupied(int tableId) {
 		Table t = findTableById(tableId);
 		if (!rCtrl.isTableCurrentlyReserved(tableId) && !t.getIsOccupied()) {
 			return true;

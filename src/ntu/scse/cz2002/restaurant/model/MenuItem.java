@@ -2,29 +2,36 @@ package ntu.scse.cz2002.restaurant.model;
 
 import java.io.Serializable;
 
+/**
+   Represents an item stored in the menu.
+   @author  Johan Tjuatja
+   @version 1.0
+   @since   2019-03-15
+ */
 public class MenuItem implements Serializable{
 	/**
-	 * 
+	 * Item name.
 	 */
 	protected String name;
 	/**
-	 * 
+	 * Item description.
 	 */
 	protected String description;
 	/**
-	 * 
+	 * Item price.
 	 */
 	protected double price;
 	/**
-	 * 
+	 * Item type (e.g. Food, Drink, Dessert, etc.).
 	 */
 	private String type;
 
 	/**
-	 * @param name
-	 * @param description
-	 * @param price
-	 * @param type
+   * Creates a new item with specified attributes.
+	 * @param name        This item's name.
+	 * @param description This item's description.
+	 * @param price       This item's price.
+	 * @param type        This item's type.
 	 */
 	public MenuItem(String name, String description, double price, String type) {
 		this.name = name;
@@ -35,7 +42,8 @@ public class MenuItem implements Serializable{
 	}
 
 	/**
-	 * @return
+   * Get item's name.
+	 * @return This item's name.
 	 */
 	public String getName() {
 		return this.name;
@@ -43,7 +51,8 @@ public class MenuItem implements Serializable{
 	}
 
 	/**
-	 * @return
+   * Get item's description.
+	 * @return This item's description.
 	 */
 	public String getDescription() {
 		return this.description;
@@ -51,7 +60,8 @@ public class MenuItem implements Serializable{
 	}
 
 	/**
-	 * @return
+   * Get item's price.
+	 * @return This item's price.
 	 */
 	public double getPrice() {
 		return this.price;
@@ -59,7 +69,8 @@ public class MenuItem implements Serializable{
 	}
 
 	/**
-	 * @return
+   * Get item's type.
+	 * @return This item's type.
 	 */
 	public String getType() {
 		return this.type;
@@ -67,7 +78,8 @@ public class MenuItem implements Serializable{
 	}
 
 	/**
-	 * @param name
+   * Change item's name.
+	 * @param name This item's name.
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -76,7 +88,8 @@ public class MenuItem implements Serializable{
 	}
 
 	/**
-	 * @param description
+   * Change item's description.
+	 * @param description This item's description.
 	 */
 	public void setDescription(String description) {
 		this.description = description;
@@ -85,7 +98,8 @@ public class MenuItem implements Serializable{
 	}
 
 	/**
-	 * @param price
+   * Change item's price.
+	 * @param price This item's price.
 	 */
 	public void setPrice(double price) {
 		this.price = price;
@@ -94,7 +108,8 @@ public class MenuItem implements Serializable{
 	}
 
 	/**
-	 * @param type
+   * Change item's type.
+	 * @param type This item's type.
 	 */
 	public void setType(String type) {
 		this.type = type;

@@ -2,18 +2,24 @@ package ntu.scse.cz2002.restaurant.view;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import ntu.scse.cz2002.restaurant.control.MenuController;
+import ntu.scse.cz2002.restaurant.control.OrderController;
+import ntu.scse.cz2002.restaurant.control.TableController;
 import ntu.scse.cz2002.restaurant.model.Order;
 import ntu.scse.cz2002.restaurant.model.Table;
 import ntu.scse.cz2002.restaurant.util.Utilities;
-import ntu.scse.cz2002.restaurant.control.MenuController;
-import ntu.scse.cz2002.restaurant.control.OrderController;
-import ntu.scse.cz2002.restaurant.data.DataAccessor;
 
 public class OrderView {
 	
 	private OrderController orderManager = new OrderController();
 	private MenuController mCtrl = new MenuController();
+	TableController tCtrl;
 
+	public OrderView(TableController tCtrl) {
+		this.tCtrl = tCtrl;
+	}
+	
 	public void OrderUI() {
 		Scanner sc = new Scanner(System.in);
 		String choice = "";
@@ -21,7 +27,6 @@ public class OrderView {
 		Order currentOrder;
 		
 		do {
-		orderManager.refreshOrderArr();
 		System.out.println("// Order Management // ---------------------------\n" +
                            "--------------------------------------------------\n" +
                            " Option\t| Option Description\n" +
@@ -41,15 +46,20 @@ public class OrderView {
 			switch (choice.toUpperCase()) {
 				case "M":
 					System.out.println("Enter tableID: ");
+					Table t;
 					try{
 						tableID = sc.nextInt();
 					}catch(InputMismatchException ex) {
 						System.out.println("Invalid tableID input!");
 						break;
 					}
-					currentOrder = orderManager.findOrder(tableID);
-					if (currentOrder != null) 
-						editOrderUI(currentOrder, orderManager);
+					if (tCtrl.isTableNotReservedAndOccupied(tableID)) {
+						t = tCtrl.findTableById(tableID);
+						t.setIsOccupied();
+						currentOrder = t.getOrder();
+						if (currentOrder != null) 
+							editOrderUI(currentOrder, orderManager);
+					}
 					break;
 				case "V":
 					System.out.println("Enter tableID: ");
@@ -67,6 +77,7 @@ public class OrderView {
 					System.out.println("Enter tableID: ");
 					try{
 						tableID = sc.nextInt();
+						
 					}catch(InputMismatchException ex) {
 						System.out.println("Invalid tableID input!");
 						break;
@@ -169,27 +180,8 @@ public class OrderView {
 					
 					printOverviewNControls(order); 
 					break;
-				case "DONE":
-					orderManager.saveOrderArray();
-					Utilities.newScreenHeader(); OrderUI();
-					break;
-				case "CANCEL": case "<":
-					if (choice.equalsIgnoreCase("CANCEL")) {
-						System.out.println("Cancel Order. Confirm? (Y/n)");
-						System.out.print("> "); 
-						choice = sc.next();
-						if (choice.equalsIgnoreCase("Y")) {
-							Utilities.newScreenHeader(); OrderUI(); break;
-						} else if (choice.equalsIgnoreCase("n")) {
-							System.out.print("> "); break;
-						} else {
-							System.out.println("Invalid input. Expected 2 options: Y or n ");
-							System.out.print("> "); break;
-						}
-					} else {
-						Utilities.newScreenHeader(); OrderUI(); break;
-					}
-					
+				case "<":
+					Utilities.newScreenHeader(); OrderUI(); break;
 				default:
 					System.out.println("Invalid input. Refer to the option table.");
 					System.out.print("> ");
