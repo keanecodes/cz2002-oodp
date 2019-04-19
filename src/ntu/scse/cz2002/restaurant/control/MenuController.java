@@ -160,13 +160,13 @@ public class MenuController{
     public void printItemsByCategory(){
         if(this.menu.getItemCount() != 0){
             for(int i=0;i<this.types.size();i++){
-                System.out.println(this.types.get(i));
+                System.out.println("-- " + this.types.get(i) + " --");
                 for(int j=0;j<this.menu.getItemCount();j++){
                     MenuItem item = this.menu.getItemList().get(j);
 
                     if(item.getType().equals(this.types.get(i))){
                         System.out.println(item.getName() + "  $" + String.valueOf(item.getPrice()));
-                        System.out.println(item.getDescription());
+                        System.out.println("Desc: " + item.getDescription());
                     }
                 }
             }
