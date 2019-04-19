@@ -1,9 +1,10 @@
 package ntu.scse.cz2002.restaurant.model;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import ntu.scse.cz2002.restaurant.util.DateUtil;
 
-public class Reservation {
+public class Reservation implements Serializable {
 
 	private Calendar startDateTime; // Date and time of reservation
 
@@ -61,6 +62,11 @@ public class Reservation {
 	{
 		return customerContactNo;
 	}
+	
+	public void setCustomerContactNo(int customerNo) // Gets the contact number of customer who made the reservation
+	{
+		customerContactNo = customerNo;
+	}
 
 	public int getTableNo() // Gets the assigned table number for the reservation
 	{
@@ -89,7 +95,7 @@ public class Reservation {
 		System.out.print("Table Number: " + getTableNo() + "\n");
 
 		// Customer Name and Contact Number
-		System.out.print("Customer Name: " + getCustomerName() + "Contact Number: " + getCustomerContactNo() + "\n");
+		System.out.print("Customer Name: " + getCustomerName() + " Contact Number: " + getCustomerContactNo() + "\n");
 
 		// Reservation Date/Time
 		System.out.print("Date/Time: " + DateUtil.format(startDateTime.getTime(), "datetime") + "\n");
@@ -98,7 +104,7 @@ public class Reservation {
 		System.out.print("No. Of Pax: " + getNoOfPax() + "\n");
 
 		// Reservation Duration
-		System.out.print("Reservation Duration " + getDuration() + "\n");
+		System.out.print("Reservation Duration: " + getDuration() + " hours\n");
 	}
 
 }

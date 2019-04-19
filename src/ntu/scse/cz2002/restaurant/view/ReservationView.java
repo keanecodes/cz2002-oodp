@@ -1,6 +1,5 @@
 package ntu.scse.cz2002.restaurant.view;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import ntu.scse.cz2002.restaurant.control.ReservationController;
@@ -10,15 +9,15 @@ public class ReservationView {
 
 	private static Scanner sc = new Scanner(System.in);
 
-	ReservationController reserveMangager = new ReservationController();
+	ReservationController reserveManager = new ReservationController();
 
 	private void displayReservationOptions() {
 		System.out.println("// Reservation Management // ---------------------\n" +
 			     		   "--------------------------------------------------\n" +
 			     		   " Option\t| Option Description\n" +
 			     		   "--------------------------------------------------\n" +
-			     		   "  (T)\t| Table availability\n" + 
-			     		   "  (V)\t| View reservations\n" +
+			     		   "  (V)\t| View all reservations\n" +
+			     		   "  (O)\t| Obtain reservation's details based on customer's contact number\n" +
 			     		   "  (A)\t| Add a new reservation\n" +
 			     		   "  (R)\t| Remove a existing reservation\n");
 
@@ -38,17 +37,25 @@ public class ReservationView {
 
 			
 			switch (choice.toUpperCase()) {
-				case "T":
-					reserveMangager.viewTableAvailability();
-					break;
 				case "V":
-					reserveMangager.viewReservations();
+					reserveManager.viewReservations();
+					System.out.println(" ");
+					displayReservationOptions();
+					break;
+				case "O":
+					reserveManager.obtainCustReservation();
+					System.out.println(" ");
+					displayReservationOptions();
 					break;
 				case "A":
-					reserveMangager.addReservation();
+					reserveManager.addReservation();
+					System.out.println(" ");
+					displayReservationOptions();
 					break;
 				case "R":
-					reserveMangager.removeReservation();
+					reserveManager.removeReservation();
+					System.out.println(" ");
+					displayReservationOptions();
 					break;
 				case "<":
 					Utilities.clearScreen(); MainRestaurantView.show();
