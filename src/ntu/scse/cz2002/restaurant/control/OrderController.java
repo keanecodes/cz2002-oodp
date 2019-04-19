@@ -13,18 +13,22 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class OrderController {
-	private final static String DATA_FILE = "orders.dat";
 	private Order order;
 	StaffController staffManager = new StaffController();
 	MenuController menuManager = new MenuController();
-	Menu menu = menuManager.getMenu();
-	private ArrayList<Order> orderArr = (ArrayList<Order>) DataAccessor.readList(DATA_FILE);;
+	private TableController tCtrl;
 	
-	public void refreshOrderArr(){
-		orderArr = (ArrayList<Order>) DataAccessor.readList(DATA_FILE);
-		if (orderArr == null) {
-			System.out.println("No orders yet!\n");
-		}
+	Menu menu = menuManager.getMenu();
+	private ArrayList<Order> orderArr = new ArrayList<Order>();
+	
+	public OrderController() { }
+	
+	public OrderController(TableController tCtrl) {
+		this.tCtrl = tCtrl;
+	}
+	
+	public void setOrderArr(ArrayList<Order> oList) {
+		this.orderArr = oList;
 	}
 	
 	public Order createOrder(Staff staff, int tableID) {
@@ -90,14 +94,6 @@ public class OrderController {
 	    } 
 		System.out.println("");
 	} 
-	
-	public void saveOrderArray() {
-		//for (int i = 0; i < orderArr.size(); i++) 
-			//System.out.println(orderArr.get(i).getOrderId());
-		
-		DataAccessor.write(DATA_FILE, orderArr);
-		
-	}
 
 	public Order findOrder(int tableID) {
 		Order corrOrder = null;

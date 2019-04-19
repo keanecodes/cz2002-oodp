@@ -1,12 +1,13 @@
 package ntu.scse.cz2002.restaurant.view;
 
-import java.text.ParseException;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import ntu.scse.cz2002.restaurant.control.TableController;
 import ntu.scse.cz2002.restaurant.util.Utilities;
 
 public class MainRestaurantView {
+	
+	static TableController tCtrl = new TableController();
 	
 	public static void show() {
 		Scanner sc = new Scanner(System.in);
@@ -21,7 +22,7 @@ public class MainRestaurantView {
 			switch(choice.toUpperCase()) {
 				case "O": 
 					Utilities.newScreenHeader();
-					(new OrderView()).OrderUI(); break;
+					(new OrderView(tCtrl)).OrderUI(); break;
 				case "R":
 					Utilities.newScreenHeader();
 					(new ReservationView()).ReservationUI(); break;

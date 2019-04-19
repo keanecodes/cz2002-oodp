@@ -42,6 +42,11 @@ public class Order implements Serializable {
 		this.tableId = tableId;
 	}
 
+	
+	public Order(int tableId) {
+		this.tableId = tableId;
+	}
+
 	/**
 	 * @return
 	 */
