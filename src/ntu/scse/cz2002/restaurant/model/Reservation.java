@@ -95,7 +95,7 @@ public class Reservation implements Serializable {
 		System.out.print("Table Number: " + getTableNo() + "\n");
 
 		// Customer Name and Contact Number
-		System.out.print("Customer Name: " + getCustomerName() + " Contact Number: " + getCustomerContactNo() + "\n");
+		System.out.print("Customer Name: " + getCustomerName() + ", Contact Number: " + getCustomerContactNo() + "\n");
 
 		// Reservation Date/Time
 		System.out.print("Date/Time: " + DateUtil.format(startDateTime.getTime(), "datetime") + "\n");
