@@ -75,6 +75,8 @@ public class MenuController{
      * @return types of items in menu
      */
     private void updateTypesList(ArrayList<MenuItem> items){
+        this.types.clear();
+
         for(int i=0;i<items.size();i++){
             if(this.types.contains(items.get(i).getType())){
                 continue;
@@ -118,6 +120,8 @@ public class MenuController{
             return;
         }
 
+        updateTypesList(this.menu.getItemList());
+
         System.out.println(name + " has been successfully deleted from menu!");
     }
 
@@ -128,8 +132,9 @@ public class MenuController{
             while(this.menu.getItemCount() != 0){
                     target = this.menu.getItemList().get(0).getName();
                     this.menu.removeItem(target);
-                    this.types.remove(0);
             }
+
+            updateTypesList(this.menu.getItemList());
 
             System.out.println("Menu is cleared.");
         }
