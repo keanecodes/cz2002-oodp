@@ -31,6 +31,13 @@ public class MainRestaurantView {
 				//Restaurant review systems
 				case "I":
 					Utilities.newScreenHeader();
+					InvoiceView.showInvoice();
+					printMainRestaurantView();
+					break;
+				case "P":
+					Utilities.newScreenHeader();
+					SalesReportView.showSalesReport();
+					printMainRestaurantView();
 					break;
 				case "CHANGE":
 					Utilities.newScreenHeader();

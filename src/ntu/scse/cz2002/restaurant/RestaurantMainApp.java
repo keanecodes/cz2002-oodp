@@ -13,8 +13,7 @@ import ntu.scse.cz2002.restaurant.view.*;
 public class RestaurantMainApp {
 
 	public static void main(String[] args) {
-
 		MainRestaurantView.show();
-
+		
 	}
 }
