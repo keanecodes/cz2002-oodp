@@ -6,8 +6,10 @@ import ntu.scse.cz2002.restaurant.control.TableController;
 import ntu.scse.cz2002.restaurant.util.Utilities;
 
 /**
+ * 
  * @author moongee
- *
+ *@version 1.0
+ *@since 2019-4-17
  */
 public class MainRestaurantView {
 	

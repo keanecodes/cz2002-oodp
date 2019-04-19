@@ -9,6 +9,8 @@ import ntu.scse.cz2002.restaurant.model.Staff;
 /**
  * @author YingTing
  * manages the staff
+ * @version 1.0
+ * @since 2019-04-17
  */
 public class StaffController {
 	

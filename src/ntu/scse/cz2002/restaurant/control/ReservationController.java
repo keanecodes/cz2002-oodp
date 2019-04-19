@@ -97,7 +97,7 @@ public class ReservationController {
 	 */
 	public ReservationController() {
 		sc = new Scanner(System.in);
-		reservations = (ArrayList<Reservation>) DataAccessor.readList(DATA_FILE);
+		reservations = (ArrayList<Reservation>) DataAccessor.read(DATA_FILE);
 		dateFormatter = new SimpleDateFormat("E, dd/MM/yyyy, HH:mm");
 	}
 	

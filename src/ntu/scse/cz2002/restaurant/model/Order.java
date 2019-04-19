@@ -8,6 +8,8 @@ import ntu.scse.cz2002.restaurant.model.Staff;
 
 /**
  * @author YingTing
+ * @version 1.0
+ * @since 2019-4-1
  * Contains all the attributes and methods for an order entity. 
  */
 public class Order implements Serializable {

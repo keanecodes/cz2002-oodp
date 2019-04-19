@@ -9,7 +9,11 @@ import ntu.scse.cz2002.restaurant.control.StaffController;
 import ntu.scse.cz2002.restaurant.control.TableController;
 import ntu.scse.cz2002.restaurant.model.RestaurantRevenue;
 
-
+/**
+ * @author Zeqing
+ *@version 1.0
+ *@since 2019-4-17
+ */
 /**
 *Boundary Class to Print Invoices
 */

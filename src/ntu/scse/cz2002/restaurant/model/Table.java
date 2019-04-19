@@ -4,8 +4,10 @@ import ntu.scse.cz2002.restaurant.model.Reservation;
 import java.util.ArrayList;
 
 /**
- * @author moongee
- *
+ * Entity class to track table details
+ * @author Gee Cheng Mun
+ *@version 1.0
+ *@since 2019-4-17
  */
 public class Table {
 

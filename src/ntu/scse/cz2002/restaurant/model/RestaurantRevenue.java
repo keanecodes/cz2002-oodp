@@ -13,13 +13,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
- * @author keane
- *
- */
-
-/**
 *Entity Class for SalesReport
 *<br> currently not instantiated, as SalesReports need not be tracked or saved. This entity class can be used in the future.
+*
+*@author  Zeqing
+*@version 1.0
+*@since   2019-04-17
 */
 public class RestaurantRevenue { // needs to be reformatter & reworked.. is it a InvoiceManager or Does
 									// SalesReport need its own class?

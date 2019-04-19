@@ -8,6 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Wrapper for writing Arrays<Objects> to Txt files
+ * @author Gee Cheng Mun
+ * @version 1.0
+ * @since 2019-04-17
+ *
+ */
 public class DataAccessHelper {
 	/** Write fixed content to the given file. */
 	public static void write(String fileName, List data) throws IOException {

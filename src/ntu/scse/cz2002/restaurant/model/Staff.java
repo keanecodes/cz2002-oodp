@@ -5,6 +5,8 @@ import java.util.Date;
 
 /**
  * @author YingTing
+ * @version 1.0
+ * @since 2019-4-17
  * staff who work at the restaurant
  */
 public class Staff implements Comparable<Staff>, Serializable {

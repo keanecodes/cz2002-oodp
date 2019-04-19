@@ -11,6 +11,9 @@ import ntu.scse.cz2002.restaurant.util.CalendarFormatter;
 /**
 *InvoiceController Control Class
 *tracks and handles past invoices
+*@author  Zeqing
+*@version 1.0
+*@since   2019-04-17
 */
 public class InvoiceController {
 	private final static String DATA_FILE = "invoice.dat";	

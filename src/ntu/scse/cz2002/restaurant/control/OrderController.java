@@ -13,6 +13,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
+/**
+ * Control Class to manage orders
+ * @author YingTing
+ * @version 1.0
+ * @since 2019-04-17
+ */
 public class OrderController {
 	/**
 	 * creating a staff controller

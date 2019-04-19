@@ -3,7 +3,8 @@ package ntu.scse.cz2002.restaurant.util;
 import java.util.Calendar;
 /**
  * @author Zeqing
- *
+ *@version 1.0
+ *@since 2019-4-17
  */
 
 /**

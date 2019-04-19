@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import ntu.scse.cz2002.restaurant.data.DataAccessor;
 
 /**
+ * Entity class to track restaurant data
  * @author keane
+ *@version 1.0
+ *@since 2019-4-17
  *
  */
 public class Restaurant {

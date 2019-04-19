@@ -12,9 +12,12 @@ import ntu.scse.cz2002.restaurant.util.CalendarFormatter;
 //import ntu.scse.cz2002.restaurant.util.DateUtil;
 
 /**
- * @author Zeqing
- *
- */
+*Invoice entity class
+*tracks orders that have been paid
+*@author  Zeqing
+*@version 1.0
+*@since   2019-04-17
+*/
 
 /**
 *Invoice entity class
