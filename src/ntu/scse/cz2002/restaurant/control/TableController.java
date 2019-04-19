@@ -6,25 +6,47 @@ import java.util.List;
 import ntu.scse.cz2002.restaurant.model.Order;
 import ntu.scse.cz2002.restaurant.model.Table;
 
+/**
+ * @author moongee
+ *
+ */
 public class TableController {
 	
 	
 	
+	/**
+	 * 
+	 */
 	private static final int[] TABLE_SIZE = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 
 											4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
 											8, 8, 8, 8, 8,
 											10, 10, 10, 10, 10 };
 	
+	/**
+	 * 
+	 */
 	private ArrayList<Table> tList = new ArrayList<Table>();
 	
+	/**
+	 * 
+	 */
 	ReservationController rCtrl = new ReservationController(this);
+	/**
+	 * 
+	 */
 	InvoiceController iCtrl = new InvoiceController();
 	
+	/**
+	 * 
+	 */
 	public TableController() { 
 		setUpTables();
 	}
 	
 	/* Create the list of tables with the indicated sizes */
+	/**
+	 * 
+	 */
 	private void setUpTables() {
 		
 		for (int i = 0; i < TABLE_SIZE.length; i++){
@@ -38,18 +60,31 @@ public class TableController {
 	}
 
 	
+	/**
+	 * @param rCtrl
+	 */
 	public TableController(ReservationController rCtrl) {
 		super();
 		this.rCtrl = rCtrl;
 	}
 	
+	/**
+	 * @param iCtrl
+	 */
 	public TableController(InvoiceController iCtrl) {
 		super();
 		this.iCtrl = iCtrl;
 	}
 	
+	/**
+	 * @return
+	 */
 	public ArrayList<Table> getTables () { return this.tList; }
 	
+	/**
+	 * @param tableId
+	 * @return
+	 */
 	public boolean isTableNotReservedAndOccupied(int tableId) {
 		Table t = findTableById(tableId);
 		if (t != null) {
@@ -65,11 +100,18 @@ public class TableController {
 		return false;
 	}
 	
+	/**
+	 * @param tableId
+	 */
 	public void setUpforOrder(int tableId) {
 		Table t = findTableById(tableId);
 		t.assignTable(tableId);
 	}
 	
+	/**
+	 * @param tableId
+	 * @return
+	 */
 	public boolean releaseTable(int tableId) {
 		Table t = findTableById(tableId);
 		
@@ -83,6 +125,10 @@ public class TableController {
 		return true;
 	}
 	
+	/**
+	 * @param id
+	 * @return
+	 */
 	public Table findTableById(int id) {
 		for(int i = 0; i < tList.size(); i++)
 			if (tList.get(i).getTableId() == id) 

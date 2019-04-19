@@ -6,16 +6,29 @@ import ntu.scse.cz2002.restaurant.control.StaffController;
 import ntu.scse.cz2002.restaurant.model.Staff;
 import ntu.scse.cz2002.restaurant.util.DateUtil;
 
+/**
+ * @author moongee
+ *
+ */
 public class StaffView {
 	
+	/**
+	 * 
+	 */
 	static StaffController ctrl = new StaffController();
 	
 	
+	/**
+	 * 
+	 */
 	public static void showCurrentStaffInfo() {
 		Staff s = ctrl.getStaff();
 		System.out.println(DateUtil.now() + "\t\tOperator: " + s.getName() + "\n\n");
 	}
 	
+	/**
+	 * 
+	 */
 	public static void showChangeStaffForm() {
 		String name;
 		int id;

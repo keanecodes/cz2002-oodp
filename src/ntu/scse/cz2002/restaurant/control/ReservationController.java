@@ -390,7 +390,6 @@ public class ReservationController {
 			if (removedReservation != null) {
 				System.out.println(removedReservation.getTableNo());
 				Table table = getTableByNumber(removedReservation.getTableNo());
-				System.out.println(table);
 				if (table.getIsReserved() && (table.getCustomerNo() == removedReservation.getCustomerContactNo())) {
 					table.releaseTable();
 				}

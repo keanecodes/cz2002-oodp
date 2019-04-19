@@ -5,15 +5,34 @@ import java.util.Scanner;
 import ntu.scse.cz2002.restaurant.control.TableController;
 import ntu.scse.cz2002.restaurant.util.Utilities;
 
+/**
+ * @author moongee
+ *
+ */
 public class MainRestaurantView {
 	
+	/**
+	 * 
+	 */
 	private TableController tCtrl = new TableController();
 	
+	/**
+	 * 
+	 */
 	private OrderView oView = new OrderView(tCtrl);
+	/**
+	 * 
+	 */
 	private ReservationView rView = new ReservationView(tCtrl);
+	/**
+	 * 
+	 */
 	private MenuView mView = new MenuView();
 	//private InvoiceView iView = new InvoiceView();
 	
+	/**
+	 * 
+	 */
 	public void show() {
 		Scanner sc = new Scanner(System.in);
 
@@ -65,6 +84,9 @@ public class MainRestaurantView {
 	
 	}
 	
+	/**
+	 * 
+	 */
 	public static void printMainRestaurantView() {
 		System.out.println("**************************************************\n" + 
                            "************** Happy Kopitiam RRPPS **************\n" +
