@@ -9,6 +9,10 @@ public class MainRestaurantView {
 	
 	private TableController tCtrl = new TableController();
 	
+	private OrderView oView = new OrderView(tCtrl);
+	private ReservationView rView = new ReservationView(tCtrl);
+	private MenuView mView = new MenuView();
+	
 	public void show() {
 		Scanner sc = new Scanner(System.in);
 
@@ -22,13 +26,13 @@ public class MainRestaurantView {
 			switch(choice.toUpperCase()) {
 				case "O": 
 					Utilities.newScreenHeader();
-					(new OrderView(tCtrl)).OrderUI(); break;
+					oView.OrderUI(); break;
 				case "R":
 					Utilities.newScreenHeader();
-					(new ReservationView(tCtrl)).ReservationUI(); break;
+					rView.ReservationUI(); break;
 				case "M":
 					Utilities.newScreenHeader();
-					(new MenuView(tCtrl)).MenuUI(); break;
+					mView.MenuUI(); break;
 				//Restaurant review systems
 				case "I":
 					//(newInvoiceView(tCtrl)).InvoiceUI()?
