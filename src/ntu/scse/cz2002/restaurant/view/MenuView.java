@@ -87,7 +87,7 @@ public class MenuView {
 			System.out.printf("Enter item description: ");
 			description = sc.nextLine();
 
-			System.out.println("Enter item type: ");
+			System.out.printf("Enter item type: ");
 			type = sc.nextLine();
 
 			System.out.printf("Enter item price: ");
@@ -116,31 +116,31 @@ public class MenuView {
 			System.out.printf("Enter promotion name: ");
 			name = sc.nextLine();
 
-			System.out.printf("Enter the number of items in the promotion: ");
+      System.out.printf("Enter the number of items in the promotion: ");
 
-	        try{
-	          itemNum = sc.nextInt();
-	          sc.nextLine();
-	        } catch(InputMismatchException ex) {
-	          System.out.println("Invalid number of items input!");
-	          break;
-	        }
+      try{
+          itemNum = sc.nextInt();
+          sc.nextLine();
+      } catch(InputMismatchException ex) {
+          System.out.println("Invalid number of items input!");
+          break;
+      }
 
-	        for(int i=0;i<itemNum;i++){
-	          System.out.printf("Enter the name of item %d\n", i+1);
-	          itemName = sc.nextLine();
-	
-	          promoItem = menuMan.getMenu().getItem(itemName);
-	
-	          if(promoItem != null){
-	              items.add(promoItem);
-	          }
-	          else{
-	              System.out.println("Item not found!");
-	              breakOut = 1;
-	              break;
-	          }
-	      }
+      for(int i=0;i<itemNum;i++){
+          System.out.printf("Enter the name of item %d:\n", i+1);
+          itemName = sc.nextLine();
+
+          promoItem = menuMan.getMenu().getItem(itemName);
+
+          if(promoItem != null){
+              items.add(promoItem);
+          }
+          else{
+              System.out.println("Item not found!");
+              breakOut = 1;
+              break;
+          }
+      }
 
       if(breakOut == 1) break;
 
@@ -190,20 +190,21 @@ public class MenuView {
 			menuMan.removeItem(name);
 			break;
 		case "CLEAR":
-	        char ans='0';
+	        String ans;
 	
-	        System.out.println(">> Remove ALL items/promotions");
+	        System.out.println(">> Remove ALL item/promotions");
 	        System.out.println("Are you sure you want to remove all current items in the menu? (y/n)");
+
+          ans = sc.next();
 	
-	
-	        while(c.equalsIgnoreCase("Y") && c.equalsIgnoreCase("N")){
+	        while(ans.equalsIgnoreCase("Y") && ans.equalsIgnoreCase("N")){
 	            System.out.println("Please answer with 'y' or 'n' only!");
 	
 	            System.out.println("Are you sure you want to remove all current items in the menu? (y/n)");
-	            c = sc.next();
+	            ans = sc.next();
 	        }
 	
-	        if(c.equalsIgnoreCase("y"))
+	        if(ans.equalsIgnoreCase("Y"))
 	        		menuMan.clearMenu();
 	        break;
 		case "<":
