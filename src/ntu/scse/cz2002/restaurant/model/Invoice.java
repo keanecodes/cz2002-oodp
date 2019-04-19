@@ -144,13 +144,31 @@ public class Invoice implements Comparable<Invoice>, Serializable{
 
 		System.out.println("----------------------------------");
 
-		for (MenuItem item : this.getMenuItems()) {
-			System.out.format("   %-20s$ %-20s\n", item.getName(), item.getPrice());
-		}
+		boolean [] visited = new boolean [this.getMenuItems().size()];
+			for (int i=0; i<this.getMenuItems().size(); i++) {
+			if (visited[i]) {
+				//System.out.println("Int i" + i);
+			}
+			else {
+				visited[i] =true;
+			int count = 1;
+			for (int j=1; i+j<this.getMenuItems().size();j++) {
+				if ((this.getMenuItems().get(i).getName()).equals(this.getMenuItems().get(i+j).getName())) {
+					//System.out.println (i +" " +j);
+					visited[i+j] = true;
+					count ++;
+				}
+				//System.out.println (i +" " +j);
+			}
+			System.out.format(" %-5d  %-20s        $%-20s\n", count, this.getMenuItems().get(i).getName(), this.getMenuItems().get(i).getPrice()*count);	
+				
+			}
+			}
 		System.out.println("   ---------------------------");
-		System.out.println("              Subtotal : " + amount);
-		System.out.printf("                   GST : %.2f\n", 0.07 * amount);
-		System.out.printf("                 TOTAL : %.2f \n", 1.07 * amount);
+		System.out.println("                         Subtotal : $" + amount);
+		System.out.printf("                   Service Charge : $%.2f\n", 0.1 * amount);
+		System.out.printf("                              GST : $%.2f\n", 0.07 *1.01* amount);
+		System.out.printf("                            TOTAL : $%.2f \n", 1.07 *1.01* amount);
 		System.out.println("----------------------------------");
 		System.out.println("  Thank You for Dining with us!");
 	}

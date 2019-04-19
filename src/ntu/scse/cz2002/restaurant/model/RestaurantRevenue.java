@@ -138,7 +138,7 @@ public class RestaurantRevenue { // needs to be reformatter & reworked.. is it a
 		tableheader[0] = new String[] { "From:" + CalendarFormatter.toString(start, 2),
 				"To: " + CalendarFormatter.toString(end, 2) }; // im considering just keeping table id information, not
 																// entire table.
-		tableheader[1] = new String[] { "Staff Requested: " +stf.getStaffID() ,
+		tableheader[1] = new String[] { "" /*"Staff Requested: " +stf.getStaffID() */,
 				"Time of Request: " + CalendarFormatter.toString(Calendar.getInstance(), 3) }; // what is the timestamp
 																								// of request?
 
@@ -149,13 +149,32 @@ public class RestaurantRevenue { // needs to be reformatter & reworked.. is it a
 		System.out.println("----------------------------------");
 
 		if (thingssold !=null) {
-		for (MenuItem item : thingssold) {
-			System.out.format("   %-20s$         %-20s\n", item.getName(), item.getPrice());
-		}
+			
+			boolean [] visited = new boolean [thingssold.size()];
+			for (int i=0; i<thingssold.size(); i++) {
+			if (visited[i]) {
+				//System.out.println("Int i" + i);
+			}
+			else {
+				visited[i] =true;
+			int count = 1;
+			for (int j=1; i+j<thingssold.size();j++) {
+				if ((thingssold.get(i).getName()).equals(thingssold.get(i+j).getName())) {
+					//System.out.println (i +" " +j);
+					visited[i+j] = true;
+					count ++;
+				}
+				//System.out.println (i +" " +j);
+			}
+			System.out.format(" %-5d  %-20s           $%-20s\n", count, thingssold.get(i).getName(), thingssold.get(i).getPrice()*count);	
+				
+			}
+			}
 		System.out.println("   ---------------------------");
-		System.out.printf("                    Subtotal : %.2f\n", total_revenue);
-		System.out.printf("                         GST : %.2f\n", 0.07 * total_revenue);
-		System.out.printf("                       TOTAL : %.2f\n", 1.07 * total_revenue);
+		System.out.printf("                            Subtotal : $%.2f\n", total_revenue);
+		System.out.printf("                      Service Charge : $%.2f\n", 0.1 * total_revenue);
+		System.out.printf("                                 GST : $%.2f\n", 0.07 * 1.01* total_revenue);
+		System.out.printf("                               TOTAL : $%.2f\n", 1.07 *1.01* total_revenue);
 		System.out.println("----------------------------------");
 		}
 		else {

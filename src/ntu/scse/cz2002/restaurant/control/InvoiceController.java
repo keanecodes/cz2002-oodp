@@ -15,7 +15,6 @@ public class InvoiceController {
 	public InvoiceController(){
 		
 		super();
-		System.out.println("ASDFASDFASDFASDFASDFASDFASDFASDFSDAFSAF");
 		invoiceArr = loadItems(DATA_FILE);
 		if(invoiceArr == null) {
 			System.out.println("null");
