@@ -60,8 +60,8 @@ public class ReservationController {
 	public ReservationController() {
 		sc = new Scanner(System.in);
 		//tables = new ArrayList<Table>();
-		//reservations = (ArrayList<Reservation>) DataAccessor.readList(DATA_FILE);
-		reservations = new ArrayList<Reservation>();
+		reservations = (ArrayList<Reservation>) DataAccessor.readList(DATA_FILE);
+		//reservations = new ArrayList<Reservation>();
 		dateFormatter = new SimpleDateFormat("E, dd/MM/yyyy, HH:mm");
 		//setUpTables();
 	}
@@ -71,8 +71,8 @@ public class ReservationController {
 		this.tCtrl = tCtrl;
 
 		tables = tCtrl.getTables();
-		this.reservations = new ArrayList<Reservation>();
-		dateFormatter = new SimpleDateFormat("E, dd/MM/yyyy, HH:mm");
+		//this.reservations = new ArrayList<Reservation>();
+		//dateFormatter = new SimpleDateFormat("E, dd/MM/yyyy, HH:mm");
 	}
 	
 
@@ -212,8 +212,8 @@ public class ReservationController {
 			pmRestClosingTime.set(Calendar.HOUR_OF_DAY, RESTAURANT_PM_CLOSING_HOUR);
 			pmRestClosingTime.set(Calendar.MINUTE, 1);
 
-			if (((startDateTime.before((amRestOpeningTime)) && (endDateTime.after(amRestClosingTime)))
-					|| (startDateTime.before(pmRestOpeningTime)) && (endDateTime.after(pmRestClosingTime))))
+			if (((startDateTime.before((amRestOpeningTime)) || (endDateTime.after(amRestClosingTime)))
+					&& (startDateTime.before(pmRestOpeningTime)) || (endDateTime.after(pmRestClosingTime))))
 			{
 				System.out.print("\nInvalid reservation date/time! ");
 				System.out.println("\nFailed to add new reservation!");
@@ -363,7 +363,7 @@ public class ReservationController {
 			System.out.println();
 			/* Display existing reservations */
 			for (Reservation reservation : reservations) {
-				System.out.printf("%-5s", "(" + (++numOfReservations) + ")");
+				System.out.printf("\n%-5s", "(" + (++numOfReservations) + ")");
 				reservation.displayReservationSummary();
 			}
 
@@ -399,6 +399,7 @@ public class ReservationController {
 						removedReservation.getCustomerName());
 			}
 			reservations.remove(removedReservation);
+			DataAccessor.write(DATA_FILE, reservations);
 		} 
 		
 		catch (InputMismatchException ex) 
