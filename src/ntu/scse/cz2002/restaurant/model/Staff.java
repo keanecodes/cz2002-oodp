@@ -4,37 +4,38 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @author moongee
- *
+ * @author YingTing
+ * staff who work at the restaurant
  */
 public class Staff implements Comparable<Staff>, Serializable {
 	/**
-	 * 
+	 * name of staff
 	 */
 	private String name;
 	/**
-	 * 
+	 * gender of staff
 	 */
 	private char gender;
 	/**
-	 * 
+	 * ID of staff
 	 */
 	private int staffID;
 	/**
-	 * 
+	 * jobTitle of staff
 	 */
 	private String jobTitle;
 	/**
-	 * 
+	 * when staff was last used
 	 */
 	private Date lastUsed;
 
 	/**
-	 * @param name
-	 * @param gender
-	 * @param staffID
-	 * @param jobTitle
-	 * @param lastUsed
+	 * @param name name of staff
+	 * @param gender gender of staff
+	 * @param staffID ID of staff
+	 * @param jobTitle jobTitle of staff
+	 * @param lastUsed when staff was last used
+	 * Staff constructor
 	 */
 	public Staff(String name, char gender, int staffID, String jobTitle, Date lastUsed) {
 		this.name = name;
@@ -45,10 +46,10 @@ public class Staff implements Comparable<Staff>, Serializable {
 	}
 
 	/**
-	 * @param name
-	 * @param gender
-	 * @param staffID
-	 * @param jobTitle
+	 * @param name name of staff
+	 * @param gender gender of staff
+	 * @param staffID ID of staff
+	 * @param jobTitle jobTitle of staff
 	 */
 	public Staff(String name, char gender, int staffID, String jobTitle) {
 		this.name = name;
@@ -59,8 +60,8 @@ public class Staff implements Comparable<Staff>, Serializable {
 	}
 	
 	/**
-	 * @param name
-	 * @param staffID
+	 * @param name name of staff
+	 * @param staffID ID of staff
 	 */
 	public Staff(String name, int staffID) {
 		this.name = name;
@@ -68,74 +69,77 @@ public class Staff implements Comparable<Staff>, Serializable {
 	}
 
 	/**
-	 * @return
+	 * @return returns name of staff
 	 */
 	public String getName() {
 		return name;
 	}
 
 	/**
-	 * @return
+	 * @return returns gender of staff
 	 */
 	public char getGender() {
 		return gender;
 	}
 
 	/**
-	 * @return
+	 * @return returns ID of staff
 	 */
 	public int getStaffID() {
 		return staffID;
 	}
 
 	/**
-	 * @return
+	 * @return returns jobTitle of staff
 	 */
 	public String getJobTitle() {
 		return jobTitle;
 	}
 
 	/**
-	 * @return
+	 * @return returns lastUsed of staff
 	 */
 	public Date getLastUsed() {
 		return lastUsed;
 	}
 
 	/**
-	 * @param name
+	 * @param name sets name of staff
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
-	 * @param gender
+	 * @param gender sets gender of staff
 	 */
 	public void setGender(char gender) {
 		this.gender = gender;
 	}
 
+	/**
+	 * @param gender sets ID of staff
+	 */
 	public void setStaffID(int staffID) {
 		this.staffID = staffID;
 	}
 
 	/**
-	 * @param jobTitle
+	 * @param jobTitle sets jobTitle of staff
 	 */
 	public void setJobTitle(String jobTitle) {
 		this.jobTitle = jobTitle;
 	}
 
 	/**
-	 * @param lastUsed
+	 * @param lastUsed sets when staff was last used
 	 */
 	public void setLastUsed(Date lastUsed) {
 		this.lastUsed = lastUsed;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Comparable#compareTo(java.lang.Object)
+	/**
+	 * @param s compares the details of two staff to check if it is the right staff
 	 */
 	public int compareTo(Staff s) {
 		int result;

@@ -7,19 +7,19 @@ import ntu.scse.cz2002.restaurant.model.Staff;
 import ntu.scse.cz2002.restaurant.util.DateUtil;
 
 /**
- * @author moongee
- *
+ * @author YingTing
+ * displaying of staff options 
  */
 public class StaffView {
 	
 	/**
-	 * 
+	 * creating a staff controller
 	 */
 	static StaffController ctrl = new StaffController();
 	
 	
 	/**
-	 * 
+	 * displaying staff name using the system
 	 */
 	public static void showCurrentStaffInfo() {
 		Staff s = ctrl.getStaff();
@@ -27,7 +27,7 @@ public class StaffView {
 	}
 	
 	/**
-	 * 
+	 * enables the switching of staff to another user
 	 */
 	public static void showChangeStaffForm() {
 		String name;

@@ -7,38 +7,31 @@ import ntu.scse.cz2002.restaurant.model.MenuItem;
 import ntu.scse.cz2002.restaurant.model.Staff;
 
 /**
- * @author moongee
- *
+ * @author YingTing
+ * manages the staff
  */
 public class StaffController {
 	
 	/**
-	 * 
+	 * data file containing staff data
 	 */
 	private final static String DATA_FILE = "staff.dat";
 	
 	/**
-	 * 
+	 * array list of staff
 	 */
 	private static ArrayList<Staff> staffArr;
 	
 	/**
-	 * 
+	 * current staff using the system
 	 */
 	private Staff currentStaff;
 	
 	/**
-	 * 
+	 * constructor for staff controller
 	 */
 	public StaffController() {
 		try {
-			//Write dummy data
-			/*staffArr = new ArrayList<Staff>();
-			Staff s = new Staff("Alex", 1820377);
-
-			staffArr.add(s);
-			DataAccessor.write(DATA_FILE, s);*/
-			
 			getStaff();
 			
 		} catch (Exception e){System.out.println("No staff data found.");}
@@ -46,22 +39,22 @@ public class StaffController {
 	
 
 	/**
-	 * @return
+	 * @return returns current staff using the system
 	 */
 	public Staff getStaff() { 
 		return currentStaff = (Staff) DataAccessor.read(DATA_FILE);
 	}
 	
 	/**
-	 * @param s
+	 * @param s changes current staff to another person
 	 */
 	public void changeCurrentStaffTo(Staff s) {
 		DataAccessor.write(DATA_FILE, s);
 	}
 
 	/**
-	 * @param staffID
-	 * @return
+	 * @param staffID ID associated with a staff
+	 * @return returns the staff object based on staffID
 	 */
 	public Staff findStaff(int staffID) {
 		Staff corrStaff = null;
