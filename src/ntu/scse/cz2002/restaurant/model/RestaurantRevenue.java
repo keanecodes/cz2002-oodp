@@ -2,6 +2,7 @@ package ntu.scse.cz2002.restaurant.model;
 
 import java.util.Date;
 
+import ntu.scse.cz2002.restaurant.control.InvoiceController;
 import ntu.scse.cz2002.restaurant.data.DataAccessor;
 import ntu.scse.cz2002.restaurant.util.CalendarFormatter;
 
@@ -18,11 +19,12 @@ public class RestaurantRevenue { // needs to be reformatter & reworked.. is it a
 	Calendar end;
 	ArrayList<MenuItem> thingssold;
 	double total_revenue;
-	String filename; //in invoice controller
+	//String filename; //in invoice controller
+	
 //	public static DateTimeFormatter timeformat = DateTimeFormatter.ofPattern("dd-MM-yyy HH:mm:ss");
 
 	// init entire Invoicelist
-	ArrayList<Invoice> invoice_list = (ArrayList<Invoice>) DataAccessor.readList(filename);
+	//ArrayList<Invoice> invoice_list = (ArrayList<Invoice>) DataAccessor.readList(filename);
 
 	public RestaurantRevenue(ArrayList<Invoice> invoicelist) {
 		start = null;
@@ -34,15 +36,27 @@ public class RestaurantRevenue { // needs to be reformatter & reworked.. is it a
 	public RestaurantRevenue(Calendar startdate, Calendar enddate) {
 		start = startdate;
 		end = enddate;
-		total_revenue = sumAmount(getInvoicelist(startdate, enddate));
-		thingssold = getitems(getInvoicelist(startdate, enddate));
+		total_revenue = this.sumAmount(getInvListbyDatabase(startdate, enddate));
+		thingssold = this.getitems(getInvListbyDatabase(startdate, enddate));
 	}
-
-
+	
+	public double getttlrevnue() {
+		return total_revenue;
+	}
+	
+	public ArrayList<MenuItem> getthingssold() {
+		return thingssold;
+	}
 
 	public String getPeriod() {
 		return CalendarFormatter.toString(start, 2) + " - " + CalendarFormatter.toString(end, 2);
 	}
+	
+	private ArrayList<Invoice> getInvListbyDatabase(Calendar star, Calendar endd) {
+		InvoiceController iCtrl = new InvoiceController();
+		return iCtrl.getInvoicelist(star, endd);
+	}
+
 
 	/*
 	 * public void setPeriod(int month) { period = month; }
@@ -50,6 +64,9 @@ public class RestaurantRevenue { // needs to be reformatter & reworked.. is it a
 
 	private double sumAmount(ArrayList<Invoice> invoicelist) {
 		double totalAmt = 0;
+		if (invoicelist ==null) {
+			return 0;
+		}
 		for (Invoice _invoice : invoicelist) {
 			totalAmt += _invoice.getAmt();
 		}
@@ -58,6 +75,9 @@ public class RestaurantRevenue { // needs to be reformatter & reworked.. is it a
 
 	private ArrayList<MenuItem> getitems(ArrayList<Invoice> ils) {
 		ArrayList<MenuItem> items = new ArrayList<MenuItem>();
+		if (ils == null){
+			return null;
+		}
 		for (Invoice _invoice : ils) {
 			Order _order = _invoice.getOrder();
 			items.addAll(_order.getItems());
@@ -69,7 +89,7 @@ public class RestaurantRevenue { // needs to be reformatter & reworked.. is it a
 		return items;
 	}
 
-	public void PrintSalesReport() {
+	public void PrintSalesReport(Staff stf) {
 		System.out.println("Restaurant Name");
 		System.out.println("Address");
 		System.out.println("");
@@ -79,24 +99,29 @@ public class RestaurantRevenue { // needs to be reformatter & reworked.. is it a
 		tableheader[0] = new String[] { "From:" + CalendarFormatter.toString(start, 2),
 				"To: " + CalendarFormatter.toString(end, 2) }; // im considering just keeping table id information, not
 																// entire table.
-		tableheader[1] = new String[] { "StaffReq: Deb",
+		tableheader[1] = new String[] { "Staff Requested: " +stf.getStaffID() ,
 				"Time of Request: " + CalendarFormatter.toString(Calendar.getInstance(), 3) }; // what is the timestamp
 																								// of request?
 
 		for (final Object[] row : tableheader) {
-			System.out.format("%-15s%-15s\n", row);
+			System.out.format("%-15s          %-15s\n", row);
 		}
 
 		System.out.println("----------------------------------");
 
+		if (thingssold !=null) {
 		for (MenuItem item : thingssold) {
-			System.out.format("   %-20s$ %-20s\n", item.getName(), item.getPrice());
+			System.out.format("   %-20s$         %-20s\n", item.getName(), item.getPrice());
 		}
 		System.out.println("   ---------------------------");
-		System.out.println("              Subtotal : " + total_revenue);
-		System.out.println("                   GST : " + 0.07 * total_revenue);
-		System.out.println("                 TOTAL : " + 1.07 * total_revenue);
+		System.out.println("                    Subtotal : " + total_revenue);
+		System.out.println("                         GST : " + 0.07 * total_revenue);
+		System.out.println("                       TOTAL : " + 1.07 * total_revenue);
 		System.out.println("----------------------------------");
+		}
+		else {
+			System.out.println("No Items sold!");
+		}
 		System.out.println("  Sales Report Generated!");
 	}
 

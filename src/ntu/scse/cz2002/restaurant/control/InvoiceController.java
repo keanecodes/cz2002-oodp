@@ -10,13 +10,14 @@ import ntu.scse.cz2002.restaurant.model.*;
 public class InvoiceController {
 	private final static String DATA_FILE = "invoice.dat";	
 	private ArrayList<Invoice> invoiceArr;
+	private TableController tCtrl; 
 
 	public InvoiceController(){
-    try{
-        this.loadItems(DATA_FILE);
-    } catch (Exception e){
-    	System.out.println("Please create an invoice.dat.");
-    	}
+		invoiceArr = loadItems(DATA_FILE);
+	}
+	
+	public InvoiceController(TableController tCtrl) {
+		this.tCtrl = tCtrl;
 	}
 	
 	public void addInvoice(Order o) {
@@ -25,8 +26,14 @@ public class InvoiceController {
 	}
 	
 	
-	private void loadItems(String filename) {
-		 invoiceArr= (ArrayList<Invoice>) DataAccessor.readList(filename);
+	private ArrayList<Invoice> loadItems(String filename) {
+	    try{
+	    return (ArrayList<Invoice>) DataAccessor.readList(filename); 
+	    } 
+	    catch (Exception e){
+	    System.out.println("Please create an invoice.dat.");
+	    return null;
+	    }
 	}
 	
 	private void saveItems() {
@@ -40,17 +47,18 @@ public class InvoiceController {
         }
     }
 	
-	public void printItemsByID() {
-		Collections.sort(invoiceArr);
-		
-        if(invoiceArr.size()==0){
+	public boolean printItemsByID() {
+        if(invoiceArr ==null){
             System.out.println("No item to print.");
+            return false;
             }
         else {
+        	Collections.sort(invoiceArr);
         	System.out.println("InvoiceID" + "\tTimestamp");
         	for(Invoice InvoiceItem: invoiceArr){
         		System.out.println(InvoiceItem.getInvoiceID() + "\t" + InvoiceItem.getTimestamp());
         	}
+        	return true;
         }
 	}
 	
@@ -74,16 +82,29 @@ public class InvoiceController {
 		return null;
 	}
 	
-	private ArrayList<Invoice> getInvoicelist(Calendar startdate, Calendar enddate) {
+	public void printInvoicebyID(int ID) {
+		Invoice toPrint = this.findInvoicebyID(ID);
+		if (toPrint !=null) {
+			toPrint.printReceipt();
+		}
+		else {
+			System.out.println("Error, can't find Invoice");
+		}
+	}
+	
+	public ArrayList<Invoice> getInvoicelist(Calendar startdate, Calendar enddate) {
 		ArrayList<Invoice> inperiod = new ArrayList<Invoice>();
 		Calendar times;
+		if (invoiceArr ==null) {
+			return null;
+		}
+		
 		for (Invoice i : invoiceArr) {
 			times = i.getTimestamp();
 			if (times.before(enddate) && times.after(startdate)) {
 				inperiod.add(i);
 			}
 		}
-
 		return inperiod;
 	}
 	

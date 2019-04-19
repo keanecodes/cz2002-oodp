@@ -1,6 +1,7 @@
 package ntu.scse.cz2002.restaurant.model;
 
 import ntu.scse.cz2002.restaurant.model.Reservation;
+import java.util.ArrayList;
 
 public class Table {
 
@@ -10,7 +11,7 @@ public class Table {
 	private boolean isOccupied;
 	private int customerNo;
 	private Order order;
-	
+
 
 	public Table(int tableId, int numOfSeats, boolean isReserved, boolean isOccupied, int customerNo, Order o) {
 		this.tableId = tableId;
@@ -20,7 +21,7 @@ public class Table {
 		this.customerNo = customerNo;
 		this.order = o;
 	}
-	
+
 	public Table(int tableId, int numOfSeats, boolean isReserved, boolean isOccupied, int customerNo) {
 		this.tableId = tableId;
 		this.numOfSeats = numOfSeats;
@@ -28,21 +29,28 @@ public class Table {
 		this.isOccupied = isOccupied;
 		this.customerNo = customerNo;
 	}
+	
+	public Table(int tableId, int numOfSeats, boolean isOccupied, Order o) {
+		this.tableId = tableId;
+		this.numOfSeats = numOfSeats;
+		this.isOccupied = isOccupied;
+		this.order = o;
+	}
 
 	//TableId Getter & Setters
 	public int getTableId() { return tableId; }
-	
+
 	public void setTableID(int newTableId) { tableId = newTableId; }
 
 	//NumofSeats Getter & Setters
 	public int getNumOfSeats() { return numOfSeats; }
-	
+
 	public void setNumOfSeats(int newNumOfSeats) { numOfSeats = newNumOfSeats; }
-	
+
 	//Order Getter & Setters
 	public Order getOrder() { return this.order; }
 	public void makeOrder(Order o) { this.order = o; }
-	
+
 	public void setReservedTable()
 	{
 		this.isReserved = true;
@@ -50,17 +58,17 @@ public class Table {
 	}
 
 	public boolean getIsReserved() { return isReserved; }
-	
+
 	public void setIsReserved() { this.isReserved = true; }
-	
+
 	public boolean getIsOccupied() { return isOccupied; }
-	
+
 	public void setIsOccupied() { this.isOccupied = true; }
 
 	public int getCustomerNo() { return customerNo; }
-	
-	public void setCustomerNo(int customerNo) 
-	{ 
+
+	public void setCustomerNo(int customerNo)
+	{
 		this.customerNo = customerNo;
 	}
 
@@ -79,6 +87,11 @@ public class Table {
 		isOccupied = true;
 		customerNo = custNo;
 	}
+	
+	public void assignTable(int custNo) {
+		isReserved = false;
+		isOccupied = true;
+	}
 
 	public void freeTable() {
 		isReserved = false;
@@ -86,7 +99,7 @@ public class Table {
 		customerNo = 0;
 	}
 
-	public void displayStatus() 
+	public void displayStatus()
 	{
 		System.out.printf("%-20s", getTableId());
 		System.out.printf("%-20s", getNumOfSeats());
