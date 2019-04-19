@@ -28,6 +28,9 @@ public class MainRestaurantView {
 				case "M":
 					Utilities.newScreenHeader();
 					(new MenuView()).MenuUI(); break;
+					
+				case "I":
+					break;
 				case "CHANGE":
 					Utilities.newScreenHeader();
 					StaffView.showChangeStaffForm();

@@ -2,7 +2,7 @@ package ntu.scse.cz2002.restaurant.model;
 
 import java.util.Date;
 
-import ntu.scse.cz2002.restaurant.data.DataArray;
+import ntu.scse.cz2002.restaurant.data.DataAccessor;
 import ntu.scse.cz2002.restaurant.util.CalendarFormatter;
 
 import java.io.IOException;
@@ -18,21 +18,11 @@ public class RestaurantRevenue { // needs to be reformatter & reworked.. is it a
 	Calendar end;
 	ArrayList<MenuItem> thingssold;
 	double total_revenue;
+	String filename;
 //	public static DateTimeFormatter timeformat = DateTimeFormatter.ofPattern("dd-MM-yyy HH:mm:ss");
 
 	// init entire Invoicelist
-	DataArray da = new DataArray();
-	// ArrayList<String> strInvoice = DataArray.read("Invoices.txt");
-	ArrayList<Invoice> total_Invoices = new ArrayList<Invoice>();
-	{
-		try {
-			ArrayList<String> strInvoice = da.read("invoices.txt");
-			for (String str : strInvoice)
-				total_Invoices.add(new Invoice(str));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+	ArrayList<Invoice> invoice_list = (ArrayList<Invoice>) DataAccessor.readList(filename);
 
 	public RestaurantRevenue(ArrayList<Invoice> invoicelist) {
 		start = null;
@@ -51,7 +41,7 @@ public class RestaurantRevenue { // needs to be reformatter & reworked.. is it a
 	private ArrayList<Invoice> getInvoicelist(Calendar startdate, Calendar enddate) {
 		ArrayList<Invoice> inperiod = new ArrayList<Invoice>();
 		Calendar times;
-		for (Invoice i : total_Invoices) {
+		for (Invoice i : invoice_list) {
 			times = i.getTimestamp();
 			if (times.before(enddate) && times.after(startdate)) {
 				inperiod.add(i);
