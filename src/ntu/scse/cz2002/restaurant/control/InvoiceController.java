@@ -6,33 +6,41 @@ import java.util.Collections;
 
 import ntu.scse.cz2002.restaurant.data.DataAccessor;
 import ntu.scse.cz2002.restaurant.model.*;
+import ntu.scse.cz2002.restaurant.util.CalendarFormatter;
 
 public class InvoiceController {
 	private final static String DATA_FILE = "invoice.dat";	
-	private ArrayList<Invoice> invoiceArr;
-	private TableController tCtrl; 
+	private ArrayList<Invoice> invoiceArr = new ArrayList<Invoice>();
 
 	public InvoiceController(){
+		
+		super();
+		System.out.println("ASDFASDFASDFASDFASDFASDFASDFASDFSDAFSAF");
 		invoiceArr = loadItems(DATA_FILE);
-	}
-	
-	public InvoiceController(TableController tCtrl) {
-		this.tCtrl = tCtrl;
+		if(invoiceArr == null) {
+			System.out.println("null");
+			invoiceArr = new ArrayList<Invoice>();
+		}
 	}
 	
 	public void addInvoice(Order o) {
-		invoiceArr.add(new Invoice(o));
+		Invoice newInvoice = new Invoice(o, invoiceArr.size());
+
+		invoiceArr.add(newInvoice);
+			//System.out.println("InvoiceArr is not null");
+		newInvoice.printReceipt();
 		this.saveItems();
 	}
 	
 	
 	private ArrayList<Invoice> loadItems(String filename) {
 	    try{
-	    return (ArrayList<Invoice>) DataAccessor.readList(filename); 
+	    return (ArrayList) DataAccessor.read(filename); 
 	    } 
 	    catch (Exception e){
+	    e.printStackTrace();
 	    System.out.println("Please create an invoice.dat.");
-	    return null;
+	    return new ArrayList<Invoice>();
 	    }
 	}
 	
@@ -51,13 +59,18 @@ public class InvoiceController {
         if(invoiceArr ==null){
             System.out.println("No item to print.");
             return false;
-            }
-        else {
-        	Collections.sort(invoiceArr);
-        	System.out.println("InvoiceID" + "\tTimestamp");
-        	for(Invoice InvoiceItem: invoiceArr){
-        		System.out.println(InvoiceItem.getInvoiceID() + "\t" + InvoiceItem.getTimestamp());
+        } else {
+        	if (invoiceArr.size() > 0) {
+	        	Collections.sort(invoiceArr);
+	        	System.out.println("InvoiceID" + "\t" + "Timestamp");
+	        	for(Invoice InvoiceItem: invoiceArr){
+	        		System.out.println(InvoiceItem.getInvoiceID() + "\t" + CalendarFormatter.toString(InvoiceItem.getTimestamp()));
         	}
+        	}
+	        	else {
+	        		System.out.println("No item to print");
+	        		return false;
+	        	}
         	return true;
         }
 	}

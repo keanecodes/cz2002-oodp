@@ -12,6 +12,7 @@ public class MainRestaurantView {
 	private OrderView oView = new OrderView(tCtrl);
 	private ReservationView rView = new ReservationView(tCtrl);
 	private MenuView mView = new MenuView();
+	//private InvoiceView iView = new InvoiceView();
 	
 	public void show() {
 		Scanner sc = new Scanner(System.in);
@@ -35,7 +36,6 @@ public class MainRestaurantView {
 					mView.MenuUI(); break;
 				//Restaurant review systems
 				case "I":
-					//(newInvoiceView(tCtrl)).InvoiceUI()?
 					Utilities.newScreenHeader();
 					InvoiceView.showInvoice();
 					printMainRestaurantView();

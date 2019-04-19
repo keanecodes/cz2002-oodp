@@ -1,6 +1,7 @@
 package ntu.scse.cz2002.restaurant.model;
 //package DateUtil.java; //idk why this is here
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 //import java.util.Date;
@@ -14,10 +15,11 @@ import ntu.scse.cz2002.restaurant.util.CalendarFormatter;
 *Invoice entity class
 *tracks orders that have been paid
 */
-public class Invoice implements Comparable<Invoice>{
+public class Invoice implements Comparable<Invoice>, Serializable{
 
 	Calendar timestamp = Calendar.getInstance();
 	//int tableid;
+	int invoiceId;
 	Order order1;
 	double amount;
 	//int invoice_id = 3941; // test
@@ -38,11 +40,12 @@ public class Invoice implements Comparable<Invoice>{
     *Constructor for Invoice Class. Constructs based on an order.
     * @see MyClass
     */
-	public Invoice(Order o) {
+	public Invoice(Order o, int invoiceID) {
 		// Date date = new Date();
 		timestamp = Calendar.getInstance();
 		order1 = o;
 		amount = calAmt(o);
+		invoiceId = invoiceID;
 	}
 	
     /**
@@ -70,7 +73,7 @@ public class Invoice implements Comparable<Invoice>{
     *returns InvoiceID. InvoiceID is the same as the old orderID.
 	    */
 	public int getInvoiceID() {
-		return order1.getOrderId();
+		return invoiceId;
 	}
 	
 	
@@ -146,8 +149,8 @@ public class Invoice implements Comparable<Invoice>{
 		}
 		System.out.println("   ---------------------------");
 		System.out.println("              Subtotal : " + amount);
-		System.out.println("                   GST : " + 0.07 * amount);
-		System.out.println("                 TOTAL : " + 1.07 * amount);
+		System.out.printf("                   GST : %0.2lf", 0.07 * amount);
+		System.out.printf("                 TOTAL : %0.2lf", 1.07 * amount);
 		System.out.println("----------------------------------");
 		System.out.println("  Thank You for Dining with us!");
 	}
@@ -158,10 +161,10 @@ public class Invoice implements Comparable<Invoice>{
 	 * item.getName(); table[1][i] = item.getPrice(); } i++; return table; }
 	 */
 	
-	/**
+	/*/**
 	*For testing purposes
 	*@deprecated for testing purposes
-	*/
+	/
 	public static void main() { // for testing
 		Staff s = new Staff("Name", 'F', 3, "JobTitle");
 		Order o = new Order(s, 2, 5); // order id, table id
@@ -169,6 +172,7 @@ public class Invoice implements Comparable<Invoice>{
 
 		i.printReceipt();
 	}
+	*/
 
 	
 	/**

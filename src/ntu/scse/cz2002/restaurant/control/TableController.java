@@ -18,8 +18,7 @@ public class TableController {
 	private ArrayList<Table> tList = new ArrayList<Table>();
 	
 	ReservationController rCtrl = new ReservationController(this);
-	TableController tCtrl;
-	InvoiceController iCtrl;
+	InvoiceController iCtrl = new InvoiceController();
 	
 	public TableController() { 
 		setUpTables();
@@ -42,13 +41,11 @@ public class TableController {
 	public TableController(ReservationController rCtrl) {
 		super();
 		this.rCtrl = rCtrl;
-		setUpTables();
 	}
 	
-	public TableController(TableController tCtrl) {
+	public TableController(InvoiceController iCtrl) {
 		super();
-		this.tCtrl = tCtrl;
-		setUpTables();
+		this.iCtrl = iCtrl;
 	}
 	
 	public ArrayList<Table> getTables () { return this.tList; }
@@ -76,9 +73,11 @@ public class TableController {
 	public boolean releaseTable(int tableId) {
 		Table t = findTableById(tableId);
 		
-		if (t.getOrder() != null) {
-			t.freeTable();
-			iCtrl.addInvoice(t.getOrder());
+		if (t != null) {
+			if (t.getOrder() != null) {
+				t.freeTable();
+				iCtrl.addInvoice(t.getOrder());
+			}
 		}
 		
 		return true;

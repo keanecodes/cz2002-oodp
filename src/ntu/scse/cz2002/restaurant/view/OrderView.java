@@ -200,10 +200,8 @@ public class OrderView {
 		System.out.println("--------------------------------------------------\n" +
                            "   Menu Items\t| (A) Add\t(R) Remove\n" +  
                            "--------------------------------------------------\n" +
-                           "\t(DONE)\t| Save Changes. \n\t\t| Add to Table's Invoice\n" +
-                           "--------------------------------------------------\n" +
-                           "      (CANCEL)  | Discard Changes.\n\t\t| Back to Order Management\n" + 
-                           "--------------------------------------------------");
+                           "(<) Back to Order Management\n" + 
+						   "--------------------------------------------------");
 		System.out.print("> ");
 	}
 	
