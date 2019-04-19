@@ -10,34 +10,58 @@ import ntu.scse.cz2002.restaurant.control.OrderController;
 import ntu.scse.cz2002.restaurant.util.CalendarFormatter;
 //import ntu.scse.cz2002.restaurant.util.DateUtil;
 
-public class Invoice {
+public class Invoice implements Comparable<Invoice>{
 
 	Calendar timestamp = Calendar.getInstance();
-	int tableid;
+	//int tableid;
 	Order order1;
 	double amount;
-	int invoice_id = 3941; // test
+	//int invoice_id = 3941; // test
 	// public static DateTimeFormatter timeformat =
 	// DateTimeFormatter.ofPattern("dd-MM-yyy HH:mm:ss");
+	
+	
 
-
-	public Invoice(Table t) {
+	/*public Invoice(Table t) {
 		timestamp = Calendar.getInstance();
 		tableid = t.getTableId();
 		order1 = t.getOrder();
 		amount = calAmt(order1);
-	}
+	}*/
 
 	public Invoice(Order o) {
 		// Date date = new Date();
 		timestamp = Calendar.getInstance();
 		order1 = o;
 		amount = calAmt(o);
-		tableid = -1;
 	}
 
 	public Order getOrder() {
 		return order1;
+	}
+	
+	public ArrayList<MenuItem> getMenuItems(){
+		return order1.getItems();
+	}
+	
+	public int getTableID() {
+		return order1.getTableId();
+	}
+	
+	public int getInvoiceID() {
+		return order1.getOrderId();
+	}
+	
+	public int getStaffID() {
+		return order1.getStaff().getStaffID();
+	}
+	
+	public double getAmt() {
+		return amount;
+	}
+	
+	public Calendar getTimestamp() {
+		return timestamp;
 	}
 
 	private double calAmt(Order o) { // this can be put in order entity < best that it is called by order...
@@ -50,32 +74,26 @@ public class Invoice {
 		return totalAmt;
 	}
 
-	public Calendar getTimestamp() {
-		return timestamp;
-	}
-
+	
 	public String toString() {
-		return "Timestamp: " + CalendarFormatter.toString(timestamp) + "Table: " + tableid + " " + "Amount: " + amount;
-	}
-
-	public double getAmt() {
-		return amount;
+		return "Timestamp: " + CalendarFormatter.toString(timestamp) + "InvoiceID: " + this.getInvoiceID() + " " + "Amount: " + amount;
+		
 	}
 
 	public void printReceipt() {
 		System.out.println("Restaurant Name");
 		System.out.println("Address");
-		System.out.print(invoice_id);
+		System.out.print(this.getInvoiceID());
 		System.out.println("");
 		// System.out.print(CalendartoString(timestamp));
 
 		final Object[][] tableheader = new String[2][];
-		tableheader[0] = new String[] { "Server: Deb", "Date: " + CalendarFormatter.toString(timestamp, 2) }; // im
-																												// considering
+		tableheader[0] = new String[] { "Server: " + this.getStaffID(), "Date: " + CalendarFormatter.toString(timestamp, 2) }; // im
+																											// considering
 																												// just
 																												// keeping																										// entire
 																												// table.
-		tableheader[1] = new String[] { "Table: " + tableid, "Time: " + CalendarFormatter.toString(timestamp, 3) };
+		tableheader[1] = new String[] { "Table: " + this.getTableID(), "Time: " + CalendarFormatter.toString(timestamp, 3) };
 
 		for (final Object[] row : tableheader) {
 			System.out.format("%-15s%-15s\n", row);
@@ -83,7 +101,7 @@ public class Invoice {
 
 		System.out.println("----------------------------------");
 
-		for (MenuItem item : order1.getItems()) {
+		for (MenuItem item : this.getMenuItems()) {
 			System.out.format("   %-20s$ %-20s\n", item.getName(), item.getPrice());
 		}
 		System.out.println("   ---------------------------");
@@ -105,6 +123,23 @@ public class Invoice {
 		Invoice i = new Invoice(o);
 
 		i.printReceipt();
+	}
+
+	@Override
+	public int compareTo(Invoice i) {
+		if ((this.getTimestamp()).before(i.getTimestamp())) {
+			return -1;
+		}
+		else {
+			if ((this.getTimestamp()).after(i.getTimestamp())) {
+				return 1;	
+			}
+			else {
+				return 0;	
+			}
+		}
+		// TODO Auto-generated method stub
+		//return 0;
 	}
 
 }

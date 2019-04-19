@@ -28,8 +28,9 @@ public class MainRestaurantView {
 				case "M":
 					Utilities.newScreenHeader();
 					(new MenuView()).MenuUI(); break;
-					
+				//Restaurant review systems
 				case "I":
+					Utilities.newScreenHeader();
 					break;
 				case "CHANGE":
 					Utilities.newScreenHeader();

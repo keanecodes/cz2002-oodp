@@ -18,7 +18,7 @@ public class RestaurantRevenue { // needs to be reformatter & reworked.. is it a
 	Calendar end;
 	ArrayList<MenuItem> thingssold;
 	double total_revenue;
-	String filename;
+	String filename; //in invoice controller
 //	public static DateTimeFormatter timeformat = DateTimeFormatter.ofPattern("dd-MM-yyy HH:mm:ss");
 
 	// init entire Invoicelist
@@ -38,18 +38,7 @@ public class RestaurantRevenue { // needs to be reformatter & reworked.. is it a
 		thingssold = getitems(getInvoicelist(startdate, enddate));
 	}
 
-	private ArrayList<Invoice> getInvoicelist(Calendar startdate, Calendar enddate) {
-		ArrayList<Invoice> inperiod = new ArrayList<Invoice>();
-		Calendar times;
-		for (Invoice i : invoice_list) {
-			times = i.getTimestamp();
-			if (times.before(enddate) && times.after(startdate)) {
-				inperiod.add(i);
-			}
-		}
 
-		return inperiod;
-	}
 
 	public String getPeriod() {
 		return CalendarFormatter.toString(start, 2) + " - " + CalendarFormatter.toString(end, 2);
