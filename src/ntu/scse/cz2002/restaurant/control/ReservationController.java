@@ -131,7 +131,7 @@ public class ReservationController {
 		for (int tableSize : TABLE_SIZE) {
 			Table newTable;
 
-			newTable = new Table(tableNumber++, tableSize, false, false, 0, null);
+			newTable = new Table(tableNumber++, tableSize, false, false, 0);
 			System.out.println(newTable);
 			tables.add(newTable);
 		}

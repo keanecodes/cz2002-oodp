@@ -7,7 +7,7 @@ import ntu.scse.cz2002.restaurant.model.Order;
 import ntu.scse.cz2002.restaurant.model.Table;
 
 /**
- * @author moongee
+ * @author keane
  *
  */
 public class TableController {
@@ -15,7 +15,7 @@ public class TableController {
 	
 	
 	/**
-	 * 
+	 * List of table sizes.
 	 */
 	private static final int[] TABLE_SIZE = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 
 											4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 
@@ -23,67 +23,61 @@ public class TableController {
 											10, 10, 10, 10, 10 };
 	
 	/**
-	 * 
+	 * List of tables.
 	 */
 	private ArrayList<Table> tList = new ArrayList<Table>();
 	
 	/**
-	 * 
+	 * Controller to modify reservations.
 	 */
 	ReservationController rCtrl = new ReservationController(this);
 	/**
-	 * 
+	 * Controller to modify invoices.
 	 */
 	InvoiceController iCtrl = new InvoiceController();
 	
 	/**
-	 * 
+	 * Creates a new controller to modify tables.
 	 */
 	public TableController() { 
 		setUpTables();
 	}
 	
-	/* Create the list of tables with the indicated sizes */
 	/**
-	 * 
-	 */
-	private void setUpTables() {
-		
-		for (int i = 0; i < TABLE_SIZE.length; i++){
-		//for (int tableSize : TABLE_SIZE) 
-			Table newTable;
-			// Constructor: tableNunber, numOfSeats, isOccupied, order
-			newTable = new Table(i, TABLE_SIZE[i], false, new Order(i));
-
-			tList.add(newTable);
-		}
-	}
-
-	
-	/**
-	 * @param rCtrl
+   * Creates a new controller to modify tables.
+   * This constructor is able to receive external reservation controller.
+	 * @param rCtrl External reservation controller.
 	 */
 	public TableController(ReservationController rCtrl) {
 		super();
 		this.rCtrl = rCtrl;
 	}
 	
+    /**
+     * Creates the list of tables with the indicated sizes
+     */
+    private void setUpTables() {
+		
+        for (int i = 0; i < TABLE_SIZE.length; i++){
+            //for (int tableSize : TABLE_SIZE) 
+            Table newTable;
+            // Constructor: tableNunber, numOfSeats, isOccupied, order
+            newTable = new Table(i, TABLE_SIZE[i], false, new Order(i));
+
+            tList.add(newTable);
+        }
+    }
+
 	/**
-	 * @param iCtrl
-	 */
-	public TableController(InvoiceController iCtrl) {
-		super();
-		this.iCtrl = iCtrl;
-	}
-	
-	/**
-	 * @return
+   * Gets the list of tables.
+	 * @return the list of tables.
 	 */
 	public ArrayList<Table> getTables () { return this.tList; }
 	
 	/**
-	 * @param tableId
-	 * @return
+   * Checks if a specified table is not occupied and not reserved.
+	 * @param tableId ID of specified table.
+	 * @return the vacancy status of the specified table.
 	 */
 	public boolean isTableNotReservedAndOccupied(int tableId) {
 		Table t = findTableById(tableId);
@@ -101,7 +95,8 @@ public class TableController {
 	}
 	
 	/**
-	 * @param tableId
+   * Sets table as occupied.
+	 * @param tableId ID of specified table.
 	 */
 	public void setUpforOrder(int tableId) {
 		Table t = findTableById(tableId);
@@ -109,8 +104,9 @@ public class TableController {
 	}
 	
 	/**
-	 * @param tableId
-	 * @return
+   * Free a specified table after customers are done eating.
+	 * @param tableId ID of the specified table.
+	 * @return true if successful, false if unsuccessful.
 	 */
 	public boolean releaseTable(int tableId) {
 		Table t = findTableById(tableId);
@@ -119,15 +115,17 @@ public class TableController {
 			if (t.getOrder() != null) {
 				t.freeTable();
 				iCtrl.addInvoice(t.getOrder());
+        return true;
 			}
 		}
 		
-		return true;
+		return false;
 	}
 	
 	/**
-	 * @param id
-	 * @return
+   * Gets a table specified table object.
+	 * @param id ID of specified table.
+	 * @return the table object.
 	 */
 	public Table findTableById(int id) {
 		for(int i = 0; i < tList.size(); i++)

@@ -10,12 +10,26 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+   General file i/o handler class.
+   @author Johan Tjuatja
+   @version 1.0
+   @since   2019-04-16
+ */
 public class DataAccessor {
-	
+
+    /**
+     * Path to working directory.
+     */
 	public static final Path DATAPATH = Paths.get(System.getProperty("user.dir"), 
                                         "src/ntu/scse/cz2002/restaurant/data");
 
-	
+    /**
+     * Write object out to file.
+     * @params filename The name of file.
+     * @params data     The object data to be written out.
+     * @return 0 if successful, 1 if unsuccessful.
+     */
 	public static int write(String filename, Object data) {
 		
 		Path fileDataPath = Paths.get(DATAPATH.toString(), filename);
@@ -36,6 +50,11 @@ public class DataAccessor {
 	    }
 	}
 
+    /**
+     * Read in object(s) from file.
+     * @params filename The name of file.
+     * @return the object(s) read from the file.
+     */
 	public static Object read(String filename) {
 		Path fileDataPath = Paths.get(DATAPATH.toString(), filename);
 		
@@ -57,28 +76,4 @@ public class DataAccessor {
 
 		return data;
 	}
-	
-	public static List readList(String filename) {
-		Path fileDataPath = Paths.get(DATAPATH.toString(), filename);
-		
-		List data = null;
-
-		try {
-			FileInputStream f = new FileInputStream(fileDataPath.toString());
-			ObjectInputStream o = new ObjectInputStream(f);
-
-			data = (ArrayList) o.readObject();
-
-			o.close();
-			f.close();
-		} catch (IOException e) {
-			System.out.println("Failed to load data: IOException");
-		} catch (ClassNotFoundException e) {
-			System.out.println("Failed to load data: ClassNotFoundException");
-		}
-
-		return data;
-	}
-	
-	
 }
