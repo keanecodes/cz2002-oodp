@@ -202,7 +202,7 @@ public class MenuController{
             else{
                 item = this.menu.getItem(names.get(k));
                 System.out.println(names.get(k) + " $" + String.valueOf(item.getPrice()));
-                System.out.println("  " + item.getDescription());
+                System.out.println("Desc: " + item.getDescription());
             }
         }
     }

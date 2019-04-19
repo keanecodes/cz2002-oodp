@@ -190,20 +190,21 @@ public class MenuView {
 			menuMan.removeItem(name);
 			break;
 		case "CLEAR":
-	        char ans='0';
+	        String ans;
 	
-	        System.out.println(">> Remove ALL items/promotions");
+	        System.out.println(">> Remove ALL item/promotions");
 	        System.out.println("Are you sure you want to remove all current items in the menu? (y/n)");
+
+          ans = sc.next();
 	
-	
-	        while(c.equalsIgnoreCase("Y") && c.equalsIgnoreCase("N")){
+	        while(ans.equalsIgnoreCase("Y") && ans.equalsIgnoreCase("N")){
 	            System.out.println("Please answer with 'y' or 'n' only!");
 	
 	            System.out.println("Are you sure you want to remove all current items in the menu? (y/n)");
-	            c = sc.next();
+	            ans = sc.next();
 	        }
 	
-	        if(c.equalsIgnoreCase("y"))
+	        if(ans.equalsIgnoreCase("Y"))
 	        		menuMan.clearMenu();
 	        break;
 		case "<":
