@@ -10,6 +10,7 @@ import ntu.scse.cz2002.restaurant.model.*;
 public class InvoiceController {
 	private final static String DATA_FILE = "invoice.dat";	
 	private ArrayList<Invoice> invoiceArr;
+	private TableController tCtrl; 
 
 	public InvoiceController(){
     try{
@@ -17,6 +18,10 @@ public class InvoiceController {
     } catch (Exception e){
     	System.out.println("Please create an invoice.dat.");
     	}
+	}
+	
+	public InvoiceController(TableController tCtrl) {
+		this.tCtrl = tCtrl;
 	}
 	
 	public void addInvoice(Order o) {

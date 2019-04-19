@@ -13,6 +13,8 @@ public class Order implements Serializable {
 	private int orderId;
 	private int tableId;
 
+	public Order() { }
+	
 	public Order(Staff staff, int orderId, int tableId) {
 		this.staff = staff;
 		this.orderId = orderId;

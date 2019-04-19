@@ -30,6 +30,7 @@ public class MainRestaurantView {
 					(new MenuView()).MenuUI(); break;
 				//Restaurant review systems
 				case "I":
+					//(newInvoiceView(tCtrl)).InvoiceUI()?
 					Utilities.newScreenHeader();
 					break;
 				case "CHANGE":

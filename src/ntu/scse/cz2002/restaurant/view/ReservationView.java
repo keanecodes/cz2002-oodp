@@ -28,14 +28,14 @@ public class ReservationView {
 	}
 
 	public void ReservationUI() {
-		
+
 		displayReservationOptions();
-		
+
 		String choice = "";
 		do {
 			choice = sc.next();
 
-			
+
 			switch (choice.toUpperCase()) {
 				case "V":
 					reserveManager.viewReservations();
