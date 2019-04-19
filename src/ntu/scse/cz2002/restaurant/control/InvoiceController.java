@@ -10,9 +10,14 @@ import ntu.scse.cz2002.restaurant.model.*;
 public class InvoiceController {
 	private final static String DATA_FILE = "invoice.dat";	
 	private ArrayList<Invoice> invoiceArr;
+	private TableController tCtrl; 
 
 	public InvoiceController(){
 		invoiceArr = loadItems(DATA_FILE);
+	}
+	
+	public InvoiceController(TableController tCtrl) {
+		this.tCtrl = tCtrl;
 	}
 	
 	public void addInvoice(Order o) {

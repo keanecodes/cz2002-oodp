@@ -56,7 +56,7 @@ public class ReservationController {
 	 */
 	public ReservationController() {
 		sc = new Scanner(System.in);
-		tables = new ArrayList<Table>();
+		//tables = new ArrayList<Table>();
 		//reservations = (ArrayList<Reservation>) DataAccessor.readList(DATA_FILE);
 		reservations = new ArrayList<Reservation>();
 		dateFormatter = new SimpleDateFormat("E, dd/MM/yyyy, HH:mm");
@@ -455,6 +455,12 @@ public class ReservationController {
 				}
 			}
 		}
+	}
+	
+	public boolean isTableCurrentlyReserved(int tableId) {
+		checkReservations();
+		Table t = getTableByNumber(tableId);
+		return t.getIsReserved();
 	}
 
 	public Table getTableByNumber(int tableNumber) {

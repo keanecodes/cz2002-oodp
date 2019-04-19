@@ -9,9 +9,18 @@ import java.util.InputMismatchException;
 import java.util.ArrayList;
 
 public class MenuView {
+	/**
+	 * 
+	 */
 	public static MenuController menuMan;
+	/**
+	 * 
+	 */
 	public static int quit;
 
+	/**
+	 * 
+	 */
 	public static void MenuUI() {
 		String c;
 		quit = 0;
@@ -26,6 +35,9 @@ public class MenuView {
 		}
 	}
 
+	/**
+	 * 
+	 */
 	public static void printInputList() {
 		System.out.println("// Restaurant Menu Item Management // ------------\n" +
 			     		   "--------------------------------------------------\n" +
@@ -40,6 +52,9 @@ public class MenuView {
 			     		   " (CLEAR)| Clear all items in menu\n");
 	}
 
+	/**
+	 * @return
+	 */
 	public static String getUserInput() {
 		System.out.printf("Please select what to do (enter \"0\" to view options):\n");
 		System.out.println("---------------------------------------------------\n" +
@@ -56,6 +71,9 @@ public class MenuView {
     	return c;
 	}
 
+	/**
+	 * @param c
+	 */
 	public static void processUserInput(String c) {
 		String name;
 		String description;

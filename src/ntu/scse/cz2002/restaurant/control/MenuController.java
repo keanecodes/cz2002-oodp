@@ -19,13 +19,22 @@ public class MenuController{
     /**
      * Contents of menu (items & promotions)
      */
+    /**
+     * 
+     */
     private Menu menu;
 
     /**
      * Types of items in the menu (main, drinks, dessert, etc.)
      */
+    /**
+     * 
+     */
     private ArrayList<String> types;
 
+    /**
+     * 
+     */
     private String itemFilename = "items.dat";
 
     /**
@@ -33,6 +42,9 @@ public class MenuController{
      * Add/update/remove/display contents of menu.
      * @param items      The list of ala carte items
      * @param promotions The list of promotion items
+     */
+    /**
+     * 
      */
     public MenuController(){
         types = new ArrayList<String>();
@@ -43,6 +55,9 @@ public class MenuController{
     }
 
     // deprecated
+    /**
+     * @param itemFilename
+     */
     private void loadItems(String itemFilename){
         ArrayList<MenuItem> items = (ArrayList) DataAccessor.read(itemFilename);
 
@@ -59,6 +74,9 @@ public class MenuController{
         }
     }
 
+    /**
+     * 
+     */
     public void saveItems(){
         int itemSave = DataAccessor.write(itemFilename, this.menu.getItemList());
 
@@ -74,7 +92,12 @@ public class MenuController{
      * Compile the existing types of items in the menu.
      * @return types of items in menu
      */
+    /**
+     * @param items
+     */
     private void updateTypesList(ArrayList<MenuItem> items){
+        this.types.clear();
+
         for(int i=0;i<items.size();i++){
             if(this.types.contains(items.get(i).getType())){
                 continue;
@@ -91,12 +114,18 @@ public class MenuController{
      * Gets menu contents.
      * @return contents of the menu.
      */
+    /**
+     * @return
+     */
     public Menu getMenu() {
     	return menu;
     }
 
     /**
      * Add an individual item into the menu.
+     */
+    /**
+     * @param item
      */
     public void addItem(MenuItem item){
         this.menu.addItem(item);
@@ -112,15 +141,23 @@ public class MenuController{
     /**
      * Remove an item (individual/promotion) from the menu.
      */
+    /**
+     * @param name
+     */
     public void removeItem(String name){
         if(this.menu.removeItem(name) == 1){
             System.out.println(name + " does not exist in menu!");
             return;
         }
 
+        updateTypesList(this.menu.getItemList());
+
         System.out.println(name + " has been successfully deleted from menu!");
     }
 
+    /**
+     * 
+     */
     public void clearMenu(){
         String target;
 
@@ -128,8 +165,9 @@ public class MenuController{
             while(this.menu.getItemCount() != 0){
                     target = this.menu.getItemList().get(0).getName();
                     this.menu.removeItem(target);
-                    this.types.remove(0);
             }
+
+            updateTypesList(this.menu.getItemList());
 
             System.out.println("Menu is cleared.");
         }
@@ -139,6 +177,11 @@ public class MenuController{
     }
     /**
      * Update the information for an item.
+     */
+    /**
+     * @param name
+     * @param description
+     * @param price
      */
     public void updateItem(String name, String description, double price){
         MenuItem item;
@@ -157,14 +200,19 @@ public class MenuController{
     /**
      * Print contents of menu, sorted by item type.
      */
+    /**
+     * 
+     */
     public void printItemsByCategory(){
         if(this.menu.getItemCount() != 0){
             for(int i=0;i<this.types.size();i++){
+                System.out.println("");
                 System.out.println("-- " + this.types.get(i) + " --");
                 for(int j=0;j<this.menu.getItemCount();j++){
                     MenuItem item = this.menu.getItemList().get(j);
 
                     if(item.getType().equals(this.types.get(i))){
+                        System.out.println("");
                         System.out.println(item.getName() + "  $" + String.valueOf(item.getPrice()));
                         System.out.println("Desc: " + item.getDescription());
                     }
@@ -178,6 +226,9 @@ public class MenuController{
 
     /**
      * Print contents of menu, sorted by name.
+     */
+    /**
+     * 
      */
     public void printItemsByName(){
         ArrayList<String> names = new ArrayList<String>();
@@ -201,6 +252,7 @@ public class MenuController{
             }
             else{
                 item = this.menu.getItem(names.get(k));
+                System.out.println("");
                 System.out.println(names.get(k) + " $" + String.valueOf(item.getPrice()) + " (" + item.getType() + ")");
                 System.out.println("Desc: " + item.getDescription());
             }
