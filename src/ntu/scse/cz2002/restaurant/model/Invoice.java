@@ -10,6 +10,10 @@ import ntu.scse.cz2002.restaurant.control.OrderController;
 import ntu.scse.cz2002.restaurant.util.CalendarFormatter;
 //import ntu.scse.cz2002.restaurant.util.DateUtil;
 
+/**
+*Invoice entity class
+*tracks orders that have been paid
+*/
 public class Invoice implements Comparable<Invoice>{
 
 	Calendar timestamp = Calendar.getInstance();
@@ -28,42 +32,72 @@ public class Invoice implements Comparable<Invoice>{
 		order1 = t.getOrder();
 		amount = calAmt(order1);
 	}*/
-
+	
+	
+    /**
+    *Constructor for Invoice Class. Constructs based on an order.
+    * @see MyClass
+    */
 	public Invoice(Order o) {
 		// Date date = new Date();
 		timestamp = Calendar.getInstance();
 		order1 = o;
 		amount = calAmt(o);
 	}
-
+	
+    /**
+    *returns Order object which Invoice is built off of.
+    */
 	public Order getOrder() {
 		return order1;
 	}
 	
+    /**
+    *uses order to return MenuItems ordered.
+    */
 	public ArrayList<MenuItem> getMenuItems(){
 		return order1.getItems();
 	}
 	
+	/**
+	    *returns TableID of order.
+	    */
 	public int getTableID() {
 		return order1.getTableId();
 	}
 	
+	   /**
+    *returns InvoiceID. InvoiceID is the same as the old orderID.
+	    */
 	public int getInvoiceID() {
 		return order1.getOrderId();
 	}
 	
+	
+	   /**
+	    *returns StaffID of Staff who took the order
+	    */
 	public int getStaffID() {
 		return order1.getStaff().getStaffID();
 	}
 	
+	/**
+	*returns Amount paid on the Invoice
+	*/
 	public double getAmt() {
 		return amount;
 	}
 	
+	/**
+	*returns timestamp of Invoice
+	*/
 	public Calendar getTimestamp() {
 		return timestamp;
 	}
 
+	/**
+	*calculates the total amount to be paid based on the order
+	*/
 	private double calAmt(Order o) { // this can be put in order entity < best that it is called by order...
 		ArrayList<MenuItem> items = o.getItems();
 		double totalAmt = 0;
@@ -75,11 +109,17 @@ public class Invoice implements Comparable<Invoice>{
 	}
 
 	
+	/**
+	*prints Invoice attributes for backend access if needed.
+	*/
 	public String toString() {
 		return "Timestamp: " + CalendarFormatter.toString(timestamp) + "InvoiceID: " + this.getInvoiceID() + " " + "Amount: " + amount;
 		
 	}
 
+	/**
+	*prints Receipt
+	*/
 	public void printReceipt() {
 		System.out.println("Restaurant Name");
 		System.out.println("Address");
@@ -117,6 +157,11 @@ public class Invoice implements Comparable<Invoice>{
 	 * String[2][]; int i = 0; for (MenuItem item: op.getItems()) { table[0][i] =
 	 * item.getName(); table[1][i] = item.getPrice(); } i++; return table; }
 	 */
+	
+	/**
+	*For testing purposes
+	*@deprecated for testing purposes
+	*/
 	public static void main() { // for testing
 		Staff s = new Staff("Name", 'F', 3, "JobTitle");
 		Order o = new Order(s, 2, 5); // order id, table id
@@ -125,6 +170,11 @@ public class Invoice implements Comparable<Invoice>{
 		i.printReceipt();
 	}
 
+	
+	/**
+	 * @param Comparable to other Invoices
+	*Comparable interface, invoices compared using timestamp
+	*/
 	@Override
 	public int compareTo(Invoice i) {
 		if ((this.getTimestamp()).before(i.getTimestamp())) {

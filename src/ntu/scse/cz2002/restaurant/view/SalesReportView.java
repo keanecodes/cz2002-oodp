@@ -9,19 +9,26 @@ import ntu.scse.cz2002.restaurant.model.RestaurantRevenue;
 import ntu.scse.cz2002.restaurant.model.Staff;
 
 import java.util.Date;
-
+/**
+*Boundary Class for SalesReport*/
 public class SalesReportView {
 	static Scanner sc= new Scanner(System.in);
 	static Calendar start = Calendar.getInstance();
 	static Calendar end = Calendar.getInstance();
 	static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
+	/**
+	*Constructor for SalesReport for which staff is unknown
+	*/
 	public static void showSalesReport() {
 		Staff unknown = new Staff("Unknown", 0);
 		showSalesReport (unknown);
 	}
 	
-	
+	/**
+	*Constructor for SalesReport
+	*@param staff generating the report
+	*/
 	public static void showSalesReport(Staff stf) {
 		System.out.println("// Print SalesReport//------------\n" +
 				"--------------------------------------------------");   

@@ -8,6 +8,10 @@ import ntu.scse.cz2002.restaurant.control.OrderController;
 import ntu.scse.cz2002.restaurant.control.StaffController;
 import ntu.scse.cz2002.restaurant.model.RestaurantRevenue;
 
+
+/**
+*Boundary Class to Print Invoices
+*/
 public class InvoiceView{
 
 	//private OrderController orderManager = new OrderController();
@@ -15,7 +19,9 @@ public class InvoiceView{
 	private static InvoiceController iCtrl = new InvoiceController();
 	static Scanner sc = new Scanner(System.in);
 	
-	
+	/**
+	*Prints list of Past Invoices, & user chooses invoices to print based on invoice id
+	*/
 	public static void showInvoice() {
 		System.out.println("// Print Past Invoices//------------\n" +   
                 "--------------------------------------------------\n" +

@@ -12,6 +12,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+
+/**
+*Entity Class for SalesReport
+*<br> currently not instantiated, as SalesReports need not be tracked or saved. This entity class can be used in the future.
+*/
 public class RestaurantRevenue { // needs to be reformatter & reworked.. is it a InvoiceManager or Does
 									// SalesReport need its own class?
 	// Invoice[] invoice_list;
@@ -26,6 +31,11 @@ public class RestaurantRevenue { // needs to be reformatter & reworked.. is it a
 	// init entire Invoicelist
 	//ArrayList<Invoice> invoice_list = (ArrayList<Invoice>) DataAccessor.readList(filename);
 
+	/**
+	*Constructor for SalesReport
+	*@param takes in any list of invoices to combine into a Sales Report
+	*@deprecated not used, but might be needed in the future
+	*/
 	public RestaurantRevenue(ArrayList<Invoice> invoicelist) {
 		start = null;
 		end = null;
@@ -33,6 +43,11 @@ public class RestaurantRevenue { // needs to be reformatter & reworked.. is it a
 		thingssold = getitems(invoicelist);
 	}
 
+	/**
+	*Constructor for SalesReport, by period
+	*@param takes in a period in Calendar format
+	*@see class
+	*/
 	public RestaurantRevenue(Calendar startdate, Calendar enddate) {
 		start = startdate;
 		end = enddate;
@@ -40,28 +55,42 @@ public class RestaurantRevenue { // needs to be reformatter & reworked.. is it a
 		thingssold = this.getitems(getInvListbyDatabase(startdate, enddate));
 	}
 	
+	
+	/**
+	*returns total revenue for this SalesReport
+	*/
 	public double getttlrevnue() {
 		return total_revenue;
 	}
 	
+	/**
+	*returns all items sold in this SalesReport
+	*/
 	public ArrayList<MenuItem> getthingssold() {
 		return thingssold;
 	}
-
+	
+	/**
+	*returns time period for this report in a String for printing
+	*/
 	public String getPeriod() {
 		return CalendarFormatter.toString(start, 2) + " - " + CalendarFormatter.toString(end, 2);
 	}
 	
+	/**
+	*returns the appropriate list of invoices from database by period
+	*used by constructor
+	*/
 	private ArrayList<Invoice> getInvListbyDatabase(Calendar star, Calendar endd) {
 		InvoiceController iCtrl = new InvoiceController();
 		return iCtrl.getInvoicelist(star, endd);
 	}
 
 
-	/*
-	 * public void setPeriod(int month) { period = month; }
-	 */
-
+	/**
+	*calculates total revenue for this SalesReport
+	*@param any list of invoices
+	*/
 	private double sumAmount(ArrayList<Invoice> invoicelist) {
 		double totalAmt = 0;
 		if (invoicelist ==null) {
@@ -73,6 +102,11 @@ public class RestaurantRevenue { // needs to be reformatter & reworked.. is it a
 		return totalAmt;
 	}
 
+	/**
+	*gets all the menuItems from each of the Invoices in list
+	*used by getMenuItems()
+	*@param takes in any list of invoices
+	*/
 	private ArrayList<MenuItem> getitems(ArrayList<Invoice> ils) {
 		ArrayList<MenuItem> items = new ArrayList<MenuItem>();
 		if (ils == null){
@@ -89,6 +123,11 @@ public class RestaurantRevenue { // needs to be reformatter & reworked.. is it a
 		return items;
 	}
 
+	/**
+	*Prints Sales report in appropriate format. 
+	*@param takes in the staff that requested the sales report
+	*	
+	**/
 	public void PrintSalesReport(Staff stf) {
 		System.out.println("Restaurant Name");
 		System.out.println("Address");
