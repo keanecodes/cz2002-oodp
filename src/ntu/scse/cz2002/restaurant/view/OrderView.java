@@ -46,20 +46,16 @@ public class OrderView {
 			switch (choice.toUpperCase()) {
 				case "M":
 					System.out.println("Enter tableID: ");
-					Table t;
 					try{
 						tableID = sc.nextInt();
 					}catch(InputMismatchException ex) {
 						System.out.println("Invalid tableID input!");
 						break;
 					}
-					if (tCtrl.isTableNotReservedAndOccupied(tableID)) {
-						t = tCtrl.findTableById(tableID);
-						t.setIsOccupied();
-						currentOrder = t.getOrder();
-						if (currentOrder != null) 
-							editOrderUI(currentOrder, orderManager);
-					}
+					currentOrder = orderManager.createOrder(this.tCtrl, tableID);
+					if (currentOrder != null) 
+						editOrderUI(currentOrder, orderManager);
+					
 					break;
 				case "V":
 					System.out.println("Enter tableID: ");
@@ -82,9 +78,12 @@ public class OrderView {
 						System.out.println("Invalid tableID input!");
 						break;
 					}
+					tCtrl.releaseTable(tableID);
+					orderManager.removeOrder(tableID);
+					System.out.println("Order has been sent for processing!\n");
 					break;
 				case "<":
-					Utilities.clearScreen(); MainRestaurantView.show();
+					Utilities.clearScreen(); (new MainRestaurantView()).show();
 					break;
 				default:
 					System.out.println("Invalid input. Refer to the option table.");

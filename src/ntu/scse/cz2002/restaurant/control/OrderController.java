@@ -5,6 +5,7 @@ import ntu.scse.cz2002.restaurant.model.Staff;
 import ntu.scse.cz2002.restaurant.model.MenuItem;
 import ntu.scse.cz2002.restaurant.data.DataAccessor;
 import ntu.scse.cz2002.restaurant.model.Menu;
+import ntu.scse.cz2002.restaurant.model.Table;
 import ntu.scse.cz2002.restaurant.model.Promotion;
 
 import java.io.IOException;
@@ -16,28 +17,38 @@ public class OrderController {
 	private Order order;
 	StaffController staffManager = new StaffController();
 	MenuController menuManager = new MenuController();
-	private TableController tCtrl;
+	TableController tCtrl;
+	private static int orderID = 0;
 	
 	Menu menu = menuManager.getMenu();
 	private ArrayList<Order> orderArr = new ArrayList<Order>();
 	
 	public OrderController() { }
-	
-	public OrderController(TableController tCtrl) {
-		this.tCtrl = tCtrl;
-	}
-	
 	public void setOrderArr(ArrayList<Order> oList) {
 		this.orderArr = oList;
 	}
 	
-	public Order createOrder(Staff staff, int tableID) {
-		
-		int orderID = orderArr.size();
-		order = new Order(staff, orderID, tableID);
-		orderArr.add(order);
-		
-		return order;
+	public Order createOrder(TableController tableController, int tableID) {
+		Order currentOrder = null;
+		Table t;
+		tCtrl = tableController;
+		if (tCtrl.isTableNotReservedAndOccupied(tableID)) {
+			t = tCtrl.findTableById(tableID);
+			t.setIsOccupied();
+			currentOrder = t.getOrder();
+			currentOrder.setStaff(staffManager.getStaff());
+			currentOrder.setOrderId(orderID++);
+			orderArr.add(currentOrder);
+		}
+		return currentOrder;
+	}
+	
+	public void removeOrder(int tableID) {
+		for (int i = 0; i < this.orderArr.size(); i++) {
+			if (this.orderArr.get(i).getTableId() == tableID) {
+				this.orderArr.remove(i);
+			}
+		}
 	}
 
 	public void addOrderItem(Order order, String itemName) {

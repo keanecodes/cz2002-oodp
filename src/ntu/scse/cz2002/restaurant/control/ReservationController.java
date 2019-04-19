@@ -39,6 +39,7 @@ public class ReservationController {
 
 	/* A static instance of restaurant manager */
 	private static ReservationController reserveMgr = null;
+	TableController tCtrl;
 
 	/* A list of all physical tables in the restaurants */
 	private static List<Table> tables;
@@ -58,12 +59,22 @@ public class ReservationController {
 	 */
 	public ReservationController() {
 		sc = new Scanner(System.in);
-		//tables = new ArrayList<Table>();
+		tables = new ArrayList<Table>();
 		//reservations = (ArrayList<Reservation>) DataAccessor.readList(DATA_FILE);
 		reservations = new ArrayList<Reservation>();
 		dateFormatter = new SimpleDateFormat("E, dd/MM/yyyy, HH:mm");
-		setUpTables();
+		//setUpTables();
 	}
+	
+	public ReservationController (TableController tCtrl) {
+		super();
+		this.tCtrl = tCtrl;
+
+		tables = tCtrl.getTables();
+		this.reservations = new ArrayList<Reservation>();
+		dateFormatter = new SimpleDateFormat("E, dd/MM/yyyy, HH:mm");
+	}
+	
 
 	/* Static instance of the Reservation Manager */
 	public static ReservationController getReservationManager() {
@@ -82,7 +93,7 @@ public class ReservationController {
 
 			// Constructor: tableNunber, numOfSeats, isReserved, isOccupied, customerID, order
 			newTable = new Table(tableNumber++, tableSize, false, false, 0, null);
-
+			System.out.println(newTable);
 			tables.add(newTable);
 		}
 	}
@@ -377,8 +388,9 @@ public class ReservationController {
 			Reservation removedReservation = reservations.get(reservationIndex - 1);
 
 			if (removedReservation != null) {
+				System.out.println(removedReservation.getTableNo());
 				Table table = getTableByNumber(removedReservation.getTableNo());
-
+				System.out.println(table);
 				if (table.getIsReserved() && (table.getCustomerNo() == removedReservation.getCustomerContactNo())) {
 					table.releaseTable();
 				}
@@ -399,6 +411,7 @@ public class ReservationController {
 		} 
 		catch (Exception ex) 
 		{
+			ex.printStackTrace();
 			System.out.println("Failed to remove reservation," + " please try again..");
 
 			sc.nextLine(); 
@@ -459,11 +472,17 @@ public class ReservationController {
 	public boolean isTableCurrentlyReserved(int tableId) {
 		checkReservations();
 		Table t = getTableByNumber(tableId);
-		return t.getIsReserved();
+		if (!(t == null)) {
+			return t.getIsReserved();
+		} 
+		
+		return false;
 	}
 
 	public Table getTableByNumber(int tableNumber) {
+		tables = tCtrl.getTables();
 		for (Table table : tables) {
+			System.out.println(table.getTableId());
 			if (table.getTableId() == tableNumber)
 				return table;
 		}

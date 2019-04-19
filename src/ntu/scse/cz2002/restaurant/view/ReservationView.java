@@ -3,6 +3,7 @@ package ntu.scse.cz2002.restaurant.view;
 import java.util.Scanner;
 
 import ntu.scse.cz2002.restaurant.control.ReservationController;
+import ntu.scse.cz2002.restaurant.control.TableController;
 import ntu.scse.cz2002.restaurant.util.Utilities;
 
 public class ReservationView {
@@ -10,6 +11,13 @@ public class ReservationView {
 	private static Scanner sc = new Scanner(System.in);
 
 	ReservationController reserveManager = new ReservationController();
+	TableController tCtrl;
+	
+	public ReservationView() { }
+	
+	public ReservationView(TableController tCtrl) { 
+		this.tCtrl = tCtrl;
+	}
 
 	private void displayReservationOptions() {
 		System.out.println("// Reservation Management // ---------------------\n" +
@@ -58,7 +66,7 @@ public class ReservationView {
 					displayReservationOptions();
 					break;
 				case "<":
-					Utilities.clearScreen(); MainRestaurantView.show();
+					Utilities.clearScreen(); (new MainRestaurantView()).show();
 					break;
 				default:
 					System.out.println("Invalid input. Refer to the option table.");

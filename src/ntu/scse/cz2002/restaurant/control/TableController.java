@@ -17,7 +17,7 @@ public class TableController {
 	
 	private ArrayList<Table> tList = new ArrayList<Table>();
 	
-	ReservationController rCtrl;
+	ReservationController rCtrl = new ReservationController(this);
 	TableController tCtrl;
 	InvoiceController iCtrl;
 	
@@ -27,13 +27,12 @@ public class TableController {
 	
 	/* Create the list of tables with the indicated sizes */
 	private void setUpTables() {
-		int tableNumber = 1;
-		for (int tableSize : TABLE_SIZE) {
+		
+		for (int i = 0; i < TABLE_SIZE.length; i++){
+		//for (int tableSize : TABLE_SIZE) 
 			Table newTable;
-			
-			tableNumber++;
 			// Constructor: tableNunber, numOfSeats, isOccupied, order
-			newTable = new Table(tableNumber, tableSize, false, new Order(tableNumber));
+			newTable = new Table(i, TABLE_SIZE[i], false, new Order(i));
 
 			tList.add(newTable);
 		}
@@ -43,25 +42,29 @@ public class TableController {
 	public TableController(ReservationController rCtrl) {
 		super();
 		this.rCtrl = rCtrl;
+		setUpTables();
 	}
 	
 	public TableController(TableController tCtrl) {
 		super();
 		this.tCtrl = tCtrl;
+		setUpTables();
 	}
 	
 	public ArrayList<Table> getTables () { return this.tList; }
 	
 	public boolean isTableNotReservedAndOccupied(int tableId) {
 		Table t = findTableById(tableId);
-		if (!rCtrl.isTableCurrentlyReserved(tableId) && !t.getIsOccupied()) {
-			return true;
-		} else if (rCtrl.isTableCurrentlyReserved(tableId)) {
-			System.out.println("Table is reserved.");
-			return false;
-		} 
-		
-		System.out.println("Table is occupied.");
+		if (t != null) {
+			if (!rCtrl.isTableCurrentlyReserved(tableId) && !t.getIsOccupied()) {
+				return true;
+			} else if (rCtrl.isTableCurrentlyReserved(tableId)) {
+				System.out.println("Table is reserved.");
+				return false;
+			} 
+			System.out.println("Table is occupied.");
+		}
+			
 		return false;
 	}
 	

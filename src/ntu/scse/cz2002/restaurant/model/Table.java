@@ -87,11 +87,6 @@ public class Table {
 		isOccupied = true;
 		customerNo = custNo;
 	}
-	
-	public void assignTable(int custNo) {
-		isReserved = false;
-		isOccupied = true;
-	}
 
 	public void freeTable() {
 		isReserved = false;

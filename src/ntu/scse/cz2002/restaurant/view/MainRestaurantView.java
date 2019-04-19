@@ -7,9 +7,9 @@ import ntu.scse.cz2002.restaurant.util.Utilities;
 
 public class MainRestaurantView {
 	
-	static TableController tCtrl = new TableController();
+	private TableController tCtrl = new TableController();
 	
-	public static void show() {
+	public void show() {
 		Scanner sc = new Scanner(System.in);
 
 		String choice = "";
@@ -25,10 +25,10 @@ public class MainRestaurantView {
 					(new OrderView(tCtrl)).OrderUI(); break;
 				case "R":
 					Utilities.newScreenHeader();
-					(new ReservationView()).ReservationUI(); break;
+					(new ReservationView(tCtrl)).ReservationUI(); break;
 				case "M":
 					Utilities.newScreenHeader();
-					(new MenuView()).MenuUI(); break;
+					(new MenuView(tCtrl)).MenuUI(); break;
 				//Restaurant review systems
 				case "I":
 					//(newInvoiceView(tCtrl)).InvoiceUI()?

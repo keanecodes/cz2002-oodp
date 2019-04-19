@@ -1,18 +1,21 @@
 package ntu.scse.cz2002.restaurant.view;
 
-import java.util.Scanner;
-import ntu.scse.cz2002.restaurant.control.MenuController;
-import ntu.scse.cz2002.restaurant.model.*;
-import ntu.scse.cz2002.restaurant.util.Utilities;
-
-import java.util.InputMismatchException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+import ntu.scse.cz2002.restaurant.control.MenuController;
+import ntu.scse.cz2002.restaurant.control.TableController;
+import ntu.scse.cz2002.restaurant.model.MenuItem;
+import ntu.scse.cz2002.restaurant.model.Promotion;
+import ntu.scse.cz2002.restaurant.util.Utilities;
 
 public class MenuView {
 	/**
 	 * 
 	 */
 	public static MenuController menuMan;
+	public TableController tCtrl;
 	/**
 	 * 
 	 */
@@ -21,6 +24,12 @@ public class MenuView {
 	/**
 	 * 
 	 */
+	
+	public MenuView() { }
+	
+	public MenuView(TableController tCtrl) {
+		this.tCtrl = tCtrl;
+	}
 	public static void MenuUI() {
 		String c;
 		quit = 0;
@@ -228,7 +237,7 @@ public class MenuView {
 		case "<":
 			menuMan.saveItems();
 			quit = 1;
-			Utilities.clearScreen(); MainRestaurantView.show();
+			Utilities.clearScreen(); (new MainRestaurantView()).show();
 			break;
 		default:
 			System.out.println("Invalid input. Refer to the option table.");
