@@ -149,8 +149,8 @@ public class Invoice implements Comparable<Invoice>, Serializable{
 		}
 		System.out.println("   ---------------------------");
 		System.out.println("              Subtotal : " + amount);
-		System.out.printf("                   GST : %0.2lf", 0.07 * amount);
-		System.out.printf("                 TOTAL : %0.2lf", 1.07 * amount);
+		System.out.printf("                   GST : %.2f\n", 0.07 * amount);
+		System.out.printf("                 TOTAL : %.2f \n", 1.07 * amount);
 		System.out.println("----------------------------------");
 		System.out.println("  Thank You for Dining with us!");
 	}

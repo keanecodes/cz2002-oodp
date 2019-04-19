@@ -153,9 +153,9 @@ public class RestaurantRevenue { // needs to be reformatter & reworked.. is it a
 			System.out.format("   %-20s$         %-20s\n", item.getName(), item.getPrice());
 		}
 		System.out.println("   ---------------------------");
-		System.out.println("                    Subtotal : " + total_revenue);
-		System.out.println("                         GST : " + 0.07 * total_revenue);
-		System.out.println("                       TOTAL : " + 1.07 * total_revenue);
+		System.out.printf("                    Subtotal : %.2f\n", total_revenue);
+		System.out.printf("                         GST : %.2f\n", 0.07 * total_revenue);
+		System.out.printf("                       TOTAL : %.2f\n", 1.07 * total_revenue);
 		System.out.println("----------------------------------");
 		}
 		else {
