@@ -72,7 +72,6 @@ public class OrderController {
 		System.out.println("Staff name: " + o.getStaff().getName());
 		System.out.println("Staff gender: " + o.getStaff().getGender());
 		System.out.println("Staff ID: " + o.getStaff().getStaffID());
-		System.out.println("Staff Job Title: " + o.getStaff().getJobTitle());
 		System.out.println("Order ID: " + o.getOrderId());
 		System.out.println("Table ID: " + o.getTableId());
 		printItemsOf(o);
