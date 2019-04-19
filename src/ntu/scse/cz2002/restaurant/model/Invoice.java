@@ -19,10 +19,6 @@ import ntu.scse.cz2002.restaurant.util.CalendarFormatter;
 *@since   2019-04-17
 */
 
-/**
-*Invoice entity class
-*tracks orders that have been paid
-*/
 public class Invoice implements Comparable<Invoice>, Serializable{
 
 	Calendar timestamp = Calendar.getInstance();

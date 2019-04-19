@@ -11,6 +11,7 @@ import ntu.scse.cz2002.restaurant.util.Utilities;
  *@version 1.0
  *@since 2019-4-17
  */
+
 public class MainRestaurantView {
 	
 	/**
@@ -33,6 +34,7 @@ public class MainRestaurantView {
 	//private InvoiceView iView = new InvoiceView();
 	
 	/**
+	 loop to choose options from MainMenu
 	 * 
 	 */
 	public void show() {
@@ -87,7 +89,7 @@ public class MainRestaurantView {
 	}
 	
 	/**
-	 * 
+	 * print MainMenu
 	 */
 	public static void printMainRestaurantView() {
 		System.out.println("**************************************************\n" + 

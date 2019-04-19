@@ -9,7 +9,12 @@ import ntu.scse.cz2002.restaurant.control.TableController;
 import ntu.scse.cz2002.restaurant.model.Order;
 import ntu.scse.cz2002.restaurant.model.Table;
 import ntu.scse.cz2002.restaurant.util.Utilities;
-
+/**
+*Boundary Class for Orders
+*@author  YingTing
+*@version 1.0
+*@since   2019-04-17
+*/
 public class OrderView {
 	/**
 	 * creating an orderController

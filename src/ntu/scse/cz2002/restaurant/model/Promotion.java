@@ -4,6 +4,8 @@ import java.util.*;
 
 /**
  * @author YingTing
+ * @version 1.0
+ * @since 2019-4-2
  * promotional items in menu 
  */
 public class Promotion extends MenuItem{
