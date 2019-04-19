@@ -1,6 +1,5 @@
 package ntu.scse.cz2002.restaurant.control;
 
-import ntu.scse.cz2002.restaurant.model.Order;
 import ntu.scse.cz2002.restaurant.model.Reservation;
 import ntu.scse.cz2002.restaurant.model.Table;
 import ntu.scse.cz2002.restaurant.util.Utilities;
@@ -12,6 +11,9 @@ import java.util.List;
 import java.util.Scanner;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -85,18 +87,6 @@ public class ReservationController {
 		}
 	}
 
-	/* public void viewTableAvailability() {
-		checkReservations();
-
-		System.out.printf("%n%-20s", "Table Number");
-		System.out.printf("%-20s", "Number of Seats");
-		System.out.printf("%-20s", "Table Status");
-		System.out.printf("%-20s%n", "Customer's contact number");
-
-		for (Table table : tables) {
-			table.displayStatus();
-		}
-	} */
 
 	/* Displays a list of all valid reservations */
 	public void viewReservations() {
@@ -137,8 +127,10 @@ public class ReservationController {
 				if (reservations.get(index).getCustomerContactNo() == custNum)
 				{
 					reservations.get(index).displayReservationSummary();
+					System.out.print(" ");
 				}
-				else
+				
+				if (reservations.get(index).getCustomerContactNo() != custNum)
 					System.out.print("There are no reservations made by this contact number!"
 							+ "Please try again or proceed to make another reservation");
 			}	
@@ -164,7 +156,7 @@ public class ReservationController {
 
 		System.out.println("\nRestaurant's opening hours: " + "AM: 11AM - 3PM, PM: 6PM - 10PM");
 		System.out.println("NOTE: Reservations will be automatically be removed 30 minutes"
-				+ " after reservation date/time if you do not show up! :-)");
+				+ " after reservation date/time if you do not show up!");
 
 		try {
 			SimpleDateFormat sdf = new SimpleDateFormat();
@@ -173,18 +165,15 @@ public class ReservationController {
 
 			System.out.print("\nEnter reservation date (dd/mm/yyyy): ");
 			String reservationDateStr = sc.next();
+			
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+			LocalDate reservationDate = LocalDate.parse(reservationDateStr, formatter);
 
 			System.out.print("\nEnter reservation time," + " in 24-hour format (hh:mm): ");
 			String reservationTimeStr = sc.next();
 
 			System.out.print("\nEnter reservation duration (in hours): ");
 			int duration = sc.nextInt();
-
-			System.out.print("\nEnter Customer name: ");
-			String custName = sc.next();
-
-			System.out.print("\nEnter Customer's contact number: ");
-			int custNo = sc.nextInt();
 
 			Date reservationDateTime = sdf.parse(reservationDateStr + " " + reservationTimeStr);
 
@@ -212,8 +201,8 @@ public class ReservationController {
 			pmRestClosingTime.set(Calendar.HOUR_OF_DAY, RESTAURANT_PM_CLOSING_HOUR);
 			pmRestClosingTime.set(Calendar.MINUTE, 1);
 
-			if (((startDateTime.before(amRestOpeningTime)) && (endDateTime.after(amRestClosingTime)))
-					|| (startDateTime.before(pmRestOpeningTime)) && (endDateTime.after(pmRestClosingTime))) 
+			if (((startDateTime.before((amRestOpeningTime)) && (endDateTime.after(amRestClosingTime)))
+					|| (startDateTime.before(pmRestOpeningTime)) && (endDateTime.after(pmRestClosingTime))))
 			{
 				System.out.print("\nInvalid reservation date/time! ");
 				System.out.println("\nFailed to add new reservation!");
@@ -225,18 +214,33 @@ public class ReservationController {
 			Calendar currentInstant = GregorianCalendar.getInstance();
 			Date currentDateTime = currentInstant.getTime();
 			currentInstant.setTime(currentDateTime);
-
-			if (startDateTime.before(currentInstant)) {
+			
+			/* Reservations could not be made if the date/time is before the current date/time */
+			if (startDateTime.before(currentInstant))
+			{
 				System.out.print("\nInvalid reservation date/time! ");
 				System.out.println("Failed to add new reservation," + " please try again..");
-				System.out.println("NOTE: Reservation can only be made in advance!");
 				return;
 			}
+			
+			/* Reservations could not be made more than one month in advance */
+			long daysBetween = ChronoUnit.DAYS.between(LocalDate.now(), reservationDate);			
+			if (daysBetween > 30)
+			{
+				System.out.println("NOTE: Reservation can only be made 1 month in advance!");
+				return;
+			}
+			
+			System.out.print("\nEnter Customer name: ");
+			String custName = sc.next();
 
-			System.out.print("\nEnter number of people (2-10): ");
+			System.out.print("\nEnter Customer's contact number: ");
+			int custNo = sc.nextInt();
+
+			System.out.print("\nEnter number of people (1-10): ");
 			int numOfPeople = sc.nextInt();
 
-			if (numOfPeople < 2 || numOfPeople > 10) {
+			if (numOfPeople < 0 || numOfPeople > 10) {
 				System.out.println("Invalid number of people, unable to add new reservation!");
 				return;
 			}
@@ -292,9 +296,8 @@ public class ReservationController {
 			
 				/* Add new reservation and write it into the reservation's data file */
 				reservations.add(newReservation);
-
-				//Table newTable = new Table(availableTableNumber, numOfPeople, true, true, custNo);
 				
+				/* Update the table's status with the reservation details */
 				for (int index = 0; index < tables.size(); index++)
 				{
 					if (tables.get(index).getTableId() == availableTableNumber)
@@ -325,6 +328,7 @@ public class ReservationController {
 			System.out.println("\nFailed to add new reservation," + " please try again..");
 			return;
 		} catch (Exception ex) {
+			ex.printStackTrace();
 			System.out.print("\nInvalid input! ");
 			System.out.println("\nFailed to add new reservation," + " please try again..");
 			return;
@@ -366,7 +370,7 @@ public class ReservationController {
 			/* Valid reservationIndex will start from 1 and must not exceed the total number of reservations */
 			if (reservationIndex < 1 || reservationIndex > numOfReservations) {
 				System.out.print("\nInvalid input! ");
-				System.out.println("Unable to remove reservation");
+				System.out.println("Unable to remove reservation :(");
 				return;
 			}
 
@@ -411,19 +415,19 @@ public class ReservationController {
 		Date currentDateTime = currentInstant.getTime();
 		currentInstant.setTime(currentDateTime);
 
-		Iterator<Reservation> resIter = reservations.iterator();
+		Iterator<Reservation> reserveIter = reservations.iterator();
 		Reservation reservation = null;
 
-		while (resIter.hasNext()) 
+		while (reserveIter.hasNext()) 
 		{
 
-			reservation = resIter.next();
+			reservation = reserveIter.next();
 
 			Calendar restStartDateTime = reservation.getStartDateTime();
 			Calendar restClone = (Calendar) restStartDateTime.clone();
-			restClone.add(Calendar.MINUTE, 30);
+			restClone.add(Calendar.MINUTE, 1);
 
-			// If currentInstant is after restStartDateTime by 30 minutes
+			/* If currentInstant is after restStartDateTime by 15 minutes */
 			if (restClone.before(currentInstant)) 
 			{
 				Table table = getTableByNumber(reservation.getTableNo());
@@ -434,12 +438,12 @@ public class ReservationController {
 					table.releaseTable();
 				}
 
-				/* Remove expired reservation */
-				resIter.remove();
+				/* The expired reservation will be removed */
+				reserveIter.remove();
 			} 
 			else 
 			{
-				/* If reservationTime <= currentInstant & not expired, set table as reserved */
+				/* If reservationTime is before currentInstant and has not expired, the table should still be reserved */
 				restStartDateTime = reservation.getStartDateTime();
 				if (restStartDateTime.before(currentInstant)) {
 					Table table = getTableByNumber(reservation.getTableNo());
@@ -447,11 +451,6 @@ public class ReservationController {
 					if (!table.getIsReserved())
 						table.reserveTable(reservation.getCustomerContactNo());
 
-					if (table.getIsOccupied()) 
-					{
-						/* Remove expired reservation */
-						resIter.remove();
-					}
 				}
 			}
 		}
@@ -466,39 +465,4 @@ public class ReservationController {
 		return null;
 	}
 	
-	/* Obtain the reserved table based on customer's contact number */
-	public Table getReservedTable(int customerNo) {
-		checkReservations();
-
-		for (Table table : tables) {
-			if (table.getIsReserved()) {
-				if (table.getCustomerNo() == customerNo) {
-					table.assignTable(customerNo);
-					return table;
-				}
-			}
-		}
-
-		return null;
-	}
-
-/*
-	public Table getAvailableTable(int numOfPeople) {
-		checkReservations();
-
-		for (Table table : tables) {
-			if (!table.getIsOccupied()) {
-				if (!table.getIsReserved()) {
-					if (table.getNumOfSeats() >= numOfPeople) {
-						table.assignTable(customerID);
-						return table;
-					}
-				}
-			}
-		}
-
-		System.out.println("\nNo available tables!");
-		return null;
-	} */
-
 }

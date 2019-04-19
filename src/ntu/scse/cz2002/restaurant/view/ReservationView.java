@@ -19,7 +19,7 @@ public class ReservationView {
 			     		   "  (V)\t| View all reservations\n" +
 			     		   "  (O)\t| Obtain reservation's details based on customer's contact number\n" +
 			     		   "  (A)\t| Add a new reservation\n" +
-			     		   "  (R)\t| Remove a existing reservation\n");
+			     		   "  (R)\t| Remove an existing reservation\n");
 
 		System.out.println("---------------------------------------------------\n" +
 			     		   "(<) Back\t\n" +
