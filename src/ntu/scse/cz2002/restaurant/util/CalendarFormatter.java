@@ -1,9 +1,22 @@
 package ntu.scse.cz2002.restaurant.util;
 
 import java.util.Calendar;
+/**
+ * @author Zeqing
+ *
+ */
+
+/**
+ *Calendar Formatter
+ */
 
 public class CalendarFormatter { // might not be needed, can use the built in functions in calendar
 	// enum{"Full"; "Date"; "Time"};
+	/**
+	 *Format Calendar to String
+	 *@param passes a Calendar for formatting, 
+	 *@param type of formatting
+	 */	
 	public static String toString(Calendar c, int formattype) { // this should be in somesort of CalenderHelperclass
 		int dd = c.get(Calendar.DAY_OF_MONTH);
 		int MM = c.get(Calendar.MONTH) + 1;
@@ -24,6 +37,10 @@ public class CalendarFormatter { // might not be needed, can use the built in fu
 		}
 
 	}
+
+	/**
+	 * override default toString function
+	 */
 
 	public static String toString(Calendar c) { // this should be in somesort of CalenderHelperclass
 		return toString(c, 1);

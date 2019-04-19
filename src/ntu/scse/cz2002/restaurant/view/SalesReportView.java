@@ -10,6 +10,11 @@ import ntu.scse.cz2002.restaurant.model.Staff;
 
 import java.util.Date;
 /**
+ * @author Zeqing
+ *
+ */
+
+/**
 *Boundary Class for SalesReport*/
 public class SalesReportView {
 	static Scanner sc= new Scanner(System.in);

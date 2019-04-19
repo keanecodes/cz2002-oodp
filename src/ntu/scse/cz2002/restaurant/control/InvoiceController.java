@@ -8,10 +8,19 @@ import ntu.scse.cz2002.restaurant.data.DataAccessor;
 import ntu.scse.cz2002.restaurant.model.*;
 import ntu.scse.cz2002.restaurant.util.CalendarFormatter;
 
+/**
+*InvoiceController Control Class
+*tracks and handles past invoices
+*/
 public class InvoiceController {
 	private final static String DATA_FILE = "invoice.dat";	
 	private ArrayList<Invoice> invoiceArr = new ArrayList<Invoice>();
 
+	
+	/**
+	*Constructor
+	*<br> loads data from invoice.dat file
+	*/
 	public InvoiceController(){
 		
 		super();
@@ -22,6 +31,10 @@ public class InvoiceController {
 		}
 	}
 	
+	
+	/**
+	*Add a new Invoice, called by TblManager when a customer leaves & fulfils an order
+	*/
 	public void addInvoice(Order o) {
 		Invoice newInvoice = new Invoice(o, invoiceArr.size());
 
@@ -31,7 +44,10 @@ public class InvoiceController {
 		this.saveItems();
 	}
 	
-	
+	/**
+	*loadItems from file, handles exceptions of when file not open
+	*@param filename of datafile
+	*/
 	private ArrayList<Invoice> loadItems(String filename) {
 	    try{
 	    return (ArrayList) DataAccessor.read(filename); 
@@ -43,6 +59,9 @@ public class InvoiceController {
 	    }
 	}
 	
+	/**
+	*saves the array into dat
+	*/
 	private void saveItems() {
 		int itemSave = DataAccessor.write(DATA_FILE, invoiceArr);
 		
@@ -54,6 +73,9 @@ public class InvoiceController {
         }
     }
 	
+	/**
+	*printItems using InvoiceID for the view class
+	*/
 	public boolean printItemsByID() {
         if(invoiceArr ==null){
             System.out.println("No item to print.");
@@ -74,6 +96,10 @@ public class InvoiceController {
         }
 	}
 	
+	/**
+	*find a invoice using its timestamp
+	*@param Calendar of the exact time it was generated
+	**/
 	public Invoice findInvoicebytime(Calendar time) {
 		for (Invoice InvoiceItem: invoiceArr) {
 			if (InvoiceItem.getTimestamp() == time) {
@@ -84,6 +110,10 @@ public class InvoiceController {
 		return null;
 	}
 	
+	/**
+	*find a invoice using its ID
+	*@param invoiceID, which just ++
+	**/
 	public Invoice findInvoicebyID(int ID) {
 		for (Invoice InvoiceItem: invoiceArr) {
 			if (InvoiceItem.getInvoiceID() == ID) {
@@ -94,6 +124,10 @@ public class InvoiceController {
 		return null;
 	}
 	
+	/**
+	*print Invoiceby ID
+	*print a Invoice using ID. 
+	*/
 	public void printInvoicebyID(int ID) {
 		Invoice toPrint = this.findInvoicebyID(ID);
 		if (toPrint !=null) {
@@ -104,6 +138,11 @@ public class InvoiceController {
 		}
 	}
 	
+	/**
+	*edit down the list to return a list of invoices within a time period
+	*@param startdate & enddate of Calendar class 
+	*
+	**/
 	public ArrayList<Invoice> getInvoicelist(Calendar startdate, Calendar enddate) {
 		ArrayList<Invoice> inperiod = new ArrayList<Invoice>();
 		Calendar times;
