@@ -2,30 +2,35 @@ package ntu.scse.cz2002.restaurant.model;
 
 import java.util.ArrayList;
 
+/**
+   Represents the restaurant's menu.
+   It contains all the food items sold by the restaurant.
+   @author  Johan Tjuatja
+   @version 1.0
+   @since   2019-03-15
+ */
 public class Menu {
 	/**
-	 * 
+	 * An array to store all the menu items.
 	 */
 	private ArrayList<MenuItem> items = new ArrayList<MenuItem>();
-	/**
-	 * 
-	 */
-	/**
-	 * 
-	 */
-	private int itemCount, promotionCount;
 
 	/**
-	 * 
+	 * The number of items existing in the menu.
+	 */
+	private int itemCount;
+
+	/**
+	 * Creates a new empty menu.
 	 */
 	public Menu() {
 		this.items = new ArrayList<MenuItem>();
 		this.itemCount = 0;
-		this.promotionCount = 0;
 	}
 
 	/**
-	 * @param items
+   * Creates a new menu with items.
+	 * @param items The list of items to be stored in the menu.
 	 */
 	public Menu(ArrayList<MenuItem> items) {
 		this.items = items;
@@ -33,7 +38,8 @@ public class Menu {
 	}
 
 	/**
-	 * @param item
+   * Adds an item into the menu.
+	 * @param item The item to be added into the menu.
 	 */
 	public void addItem(MenuItem item) {
 		this.items.add(item);
@@ -41,8 +47,9 @@ public class Menu {
 	}
 
 	/**
-	 * @param name
-	 * @return
+   * Gets an item object from the menu.
+	 * @param name The name of the item to be retrieved.
+	 * @return the item object or null, if item does not exist
 	 */
 	public MenuItem getItem(String name) {
 		for (int i = 0; i < this.items.size(); i++) {
@@ -55,22 +62,25 @@ public class Menu {
 	}
 
 	/**
-	 * @return
+   * Gets the total number of items in the menu currently.
+	 * @return the number of items in menu.
 	 */
 	public int getItemCount() {
 		return this.itemCount;
 	}
 
 	/**
-	 * @return
+   * Gets the list of items in the menu.
+	 * @return this menu's item list.
 	 */
 	public ArrayList<MenuItem> getItemList() {
 		return this.items;
 	}
 
 	/**
-	 * @param name
-	 * @return
+   * Removes an item from the menu.
+	 * @param name The name of item to be removed.
+	 * @return 0 if successful, 1 if unsuccessful.
 	 */
 	public int removeItem(String name) {
 		for (int i = 0; i < this.items.size(); i++) {

@@ -9,42 +9,32 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- Handles information flow for Menu class
- @author  Johan Tjuatja
- @version 1.0
- @since   2019-04-17
+   Handles information flow for Menu class
+   @author  Johan Tjuatja
+   @version 1.0
+   @since   2019-04-17
  */
 public class MenuController{
 
     /**
-     * Contents of menu (items & promotions)
-     */
-    /**
-     * 
+     * Contents of menu (items and promotions)
      */
     private Menu menu;
 
     /**
-     * Types of items in the menu (main, drinks, dessert, etc.)
-     */
-    /**
-     * 
+     * Types of items in the menu (Food, Drinks, Dessert, etc.)
      */
     private ArrayList<String> types;
 
     /**
-     * 
+     * The name of the file containing item data.
+     * To be passed into the loadItems() method.
      */
     private String itemFilename = "items.dat";
 
     /**
      * Create a controller for menu contents.
      * Add/update/remove/display contents of menu.
-     * @param items      The list of ala carte items
-     * @param promotions The list of promotion items
-     */
-    /**
-     * 
      */
     public MenuController(){
         types = new ArrayList<String>();
@@ -54,9 +44,9 @@ public class MenuController{
         } catch (Exception e){System.out.println("No menu data found.");}
     }
 
-    // deprecated
     /**
-     * @param itemFilename
+     * Load items from file into the menu object.
+     * @param itemFilename The name of file containing item data.
      */
     private void loadItems(String itemFilename){
         ArrayList<MenuItem> items = (ArrayList) DataAccessor.read(itemFilename);
@@ -75,7 +65,7 @@ public class MenuController{
     }
 
     /**
-     * 
+     * Write the menu items out to file.
      */
     public void saveItems(){
         int itemSave = DataAccessor.write(itemFilename, this.menu.getItemList());
@@ -90,10 +80,8 @@ public class MenuController{
 
     /**
      * Compile the existing types of items in the menu.
-     * @return types of items in menu
-     */
-    /**
-     * @param items
+     * @param items The menu's item list.
+     * @return list of item types existing in the menu.
      */
     private void updateTypesList(ArrayList<MenuItem> items){
         this.types.clear();
@@ -111,11 +99,8 @@ public class MenuController{
     }
 
     /**
-     * Gets menu contents.
-     * @return contents of the menu.
-     */
-    /**
-     * @return
+     * Gets the menu.
+     * @return the menu object.
      */
     public Menu getMenu() {
     	return menu;
@@ -123,9 +108,7 @@ public class MenuController{
 
     /**
      * Add an individual item into the menu.
-     */
-    /**
-     * @param item
+     * @param item The item object.
      */
     public void addItem(MenuItem item){
         this.menu.addItem(item);
@@ -140,9 +123,7 @@ public class MenuController{
 
     /**
      * Remove an item (individual/promotion) from the menu.
-     */
-    /**
-     * @param name
+     * @param name The item's name.
      */
     public void removeItem(String name){
         if(this.menu.removeItem(name) == 1){
@@ -156,7 +137,7 @@ public class MenuController{
     }
 
     /**
-     * 
+     * Removes ALL items from the menu.
      */
     public void clearMenu(){
         String target;
@@ -176,12 +157,10 @@ public class MenuController{
         }
     }
     /**
-     * Update the information for an item.
-     */
-    /**
-     * @param name
-     * @param description
-     * @param price
+     * Update the information of an item.
+     * @param name        The item's name.
+     * @param description The item's new description.
+     * @param price       The item's new price.
      */
     public void updateItem(String name, String description, double price){
         MenuItem item;
@@ -199,9 +178,6 @@ public class MenuController{
 
     /**
      * Print contents of menu, sorted by item type.
-     */
-    /**
-     * 
      */
     public void printItemsByCategory(){
         if(this.menu.getItemCount() != 0){
@@ -226,9 +202,6 @@ public class MenuController{
 
     /**
      * Print contents of menu, sorted by name.
-     */
-    /**
-     * 
      */
     public void printItemsByName(){
         ArrayList<String> names = new ArrayList<String>();
