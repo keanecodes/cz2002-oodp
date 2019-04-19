@@ -11,15 +11,29 @@ import ntu.scse.cz2002.restaurant.model.Table;
 import ntu.scse.cz2002.restaurant.util.Utilities;
 
 public class OrderView {
-	
+	/**
+	 * creating an orderController
+	 */
 	private OrderController orderManager = new OrderController();
+	/**
+	 * creating a menuController
+	 */
 	private MenuController mCtrl = new MenuController();
+	/**
+	 * table controller attribute
+	 */
 	TableController tCtrl;
 
+	/**
+	 * @param tCtrl passes in the table controller
+	 */
 	public OrderView(TableController tCtrl) {
 		this.tCtrl = tCtrl;
 	}
 	
+	/**
+	 * displays the main options that can be done with an order
+	 */
 	public void OrderUI() {
 		Scanner sc = new Scanner(System.in);
 		String choice = "";
@@ -94,6 +108,11 @@ public class OrderView {
 		} while (!choice.equalsIgnoreCase("<"));
 	}
 
+	/**
+	 * @param order takes in the order to be edited
+	 * @param orderManager takes in orderManager to edit orders
+	 * displays the options associated with editing the order 
+	 */
 	public void editOrderUI(Order order, OrderController orderManager) {
 		String choice;
 		Scanner sc = new Scanner(System.in);
@@ -189,6 +208,10 @@ public class OrderView {
 		} while (!choice.equalsIgnoreCase("CANCEL"));
 	}
 	
+	/**
+	 * @param order takes in the order
+	 * prints out associated items
+	 */
 	private void printOverviewNControls(Order order) {
 		Utilities.newScreenHeader();
 		System.out.println("// Manage Order  // ------------------------------\n" +   

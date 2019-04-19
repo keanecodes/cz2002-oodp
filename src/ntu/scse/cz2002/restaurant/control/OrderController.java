@@ -14,20 +14,48 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class OrderController {
-	private Order order;
+	/**
+	 * creating a staff controller
+	 */
 	StaffController staffManager = new StaffController();
+	/**
+	 * creating a menu controller
+	 */
 	MenuController menuManager = new MenuController();
+	/**
+	 * table controller attribute
+	 */
 	TableController tCtrl;
+	/**
+	 * static orderID variable
+	 */
 	private static int orderID = 0;
 	
+	/**
+	 * obtaining the menu from menuManager
+	 */
 	Menu menu = menuManager.getMenu();
+	/**
+	 * creating an arraylist of orders
+	 */
 	private ArrayList<Order> orderArr = new ArrayList<Order>();
 	
+	/**
+	 * constructor for orderController
+	 */
 	public OrderController() { }
+	/**
+	 * @param oList set the orderArr with another arraylist of orders
+	 */
 	public void setOrderArr(ArrayList<Order> oList) {
 		this.orderArr = oList;
 	}
 	
+	/**
+	 * @param tableController table controller which manages the table
+	 * @param tableID associated tableId of the order
+	 * @return returns order found with the corresponding tableID
+	 */
 	public Order createOrder(TableController tableController, int tableID) {
 		Order currentOrder = null;
 		Table t;
@@ -43,6 +71,10 @@ public class OrderController {
 		return currentOrder;
 	}
 	
+	/**
+	 * @param tableID takes in associated tableID of order
+	 * removes order from orderArray
+	 */
 	public void removeOrder(int tableID) {
 		for (int i = 0; i < this.orderArr.size(); i++) {
 			if (this.orderArr.get(i).getTableId() == tableID) {
@@ -51,6 +83,11 @@ public class OrderController {
 		}
 	}
 
+	/**
+	 * @param order takes in the corresponding order
+	 * @param itemName the name of an item to be added
+	 * adds item to order
+	 */
 	public void addOrderItem(Order order, String itemName) {
 		MenuItem item = menu.getItem(itemName);
 		if (item != null)
@@ -59,6 +96,11 @@ public class OrderController {
 			System.out.println("Item does not exist!");
 	}
 
+	/**
+	 * @param order takes in the corresponding order
+	 * @param itemName the name of an item to be added
+	 * removes item from order
+	 */
 	public void removeOrderItem(Order order, String itemName) {
 		MenuItem item = menu.getItem(itemName);
 		if (item != null)
@@ -67,6 +109,10 @@ public class OrderController {
 			System.out.println("Item does not exist!");
 	}
 
+	/**
+	 * @param o takes in order
+	 * displays associated staff information and order information
+	 */
 	public void displayOrder(Order o) {
 		System.out.println("Staff Information: ");
 		System.out.println("Staff name: " + o.getStaff().getName());
@@ -77,6 +123,10 @@ public class OrderController {
 		printItemsOf(o);
 	}
 	
+	/**
+	 * @param order takes in order
+	 * prints out number of items for each item
+	 */
 	public void printItemsOf(Order order) {
 		ArrayList<MenuItem> items = order.getItems(); 
 		
@@ -105,6 +155,10 @@ public class OrderController {
 		System.out.println("");
 	} 
 
+	/**
+	 * @param tableID takes in associated tableID
+	 * @return finds corresponding order with tableID
+	 */
 	public Order findOrder(int tableID) {
 		Order corrOrder = null;
 		for (int i = 0; i < orderArr.size(); i++) {
