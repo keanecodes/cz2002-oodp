@@ -8,6 +8,8 @@ import ntu.scse.cz2002.restaurant.util.DateUtil;
 
 /**
  * @author YingTing
+ * @version 1.0
+ * @since 2019-4-17
  * displaying of staff options 
  */
 public class StaffView {

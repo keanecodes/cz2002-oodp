@@ -10,12 +10,13 @@ import ntu.scse.cz2002.restaurant.model.Staff;
 
 import java.util.Date;
 /**
+ * 
+ * Boundary Class for SalesReport
  * @author Zeqing
- *
- */
+ *@version 1.0
+*@since   2019-04-17
+*/
 
-/**
-*Boundary Class for SalesReport*/
 public class SalesReportView {
 	static Scanner sc= new Scanner(System.in);
 	static Calendar start = Calendar.getInstance();
