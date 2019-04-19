@@ -10,26 +10,32 @@ import ntu.scse.cz2002.restaurant.model.MenuItem;
 import ntu.scse.cz2002.restaurant.model.Promotion;
 import ntu.scse.cz2002.restaurant.util.Utilities;
 
+/**
+   Viewer for menu object.
+   @author  Johan Tjuatja
+   @version 1.0
+   @since   2019-04-14
+ */
 public class MenuView {
 	/**
-	 * 
+	 * Instantiates a controller for the menu object.
 	 */
 	public static MenuController menuMan;
-	public TableController tCtrl;
+
 	/**
-	 * 
+	 * Quit flag for the viewer.
 	 */
 	public static int quit;
 
 	/**
-	 * 
+	 * Creates a new viewer for the menu object.
 	 */
 	
 	public MenuView() { }
-	
-	public MenuView(TableController tCtrl) {
-		this.tCtrl = tCtrl;
-	}
+
+    /**
+     * Generate the UI for the viewer.
+     */
 	public static void MenuUI() {
 		String c;
 		quit = 0;
@@ -45,7 +51,7 @@ public class MenuView {
 	}
 
 	/**
-	 * 
+	 * Prints the options list for the menu.
 	 */
 	public static void printInputList() {
 		System.out.println("// Restaurant Menu Item Management // ------------\n" +
@@ -62,7 +68,8 @@ public class MenuView {
 	}
 
 	/**
-	 * @return
+   * Gets input from user.
+	 * @return user's input.
 	 */
 	public static String getUserInput() {
 		System.out.printf("Please select what to do (enter \"0\" to view options):\n");
@@ -81,7 +88,8 @@ public class MenuView {
 	}
 
 	/**
-	 * @param c
+   * Process user's input.
+	 * @param c User's input.
 	 */
 	public static void processUserInput(String c) {
 		String name;
