@@ -120,7 +120,7 @@ public class OrderController {
 			}
 		}
 		if (corrOrder == null)
-			System.out.println("Invalid staff ID");
+			System.out.println("Invalid order ID");
 		return corrOrder;
 	}
 }

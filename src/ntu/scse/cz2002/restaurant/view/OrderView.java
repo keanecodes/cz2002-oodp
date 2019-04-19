@@ -1,5 +1,6 @@
 package ntu.scse.cz2002.restaurant.view;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import ntu.scse.cz2002.restaurant.model.Order;
 import ntu.scse.cz2002.restaurant.model.Staff;
@@ -48,13 +49,23 @@ public class OrderView {
 					break;
 				case "E":
 					System.out.println("Enter orderID: ");
-					orderID = sc.nextInt();
+					try{
+						orderID = sc.nextInt();
+					}catch(InputMismatchException ex) {
+						System.out.println("Invalid orderID input!");
+						break;
+					}
 					currentOrder = orderManager.findOrder(orderID);
 					editOrderUI(currentOrder, orderManager);
 					break;
 				case "V":
 					System.out.println("Enter orderID: ");
-					orderID = sc.nextInt();
+					try{
+						orderID = sc.nextInt();
+					}catch(InputMismatchException ex) {
+						System.out.println("Invalid orderID input!");
+						break;
+					}
 					currentOrder = orderManager.findOrder(orderID);
 					orderManager.displayOrder(currentOrder);
 					break;
@@ -148,9 +159,9 @@ public class OrderView {
                                        "--------------------------------------------------");
 					mCtrl.printItemsByName();
 					System.out.println("--------------------------------------------------\n" +
-					                   "Key in respective item number to add \n" +
+					                   "Key in respective item name to add \n" +
 					                   "--------------------------------------------------");
-					System.out.print("Item number\t: ");
+					System.out.print("Item name\t: ");
 					itemName = sc.next();
 					System.out.print("Quantity\t: ");					
 					count = sc.nextInt();
@@ -167,9 +178,9 @@ public class OrderView {
                                        "--------------------------------------------------");
 					orderManager.printItemsOf(order);
 					System.out.println("--------------------------------------------------\n" +
-			                           "Key in respective item number to remove \n" +
+			                           "Key in respective item name to remove \n" +
 			                           "--------------------------------------------------");
-					System.out.print("Item number\t: ");
+					System.out.print("Item name\t: ");
 					itemName = sc.next();
 					System.out.print("Quantity\t: ");
 					count = sc.nextInt();

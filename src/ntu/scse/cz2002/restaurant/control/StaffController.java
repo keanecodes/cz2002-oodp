@@ -25,7 +25,7 @@ public class StaffController {
 			
 			getStaff();
 			
-		} catch (Exception e){System.out.println("No menu data found.");}
+		} catch (Exception e){System.out.println("No staff data found.");}
 	}
 	
 
