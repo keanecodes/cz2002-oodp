@@ -1,8 +1,6 @@
 package ntu.scse.cz2002.restaurant.model;
 
-import java.util.ArrayList;
 
-import ntu.scse.cz2002.restaurant.data.DataAccessor;
 
 /**
  * Entity class to track restaurant data

@@ -44,7 +44,7 @@ public class ReservationController {
 	/**
 	 * Closing timing of the AM session: 3pm
 	 */
-	private static final int RESTAURANT_AM_CLOSING_HOUR = 18;
+	private static final int RESTAURANT_AM_CLOSING_HOUR = 15;
 	
 	/**
 	 * Opening timing of the PM session: 6pm 
