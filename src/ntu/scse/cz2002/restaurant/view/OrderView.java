@@ -73,46 +73,55 @@ public class OrderView {
 			switch (choice.toUpperCase()) {
 				case "C":
 					tableID = scanTableID();
-					this.o = tCtrl.findTableById(tableID).getOrder();
-					
-					this.o = orderManager.createOrder(tableID);
-					if (this.o != null) 
-						editOrderUI(this.o, orderManager);
-					
+					if (tableID == -1) continue;
+					else {
+						this.o = tCtrl.findTableById(tableID).getOrder();
+						
+						this.o = orderManager.createOrder(tableID);
+						if (this.o != null) 
+							editOrderUI(this.o, orderManager);
+					}
 					break;
 				case "E":
 					tableID = scanTableID();
-					this.o = tCtrl.findTableById(tableID).getOrder();
 					
-					if (this.o.isOnGoing() == true) 
-						editOrderUI(this.o, orderManager);
-					else
-						System.out.println("This table has yet to make an order.");
-					
-					
+					if (tableID == -1) continue;
+					else {
+						this.o = tCtrl.findTableById(tableID).getOrder();
+						
+						if (this.o.isOnGoing() == true) 
+							editOrderUI(this.o, orderManager);
+						else
+							System.out.println("This table has yet to make an order.");
+					}
 					break;
 				case "V":
 					tableID = scanTableID();
 					
-					this.o = tCtrl.findTableById(tableID).getOrder();
-					if (this.o.getItems().size() > 0) 
-						orderManager.displayOrder(this.o);
-					else System.out.println("This table has not make an order");
-					
+					if (tableID == -1) continue;
+					else {
+						this.o = tCtrl.findTableById(tableID).getOrder();
+						if (this.o.getItems().size() > 0) 
+							orderManager.displayOrder(this.o);
+						else System.out.println("This table has not make an order");
+					}
 					break;
 				case "F":			
 					tableID = scanTableID();
-					currentTable = tCtrl.findTableById(tableID);
 					
-					if (currentTable.getOrder().getItems().size() > 0) {
-						System.out.println("Order has been sent for processing!\n");
-						tCtrl.releaseTable(currentTable);
-						this.o = currentTable.getOrder();
-					} else System.out.println("This table has not make an order");
-					
+					if (tableID == -1) continue;
+					else {
+						currentTable = tCtrl.findTableById(tableID);
+						
+						if (currentTable.getOrder().getItems().size() > 0) {
+							System.out.println("Order has been sent for processing!\n");
+							tCtrl.releaseTable(currentTable);
+							this.o = currentTable.getOrder();
+						} else System.out.println("This table has not make an order");
+					}
 					break;
 				case "<":
-					Utilities.clearScreen(); (new MainRestaurantView()).show();
+					Utilities.clearScreen(); MainRestaurantView.show();
 					break;
 				default:
 					System.out.println("\nInvalid input. Refer to the option table.");
@@ -304,7 +313,7 @@ public class OrderView {
 							   "----------------------------------------------------\n" +
 							   "(A) Add Menu Items" );
 		} else  {
-			System.out.println("\n// Order Items Management  // --------------------------------\n" +   
+			System.out.println("\n// Order Items Management  // ----------------------\n" +   
 							   "----------------------------------------------------\n" +
 							   "Order ID: " + order.getOrderId() + "\tTable ID: " + order.getTableId() + "\tServer: " + order.getStaff().getName() + "\n" +
 							    "----------------------------------------------------");
