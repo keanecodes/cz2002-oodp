@@ -6,7 +6,7 @@ import ntu.scse.cz2002.restaurant.data.DataAccessor;
 import ntu.scse.cz2002.restaurant.model.Staff;
 
 /**
- * @author YingTing
+ * @author Goh Ying Ting
  * manages the staff
  * @version 1.0
  * @since 2019-04-17

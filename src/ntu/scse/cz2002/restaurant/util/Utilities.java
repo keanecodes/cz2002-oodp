@@ -2,7 +2,7 @@ package ntu.scse.cz2002.restaurant.util;
 
 /**
  * Header for our Restaurant
- * @author keane
+ * @author Nguyen Kim Xuyen
  *@version 1.0
  *@since 2019-4-17
  */

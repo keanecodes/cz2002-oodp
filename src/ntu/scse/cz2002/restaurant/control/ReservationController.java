@@ -245,24 +245,6 @@ public class ReservationController {
 			}
 			return false;
 		}		
-		/*for (int index = 0; index < reservations.size(); index++)
-			{
-				if (reservations.get(index).getCustomerContactNo() == custNum)
-				{
-					Calendar Starttime = reservations.get(index).getStartDateTime();
-					Calendar Endtime = (Calendar) Starttime.clone();
-					Endtime.add(Calendar.HOUR_OF_DAY, reservations.get(index).getDuration());
-					
-					if (Starttime.before(Calendar.getInstance()) && Endtime.after(Calendar.getInstance())) 
-					{
-						reservations.remove(index);
-						System.out.println("The reservation has been removed!");
-					}
-				}
-			}
-			/* Updates the data file when a reservation is being removed */
-		
-	//}
 
 
 	/**
@@ -534,12 +516,7 @@ public class ReservationController {
 			sc.nextLine(); 
 			return;
 		}
-	}
-	
-
-				
-			
-			
+	}			
 
 	/**
 	 * Check through the list of existing reservations and this method must be called

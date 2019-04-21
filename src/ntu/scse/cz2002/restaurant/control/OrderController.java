@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 /**
  * Control Class to manage orders
- * @author YingTing
+ * @author Goh Ying Ting
  * @version 1.0
  * @since 2019-04-17
  */

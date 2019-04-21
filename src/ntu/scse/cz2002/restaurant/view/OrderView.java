@@ -13,7 +13,7 @@ import ntu.scse.cz2002.restaurant.model.Table;
 import ntu.scse.cz2002.restaurant.util.Utilities;
 /**
 *Boundary Class for Orders
-*@author  YingTing
+*@author  Goh Ying Ting
 *@version 1.0
 *@since   2019-04-17
 */

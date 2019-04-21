@@ -4,7 +4,7 @@ package ntu.scse.cz2002.restaurant;
 //import ntu.scse.cz2002.restaurant.model.Staff;
 import ntu.scse.cz2002.restaurant.view.*;
 /**
- * @author Zeqing
+ * @author He Zeqing
  *@version 1.0
  *@since 2019-4-17
  */

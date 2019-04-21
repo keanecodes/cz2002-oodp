@@ -7,7 +7,7 @@ import ntu.scse.cz2002.restaurant.model.MenuItem;
 import ntu.scse.cz2002.restaurant.model.Staff;
 
 /**
- * @author YingTing
+ * @author Goh Ying Ting
  * @version 1.0
  * @since 2019-4-1
  * Contains all the attributes and methods for an order entity. 

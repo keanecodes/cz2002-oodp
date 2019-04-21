@@ -14,7 +14,7 @@ import java.util.Calendar;
 *Entity Class for SalesReport
 *<br> currently not instantiated, as SalesReports need not be tracked or saved. This entity class can be used in the future.
 *
-*@author  Zeqing
+*@author  He Zeqing
 *@version 1.0
 *@since   2019-04-17
 */

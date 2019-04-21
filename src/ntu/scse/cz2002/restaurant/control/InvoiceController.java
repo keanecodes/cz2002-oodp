@@ -11,7 +11,7 @@ import ntu.scse.cz2002.restaurant.util.CalendarFormatter;
 /**
 *InvoiceController Control Class
 *tracks and handles past invoices
-*@author  Zeqing
+*@author  He Zeqing
 *@version 1.0
 *@since   2019-04-17
 */

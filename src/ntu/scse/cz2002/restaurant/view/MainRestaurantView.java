@@ -7,7 +7,7 @@ import ntu.scse.cz2002.restaurant.util.Utilities;
 
 /**
  * 
- * @author moongee
+ * @author Gee Cheng Mun
  *@version 1.0
  *@since 2019-4-17
  */

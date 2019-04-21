@@ -11,7 +11,7 @@ import ntu.scse.cz2002.restaurant.util.CalendarFormatter;
 /**
 *Invoice entity class
 *tracks orders that have been paid
-*@author  Zeqing
+*@author  He Zeqing
 *@version 1.0
 *@since   2019-04-17
 */

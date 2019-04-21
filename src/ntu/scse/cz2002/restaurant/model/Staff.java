@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @author YingTing
+ * @author Goh Ying Ting
  * @version 1.0
  * @since 2019-4-17
  * staff who work at the restaurant

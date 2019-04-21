@@ -3,7 +3,7 @@ package ntu.scse.cz2002.restaurant.model;
 import java.util.*;
 
 /**
- * @author YingTing
+ * @author Goh Ying Ting
  * @version 1.0
  * @since 2019-4-2
  * promotional items in menu 

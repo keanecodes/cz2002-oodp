@@ -12,7 +12,7 @@ import ntu.scse.cz2002.restaurant.model.Staff;
 /**
  * 
  * Boundary Class for SalesReport
- * @author Zeqing
+ * @author He Zeqing
  *@version 1.0
 *@since   2019-04-17
 */
