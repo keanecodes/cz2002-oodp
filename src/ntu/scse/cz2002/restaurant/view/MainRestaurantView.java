@@ -33,7 +33,7 @@ public class MainRestaurantView {
 	 * 
 	 */
 	private static MenuView mView = new MenuView();
-	//private InvoiceView iView = new InvoiceView();
+	//private static InvoiceView iView = new InvoiceView();
 	
 	/**
 	 loop to choose options from MainMenu
@@ -66,7 +66,7 @@ public class MainRestaurantView {
 				//Restaurant review systems
 				case "I":
 					Utilities.newScreenHeader();
-					InvoiceView.showInvoice();
+					InvoiceView.showInvoice(); 
 					printMainRestaurantView();
 					break;
 				case "P":

@@ -315,8 +315,7 @@ public class ReservationController {
 				
 				if (tableSize >= numOfPeople) 
 				{
-					boolean isReserved = false;
-
+					boolean hasReservation = false;
 					for (Reservation reservation : reservations) 
 					{
 						Calendar resStartDateTime = reservation.getStartDateTime();
@@ -328,13 +327,13 @@ public class ReservationController {
 						if (reservation.getTableNo() == tableNumber) {
 
 							if (startDateTime.before(resEndDateTime) && endDateTime.after(resStartDateTime)) {
-								isReserved = true;
+								hasReservation = true;
 								break;
 							}
 						}
 					}
 
-					if (!(isReserved)) 
+					if (!(hasReservation)) 
 					{
 						availableTableNumber = tableNumber;
 						break;
