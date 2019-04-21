@@ -49,6 +49,7 @@ public class OrderView {
 	public void OrderUI() {
 		String choice = "";
 		int orderID, tableID;
+		Table currentTable;
 		
 
 		do {
@@ -56,7 +57,8 @@ public class OrderView {
                            "----------------------------------------------------\n" +
                            " Option\t| Option Description\n" +
                            "----------------------------------------------------\n" +
-                           "  (M)\t| Manage an order\n" +  
+                           "  (C)\t| Create an order for a new table\n" +
+                           "  (E)\t| Edit order for an exiting table\n" +
                            "  (V)\t| View an order\n" +
                            "  (F)\t| Finalise an order\n");
 
@@ -69,12 +71,24 @@ public class OrderView {
 			choice = sc.next();
 			
 			switch (choice.toUpperCase()) {
-				case "M":
+				case "C":
 					tableID = scanTableID();
+					this.o = tCtrl.findTableById(tableID).getOrder();
 					
 					this.o = orderManager.createOrder(tableID);
 					if (this.o != null) 
 						editOrderUI(this.o, orderManager);
+					
+					break;
+				case "E":
+					tableID = scanTableID();
+					this.o = tCtrl.findTableById(tableID).getOrder();
+					
+					if (this.o.isOnGoing() == true) 
+						editOrderUI(this.o, orderManager);
+					else
+						System.out.println("This table has yet to make an order.");
+					
 					
 					break;
 				case "V":
@@ -88,7 +102,7 @@ public class OrderView {
 					break;
 				case "F":			
 					tableID = scanTableID();
-					Table currentTable = tCtrl.findTableById(tableID);
+					currentTable = tCtrl.findTableById(tableID);
 					
 					if (currentTable.getOrder().getItems().size() > 0) {
 						System.out.println("Order has been sent for processing!\n");
@@ -184,6 +198,12 @@ public class OrderView {
 					printManagementControls(order); 
 					break;
 				case "<":
+					if (this.o.getItems().size() == 0) {
+						System.out.println("Order is empty. Cancelling order..");
+						if (orderManager.cancelOrder(this.o.getTableId()))
+							System.out.println("Order cancelled.");
+					}
+					
 					Utilities.newScreenHeader(); OrderUI(); break;
 				default:
 					System.out.println("\nInvalid input. Refer to the option table.");

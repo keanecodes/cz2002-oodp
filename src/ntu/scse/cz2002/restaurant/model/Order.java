@@ -32,7 +32,7 @@ public class Order implements Serializable {
 	/**
 	 * Indicator of whether the order is currently on-going
 	 */
-	private boolean isFinalised;
+	private boolean isOnGoing;
 	/**
 	 * Constructor for order
 	 */
@@ -56,7 +56,7 @@ public class Order implements Serializable {
 	public Order(int orderId, int tableId) {
 		this.orderId = orderId;
 		this.tableId = tableId;
-		this.isFinalised = false;
+		this.isOnGoing = false;
 	}
 	
 	/**
@@ -64,7 +64,7 @@ public class Order implements Serializable {
 	 */
 	public Order(int tableId) {
 		this.tableId = tableId;
-		this.isFinalised = false;
+		this.isOnGoing = false;
 	}
 
 	/**
@@ -98,8 +98,8 @@ public class Order implements Serializable {
 	/**
 	 * @return returns if the order is on-going
 	 */
-	public boolean isFinalised() {
-		return isFinalised;
+	public boolean isOnGoing() {
+		return isOnGoing;
 	}
 	
 	/**
@@ -126,8 +126,8 @@ public class Order implements Serializable {
 	/**
 	 * @param s sets order finalised flag
 	 */
-	public void setFinalised(boolean isFinalised) {
-		this.isFinalised = isFinalised;
+	public void setIsOnGoing(boolean isOnGoing) {
+		this.isOnGoing = isOnGoing;
 	}
 	
 	/**

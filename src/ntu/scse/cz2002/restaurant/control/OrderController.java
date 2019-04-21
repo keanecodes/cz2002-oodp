@@ -64,19 +64,36 @@ public class OrderController {
 	 * @param tableID associated tableId of the order
 	 * @return returns order found with the corresponding tableID
 	 */
-	public Order createOrder(int tableID) {
-		Order currentOrder = null;
-		Table t;
+	public Order createOrder(int tableId) {
+		//Order currentOrder = null;
+		Table t = tCtrl.findTableById(tableId);
 		//tCtrl = tableController;
-		if (tCtrl.isTableNotReservedAndOccupied(tableID)) {
-			t = tCtrl.findTableById(tableID);
-			t.setIsOccupied();
-			currentOrder = t.getOrder();
+		if (tCtrl.isTableNotReservedAndOccupied(t)) {			
+			t.setIsOccupied(true);
+			
+			Order currentOrder = t.getOrder();
 			currentOrder.setStaff(staffManager.getStaff());
 			currentOrder.setOrderId(++orderID);
+			currentOrder.setIsOnGoing(true);
 			orderArr.add(currentOrder);
+			return currentOrder;
 		}
-		return currentOrder;
+		return null;
+	}
+	
+	public boolean cancelOrder(int tableId) {
+		Table t = tCtrl.findTableById(tableId);
+		
+		if (t.getOrder().getItems().size() == 0) {
+			t.setIsOccupied(false);
+			
+			Order currentOrder = t.getOrder();
+			currentOrder.setStaff(null);
+			currentOrder.setIsOnGoing(false);
+			return true;
+		}
+		
+		return false;
 	}
 
 	/**

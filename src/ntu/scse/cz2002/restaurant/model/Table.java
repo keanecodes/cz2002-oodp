@@ -122,7 +122,7 @@ public class Table {
 	/**
 	 * Sets this table as occupied.
 	 */
-	public void setIsOccupied() { this.isOccupied = true; }
+	public void setIsOccupied(boolean status) { this.isOccupied = status; }
 
 	/**
    * Gets the reservation customer's contact no.

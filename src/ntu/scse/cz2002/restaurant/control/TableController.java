@@ -82,16 +82,16 @@ public class TableController {
 	 * @param tableId ID of specified table.
 	 * @return the vacancy status of the specified table.
 	 */
-	public boolean isTableNotReservedAndOccupied(int tableId) {
-		Table t = findTableById(tableId);
+	public boolean isTableNotReservedAndOccupied(Table t) {
+		//Table t = findTableById(tableId);
 		if (t != null) {
-			if (!rCtrl.isTableCurrentlyReserved(tableId) && !t.getIsOccupied()) {
+			if (!rCtrl.isTableCurrentlyReserved(t.getTableId()) && !t.getIsOccupied()) {
 				return true;
-			} else if (rCtrl.isTableCurrentlyReserved(tableId)) {
+			} else if (rCtrl.isTableCurrentlyReserved(t.getTableId())) {
 				System.out.println("Table is reserved.");
 				return false;
 			} 
-			System.out.println("Table is occupied.");
+			System.out.println("Table has already made an order. Try editing.");
 		}
 			
 		return false;
@@ -133,7 +133,7 @@ public class TableController {
 			Order currentOrder = t.getOrder();
 			if (currentOrder != null) {
 				iCtrl.addInvoice(currentOrder);
-				currentOrder.setFinalised(true);
+				currentOrder.setIsOnGoing(false);
 				t.freeTable();
 				
 				t.makeOrder(new Order(getLargestOrderId(), t.getTableId()));
