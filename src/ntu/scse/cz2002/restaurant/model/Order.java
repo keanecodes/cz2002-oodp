@@ -49,10 +49,22 @@ public class Order implements Serializable {
 	}
 	
 	/**
+	 * @param staff The staff who created the order
+	 * @param orderId The associated id with the order
+	 * @param tableId The associated tableId with the order
+	 */
+	public Order(int orderId, int tableId) {
+		this.orderId = orderId;
+		this.tableId = tableId;
+		this.isFinalised = false;
+	}
+	
+	/**
 	 * @param tableId The associated tableId with the order
 	 */
 	public Order(int tableId) {
 		this.tableId = tableId;
+		this.isFinalised = false;
 	}
 
 	/**

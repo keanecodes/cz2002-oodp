@@ -128,19 +128,32 @@ public class TableController {
 	 * @param tableId ID of the specified table.
 	 * @return true if successful, false if unsuccessful.
 	 */
-	public boolean releaseTable(int tableId) {
-		Table t = findTableById(tableId);
-		
+	public boolean releaseTable(Table t) {
 		if (t != null) {
-			if (t.getOrder() != null) {
+			Order currentOrder = t.getOrder();
+			if (currentOrder != null) {
+				iCtrl.addInvoice(currentOrder);
+				currentOrder.setFinalised(true);
 				t.freeTable();
-				//System.out.print(t.getOrder().getStaff());
-				iCtrl.addInvoice(t.getOrder());
-        return true;
+				
+				t.makeOrder(new Order(getLargestOrderId(), t.getTableId()));
+				return true;
 			}
 		}
 		
 		return false;
+	}
+	
+	public int getLargestOrderId() {
+		int largest = 0;
+		
+		for (int i = 0; i < tList.size(); i++) {
+			int temp = tList.get(i).getTableId();
+			if (temp > largest)
+				largest = temp;
+		}
+		
+		return largest;
 	}
 	
 	/**

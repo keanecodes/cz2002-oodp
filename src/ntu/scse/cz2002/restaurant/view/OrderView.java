@@ -9,6 +9,7 @@ import ntu.scse.cz2002.restaurant.control.OrderController;
 import ntu.scse.cz2002.restaurant.control.TableController;
 import ntu.scse.cz2002.restaurant.model.MenuItem;
 import ntu.scse.cz2002.restaurant.model.Order;
+import ntu.scse.cz2002.restaurant.model.Table;
 import ntu.scse.cz2002.restaurant.util.Utilities;
 /**
 *Boundary Class for Orders
@@ -48,7 +49,7 @@ public class OrderView {
 	public void OrderUI() {
 		String choice = "";
 		int orderID, tableID;
-		Order currentOrder = o;
+		
 
 		do {
 		System.out.println("\n// Order Management Control Center // --------------\n" +
@@ -71,24 +72,30 @@ public class OrderView {
 				case "M":
 					tableID = scanTableID();
 					
-					currentOrder = orderManager.createOrder(tableID);
-					if (currentOrder != null) 
-						editOrderUI(currentOrder, orderManager);
+					this.o = orderManager.createOrder(tableID);
+					if (this.o != null) 
+						editOrderUI(this.o, orderManager);
 					
 					break;
 				case "V":
 					tableID = scanTableID();
 					
-					currentOrder = orderManager.findOrder(tableID);
-					if (currentOrder != null) 
-						orderManager.displayOrder(currentOrder);
+					this.o = tCtrl.findTableById(tableID).getOrder();
+					if (this.o.getItems().size() > 0) 
+						orderManager.displayOrder(this.o);
+					else System.out.println("This table has not make an order");
+					
 					break;
 				case "F":			
 					tableID = scanTableID();
+					Table currentTable = tCtrl.findTableById(tableID);
 					
-					tCtrl.releaseTable(tableID);
-					orderManager.removeOrder(tableID);
-					System.out.println("Order has been sent for processing!\n");
+					if (currentTable.getOrder().getItems().size() > 0) {
+						System.out.println("Order has been sent for processing!\n");
+						tCtrl.releaseTable(currentTable);
+						this.o = currentTable.getOrder();
+					} else System.out.println("This table has not make an order");
+					
 					break;
 				case "<":
 					Utilities.clearScreen(); (new MainRestaurantView()).show();
@@ -136,11 +143,13 @@ public class OrderView {
 					count = scanItemQty();
 					
 					
-					for (int i = 0; i < count; i++) 
+					for (int i = 0; i < count; i++) { 
 						if (!orderManager.addOrderItem(order, itemName)) {
 							pass = false;
 							break;
 						}
+						this.o = order;
+					}
 					
 					
 					if (pass)
@@ -242,11 +251,11 @@ public class OrderView {
 				}				
 			} else if (usecase == "remove"){
 				
-				ArrayList<MenuItem> orderMenuItems = o.getItems();
+				ArrayList<MenuItem> orderMenuItems = this.o.getItems();
+				
 				for (int i = 0; i < orderMenuItems.size(); i++) 
 					if (orderMenuItems.get(i).getName().equalsIgnoreCase(itemName)) 
 						return itemName;
-					
 				
 				
 				System.out.println("\nItem does not exist!\n");

@@ -78,18 +78,6 @@ public class OrderController {
 		}
 		return currentOrder;
 	}
-	
-	/**
-	 * @param tableID takes in associated tableID of order
-	 * removes order from orderArray
-	 */
-	public void removeOrder(int tableID) {
-		for (int i = 0; i < this.orderArr.size(); i++) {
-			if (this.orderArr.get(i).getTableId() == tableID) {
-				this.orderArr.remove(i);
-			}
-		}
-	}
 
 	/**
 	 * @param order takes in the corresponding order
