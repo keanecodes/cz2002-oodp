@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Scanner;
 
 import ntu.scse.cz2002.restaurant.model.Order;
 import ntu.scse.cz2002.restaurant.model.Table;
@@ -92,7 +93,17 @@ public class TableController {
 			if (!rCtrl.isTableCurrentlyReserved(t.getTableId()) && !t.getIsOccupied()) {
 				return true;
 			} else if (rCtrl.isTableCurrentlyReserved(t.getTableId())) {
-				System.out.println("Table is reserved.");
+
+				System.out.print("Table is reserved.\nHas the customer arrived? (y/n) ");
+				
+				Scanner sc = new Scanner(System.in);
+				if (sc.next().equalsIgnoreCase("Y"))  {
+					if(rCtrl.obtainCustReservation()) {
+						return true;
+					} 
+					return false;
+				} 
+				
 				return false;
 			} 
 			System.out.println("Table has already made an order. Try editing.");

@@ -152,12 +152,12 @@ public class ReservationController {
 	/**
 	 * Retrieves reservation's details based on Customer's contact number 
 	 */
-	public void obtainCustReservation() {
+	public boolean obtainCustReservation() {
 		checkReservations();
 
 		if (reservations.isEmpty()) {
 			System.out.println("There are no reservations made at the moment!");
-			return;
+			return false;
 		}
 		
 		try 
@@ -172,7 +172,9 @@ public class ReservationController {
 				{
 					reservations.get(index).displayReservationSummary();
 					System.out.print(" ");
-					found = 1; break;
+					found = 1; 
+					return true;
+					//break;
 				}
 				
 			}	
@@ -183,15 +185,16 @@ public class ReservationController {
 		catch (InputMismatchException ex) 
 		{
 			System.out.println("Invalid input! Please try again..");
-			return;
+			return false;
 			
 		} 
 		catch (Exception ex) 
 		{
 			System.out.print("\nInvalid input! ");
 			System.out.println("Please try again..");
-			return;
+			return false;
 		}
+		return false;
 	}
 
 	/**
