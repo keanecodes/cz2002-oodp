@@ -13,7 +13,7 @@ import ntu.scse.cz2002.restaurant.model.Reservation;
 
 /**
  * Control Class to control Table occupancy and reservation;
- * <br> communicates with Order&Reservation Controllers to control the flow of orders;
+ <br> communicates with Order&Reservation Controllers to control the flow of orders;
  * @author Nguyen Kim Xuyen
  *@version 1.0
  *@since 2019-04-17
@@ -84,7 +84,7 @@ public class TableController {
 	
 	/**
    * Checks if a specified table is not occupied and not reserved.
-	 * @param tableId ID of specified table.
+	 * @param t Specified table.
 	 * @return the vacancy status of the specified table.
 	 */
 	public boolean isTableNotReservedAndOccupied(Table t) {
@@ -140,7 +140,7 @@ public class TableController {
 	
 	/**
    * Free a specified table after customers are done eating.
-	 * @param tableId ID of the specified table.
+	 * @param t Specified table.
 	 * @return true if successful, false if unsuccessful.
 	 */
 	public boolean releaseTable(Table t) {

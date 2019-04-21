@@ -22,7 +22,7 @@ public class InvoiceView{
 
 	
 	/**
-	*Prints list of Past Invoices, & user chooses invoices to print based on invoice id
+	Prints list of Past Invoices, & user chooses invoices to print based on invoice id
 	*/
 	public static void showInvoice() {
 		System.out.println("// Print Past Invoices//------------\n" +   

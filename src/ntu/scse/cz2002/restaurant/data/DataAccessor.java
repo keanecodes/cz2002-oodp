@@ -24,8 +24,8 @@ public class DataAccessor {
 
     /**
      * Write object out to file.
-     * @params filename The name of file.
-     * @params data     The object data to be written out.
+     * @param filename The name of file.
+     * @param data     The object data to be written out.
      * @return 0 if successful, 1 if unsuccessful.
      */
 	public static int write(String filename, Object data) {
@@ -50,7 +50,7 @@ public class DataAccessor {
 
     /**
      * Read in object(s) from file.
-     * @params filename The name of file.
+     * @param filename The name of file.
      * @return the object(s) read from the file.
      */
 	public static Object read(String filename) {

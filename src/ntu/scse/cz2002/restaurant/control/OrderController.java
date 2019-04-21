@@ -44,6 +44,7 @@ public class OrderController {
 	
 	/**
 	 * constructor for orderController
+	 * @tCtrl tableController that is passed throughout the program
 	 */
 	public OrderController(TableController tCtrl) {
 		this.tCtrl = tCtrl;
@@ -56,8 +57,8 @@ public class OrderController {
 	}
 	
 	/**
-	 * @param tableController table controller which manages the table
-	 * @param tableID associated tableId of the order
+	 *Finds current order in table
+	 * @param tableId associated tableId of the order
 	 * @return returns order found with the corresponding tableID
 	 */
 	public Order createOrder(int tableId) {
@@ -96,6 +97,7 @@ public class OrderController {
 	 * @param order takes in the corresponding order
 	 * @param itemName the name of an item to be added
 	 * adds item to order
+	 * @return if Order is added
 	 */
 	public boolean addOrderItem(Order order, String itemName) {
 		MenuItem item = menu.getItem(itemName);
@@ -111,6 +113,7 @@ public class OrderController {
 	 * @param order takes in the corresponding order
 	 * @param itemName the name of an item to be added
 	 * removes item from order
+	 @return if the item is successfully removed
 	 */
 	public boolean removeOrderItem(Order order, String itemName) {
 		MenuItem item = menu.getItem(itemName);

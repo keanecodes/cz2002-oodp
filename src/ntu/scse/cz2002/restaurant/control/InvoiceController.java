@@ -36,7 +36,7 @@ public class InvoiceController {
 	
 	
 	/**
-	*Add a new Invoice, called by TblManager when a customer leaves & fulfils an order
+	Add a new Invoice, called by TblManager when a customer leaves & fulfils an order
 	*@param o Add finalized order to create an invoice
 	*/
 	public void addInvoice(Order o) {
@@ -104,7 +104,8 @@ public class InvoiceController {
 	/**
 	*find a invoice using its timestamp
 	*@param time Calendar of the exact time it was generated
-	**/
+	@return found Invoice
+	*/
 	public Invoice findInvoicebytime(Calendar time) {
 		for (Invoice InvoiceItem: invoiceArr) {
 			if (InvoiceItem.getTimestamp() == time) {
@@ -117,7 +118,8 @@ public class InvoiceController {
 	
 	/**
 	*find a invoice using its ID
-	*@param invoiceID, which just ++
+	*@param ID invoiceID, which just ++
+	*@return found Invoice
 	**/
 	public Invoice findInvoicebyID(int ID) {
 		for (Invoice InvoiceItem: invoiceArr) {
@@ -145,8 +147,9 @@ public class InvoiceController {
 	
 	/**
 	*edit down the list to return a list of invoices within a time period
-	*@param startdate & enddate of Calendar class 
-	*
+	@param startdate From of period 
+	@param enddate To of period
+	@return List of Invoices within that period
 	**/
 	public ArrayList<Invoice> getInvoicelist(Calendar startdate, Calendar enddate) {
 		ArrayList<Invoice> inperiod = new ArrayList<Invoice>();

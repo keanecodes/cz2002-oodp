@@ -16,7 +16,9 @@ import java.util.Scanner;
  *
  */
 public class DataAccessHelper {
-	/** Write fixed content to the given file. */
+	/** Write fixed content to the given file. 
+	 * @param fileName path of file
+	 * @param data List of data to be saved*/
 	public static void write(String fileName, List data) throws IOException {
 		PrintWriter out = new PrintWriter(new FileWriter(fileName));
 
@@ -28,7 +30,9 @@ public class DataAccessHelper {
 		}
 	}
 
-	/** Read the contents of the given file. */
+	/** Read the contents of the given file.
+	 * @param fileName filename to read from 
+	 * @return returns the list of stuff*/
 	public static List read(String fileName) throws IOException {
 
 		List data = new ArrayList();

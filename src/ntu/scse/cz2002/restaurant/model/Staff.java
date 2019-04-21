@@ -120,7 +120,7 @@ public class Staff implements Comparable<Staff>, Serializable {
 	}
 
 	/**
-	 * @param gender sets ID of staff
+	 * @param staffID sets ID of staff
 	 */
 	public void setStaffID(int staffID) {
 		this.staffID = staffID;

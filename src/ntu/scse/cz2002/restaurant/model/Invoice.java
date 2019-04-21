@@ -39,7 +39,8 @@ public class Invoice implements Comparable<Invoice>, Serializable{
 	
     /**
     *Constructor for Invoice Class. Constructs based on an order.
-    * @see MyClass
+    * @param o order to create the invoice
+    * @param invoiceID create invoiceID based on the list size
     */
 	public Invoice(Order o, int invoiceID) {
 		// Date date = new Date();
@@ -51,6 +52,7 @@ public class Invoice implements Comparable<Invoice>, Serializable{
 	
     /**
     *returns Order object which Invoice is built off of.
+    @return order that Invoice holds
     */
 	public Order getOrder() {
 		return order1;
@@ -58,6 +60,7 @@ public class Invoice implements Comparable<Invoice>, Serializable{
 	
     /**
     *uses order to return MenuItems ordered.
+    *@return return the list of menuItems in the Invoice
     */
 	public ArrayList<MenuItem> getMenuItems(){
 		return order1.getItems();
@@ -65,6 +68,7 @@ public class Invoice implements Comparable<Invoice>, Serializable{
 	
 	/**
 	    *returns TableID of order.
+	    *@returns where the table which the order was situated 
 	    */
 	public int getTableID() {
 		return order1.getTableId();
@@ -72,6 +76,7 @@ public class Invoice implements Comparable<Invoice>, Serializable{
 	
 	   /**
     *returns InvoiceID. InvoiceID is the same as the old orderID.
+    *@return return InvoiceID
 	    */
 	public int getInvoiceID() {
 		return invoiceId;
@@ -80,6 +85,7 @@ public class Invoice implements Comparable<Invoice>, Serializable{
 	
 	   /**
 	    *returns StaffID of Staff who took the order
+	    @return staff who took the order
 	    */
 	public int getStaffID() {
 		return order1.getStaff().getStaffID();
@@ -87,6 +93,7 @@ public class Invoice implements Comparable<Invoice>, Serializable{
 	
 	/**
 	*returns Amount paid on the Invoice
+	@return total amount to be paid
 	*/
 	public double getAmt() {
 		return amount;
@@ -94,6 +101,7 @@ public class Invoice implements Comparable<Invoice>, Serializable{
 	
 	/**
 	*returns timestamp of Invoice
+	*@return timestamp of when invoice was made
 	*/
 	public Calendar getTimestamp() {
 		return timestamp;
@@ -101,6 +109,7 @@ public class Invoice implements Comparable<Invoice>, Serializable{
 
 	/**
 	*calculates the total amount to be paid based on the order
+	@return calculation
 	*/
 	private double calAmt(Order o) { // this can be put in order entity < best that it is called by order...
 		ArrayList<MenuItem> items = o.getItems();
@@ -115,6 +124,7 @@ public class Invoice implements Comparable<Invoice>, Serializable{
 	
 	/**
 	*prints Invoice attributes for backend access if needed.
+	@return String that shows what  is the timestamp
 	*/
 	public String toString() {
 		return "Timestamp: " + CalendarFormatter.toString(timestamp) + "InvoiceID: " + this.getInvoiceID() + " " + "Amount: " + amount;

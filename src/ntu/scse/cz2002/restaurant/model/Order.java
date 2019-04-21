@@ -49,7 +49,7 @@ public class Order implements Serializable {
 	}
 	
 	/**
-	 * @param staff The staff who created the order
+	 * 
 	 * @param orderId The associated id with the order
 	 * @param tableId The associated tableId with the order
 	 */
@@ -124,7 +124,8 @@ public class Order implements Serializable {
 	}
 
 	/**
-	 * @param s sets order finalised flag
+	 * sets order finalised flag
+	 * @param isOnGoing whether the order is ongoing
 	 */
 	public void setIsOnGoing(boolean isOnGoing) {
 		this.isOnGoing = isOnGoing;

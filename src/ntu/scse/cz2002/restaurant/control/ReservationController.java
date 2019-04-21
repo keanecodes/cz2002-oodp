@@ -151,6 +151,7 @@ public class ReservationController {
 	
 	/**
 	 * Retrieves reservation's details based on Customer's contact number 
+	 @return if Customer Reservations was found
 	 */
 	public boolean obtainCustReservation() {
 		checkReservations();

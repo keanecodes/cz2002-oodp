@@ -13,8 +13,8 @@ public class CalendarFormatter { // might not be needed, can use the built in fu
 	// enum{"Full"; "Date"; "Time"};
 	/**
 	 *Format Calendar to String
-	 *@param passes a Calendar for formatting, 
-	 *@param type of formatting
+	 *@param c passes a Calendar for formatting, 
+	 *@param formattype type of formatting
 	 */	
 	public static String toString(Calendar c, int formattype) { // this should be in somesort of CalenderHelperclass
 		int dd = c.get(Calendar.DAY_OF_MONTH);
@@ -39,6 +39,8 @@ public class CalendarFormatter { // might not be needed, can use the built in fu
 
 	/**
 	 * override default toString function
+	 * @param c the Calendar to format
+	 * @return the output string
 	 */
 
 	public static String toString(Calendar c) { // this should be in somesort of CalenderHelperclass

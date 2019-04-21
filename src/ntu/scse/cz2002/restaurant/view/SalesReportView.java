@@ -33,7 +33,7 @@ public class SalesReportView {
 	
 	/**
 	*Constructor for SalesReport
-	*@param staff generating the report
+	*@param stf generating the report
 	*/
 	public static void showSalesReport(Staff stf) {
 		System.out.println("// Print SalesReport//------------\n" +

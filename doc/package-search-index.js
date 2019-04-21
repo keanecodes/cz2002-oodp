@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"ntu.scse.cz2002.restaurant"},{"l":"ntu.scse.cz2002.restaurant.control"},{"l":"ntu.scse.cz2002.restaurant.data"},{"l":"ntu.scse.cz2002.restaurant.model"},{"l":"ntu.scse.cz2002.restaurant.util"},{"l":"ntu.scse.cz2002.restaurant.view"}]
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"ntu.scse.cz2002.restaurant.util"}]

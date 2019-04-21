@@ -18,9 +18,9 @@ public class DateUtil {
 
 	/**
 	 * Date to String
-	 * @param formattingDate
-	 * @param format
-	 * @return 
+	 * @param formattingDate the date that you wanna format
+	 * @param format the format to format in
+	 * @return formatted String
 	 */
 	public static String format(Date formattingDate, String format) {
 		switch (format) {
@@ -39,9 +39,10 @@ public class DateUtil {
 
 	/**
 	 * String to Date
-	 * @param formattingDate
-	 * @param format
-	 * @return 
+	 * @param DateString the formatted string
+	 * @param format String to format with
+	 * @return Date the date
+	 * @throws ParseException it ignores parse
 	 */
 	public static Date format(String DateString, String format) throws ParseException {
 		switch (format) {

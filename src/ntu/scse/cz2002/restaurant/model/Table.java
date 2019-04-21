@@ -109,6 +109,7 @@ public class Table {
 
 	/**
 	 * Sets this table as reserved.
+	 * @param status whether its reserved (true) or not
 	 */
 	public void setIsReserved(boolean status) { this.isReserved = status; }
 
@@ -120,6 +121,7 @@ public class Table {
 
 	/**
 	 * Sets this table as occupied.
+	 * @param status if its occupied or not
 	 */
 	public void setIsOccupied(boolean status) { this.isOccupied = status; }
 

@@ -34,7 +34,7 @@ public class RestaurantRevenue { // needs to be reformatter & reworked.. is it a
 
 	/**
 	*Constructor for SalesReport
-	*@param takes in any list of invoices to combine into a Sales Report
+	*@param invoicelist takes in any list of invoices to combine into a Sales Report
 	*@deprecated not used, but might be needed in the future
 	*/
 	public RestaurantRevenue(ArrayList<Invoice> invoicelist) {
@@ -46,8 +46,8 @@ public class RestaurantRevenue { // needs to be reformatter & reworked.. is it a
 
 	/**
 	*Constructor for SalesReport, by period
-	*@param takes in a period in Calendar format
-	*@see class
+	*@param startdate FROM :Date of period in Calendar format
+	*@param enddate TO:Date of period in Calendar format
 	*/
 	public RestaurantRevenue(Calendar startdate, Calendar enddate) {
 		start = startdate;
@@ -58,7 +58,8 @@ public class RestaurantRevenue { // needs to be reformatter & reworked.. is it a
 	
 	
 	/**
-	*returns total revenue for this SalesReport
+	*@return total revenue for this SalesReport
+	* 
 	*/
 	public double getttlrevnue() {
 		return total_revenue;
@@ -66,6 +67,7 @@ public class RestaurantRevenue { // needs to be reformatter & reworked.. is it a
 	
 	/**
 	*returns all items sold in this SalesReport
+	*@return list of menuitmes that were sold
 	*/
 	public ArrayList<MenuItem> getthingssold() {
 		return thingssold;
@@ -73,6 +75,7 @@ public class RestaurantRevenue { // needs to be reformatter & reworked.. is it a
 	
 	/**
 	*returns time period for this report in a String for printing
+	@return the formatted String
 	*/
 	public String getPeriod() {
 		return CalendarFormatter.toString(start, 2) + " - " + CalendarFormatter.toString(end, 2);
@@ -126,7 +129,7 @@ public class RestaurantRevenue { // needs to be reformatter & reworked.. is it a
 
 	/**
 	*Prints Sales report in appropriate format. 
-	*@param takes in the staff that requested the sales report
+	*@param stf takes in the staff that requested the sales report
 	*	
 	**/
 	public void PrintSalesReport(Staff stf) {

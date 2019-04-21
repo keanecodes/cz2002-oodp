@@ -66,7 +66,7 @@ public class Reservation implements Serializable {
 	}
 
 	/**
-	 * @return: Gets the date and time of the reservation
+	 * @return Gets the date and time of the reservation
 	 */
 	public Calendar getStartDateTime()  
 	{
@@ -82,7 +82,7 @@ public class Reservation implements Serializable {
 	}
 
 	/**
-	 * @return: Gets the number of people for the reservation
+	 @return Gets the number of people for the reservation
 	 */
 	public int getNoOfPax() 
 	{
