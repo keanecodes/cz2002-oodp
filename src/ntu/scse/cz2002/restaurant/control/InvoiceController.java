@@ -36,7 +36,7 @@ public class InvoiceController {
 	
 	
 	/**
-	Add a new Invoice, called by TblManager when a customer leaves & fulfils an order
+	Add a new Invoice, called by TblManager when a customer leaves and fulfils an order
 	*@param o Add finalized order to create an invoice
 	*/
 	public void addInvoice(Order o) {
@@ -134,6 +134,7 @@ public class InvoiceController {
 	/**
 	*print Invoiceby ID
 	*print a Invoice using ID. 
+	*@param ID invoiceID
 	*/
 	public void printInvoicebyID(int ID) {
 		Invoice toPrint = this.findInvoicebyID(ID);

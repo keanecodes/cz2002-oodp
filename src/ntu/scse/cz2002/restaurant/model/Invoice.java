@@ -68,7 +68,7 @@ public class Invoice implements Comparable<Invoice>, Serializable{
 	
 	/**
 	    *returns TableID of order.
-	    *@returns where the table which the order was situated 
+	    *@return where the table which the order was situated 
 	    */
 	public int getTableID() {
 		return order1.getTableId();
@@ -207,7 +207,7 @@ public class Invoice implements Comparable<Invoice>, Serializable{
 
 	
 	/**
-	 * @param Comparable to other Invoices
+	 * @param i other Invoice to compare to
 	*Comparable interface, invoices compared using timestamp
 	*/
 	@Override

@@ -15,6 +15,7 @@ public class CalendarFormatter { // might not be needed, can use the built in fu
 	 *Format Calendar to String
 	 *@param c passes a Calendar for formatting, 
 	 *@param formattype type of formatting
+	 @return formatted String
 	 */	
 	public static String toString(Calendar c, int formattype) { // this should be in somesort of CalenderHelperclass
 		int dd = c.get(Calendar.DAY_OF_MONTH);

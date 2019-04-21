@@ -44,7 +44,7 @@ public class OrderController {
 	
 	/**
 	 * constructor for orderController
-	 * @tCtrl tableController that is passed throughout the program
+	 * @param tCtrl tableController that is passed throughout the program
 	 */
 	public OrderController(TableController tCtrl) {
 		this.tCtrl = tCtrl;
