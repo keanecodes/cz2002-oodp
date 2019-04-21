@@ -1,17 +1,13 @@
 package ntu.scse.cz2002.restaurant.control;
 
 import ntu.scse.cz2002.restaurant.model.Order;
-import ntu.scse.cz2002.restaurant.model.Staff;
 import ntu.scse.cz2002.restaurant.model.MenuItem;
-import ntu.scse.cz2002.restaurant.data.DataAccessor;
 import ntu.scse.cz2002.restaurant.model.Menu;
 import ntu.scse.cz2002.restaurant.model.Table;
-import ntu.scse.cz2002.restaurant.model.Promotion;
 
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 
 /**
  * Control Class to manage orders

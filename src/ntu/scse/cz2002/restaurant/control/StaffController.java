@@ -3,7 +3,6 @@ package ntu.scse.cz2002.restaurant.control;
 import java.util.ArrayList;
 
 import ntu.scse.cz2002.restaurant.data.DataAccessor;
-import ntu.scse.cz2002.restaurant.model.MenuItem;
 import ntu.scse.cz2002.restaurant.model.Staff;
 
 /**

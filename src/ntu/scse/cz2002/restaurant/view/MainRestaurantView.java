@@ -58,6 +58,9 @@ public class MainRestaurantView {
 				case "T":
 					//Utilities.newScreenHeader();
 					tView.showTables();
+					System.out.println("Press any ENTER to return to main menu.");
+					sc.nextLine();
+					sc.nextLine();
 					printMainRestaurantView(); break;
 				case "R":
 					Utilities.newScreenHeader();
@@ -69,11 +72,17 @@ public class MainRestaurantView {
 				case "I":
 					Utilities.newScreenHeader();
 					InvoiceView.showInvoice(); 
+					System.out.println("Press any ENTER to return to main menu.");
+					sc.nextLine();
+					sc.nextLine();
 					printMainRestaurantView();
 					break;
 				case "P":
 					Utilities.newScreenHeader();
 					SalesReportView.showSalesReport();
+					System.out.println("Press any ENTER to return to main menu.");
+					sc.nextLine();
+					sc.nextLine();
 					printMainRestaurantView();
 					break;
 				case "CHANGE":

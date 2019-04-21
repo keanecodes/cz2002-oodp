@@ -1,12 +1,10 @@
 package ntu.scse.cz2002.restaurant.model;
 
-import java.util.Date;
-
 import ntu.scse.cz2002.restaurant.control.InvoiceController;
-import ntu.scse.cz2002.restaurant.data.DataAccessor;
+
 import ntu.scse.cz2002.restaurant.util.CalendarFormatter;
 
-import java.io.IOException;
+
 //import java.time.*;
 //import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -132,8 +130,8 @@ public class RestaurantRevenue { // needs to be reformatter & reworked.. is it a
 	*	
 	**/
 	public void PrintSalesReport(Staff stf) {
-		System.out.println("Restaurant Name");
-		System.out.println("Address");
+		//System.out.println("Restaurant Name");
+		//System.out.println("Address");
 		System.out.println("");
 		// System.out.print(CalendartoString(timestamp));
 

@@ -3,12 +3,8 @@ package ntu.scse.cz2002.restaurant.view;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import ntu.scse.cz2002.restaurant.control.InvoiceController;
-import ntu.scse.cz2002.restaurant.control.MenuController;
-import ntu.scse.cz2002.restaurant.control.OrderController;
-import ntu.scse.cz2002.restaurant.control.StaffController;
-import ntu.scse.cz2002.restaurant.control.TableController;
-import ntu.scse.cz2002.restaurant.model.RestaurantRevenue;
+import ntu.scse.cz2002.restaurant.control.*;
+
 
 /**
  * *Boundary Class to Print Invoices

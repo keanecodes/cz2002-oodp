@@ -5,9 +5,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 //import java.util.Date;
-import java.util.StringTokenizer;
-
-import ntu.scse.cz2002.restaurant.control.OrderController;
 import ntu.scse.cz2002.restaurant.util.CalendarFormatter;
 //import ntu.scse.cz2002.restaurant.util.DateUtil;
 
@@ -143,7 +140,7 @@ public class Invoice implements Comparable<Invoice>, Serializable{
 		tableheader[1] = new String[] { "Table: " + this.getTableID(), "Time: " + CalendarFormatter.toString(timestamp, 3) };
 
 		for (final Object[] row : tableheader) {
-			System.out.format("%-15s%-15s\n", row);
+			System.out.format("%-15s          %-15s\n", row);
 		}
 
 		System.out.println("----------------------------------");

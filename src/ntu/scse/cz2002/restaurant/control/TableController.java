@@ -98,7 +98,7 @@ public class TableController {
 				
 				Scanner sc = new Scanner(System.in);
 				if (sc.next().equalsIgnoreCase("Y"))  {
-					if(rCtrl.obtainCustReservation()) {
+					if(rCtrl.removeCustArrived()) {
 						return true;
 					} 
 					return false;

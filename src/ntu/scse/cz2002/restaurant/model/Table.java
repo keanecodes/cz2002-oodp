@@ -1,7 +1,6 @@
 package ntu.scse.cz2002.restaurant.model;
 
-import ntu.scse.cz2002.restaurant.model.Reservation;
-import java.util.ArrayList;
+
 
 /**
  * Entity class to track table details

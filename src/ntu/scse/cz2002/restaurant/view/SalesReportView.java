@@ -8,7 +8,7 @@ import java.util.Scanner;
 import ntu.scse.cz2002.restaurant.model.RestaurantRevenue;
 import ntu.scse.cz2002.restaurant.model.Staff;
 
-import java.util.Date;
+
 /**
  * 
  * Boundary Class for SalesReport

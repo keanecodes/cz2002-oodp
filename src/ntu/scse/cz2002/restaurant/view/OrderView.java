@@ -58,7 +58,7 @@ public class OrderView {
                            " Option\t| Option Description\n" +
                            "----------------------------------------------------\n" +
                            "  (C)\t| Create an order for a new table\n" +
-                           "  (E)\t| Edit order for an exiting table\n" +
+                           "  (E)\t| Edit order for an existing table\n" +
                            "  (V)\t| View an order\n" +
                            "  (F)\t| Finalise an order\n");
 

@@ -196,6 +196,74 @@ public class ReservationController {
 		}
 		return false;
 	}
+	
+		
+	public boolean removeCustArrived()
+	{
+		checkReservations();
+
+			if (reservations.isEmpty()) {
+				System.out.println("There are no reservations made at the moment!");
+				return false;
+			}
+			
+			try 
+			{
+				System.out.print("Please enter Customer's contact number: ");
+				int custNum = sc.nextInt();
+				
+				int found = 0;
+				for (int index = 0; index < reservations.size(); index++)
+				{
+					if (reservations.get(index).getCustomerContactNo() == custNum)
+					{
+						reservations.get(index).displayReservationSummary();
+						System.out.print(" ");
+						found = 1;
+						reservations.remove(index);
+						DataAccessor.write(DATA_FILE, reservations);
+						return true;
+						//break;
+					}
+					
+				}	
+				if (found == 0)
+					System.out.println("There are no reservations made by this contact number!\n"
+							+ "Please try again or proceed to make another reservation");
+			}
+			catch (InputMismatchException ex) 
+			{
+				System.out.println("Invalid input! Please try again..");
+				return false;
+				
+			} 
+			catch (Exception ex) 
+			{
+				System.out.print("\nInvalid input! ");
+				System.out.println("Please try again..");
+				return false;
+			}
+			return false;
+		}		
+		/*for (int index = 0; index < reservations.size(); index++)
+			{
+				if (reservations.get(index).getCustomerContactNo() == custNum)
+				{
+					Calendar Starttime = reservations.get(index).getStartDateTime();
+					Calendar Endtime = (Calendar) Starttime.clone();
+					Endtime.add(Calendar.HOUR_OF_DAY, reservations.get(index).getDuration());
+					
+					if (Starttime.before(Calendar.getInstance()) && Endtime.after(Calendar.getInstance())) 
+					{
+						reservations.remove(index);
+						System.out.println("The reservation has been removed!");
+					}
+				}
+			}
+			/* Updates the data file when a reservation is being removed */
+		
+	//}
+
 
 	/**
 	 * Adds a reservation to the list
@@ -467,6 +535,11 @@ public class ReservationController {
 			return;
 		}
 	}
+	
+
+				
+			
+			
 
 	/**
 	 * Check through the list of existing reservations and this method must be called
