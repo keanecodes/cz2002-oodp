@@ -171,8 +171,8 @@ public class Invoice implements Comparable<Invoice>, Serializable{
 		System.out.println("   ---------------------------");
 		System.out.println("                         Subtotal : $" + amount);
 		System.out.printf("                   Service Charge : $%.2f\n", 0.1 * amount);
-		System.out.printf("                              GST : $%.2f\n", 0.07 *1.01* amount);
-		System.out.printf("                            TOTAL : $%.2f \n", 1.07 *1.01* amount);
+		System.out.printf("                              GST : $%.2f\n", 0.07 *1.1* amount);
+		System.out.printf("                            TOTAL : $%.2f \n", 1.07 *1.1* amount);
 		System.out.println("----------------------------------");
 		System.out.println("  Thank You for Dining with us!");
 	}

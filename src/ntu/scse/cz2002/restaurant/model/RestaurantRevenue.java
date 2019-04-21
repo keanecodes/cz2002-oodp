@@ -176,8 +176,8 @@ public class RestaurantRevenue { // needs to be reformatter & reworked.. is it a
 		System.out.println("   ---------------------------");
 		System.out.printf("                            Subtotal : $%.2f\n", total_revenue);
 		System.out.printf("                      Service Charge : $%.2f\n", 0.1 * total_revenue);
-		System.out.printf("                                 GST : $%.2f\n", 0.07 * 1.01* total_revenue);
-		System.out.printf("                               TOTAL : $%.2f\n", 1.07 *1.01* total_revenue);
+		System.out.printf("                                 GST : $%.2f\n", 0.07 * 1.1* total_revenue);
+		System.out.printf("                               TOTAL : $%.2f\n", 1.07 *1.1* total_revenue);
 		System.out.println("----------------------------------");
 		}
 		else {

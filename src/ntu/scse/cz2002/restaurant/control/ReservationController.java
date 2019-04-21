@@ -500,7 +500,7 @@ public class ReservationController {
 
 			Calendar restStartDateTime = reservation.getStartDateTime();
 			Calendar restClone = (Calendar) restStartDateTime.clone();
-			restClone.add(Calendar.MINUTE, 15);
+			restClone.add(Calendar.MINUTE, 15); // change this for reservation time
 
 			/* If currentInstant is after restStartDateTime by 15 minutes */
 			if (restClone.before(currentInstant)) 
