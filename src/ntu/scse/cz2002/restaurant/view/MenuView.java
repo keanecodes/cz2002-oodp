@@ -11,6 +11,12 @@ import ntu.scse.cz2002.restaurant.model.Promotion;
 import ntu.scse.cz2002.restaurant.util.Utilities;
 
 
+/**
+	Boundary Class for Menu
+   @author  Johan Tjuatja
+   @version 1.0
+   @since   2019-03-15
+ */
 public class MenuView {
 	/**
 	 * 
@@ -22,15 +28,23 @@ public class MenuView {
 	 */
 	public static int quit;
 
-	/**
-	 * 
-	 */
 	
+	/**
+	 *Constructor for Boundary Class 
+	 */
 	public MenuView() { }
 	
+	/**
+	 *Contructor to pass the TableController
+	 *@param tCtrl TableController that is passed around the whole program
+	 */
 	public MenuView(TableController tCtrl) {
 		this.tCtrl = tCtrl;
 	}
+	
+	/**
+	 *Overall Wrapper function 
+	 */
 	public static void MenuUI() {
 		String c;
 		quit = 0;
@@ -46,7 +60,7 @@ public class MenuView {
 	}
 
 	/**
-	 * 
+	 * Print Options 
 	 */
 	public static void printInputList() {
 		System.out.println("// Restaurant Menu Item Management // ------------\n" +
@@ -63,7 +77,8 @@ public class MenuView {
 	}
 
 	/**
-	 * @return
+	 * Print to prompt user choice
+	 * @return choice
 	 */
 	public static String getUserInput() {
 		System.out.printf("Please select what to do (enter \"0\" to view options):\n");
@@ -82,7 +97,8 @@ public class MenuView {
 	}
 
 	/**
-	 * @param c
+	 * Logic for options 
+	 * @param c User Input from user choice getter
 	 */
 	public static void processUserInput(String c) {
 		String name;

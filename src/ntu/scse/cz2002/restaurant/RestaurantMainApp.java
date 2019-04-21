@@ -15,7 +15,7 @@ import ntu.scse.cz2002.restaurant.view.*;
 public class RestaurantMainApp {
 
 	/**
-	 *main app
+	 *main app;
 	 *<br> calls BoundaryClass MainRestaurantView to start the menu 
 	 */
 	public static void main(String[] args) {

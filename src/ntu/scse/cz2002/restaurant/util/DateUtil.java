@@ -4,10 +4,24 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * 
+ * @author Nguyen Kim Xuyen
+ *@version 1.0
+ *@since 2019-04-17
+ * Date Formatter
+ */
+
 public class DateUtil {
 
 	private static SimpleDateFormat dateFormatter;
 
+	/**
+	 * Date to String
+	 * @param formattingDate
+	 * @param format
+	 * @return 
+	 */
 	public static String format(Date formattingDate, String format) {
 		switch (format) {
 			case "datetime":
@@ -23,6 +37,12 @@ public class DateUtil {
 
 	}
 
+	/**
+	 * String to Date
+	 * @param formattingDate
+	 * @param format
+	 * @return 
+	 */
 	public static Date format(String DateString, String format) throws ParseException {
 		switch (format) {
 		case "datetime":

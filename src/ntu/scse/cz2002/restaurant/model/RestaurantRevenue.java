@@ -139,7 +139,7 @@ public class RestaurantRevenue { // needs to be reformatter & reworked.. is it a
 		tableheader[0] = new String[] { "From:" + CalendarFormatter.toString(start, 2),
 				"To: " + CalendarFormatter.toString(end, 2) }; // im considering just keeping table id information, not
 																// entire table.
-		tableheader[1] = new String[] { "" /*"Staff Requested: " +stf.getStaffID() */,
+		tableheader[1] = new String[] { "Date of Request: " + CalendarFormatter.toString(Calendar.getInstance(), 2),
 				"Time of Request: " + CalendarFormatter.toString(Calendar.getInstance(), 3) }; // what is the timestamp
 																								// of request?
 

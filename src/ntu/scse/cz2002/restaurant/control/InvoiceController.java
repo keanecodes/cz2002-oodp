@@ -21,7 +21,7 @@ public class InvoiceController {
 
 	
 	/**
-	*Constructor
+	*Constructor;
 	*<br> loads data from invoice.dat file
 	*/
 	public InvoiceController(){
@@ -37,6 +37,7 @@ public class InvoiceController {
 	
 	/**
 	*Add a new Invoice, called by TblManager when a customer leaves & fulfils an order
+	*@param o Add finalized order to create an invoice
 	*/
 	public void addInvoice(Order o) {
 		Invoice newInvoice = new Invoice(o, invoiceArr.size());
@@ -78,6 +79,7 @@ public class InvoiceController {
 	
 	/**
 	*printItems using InvoiceID for the view class
+	*@return true if there are invoices to print, false if its empty
 	*/
 	public boolean printItemsByID() {
         if(invoiceArr ==null){
@@ -101,7 +103,7 @@ public class InvoiceController {
 	
 	/**
 	*find a invoice using its timestamp
-	*@param Calendar of the exact time it was generated
+	*@param time Calendar of the exact time it was generated
 	**/
 	public Invoice findInvoicebytime(Calendar time) {
 		for (Invoice InvoiceItem: invoiceArr) {
@@ -148,6 +150,11 @@ public class InvoiceController {
 	**/
 	public ArrayList<Invoice> getInvoicelist(Calendar startdate, Calendar enddate) {
 		ArrayList<Invoice> inperiod = new ArrayList<Invoice>();
+		enddate.roll(Calendar.HOUR_OF_DAY, false);
+		enddate.roll (Calendar.MINUTE, false);
+		enddate.roll (Calendar.SECOND, false);
+		enddate.roll (Calendar.MILLISECOND, false);
+		//System.out.println(CalendarFormatter.toString(enddate));
 		Calendar times;
 		if (invoiceArr ==null) {
 			return null;

@@ -127,7 +127,8 @@ public class Invoice implements Comparable<Invoice>, Serializable{
 	public void printReceipt() {
 		//System.out.println("Restaurant Name");
 		//System.out.println("Address");
-		System.out.print(this.getInvoiceID());
+		System.out.println("----------------------------------------");
+		System.out.print("Invoice ID: " + this.getInvoiceID());
 		System.out.println("");
 		// System.out.print(CalendartoString(timestamp));
 
@@ -143,7 +144,7 @@ public class Invoice implements Comparable<Invoice>, Serializable{
 			System.out.format("%-15s          %-15s\n", row);
 		}
 
-		System.out.println("----------------------------------");
+		System.out.println("----------------------------------------");
 
 		boolean [] visited = new boolean [this.getMenuItems().size()];
 			for (int i=0; i<this.getMenuItems().size(); i++) {
@@ -165,13 +166,14 @@ public class Invoice implements Comparable<Invoice>, Serializable{
 				
 			}
 			}
-		System.out.println("   ---------------------------");
+		System.out.println("      -----------------------------");
 		System.out.println("                         Subtotal : $" + amount);
 		System.out.printf("                   Service Charge : $%.2f\n", 0.1 * amount);
 		System.out.printf("                              GST : $%.2f\n", 0.07 *1.1* amount);
 		System.out.printf("                            TOTAL : $%.2f \n", 1.07 *1.1* amount);
-		System.out.println("----------------------------------");
-		System.out.println("  Thank You for Dining with us!");
+		System.out.println("-----------------------------------------");
+		System.out.println("     Thank You for Dining with us!");
+		System.out.println("-----------------------------------------");
 	}
 
 	/*

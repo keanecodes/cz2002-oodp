@@ -12,8 +12,8 @@ import ntu.scse.cz2002.restaurant.model.Table;
 import ntu.scse.cz2002.restaurant.model.Reservation;
 
 /**
- * Control Class to control Table occupancy and reservation
- * <br> communicates with Order&Reservation Controllers to control the flow of orders
+ * Control Class to control Table occupancy and reservation;
+ * <br> communicates with Order&Reservation Controllers to control the flow of orders;
  * @author Nguyen Kim Xuyen
  *@version 1.0
  *@since 2019-04-17

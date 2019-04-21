@@ -5,11 +5,9 @@ import java.util.Calendar;
  * @author He Zeqing
  *@version 1.0
  *@since 2019-4-17
- */
-
-/**
  *Calendar Formatter
  */
+
 
 public class CalendarFormatter { // might not be needed, can use the built in functions in calendar
 	// enum{"Full"; "Date"; "Time"};
