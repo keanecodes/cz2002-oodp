@@ -162,6 +162,8 @@ public class InvoiceController {
 		return inperiod;
 	}
 	
-	
+	public int getInvoiceListSize() {
+		return this.invoiceArr.size();
+	}
 
 }

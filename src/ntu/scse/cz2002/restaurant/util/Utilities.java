@@ -18,8 +18,8 @@ public class Utilities {
 	 Screen Header  */
 	public static void newScreenHeader() {  
 		clearScreen();
-		System.out.println("**************************************************\n" + 
-                           "************** Happy Kopitiam RRPPS **************\n" +
-                           "**************************************************\n\n");
+		System.out.println("****************************************************\n" + 
+                           "*************** Happy Kopitiam RRPPS ***************\n" +
+                           "****************************************************\n\n");
 	}  
 }

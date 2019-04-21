@@ -166,7 +166,7 @@ public class ReservationController {
 		checkReservations();
 
 		if (reservations.isEmpty()) {
-			System.out.print("There are no reservations made at the moment!");
+			System.out.println("There are no reservations made at the moment!");
 			return;
 		}
 		
@@ -175,23 +175,24 @@ public class ReservationController {
 			System.out.print("Please enter Customer's contact number: ");
 			int custNum = sc.nextInt();
 			
+			int found = 0;
 			for (int index = 0; index < reservations.size(); index++)
 			{
 				if (reservations.get(index).getCustomerContactNo() == custNum)
 				{
 					reservations.get(index).displayReservationSummary();
 					System.out.print(" ");
+					found = 1; break;
 				}
 				
-				if (reservations.get(index).getCustomerContactNo() != custNum)
-					System.out.print("There are no reservations made by this contact number!"
-							+ "Please try again or proceed to make another reservation");
 			}	
+			if (found == 0)
+				System.out.println("There are no reservations made by this contact number!\n"
+						+ "Please try again or proceed to make another reservation");
 		}
 		catch (InputMismatchException ex) 
 		{
-			System.out.print("\nInvalid input! ");
-			System.out.println("Please try again..");
+			System.out.println("Invalid input! Please try again..");
 			return;
 			
 		} 

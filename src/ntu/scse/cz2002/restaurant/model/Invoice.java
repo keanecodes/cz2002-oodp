@@ -128,14 +128,14 @@ public class Invoice implements Comparable<Invoice>, Serializable{
 	*prints Receipt
 	*/
 	public void printReceipt() {
-		System.out.println("Restaurant Name");
-		System.out.println("Address");
+		//System.out.println("Restaurant Name");
+		//System.out.println("Address");
 		System.out.print(this.getInvoiceID());
 		System.out.println("");
 		// System.out.print(CalendartoString(timestamp));
 
 		final Object[][] tableheader = new String[2][];
-		tableheader[0] = new String[] { "Server: " + this.getStaffID(), "Date: " + CalendarFormatter.toString(timestamp, 2) }; // im
+		tableheader[0] = new String[] { "Server: " + order1.getStaff().getName(), "Date: " + CalendarFormatter.toString(timestamp, 2) }; // im
 																											// considering
 																												// just
 																												// keeping																										// entire

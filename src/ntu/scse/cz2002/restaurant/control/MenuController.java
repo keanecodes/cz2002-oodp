@@ -54,7 +54,7 @@ public class MenuController{
         if(items != null){
             this.menu = new Menu(items);
 
-            System.out.println("Menu contents successfully loaded!");
+            //System.out.println("Menu contents successfully loaded!");
             updateTypesList(items);
         }
         else{
@@ -71,7 +71,7 @@ public class MenuController{
         int itemSave = DataAccessor.write(itemFilename, this.menu.getItemList());
 
         if(itemSave != 1){
-            System.out.println("Menu contents successfully saved!");
+            //System.out.println("Menu contents successfully saved!");
         }
         else{
             System.out.println("Failed to save items!");
@@ -95,7 +95,7 @@ public class MenuController{
             }
         }
 
-        System.out.println("Types list successfully updated!\n");
+        //System.out.println("Types list successfully updated!\n");
     }
 
     /**

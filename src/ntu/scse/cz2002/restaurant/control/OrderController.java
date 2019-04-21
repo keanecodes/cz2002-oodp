@@ -49,7 +49,9 @@ public class OrderController {
 	/**
 	 * constructor for orderController
 	 */
-	public OrderController() { }
+	public OrderController(TableController tCtrl) {
+		this.tCtrl = tCtrl;
+	}
 	/**
 	 * @param oList set the orderArr with another arraylist of orders
 	 */
@@ -62,16 +64,16 @@ public class OrderController {
 	 * @param tableID associated tableId of the order
 	 * @return returns order found with the corresponding tableID
 	 */
-	public Order createOrder(TableController tableController, int tableID) {
+	public Order createOrder(int tableID) {
 		Order currentOrder = null;
 		Table t;
-		tCtrl = tableController;
-		if (tCtrl.isTableNotReservedAndOccupied(tableID)) {
+		//tCtrl = tableController;
+		if (tCtrl.isTableNotReservedAndOccupied(++tableID)) {
 			t = tCtrl.findTableById(tableID);
 			t.setIsOccupied();
 			currentOrder = t.getOrder();
 			currentOrder.setStaff(staffManager.getStaff());
-			currentOrder.setOrderId(orderID++);
+			currentOrder.setOrderId(++orderID);
 			orderArr.add(currentOrder);
 		}
 		return currentOrder;
@@ -94,12 +96,14 @@ public class OrderController {
 	 * @param itemName the name of an item to be added
 	 * adds item to order
 	 */
-	public void addOrderItem(Order order, String itemName) {
+	public boolean addOrderItem(Order order, String itemName) {
 		MenuItem item = menu.getItem(itemName);
-		if (item != null)
+		if (item != null) {
 			order.addItem(item);
-		else
-			System.out.println("Item does not exist!");
+			return true;
+		}
+		
+		return false;
 	}
 
 	/**
@@ -107,12 +111,15 @@ public class OrderController {
 	 * @param itemName the name of an item to be added
 	 * removes item from order
 	 */
-	public void removeOrderItem(Order order, String itemName) {
+	public boolean removeOrderItem(Order order, String itemName) {
 		MenuItem item = menu.getItem(itemName);
-		if (item != null)
+		if (item != null) {
 			order.removeItem(item);
-		else
-			System.out.println("Item does not exist!");
+			return true;
+		}
+		
+		System.out.println("Item does not exist!");
+		return false;
 	}
 
 	/**
@@ -167,6 +174,7 @@ public class OrderController {
 	public Order findOrder(int tableID) {
 		Order corrOrder = null;
 		for (int i = 0; i < orderArr.size(); i++) {
+			//System.out.println(orderArr.get(i).getTableId());			
 			if (orderArr.get(i).getTableId() == tableID) {
 				corrOrder = orderArr.get(i);
 				break;
@@ -175,5 +183,15 @@ public class OrderController {
 		if (corrOrder == null)
 			System.out.println("Invalid table ID");
 		return corrOrder;
+	}
+	
+	public MenuItem getMenuItemFromOrder(ArrayList<MenuItem> items, String name) {
+		for (int i = 0; i < items.size(); i++) {
+			if (items.get(i).getName().equalsIgnoreCase(name)) {
+				return items.get(i);
+			}
+		}
+
+		return null;
 	}
 }

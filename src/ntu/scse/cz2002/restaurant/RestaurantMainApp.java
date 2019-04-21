@@ -25,7 +25,7 @@ public class RestaurantMainApp {
 	 *<br> calls BoundaryClass MainRestaurantView to start the menu 
 	 */
 	public static void main(String[] args) {
-		(new MainRestaurantView()).show();
+		MainRestaurantView.show();
 		
 	}
 }

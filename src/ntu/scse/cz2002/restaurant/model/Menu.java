@@ -53,7 +53,7 @@ public class Menu {
 	 */
 	public MenuItem getItem(String name) {
 		for (int i = 0; i < this.items.size(); i++) {
-			if (this.items.get(i).getName().equals(name)) {
+			if (this.items.get(i).getName().equalsIgnoreCase(name)) {
 				return this.items.get(i);
 			}
 		}
@@ -84,7 +84,7 @@ public class Menu {
 	 */
 	public int removeItem(String name) {
 		for (int i = 0; i < this.items.size(); i++) {
-			if (this.items.get(i).getName().equals(name)) {
+			if (this.items.get(i).getName().equalsIgnoreCase(name)) {
 				this.items.remove(i);
 				this.itemCount -= 1;
 				return 0;

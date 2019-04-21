@@ -1,5 +1,6 @@
 package ntu.scse.cz2002.restaurant.view;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import ntu.scse.cz2002.restaurant.control.InvoiceController;
@@ -36,8 +37,25 @@ public class InvoiceView{
 				System.out.println("--------------------------------------------------\n" +
                 "Key in Invoice to Print: \n" +
                 "--------------------------------------------------");
-				System.out.print("Invoice ID\t: ");
-				int invID = sc.nextInt();
+				
+				int invID = -1;
+				int invoiceRange = -1;
+				do {
+					System.out.print("\nInvoice ID\t: ");
+					try{
+						invID = sc.nextInt();
+						
+						invoiceRange = iCtrl.getInvoiceListSize()-1;
+						
+						if (invID > invoiceRange || invID < 0 )
+							System.out.println("\nInvalid quanity input. Invoice range 0 - " + invoiceRange + " expected.");
+					}catch(InputMismatchException ex) {
+						System.out.println("\nInvalid quanity input. Non-decimal value expected.");
+						sc.nextLine();
+						continue;
+					}
+					
+				} while ((invID != -1) && invID > invoiceRange|| invID < 0);
 				iCtrl.printInvoicebyID(invID);}
 	}
 	

@@ -30,6 +30,10 @@ public class Order implements Serializable {
 	 */
 	private int tableId;
 	/**
+	 * Indicator of whether the order is currently on-going
+	 */
+	private boolean isFinalised;
+	/**
 	 * Constructor for order
 	 */
 	public Order() { }
@@ -78,7 +82,14 @@ public class Order implements Serializable {
 	public int getTableId() {
 		return this.tableId;
 	}
-
+	
+	/**
+	 * @return returns if the order is on-going
+	 */
+	public boolean isFinalised() {
+		return isFinalised;
+	}
+	
 	/**
 	 * @param s sets the Staff who made the order
 	 */
@@ -100,6 +111,13 @@ public class Order implements Serializable {
 		this.tableId = i;
 	}
 
+	/**
+	 * @param s sets order finalised flag
+	 */
+	public void setFinalised(boolean isFinalised) {
+		this.isFinalised = isFinalised;
+	}
+	
 	/**
 	 * @param i adds menu item to the order
 	 */

@@ -65,7 +65,7 @@ public class TableController {
             //for (int tableSize : TABLE_SIZE) 
             Table newTable;
             // Constructor: tableNunber, numOfSeats, isOccupied, order
-            newTable = new Table(i, TABLE_SIZE[i], false, new Order(i));
+            newTable = new Table(i+1, TABLE_SIZE[i], false, new Order(i));
 
             tList.add(newTable);
         }
@@ -97,6 +97,23 @@ public class TableController {
 		return false;
 	}
 	
+	public void getTableUpdatedStatus() {
+		
+		String status;
+		
+		for (int i = 0; i < this.tList.size(); i++) {
+			Table t = this.tList.get(i);
+			
+			status = t.getIsOccupied() ? "Occupied" : "Available";
+			status = rCtrl.isTableCurrentlyReserved(t.getTableId()) ? "Reserved" : status;
+			
+			System.out.println("   " + (t.getTableId()) + 
+					"\t       " + t.getNumOfSeats() + "\t " +
+					status);
+		}
+		
+	}
+	
 	/**
    * Sets table as occupied.
 	 * @param tableId ID of specified table.
@@ -117,6 +134,7 @@ public class TableController {
 		if (t != null) {
 			if (t.getOrder() != null) {
 				t.freeTable();
+				System.out.print(t.getOrder().getStaff());
 				iCtrl.addInvoice(t.getOrder());
         return true;
 			}

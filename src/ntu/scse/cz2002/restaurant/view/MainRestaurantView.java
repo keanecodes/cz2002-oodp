@@ -17,27 +17,29 @@ public class MainRestaurantView {
 	/**
 	 * 
 	 */
-	private TableController tCtrl = new TableController();
+	private static TableController tCtrl = new TableController();
+	
+	private static TableView tView = new TableView(tCtrl);
 	
 	/**
 	 * 
 	 */
-	private OrderView oView = new OrderView(tCtrl);
+	private static OrderView oView = new OrderView(tCtrl);
 	/**
 	 * 
 	 */
-	private ReservationView rView = new ReservationView(tCtrl);
+	private static ReservationView rView = new ReservationView(tCtrl);
 	/**
 	 * 
 	 */
-	private MenuView mView = new MenuView();
+	private static MenuView mView = new MenuView();
 	//private InvoiceView iView = new InvoiceView();
 	
 	/**
 	 loop to choose options from MainMenu
 	 * 
 	 */
-	public void show() {
+	public static void show() {
 		Scanner sc = new Scanner(System.in);
 
 		String choice = "";
@@ -51,6 +53,10 @@ public class MainRestaurantView {
 				case "O": 
 					Utilities.newScreenHeader();
 					oView.OrderUI(); break;
+				case "T":
+					//Utilities.newScreenHeader();
+					tView.showTables();
+					printMainRestaurantView(); break;
 				case "R":
 					Utilities.newScreenHeader();
 					rView.ReservationUI(); break;
@@ -103,6 +109,7 @@ public class MainRestaurantView {
 		                " Option\t| Option Description\n" +
 		                "--------------------------------------------------\n" +
 		                "  (O)\t| Orders\n" + 
+		                "  (T)\t| Table Availability\n" + 
 		                "  (R)\t| Reservation\n" + 
 		                "  (M)\t| Menu\n\n");
 		
