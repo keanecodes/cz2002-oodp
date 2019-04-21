@@ -68,7 +68,7 @@ public class OrderController {
 		Order currentOrder = null;
 		Table t;
 		//tCtrl = tableController;
-		if (tCtrl.isTableNotReservedAndOccupied(++tableID)) {
+		if (tCtrl.isTableNotReservedAndOccupied(tableID)) {
 			t = tCtrl.findTableById(tableID);
 			t.setIsOccupied();
 			currentOrder = t.getOrder();
@@ -174,7 +174,7 @@ public class OrderController {
 	public Order findOrder(int tableID) {
 		Order corrOrder = null;
 		for (int i = 0; i < orderArr.size(); i++) {
-			//System.out.println(orderArr.get(i).getTableId());			
+			System.out.println(orderArr.get(i).getTableId());			
 			if (orderArr.get(i).getTableId() == tableID) {
 				corrOrder = orderArr.get(i);
 				break;

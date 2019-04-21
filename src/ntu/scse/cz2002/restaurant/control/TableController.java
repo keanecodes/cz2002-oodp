@@ -65,7 +65,7 @@ public class TableController {
             //for (int tableSize : TABLE_SIZE) 
             Table newTable;
             // Constructor: tableNunber, numOfSeats, isOccupied, order
-            newTable = new Table(i+1, TABLE_SIZE[i], false, new Order(i));
+            newTable = new Table(i+1, TABLE_SIZE[i], false, new Order(i+1));
 
             tList.add(newTable);
         }
