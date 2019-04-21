@@ -134,7 +134,7 @@ public class TableController {
 		if (t != null) {
 			if (t.getOrder() != null) {
 				t.freeTable();
-				System.out.print(t.getOrder().getStaff());
+				//System.out.print(t.getOrder().getStaff());
 				iCtrl.addInvoice(t.getOrder());
         return true;
 			}

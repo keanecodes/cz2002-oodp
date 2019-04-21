@@ -194,7 +194,7 @@ public class OrderView {
 				tableID = sc.nextInt();
 				
 				if (tableID == -1) break;
-				else if (tableID > 30 || tableID < 0 )
+				else if (tableID > 30 || tableID <= 0 )
 					System.out.println("\nInvalid tableID input. TableID range 1 - 30 expected.");
 				
 			} catch(InputMismatchException ex) {
@@ -202,7 +202,7 @@ public class OrderView {
 				sc.nextLine();
 				continue;
 			}
-		} while ((tableID != -1) && tableID > 30 || tableID < 0);
+		} while ((tableID != -1) && tableID > 30 || tableID <= 0);
 		
 		return tableID;
 	}

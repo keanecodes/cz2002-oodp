@@ -174,7 +174,7 @@ public class OrderController {
 	public Order findOrder(int tableID) {
 		Order corrOrder = null;
 		for (int i = 0; i < orderArr.size(); i++) {
-			System.out.println(orderArr.get(i).getTableId());			
+			//System.out.println(orderArr.get(i).getTableId());			
 			if (orderArr.get(i).getTableId() == tableID) {
 				corrOrder = orderArr.get(i);
 				break;
