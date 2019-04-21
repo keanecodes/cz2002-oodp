@@ -7,10 +7,11 @@ import ntu.scse.cz2002.restaurant.model.MenuItem;
 import ntu.scse.cz2002.restaurant.model.Staff;
 
 /**
+ * Contains all the attributes and methods for an order entity. 
  * @author Goh Ying Ting
  * @version 1.0
  * @since 2019-4-1
- * Contains all the attributes and methods for an order entity. 
+ * 
  */
 public class Order implements Serializable {
 	/**
@@ -38,6 +39,7 @@ public class Order implements Serializable {
 	 */
 	public Order() { }
 	/**
+	 * Constructor for order
 	 * @param staff The staff who created the order
 	 * @param orderId The associated id with the order
 	 * @param tableId The associated tableId with the order
@@ -49,7 +51,7 @@ public class Order implements Serializable {
 	}
 	
 	/**
-	 * 
+	 * Constructor for order
 	 * @param orderId The associated id with the order
 	 * @param tableId The associated tableId with the order
 	 */
@@ -60,6 +62,7 @@ public class Order implements Serializable {
 	}
 	
 	/**
+	 * Constructor for order
 	 * @param tableId The associated tableId with the order
 	 */
 	public Order(int tableId) {
@@ -68,6 +71,7 @@ public class Order implements Serializable {
 	}
 
 	/**
+	 * gets MenuItems that have been ordered
 	 * @return returns the menu items which have been ordered
 	 */
 	public ArrayList <MenuItem> getItems() {
@@ -75,6 +79,7 @@ public class Order implements Serializable {
 	}
 	
 	/**
+	 * gets staff that made the order
 	 * @return returns the staff who made the order
 	 */
 	public Staff getStaff() {
@@ -82,6 +87,7 @@ public class Order implements Serializable {
 	}
 
 	/**
+	 * gets orderID of order
 	 * @return returns the orderId associated with the order
 	 */
 	public int getOrderId() {
@@ -89,6 +95,7 @@ public class Order implements Serializable {
 	}
 
 	/**
+	 * gets TableId of table placing order
 	 * @return returns the tableId associated with the order
 	 */
 	public int getTableId() {
@@ -96,6 +103,7 @@ public class Order implements Serializable {
 	}
 	
 	/**
+	 * gets the status of order, true if its on-going
 	 * @return returns if the order is on-going
 	 */
 	public boolean isOnGoing() {
@@ -103,6 +111,7 @@ public class Order implements Serializable {
 	}
 	
 	/**
+	 * changes the Staff attribute
 	 * @param s sets the Staff who made the order
 	 */
 	public void setStaff(Staff s) {
@@ -110,6 +119,7 @@ public class Order implements Serializable {
 	}
 
 	/**
+	 * changes the orderID 
 	 * @param i sets the orderId associated with the order
 	 */
 	public void setOrderId(int i) {
@@ -117,6 +127,7 @@ public class Order implements Serializable {
 	}
 
 	/**
+	 * changes the tableID attribute
 	 * @param i sets the tableId associated with the order
 	 */
 	public void setTableId(int i) {
@@ -132,14 +143,16 @@ public class Order implements Serializable {
 	}
 	
 	/**
-	 * @param i adds menu item to the order
+	 * adds a menu item to order
+	 * @param i menuitem to be added
 	 */
 	public void addItem(MenuItem i) {
 		this.items.add(i);
 	}
 
 	/**
-	 * @param j removes menu item from the order
+	 * removes menu item from the order
+	 * @param j menu item to be removed
 	 */
 	public void removeItem(MenuItem j) {
 		String name = j.getName();

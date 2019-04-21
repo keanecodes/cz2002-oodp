@@ -78,6 +78,12 @@ public class OrderController {
 		return null;
 	}
 	
+	/**
+	 *  cancels Order
+	 * @param tableId takes tableId of the table the order is being created
+	 * @return if Order is cancelled
+	 */
+	
 	public boolean cancelOrder(int tableId) {
 		Table t = tCtrl.findTableById(tableId);
 		
@@ -94,9 +100,10 @@ public class OrderController {
 	}
 
 	/**
+	 *  adds item to order
 	 * @param order takes in the corresponding order
 	 * @param itemName the name of an item to be added
-	 * adds item to order
+	 *
 	 * @return if Order is added
 	 */
 	public boolean addOrderItem(Order order, String itemName) {
@@ -110,9 +117,10 @@ public class OrderController {
 	}
 
 	/**
+	 * removes item from order
 	 * @param order takes in the corresponding order
 	 * @param itemName the name of an item to be added
-	 * removes item from order
+	 * 
 	 @return if the item is successfully removed
 	 */
 	public boolean removeOrderItem(Order order, String itemName) {
@@ -127,8 +135,9 @@ public class OrderController {
 	}
 
 	/**
-	 * @param o takes in order
 	 * displays associated staff information and order information
+	 * @param o takes in order
+	 * 
 	 */
 	public void displayOrder(Order o) {
 		System.out.println("Staff Information: ");
@@ -140,8 +149,9 @@ public class OrderController {
 	}
 	
 	/**
-	 * @param order takes in order
 	 * prints out number of items for each item
+	 * @param order takes in order
+	 * 
 	 */
 	public void printItemsOf(Order order) {
 		ArrayList<MenuItem> items = order.getItems(); 
@@ -172,6 +182,7 @@ public class OrderController {
 	} 
 
 	/**
+	 * finds an order based on tableID
 	 * @param tableID takes in associated tableID
 	 * @return finds corresponding order with tableID
 	 */
@@ -189,6 +200,12 @@ public class OrderController {
 		return corrOrder;
 	}
 	
+	/**
+	 * gets a MenuItem from the order
+	 * @param items the array of menuitems of order
+	 * @param name of the menuItem
+	 * @return the desired menuItem
+	 */
 	public MenuItem getMenuItemFromOrder(ArrayList<MenuItem> items, String name) {
 		for (int i = 0; i < items.size(); i++) {
 			if (items.get(i).getName().equalsIgnoreCase(name)) {

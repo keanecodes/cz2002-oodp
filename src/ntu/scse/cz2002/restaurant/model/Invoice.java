@@ -207,8 +207,9 @@ public class Invoice implements Comparable<Invoice>, Serializable{
 
 	
 	/**
+	 * Comparable interface, invoices compared using timestamp
 	 * @param i other Invoice to compare to
-	*Comparable interface, invoices compared using timestamp
+	*
 	*/
 	@Override
 	public int compareTo(Invoice i) {

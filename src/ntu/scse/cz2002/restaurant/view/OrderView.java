@@ -136,9 +136,10 @@ public class OrderView {
 	}
 
 	/**
+	 * displays the options associated with editing the order 
 	 * @param order takes in the order to be edited
 	 * @param orderManager takes in orderManager to edit orders
-	 * displays the options associated with editing the order 
+	 * 
 	 */
 	public void editOrderUI(Order order, OrderController orderManager) {
 		String choice;

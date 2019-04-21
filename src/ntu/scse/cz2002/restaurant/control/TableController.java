@@ -112,6 +112,9 @@ public class TableController {
 		return false;
 	}
 	
+	/**
+	 * Prints out the table status whenever called
+	 */
 	public void getTableUpdatedStatus() {
 		
 		String status;
@@ -159,6 +162,11 @@ public class TableController {
 		return false;
 	}
 	
+	/**
+	 * finds the largest order ID
+	 * <br>for assigning order ID purposes;
+	 @return largestorderID
+	 */
 	public int getLargestOrderId() {
 		int largest = 0;
 		
@@ -183,6 +191,10 @@ public class TableController {
 		
 		return null;
 	}
+	
+	/**
+	 * Checks and sets tables as isReserved if the reservation is at current time
+	 */
 	
 	public void setReservedTablesAtCurrentTime() {
 		List<Reservation> allReservations = rCtrl.getAllReservations();

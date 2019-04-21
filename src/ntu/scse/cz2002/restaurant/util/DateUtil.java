@@ -5,11 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * 
+ * Date Formatter
  * @author Nguyen Kim Xuyen
  *@version 1.0
  *@since 2019-04-17
- * Date Formatter
+ * 
  */
 
 public class DateUtil {
@@ -54,6 +54,11 @@ public class DateUtil {
 		}
 	}
 	
+	
+	/**
+	 * gets formatted current date
+	 * @return a formatted current date
+	 */
 	public static String now() {
 		return format(new Date(), "date");
 	}

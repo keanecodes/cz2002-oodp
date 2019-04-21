@@ -7,7 +7,7 @@ import ntu.scse.cz2002.restaurant.control.TableController;
 import ntu.scse.cz2002.restaurant.util.Utilities;
 
 /**
-Handles the UI catered for Reservation as a sub-menu
+Boundary Class, Handles the UI catered for Reservation as a sub-menu
 @author  Gee Cheng Mun
 @version 1.0
 @since   2019-04-17

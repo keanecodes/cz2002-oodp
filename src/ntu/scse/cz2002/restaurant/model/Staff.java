@@ -4,10 +4,11 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
+ * staff who work at the restaurant
  * @author Goh Ying Ting
  * @version 1.0
  * @since 2019-4-17
- * staff who work at the restaurant
+ * 
  */
 public class Staff implements Comparable<Staff>, Serializable {
 	/**
@@ -32,12 +33,13 @@ public class Staff implements Comparable<Staff>, Serializable {
 	private Date lastUsed;
 
 	/**
+	 * Staff constructor
 	 * @param name name of staff
 	 * @param gender gender of staff
 	 * @param staffID ID of staff
 	 * @param jobTitle jobTitle of staff
 	 * @param lastUsed when staff was last used
-	 * Staff constructor
+	 * 
 	 */
 	public Staff(String name, char gender, int staffID, String jobTitle, Date lastUsed) {
 		this.name = name;
@@ -48,6 +50,7 @@ public class Staff implements Comparable<Staff>, Serializable {
 	}
 
 	/**
+	 * Staff constructor
 	 * @param name name of staff
 	 * @param gender gender of staff
 	 * @param staffID ID of staff
@@ -62,6 +65,7 @@ public class Staff implements Comparable<Staff>, Serializable {
 	}
 	
 	/**
+	 * Staff constructor
 	 * @param name name of staff
 	 * @param staffID ID of staff
 	 */
@@ -71,6 +75,7 @@ public class Staff implements Comparable<Staff>, Serializable {
 	}
 
 	/**
+	 * returns name of staff
 	 * @return returns name of staff
 	 */
 	public String getName() {
@@ -78,6 +83,7 @@ public class Staff implements Comparable<Staff>, Serializable {
 	}
 
 	/**
+	 * returns gender of staff
 	 * @return returns gender of staff
 	 */
 	public char getGender() {
@@ -85,6 +91,7 @@ public class Staff implements Comparable<Staff>, Serializable {
 	}
 
 	/**
+	 * returns ID of staff
 	 * @return returns ID of staff
 	 */
 	public int getStaffID() {
@@ -92,6 +99,7 @@ public class Staff implements Comparable<Staff>, Serializable {
 	}
 
 	/**
+	 * returns jobTitle of staff
 	 * @return returns jobTitle of staff
 	 */
 	public String getJobTitle() {
@@ -99,6 +107,8 @@ public class Staff implements Comparable<Staff>, Serializable {
 	}
 
 	/**
+	 * returns lastUsed of staff
+	 *
 	 * @return returns lastUsed of staff
 	 */
 	public Date getLastUsed() {
@@ -106,42 +116,48 @@ public class Staff implements Comparable<Staff>, Serializable {
 	}
 
 	/**
-	 * @param name sets name of staff
+	 * changes name of staff
+	 * @param name new name of staff
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
-	 * @param gender sets gender of staff
+	 * Changes gender of staff
+	 * @param gender new gender of staff
 	 */
 	public void setGender(char gender) {
 		this.gender = gender;
 	}
 
 	/**
-	 * @param staffID sets ID of staff
+	 * Changes ID of staff
+	 * @param staffID new ID of staff
 	 */
 	public void setStaffID(int staffID) {
 		this.staffID = staffID;
 	}
 
 	/**
-	 * @param jobTitle sets jobTitle of staff
+	 * Changes jobTitle of staff
+	 * @param jobTitle new jobTitle of staff
 	 */
 	public void setJobTitle(String jobTitle) {
 		this.jobTitle = jobTitle;
 	}
 
 	/**
-	 * @param lastUsed sets when staff was last used
+	 * Changes when staff was last used
+	 * @param lastUsed new when staff was last used
 	 */
 	public void setLastUsed(Date lastUsed) {
 		this.lastUsed = lastUsed;
 	}
 
 	/**
-	 * @param s compares the details of two staff to check if it is the right staff
+	 * compares the details of two staff to check if it is the right staff
+	 * @param s other staff that is compared to
 	 */
 	public int compareTo(Staff s) {
 		int result;

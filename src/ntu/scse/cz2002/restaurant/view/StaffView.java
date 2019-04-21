@@ -7,10 +7,11 @@ import ntu.scse.cz2002.restaurant.model.Staff;
 import ntu.scse.cz2002.restaurant.util.DateUtil;
 
 /**
+ * Boundary Class, displaying of staff options 
  * @author Goh Ying Ting
  * @version 1.0
  * @since 2019-4-17
- * displaying of staff options 
+ * 
  */
 public class StaffView {
 	

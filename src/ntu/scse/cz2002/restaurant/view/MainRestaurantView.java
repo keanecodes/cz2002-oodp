@@ -6,7 +6,7 @@ import ntu.scse.cz2002.restaurant.control.TableController;
 import ntu.scse.cz2002.restaurant.util.Utilities;
 
 /**
- * 
+ * Main Boundary Class, main menu that calls other Boundary Classes
  * @author Gee Cheng Mun
  *@version 1.0
  *@since 2019-4-17

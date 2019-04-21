@@ -2,10 +2,10 @@ package ntu.scse.cz2002.restaurant.util;
 
 import java.util.Calendar;
 /**
+ * Calendar Formatter
  * @author He Zeqing
  *@version 1.0
  *@since 2019-4-17
- *Calendar Formatter
  */
 
 

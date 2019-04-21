@@ -132,8 +132,7 @@ public class InvoiceController {
 	}
 	
 	/**
-	*print Invoiceby ID
-	*print a Invoice using ID. 
+	print a Invoice using ID. 
 	*@param ID invoiceID
 	*/
 	public void printInvoicebyID(int ID) {
@@ -172,6 +171,11 @@ public class InvoiceController {
 		}
 		return inperiod;
 	}
+	
+	/**
+	*get the number of invoices in the accumulated in the invoiceArr
+	@return number of invoices in the system
+	**/
 	
 	public int getInvoiceListSize() {
 		return this.invoiceArr.size();

@@ -43,6 +43,7 @@ public class Reservation implements Serializable {
 	private int duration;  
 
 	/**
+	 * Constructor
 	 * @param startDateTime: The reservation's date and time 
 	 * @param noOfPax: The number of pax for the reservation
 	 * @param customerName: Name of the customer
@@ -66,6 +67,7 @@ public class Reservation implements Serializable {
 	}
 
 	/**
+	 * Gets the date and time of the reservation
 	 * @return Gets the date and time of the reservation
 	 */
 	public Calendar getStartDateTime()  
@@ -74,7 +76,8 @@ public class Reservation implements Serializable {
 	}
 
 	/**
-	 * @param newStartDateTime: Changes the date and time of the reservation
+	 * Changes the date and time of the reservation
+	 * @param newStartDateTime new Start DateTime of Reservation
 	 */
 	public void setStartDateTime(Calendar newStartDateTime)  
 	{
@@ -82,6 +85,7 @@ public class Reservation implements Serializable {
 	}
 
 	/**
+	 * Gets the number of people for the reservation
 	 @return Gets the number of people for the reservation
 	 */
 	public int getNoOfPax() 
@@ -90,7 +94,8 @@ public class Reservation implements Serializable {
 	}
 
 	/**
-	 * @param newNoOfPax: The new number of pax for the reservation
+	 * Sets a new number of pax for the reservation
+	 * @param newNoOfPax the new number of pax for the reservation
 	 */
 	public void setNoOfPax(int newNoOfPax)  
 	{
@@ -98,6 +103,7 @@ public class Reservation implements Serializable {
 	}
 
 	/**
+	 * gets the name of customer who made the reservation
 	 * @return the name of customer who made the reservation
 	 */
 	public String getCustomerName() 
@@ -106,6 +112,7 @@ public class Reservation implements Serializable {
 	}
 
 	/**
+	 * gets the contact number of customer who made the reservation
 	 * @return the contact number of customer who made the reservation
 	 */
 	public int getCustomerContactNo()
@@ -114,7 +121,8 @@ public class Reservation implements Serializable {
 	}
 	
 	/**
-	 * @param customerNo: The contact number of customer who made the reservation
+	 * Changes the contact number of customer who made the reservation
+	 * @param customerNo The contact number of customer who made the reservation
 	 */
 	public void setCustomerContactNo(int customerNo) 
 	{
@@ -122,6 +130,7 @@ public class Reservation implements Serializable {
 	}
 
 	/**
+	 * gets the assigned table number for the reservation
 	 * @return the assigned table number for the reservation
 	 */
 	public int getTableNo() 
@@ -130,7 +139,8 @@ public class Reservation implements Serializable {
 	}
 
 	/**
-	 * @param newTableNo: The new table number for the reservation
+	 * Changes the table number for the reservation
+	 * @param newTableNo The new table number for the reservation
 	 */
 	public void setTableNo(int newTableNo)  
 	{
@@ -138,6 +148,7 @@ public class Reservation implements Serializable {
 	}
 
 	/**
+	 * gets the duration of the reservation
 	 * @return the duration of the reservation
 	 */
 	public int getDuration()  
@@ -146,7 +157,8 @@ public class Reservation implements Serializable {
 	}
 
 	/**
-	 * @param newDuration: The new duration of the reservation
+	 * Changes the duration of the reservatio
+	 * @param newDuration The new duration of the reservation
 	 */
 	public void setDuration(int newDuration)
 	{

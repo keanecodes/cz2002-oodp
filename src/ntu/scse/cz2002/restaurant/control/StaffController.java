@@ -6,8 +6,8 @@ import ntu.scse.cz2002.restaurant.data.DataAccessor;
 import ntu.scse.cz2002.restaurant.model.Staff;
 
 /**
- * @author Goh Ying Ting
  * manages the staff
+ * @author Goh Ying Ting
  * @version 1.0
  * @since 2019-04-17
  */
@@ -40,6 +40,7 @@ public class StaffController {
 	
 
 	/**
+	 *returns the current staff
 	 * @return returns current staff using the system
 	 */
 	public Staff getStaff() { 
@@ -47,13 +48,15 @@ public class StaffController {
 	}
 	
 	/**
-	 * @param s changes current staff to another person
+	 * Changes staff using the system to staff specified
+	 * @param s Staff specified
 	 */
 	public void changeCurrentStaffTo(Staff s) {
 		DataAccessor.write(DATA_FILE, s);
 	}
 
 	/**
+	 * finds staff based on staffID
 	 * @param staffID ID associated with a staff
 	 * @return returns the staff object based on staffID
 	 */

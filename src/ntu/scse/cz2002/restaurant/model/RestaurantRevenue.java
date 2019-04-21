@@ -58,6 +58,7 @@ public class RestaurantRevenue { // needs to be reformatter & reworked.. is it a
 	
 	
 	/**
+	 * gets total Revenue of this SalesReport
 	*@return total revenue for this SalesReport
 	* 
 	*/

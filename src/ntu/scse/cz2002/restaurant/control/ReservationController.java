@@ -102,6 +102,7 @@ public class ReservationController {
 	}
 	
 	/**
+	 * A constructor which takes in the table controller that is passed around our program as an argument
 	 * @param tCtrl Parsing the table controller as an argument
 	 */
 	public ReservationController (TableController tCtrl) {
@@ -123,6 +124,11 @@ public class ReservationController {
 		return reserveMgr;
 	}
 	
+	
+	/**
+	 * gets list of all the current reservations
+	 * @return a list of the all the current reservations
+	 */
 	public List<Reservation> getAllReservations(){
 		return reservations;
 	}
@@ -199,6 +205,10 @@ public class ReservationController {
 	}
 	
 		
+	/**
+	 * Verifies reservation's details based on Customer's contact number on arrival and removes the reservation
+	 @return true if Reservations successfully removed
+	 */
 	public boolean removeCustArrived()
 	{
 		checkReservations();
@@ -574,6 +584,7 @@ public class ReservationController {
 	}
 	
 	/**
+	 * Checks whether Table is currently reserved
 	 * @param tableId The table ID/Number object
 	 * @return True when table is being reserved and False when table is not being reserved
 	 */
@@ -588,6 +599,7 @@ public class ReservationController {
 	}
 
 	/**
+	 * gets the Table using tableID
 	 * @param tableNumber The table ID/Number object
 	 * @return table when table ID and tableNumber match, otherwise null
 	 */
