@@ -1,10 +1,14 @@
 package ntu.scse.cz2002.restaurant.control;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import ntu.scse.cz2002.restaurant.model.Order;
 import ntu.scse.cz2002.restaurant.model.Table;
+import ntu.scse.cz2002.restaurant.model.Reservation;
 
 /**
  * Control Class to control Table occupancy and reservation
@@ -167,5 +171,28 @@ public class TableController {
 				return tList.get(i);
 		
 		return null;
+	}
+	
+	public void setReservedTablesAtCurrentTime() {
+		List<Reservation> allReservations = rCtrl.getAllReservations();
+		Calendar currentInstant = GregorianCalendar.getInstance();
+		Date currentDateTime = currentInstant.getTime();
+		currentInstant.setTime(currentDateTime);
+		for (int i = 0; i < allReservations.size(); i++) {
+			
+			Calendar restStartDateTime = allReservations.get(i).getStartDateTime();
+			Calendar restClone = (Calendar) restStartDateTime.clone();
+			restClone.add(Calendar.MINUTE, 15); // change this for reservation time
+			
+			int tableID = allReservations.get(i).getTableNo();
+			Table t = findTableById(tableID);
+			
+			if (currentInstant.after(restStartDateTime) && currentInstant.before(restClone)) {
+				t.setIsReserved(true);
+			}
+			else {
+				t.setIsReserved(false);
+			}
+		}
 	}
 }

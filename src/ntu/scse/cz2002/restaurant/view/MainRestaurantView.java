@@ -47,6 +47,8 @@ public class MainRestaurantView {
 		printMainRestaurantView();
 			
 		do {
+			tCtrl.setReservedTablesAtCurrentTime();
+			
 			choice = sc.next();
 		      
 			switch(choice.toUpperCase()) {

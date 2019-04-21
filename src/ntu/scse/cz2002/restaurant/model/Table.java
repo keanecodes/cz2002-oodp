@@ -111,7 +111,7 @@ public class Table {
 	/**
 	 * Sets this table as reserved.
 	 */
-	public void setIsReserved() { this.isReserved = true; }
+	public void setIsReserved(boolean status) { this.isReserved = status; }
 
 	/**
    * Checks if table is currently occupied.

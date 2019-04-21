@@ -44,7 +44,7 @@ public class ReservationController {
 	/**
 	 * Closing timing of the AM session: 3pm
 	 */
-	private static final int RESTAURANT_AM_CLOSING_HOUR = 15;
+	private static final int RESTAURANT_AM_CLOSING_HOUR = 18;
 	
 	/**
 	 * Opening timing of the PM session: 6pm 
@@ -122,19 +122,9 @@ public class ReservationController {
 
 		return reserveMgr;
 	}
-
-	/**
-	 * Create the list of tables with the indicated sizes
-	 */
-	private void setUpTables() {
-		int tableNumber = 1;
-		for (int tableSize : TABLE_SIZE) {
-			Table newTable;
-
-			newTable = new Table(tableNumber++, tableSize, false, false, 0);
-			System.out.println(newTable);
-			tables.add(newTable);
-		}
+	
+	public List<Reservation> getAllReservations(){
+		return reservations;
 	}
 
 	/**
@@ -363,7 +353,7 @@ public class ReservationController {
 				{
 					if (tables.get(index).getTableId() == availableTableNumber)
 					{
-						tables.get(index).setIsReserved();
+						//tables.get(index).setIsReserved(true);
 						tables.get(index).setCustomerNo(custNo);
 					}
 				}
