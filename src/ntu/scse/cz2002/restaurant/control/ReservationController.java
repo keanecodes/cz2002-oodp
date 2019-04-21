@@ -364,7 +364,6 @@ public class ReservationController {
 				{
 					if (tables.get(index).getTableId() == availableTableNumber)
 					{
-						tables.get(index).setNumOfSeats(numOfPeople);
 						tables.get(index).setIsReserved();
 						tables.get(index).setCustomerNo(custNo);
 					}
