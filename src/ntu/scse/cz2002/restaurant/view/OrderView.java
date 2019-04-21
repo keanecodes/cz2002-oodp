@@ -76,7 +76,10 @@ public class OrderView {
 					if (tableID == -1) continue;
 					else {
 						this.o = tCtrl.findTableById(tableID).getOrder();
-						
+						if (this.o.isOnGoing() == true) {
+							System.out.println("This table has already made an order.\nTry editing the order.");
+							continue;
+						}
 						this.o = orderManager.createOrder(tableID);
 						if (this.o != null) 
 							editOrderUI(this.o, orderManager);
